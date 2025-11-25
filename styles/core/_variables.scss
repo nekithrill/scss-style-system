@@ -1,0 +1,34 @@
+@use '../tokens/index' as *;
+
+$tokens: (
+	colors: (
+		map: $colors,
+		prefix: 'clr-'
+	),
+	spacing: (
+		map: $spacing,
+		prefix: 'sp-',
+		transform: 'rem'
+	),
+	font-sizes: (
+		map: $font-sizes,
+		prefix: 'fs-',
+		transform: 'rem'
+	),
+	font-families: (
+		map: $font-families,
+		prefix: 'ff-'
+	),
+	font-weights: (
+		map: $font-weights,
+		prefix: 'fw-'
+	),
+	radius: (
+		map: $radius,
+		prefix: 'rd-'
+	),
+	shadows: (
+		map: $shadows,
+		prefix: 'shd-'
+	)
+);
