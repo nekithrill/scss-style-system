@@ -1,0 +1,96 @@
+/// Desktop-first media query mixin
+/// @param $size - breakpoint key
+/// @param $min-width - true -> mobile-first
+///
+/// Usage:
+/// @include breakpoint('md') { ... }           // max-width: 768px
+/// @include breakpoint('md', true) { ... }     // min-width: 768px
+
+@mixin breakpoint($size, $min-width: false) {
+	$query: map-get($breakpoints, $size);
+
+	@if not $query {
+		@error "⚠️ Breakpoint `#{$size}` not found in $breakpoints map.";
+	}
+
+	@if $min-width {
+		@media (min-width: $query) {
+			@content;
+		}
+	} @else {
+		@media (max-width: $query) {
+			@content;
+		}
+	}
+}
+
+// Theme variables generator
+// Recursively generates CSS custom properties from a nested theme map.
+//
+// @param {map} $theme-map - A nested map describing theme values.
+// @param {string|null} $prefix - Optional prefix applied to all nested variable names.
+//
+// Behavior:
+//   - Flattens deeply nested maps into CSS variables with dash-separated paths.
+//   - Example: (colors: (primary: #000)) → --colors-primary: #000;
+//   - If prefix is provided, it is prepended to all generated variables.
+//   - Values that are not maps are output directly as CSS custom properties.
+@mixin generate-theme($theme-map, $prefix: null) {
+	@each $key, $value in $theme-map {
+		$name: if($prefix != null, '#{$prefix}-#{$key}', $key);
+
+		@if type-of($value) == 'map' {
+			@include generate-theme($value, $name);
+		} @else {
+			--#{$name}: #{$value};
+		}
+	}
+}
+
+// Tokens generator
+// Generates CSS custom properties based on grouped token configuration.
+//
+// @param {map} $groups - A configuration map where each entry is:
+//   {
+//     map: <map>,       // Tokens map (key: value)
+//     prefix: <string>, // Prefix for CSS variable names
+//     transform: <any>  // Optional transform ("rem" supported)
+//   }
+//
+// Behavior:
+//   - Creates CSS variables like --{prefix}{key}: {value};
+//   - If transform == rem → converts px → rem.
+@mixin generate-tokens($groups) {
+	@each $group-name, $config in $groups {
+		$map: map-get($config, map);
+		$prefix: map-get($config, prefix);
+		$transform: map-get($config, transform);
+
+		@each $key, $value in $map {
+			$css-var: --#{$prefix}#{$key};
+
+			@if $transform == rem {
+				#{$css-var}: #{px-to-rem($value)};
+			} @else {
+				#{$css-var}: #{$value};
+			}
+		}
+	}
+}
+
+/// Theme validation
+/// @param $theme-map - карта темы
+/// @param $required-keys - список обязательных ключей
+@mixin validate-theme($theme-map, $required-keys) {
+	@each $key in $required-keys {
+		@if not map-has-key($theme-map, $key) {
+			@error "⚠️ Theme map is missing key `#{$key}`!";
+		}
+	}
+
+	@each $key, $value in $theme-map {
+		@if index($required-keys, $key) == null {
+			@warn "⚠️ Theme map contains extra key `#{$key}`!";
+		}
+	}
+}
