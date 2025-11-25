@@ -22,7 +22,6 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
    ```
 
    This automatically includes:
-
    - **Tokens** (colors, spacing, typography, radius, shadows, breakpoints, animations)
    - **Themes** (light, dark, etc.)
    - **Core utilities** (mixins, functions)
@@ -70,7 +69,6 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
    ```
 
 6. Extending and Customizing
-
    - Add new tokens: Create SCSS maps in tokens/ and include them in \_variables.scss.
    - Override themes: Extend existing theme maps in themes/ or create new ones.
 
