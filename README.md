@@ -3,13 +3,13 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=ffffff)](https://www.w3.org/TR/CSS/)
 [![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=ffffff)](https://sass-lang.com/)
 
-This SCSS Styles System is a modular, scalable, flexible and allows you to:
+This SCSS Styles System is modular, scalable, and flexible, allowing you to:
 
 - Centralize tokens (colors, spacing, typography, shadows, radius, breakpoints, animations)
 - Easily create and switch themes (light, dark, etc.)
-- Use mixins and functions to generate CSS variables and reusable components
-- Build layouts and UI modules based on tokens and themes
-- Scale projects by adding new components, themes, and variables without breaking existing structure
+- Use mixins and functions to generate CSS variables and reusable patterns
+- Build components and layouts based on tokens and themes
+- Scale projects by adding new tokens, themes, and styles without breaking existing structure
 
 ## 📖 **How to use**
 
@@ -27,8 +27,6 @@ This SCSS Styles System is a modular, scalable, flexible and allows you to:
    - **Themes** (light, dark, etc.)
    - **Core utilities** (mixins, functions)
    - **Base styles** (reset, globals, typography)
-   - **Layout** (grid, containers)
-   - **Modules** (buttons, cards, tooltips, modals)
 
 3. Using CSS Variables
 
@@ -73,9 +71,8 @@ This SCSS Styles System is a modular, scalable, flexible and allows you to:
 
 6. Extending and Customizing
 
-   - Add new tokens: Create SCSS maps in `tokens/` and include them in `_variables.scss`.
-   - Add new modules: Add component SCSS files in `modules/` and include them in `modules/index.scss`.
-   - Override themes: Extend existing theme maps in `themes/` or create new ones.
+   - Add new tokens: Create SCSS maps in tokens/ and include them in \_variables.scss.
+   - Override themes: Extend existing theme maps in themes/ or create new ones.
 
 7. Example: Button Module
 
@@ -106,12 +103,8 @@ This SCSS Styles System is a modular, scalable, flexible and allows you to:
 
 - **base/** — base styles and global rules (reset, fonts, base elements)
 - **core/** — mixins, functions and variable generation
-- **layout/** — grids, containers, and page structure elements
-- **modules/** — reusable UI components (buttons, cards, tooltips, modals)
 - **themes/** — theme maps (light, dark, etc.)
 - **tokens/** — core values: colors, spacing, radius, shadows, breakpoints, animations, typography
-
-<!-- <br> -->
 
 <pre lang="md">
 📁 styles
@@ -123,20 +116,20 @@ This SCSS Styles System is a modular, scalable, flexible and allows you to:
  │ 
  ├── 📁 core
  │    ├── 📄 _functions.scss
- │    └── 📄 _index.scss
- │
- ├── 📁 modules
- │    ├── 📄 _module.scss
+ │    ├── 📄 _mixins.scss
+ │    ├── 📄 _variables.scss
  │    └── 📄 _index.scss
  │
  ├── 📁 themes
  │    ├── 📄 _dark.scss
  │    ├── 📄 _light.scss
+ │    ├── 📄 _theme-schema.scss
  │    └── 📄 _index.scss
  │
  ├── 📁 tokens
  │    ├── 📄 _animations.scss
  │    ├── 📄 _breakpoints.scss
+ │    ├── 📄 _typography.scss
  │    ├── 📄 _colors.scss
  │    ├── 📄 _radius.scss
  │    ├── 📄 _shadow.scss
