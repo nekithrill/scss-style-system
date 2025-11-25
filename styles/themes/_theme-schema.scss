@@ -1,0 +1,33 @@
+/* Theme Schema
+ *
+ * Defines the required structure for theme maps in the project.
+ *
+ * $theme-required-keys:
+ * - Specifies which keys and nested keys must exist in a theme
+ * - Used to validate themes before generating CSS variables
+ * - Ensures consistency and completeness across different themes
+ *
+ * Notes:
+ * - The actual keys may vary depending on the project
+ * - Helps maintain a predictable theming system for all components
+ */
+
+$theme-required-keys: (
+	header: (
+		bg,
+		text
+	),
+	footer: (
+		bg,
+		text
+	),
+	button: (
+		bg,
+		text,
+		border
+	),
+	text: (
+		primary,
+		muted
+	)
+);
