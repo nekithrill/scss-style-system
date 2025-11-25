@@ -1,0 +1,31 @@
+/* px-to-rem($value, $base: 16)
+ *
+ * Converts pixel values to rem units.
+ *
+ * Parameters:
+ * - $value: single number in px, or list of numbers (e.g. 10px, 0 2px 6px)
+ * - $base: base font-size in pixels (default: 16px)
+ *
+ * Returns:
+ * - Corresponding rem value(s)
+ *
+ * Notes:
+ * - Works recursively on lists, preserving whitespace-separated values
+ * - Ignores values that are not in px
+ * - Useful for generating consistent CSS variables, spacing, typography, shadows, etc.
+ */
+@function px-to-rem($value, $base: 16) {
+	@if type-of($value) == number and unit($value) == px {
+		@return ($value / $base) * 1rem;
+	}
+
+	@if type-of($value) == list {
+		$new-list: ();
+		@each $item in $value {
+			$new-list: append($new-list, px-to-rem($item, $base));
+		}
+		@return $new-list;
+	}
+
+	@return $value;
+}
