@@ -19,31 +19,34 @@
 
 // Regular (400)
 @font-face {
-	font-family: 'JetBrains';
+	font-family: JetBrains;
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
-	src: url('path/to/JetBrains-Regular.woff2') format('woff2'),
+	src:
+		url('path/to/JetBrains-Regular.woff2') format('woff2'),
 		url('path/to/JetBrains-Regular.woff') format('woff');
 }
 
 // Medium (500)
 @font-face {
-	font-family: 'JetBrains';
+	font-family: JetBrains;
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
-	src: url('path/to/JetBrains-Medium.woff2') format('woff2'),
+	src:
+		url('path/to/JetBrains-Medium.woff2') format('woff2'),
 		url('path/to/JetBrains-Medium.woff') format('woff');
 }
 
 // Bold (700)
 @font-face {
-	font-family: 'JetBrains';
+	font-family: JetBrains;
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
-	src: url('path/to/JetBrains-Bold.woff2') format('woff2'),
+	src:
+		url('path/to/JetBrains-Bold.woff2') format('woff2'),
 		url('path/to/JetBrains-Bold.woff') format('woff');
 }
 
@@ -52,10 +55,11 @@
 // ------------------------------------------------------------
 
 @font-face {
-	font-family: 'JetBrains Variable';
+	font-family: JetBrains;
 	font-weight: 300 700; // define range for variable font
 	font-style: normal;
 	font-display: swap;
-	src: url('path/to/JetBrains-Variable.woff2') format('woff2'),
+	src:
+		url('path/to/JetBrains-Variable.woff2') format('woff2'),
 		url('path/to/JetBrains-Variable.woff') format('woff');
 }
