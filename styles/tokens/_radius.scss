@@ -1,0 +1,18 @@
+/* Radius Tokens
+ *
+ * Defines border-radius values used across the UI:
+ * - sm: small rounding for compact elements
+ * - md: default radius for general components
+ * - lg–xl: larger rounding for cards and containers
+ * - full: fully rounded shapes (avatars, pills)
+ */
+
+$radius: (
+	none: 0,
+	xs: 2px,
+	sm: 4px,
+	md: 6px,
+	lg: 10px,
+	xl: 14px,
+	full: 50%
+);
