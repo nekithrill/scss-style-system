@@ -2,7 +2,7 @@
  *
  * Defines the core color palette for the project.
  *
- * - $brand-color: base brand color
+ * - $brandcolor: base brand color
  * - $colors: derived colors for consistent theming
  *
  * Notes:
@@ -10,11 +10,10 @@
  * - Derived colors help maintain visual hierarchy and consistency
  */
 
-$brand-color: hsl(40, 100%, 50%);
-
+$brand_color: hsl(40 100% 50%);
 $colors: (
-	accent: $brand-color,
-	primary: adjust-color($brand-color, $saturation: -60%, $lightness: +30%),
-	secondary: adjust-color($brand-color, $saturation: -80%, $lightness: -20%),
-	neutral: adjust-color($brand-color, $saturation: -100%, $lightness: -30%)
+	accent: $brand_color,
+	primary: color.adjust($brand_color, $saturation: -60%, $lightness: +30%),
+	secondary: color.adjust($brand_color, $saturation: -80%, $lightness: -20%),
+	neutral: color.adjust($brand_color, $saturation: -100%, $lightness: -30%)
 );

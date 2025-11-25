@@ -6,20 +6,18 @@
  * - Font sizes: default + h1–h6, automatically converted to rems (in core/variables)
  */
 
-$font-families: (
+$font_families: (
 	primary: 'JetBrains, sans-serif',
 	accent: 'Tektur, sans-serif'
 );
-
-$font-weights: (
+$font_weights: (
 	light: 300,
 	regular: 400,
 	medium: 500,
 	bold: 700,
 	black: 900
 );
-
-$font-sizes: (
+$font_sizes: (
 	default: 16px,
 	h1: 30px,
 	h2: 24px,

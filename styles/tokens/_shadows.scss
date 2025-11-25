@@ -6,13 +6,12 @@
  * - Uses system-wide shadow color variables for easy theming
  */
 
-$base-shadow: hsl(0 0 0 / 10%);
-
+$base_shadow: hsl(0 0 0 / 10%);
 $shadows: (
-	xs: 0 1px 2px $base-shadow,
-	sm: 0 1px 3px $base-shadow,
-	md: 0 2px 6px $base-shadow,
-	lg: 0 4px 12px $base-shadow,
-	xl: 0 8px 24px $base-shadow,
-	inset: inset 0 2px 4px $base-shadow
+	xs: 0 1px 2px $base_shadow,
+	sm: 0 1px 3px $base_shadow,
+	md: 0 2px 6px $base_shadow,
+	lg: 0 4px 12px $base_shadow,
+	xl: 0 8px 24px $base_shadow,
+	inset: inset 0 2px 4px $base_shadow
 );
