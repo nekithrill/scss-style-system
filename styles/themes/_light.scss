@@ -1,0 +1,39 @@
+/* Theme
+ *
+ * Defines a theme map containing color values for different UI elements.
+ *
+ * - The map should follow the structure specified in $theme-required-keys
+ * - Can include colors for headers, footers, buttons, text, etc.
+ * - Used with `validate-theme()` to ensure all required keys are present
+ * - Allows generating CSS variables for theming (light, dark, or custom themes)
+ *
+ * Notes:
+ * - Theme maps can be extended or modified as needed for different projects
+ * - Helps maintain consistent styling across all components
+ */
+
+@use '../tokens/colors' as *;
+@use '../core/mixins' as *;
+@use './theme-schema' as *;
+
+$light: (
+	header: (
+		bg: map-get($colors, gray-900),
+		text: map-get($colors, white)
+	),
+	footer: (
+		bg: map-get($colors, gray-900),
+		text: map-get($colors, white)
+	),
+	button: (
+		bg: map-get($colors, blue-700),
+		text: map-get($colors, white),
+		border: map-get($colors, blue-700)
+	),
+	text: (
+		primary: map-get($colors, white),
+		muted: map-get($colors, gray-100)
+	)
+);
+
+@include validate-theme($light, $theme-required-keys);
