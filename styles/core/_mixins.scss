@@ -26,7 +26,7 @@
 /// Theme variables generator
 /// @param {map} $theme-map - A nested map describing theme values.
 /// @param {string|null} $prefix - Optional prefix applied to all nested variable names.
-@mixin generate_theme($theme-map, $prefix: null) {
+@mixin generate-theme($theme-map, $prefix: null) {
 	@if meta.type-of($theme-map) != 'map' {
 		@error "generate-theme: Expected $theme-map to be a map, got `#{type-of($theme-map)}`.";
 	}
@@ -49,7 +49,7 @@
 ///     prefix: <string>,
 ///     transform: <any>  // "rem" supported
 ///   }
-@mixin generate_tokens($groups) {
+@mixin generate-tokens($groups) {
 	@if meta.type-of($groups) != 'map' {
 		@error "generate-tokens: Expected $groups to be a map, got `#{type-of($groups)}`.";
 	}
@@ -68,12 +68,12 @@
 		}
 
 		@each $key, $value in $map {
-			$css_var: --#{$prefix}#{$key};
+			$css-var: --#{$prefix}#{$key};
 
 			@if $transform == rem {
-				#{$css_var}: #{px_to_rem($value)};
+				#{$css-var}: #{px-to-rem($value)};
 			} @else {
-				#{$css_var}: #{$value};
+				#{$css-var}: #{$value};
 			}
 		}
 	}
@@ -82,7 +82,7 @@
 /// Theme validation
 /// @param $theme-map - theme map
 /// @param $required-keys - required keys list
-@mixin validate_theme($theme-map, $required-keys) {
+@mixin validate-theme($theme-map, $required-keys) {
 	@if meta.type-of($theme-map) !=
 		'map' or
 		meta.type-of($required-keys) !=

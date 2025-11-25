@@ -10,10 +10,10 @@
  * - Derived colors help maintain visual hierarchy and consistency
  */
 
-$brand_color: hsl(40 100% 50%);
+$brand-color: hsl(40 100% 50%);
 $colors: (
-	accent: $brand_color,
-	primary: color.adjust($brand_color, $saturation: -60%, $lightness: +30%),
-	secondary: color.adjust($brand_color, $saturation: -80%, $lightness: -20%),
-	neutral: color.adjust($brand_color, $saturation: -100%, $lightness: -30%)
+	accent: $brand-color,
+	primary: color.adjust($brand-color, $saturation: -60%, $lightness: +30%),
+	secondary: color.adjust($brand-color, $saturation: -80%, $lightness: -20%),
+	neutral: color.adjust($brand-color, $saturation: -100%, $lightness: -30%)
 );

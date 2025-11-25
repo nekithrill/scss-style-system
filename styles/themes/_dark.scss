@@ -18,21 +18,21 @@
 
 $dark: (
 	header: (
-		bg: map-get($colors, gray-900),
-		text: map-get($colors, white)
+		bg: map.get($colors, gray-900),
+		text: map.get($colors, white)
 	),
 	footer: (
-		bg: map-get($colors, gray-900),
-		text: map-get($colors, white)
+		bg: map.get($colors, gray-900),
+		text: map.get($colors, white)
 	),
 	button: (
-		bg: map-get($colors, blue-700),
-		text: map-get($colors, white),
-		border: map-get($colors, blue-700)
+		bg: map.get($colors, blue-700),
+		text: map.get($colors, white),
+		border: map.get($colors, blue-700)
 	),
 	text: (
-		primary: map-get($colors, white),
-		muted: map-get($colors, gray-100)
+		primary: map.get($colors, white),
+		muted: map.get($colors, gray-100)
 	)
 );
 

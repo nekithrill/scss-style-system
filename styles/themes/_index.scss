@@ -9,7 +9,7 @@ $themes: (
 
 // Default theme on :root
 :root {
-	@include generate-theme(map-get($themes, light));
+	@include generate-theme(map.get($themes, light));
 }
 
 // Other themes
