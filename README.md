@@ -6,9 +6,8 @@
 This SCSS Styles System is modular, scalable, and flexible, allowing you to:
 
 - Centralize tokens (colors, spacing, typography, shadows, radius, breakpoints, animations)
-- Easily create and switch themes (light, dark, etc.)
+- Easily create and switch themes (light, dark, custom themes)
 - Use mixins and functions to generate CSS variables and reusable patterns
-- Build components and layouts based on tokens and themes
 - Scale projects by adding new tokens, themes, and styles without breaking existing structure
 
 ## 📖 **How to use**
@@ -23,38 +22,64 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
 
    This automatically includes:
    - **Tokens** (colors, spacing, typography, radius, shadows, breakpoints, animations)
-   - **Themes** (light, dark, etc.)
-   - **Core utilities** (mixins, functions)
+   - **Themes** (theme-schema, light, dark, etc.)
+   - **Core utilities** (mixins, functions, variables)
    - **Base styles** (reset, globals, typography)
 
-3. Using CSS Variables
+3. Customize tokens and themes
 
-   All tokens and theme values are generated as CSS variables:
+   General variables are generated in `_variables.scss`.
 
-   ```scss
-   .button {
-   	background-color: var(--clr-primary);
-   	color: var(--clr-accent);
-   	padding: var(--sp-md);
-   	border-radius: var(--rd-sm);
-   }
+   Theme variables are generated in theme's module, such as `_dark.scss` or `_light.scss` and applied using a data-theme attribute:
+
+   ```html
+
    ```
 
-4. Applying Themes
+# 🎨 **SCSS styles system**
 
-   Themes are applied using a data-theme attribute:
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=ffffff)](https://www.w3.org/TR/CSS/)
+[![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=ffffff)](https://sass-lang.com/)
+
+This SCSS Styles System is modular, scalable, and flexible, allowing you to:
+
+- Centralize tokens (colors, spacing, typography, shadows, radius, breakpoints, animations)
+- Easily create and switch themes (light, dark, custom themes)
+- Use mixins and functions to generate CSS variables and reusable patterns
+- Scale projects by adding new tokens, themes, and styles without breaking existing structure
+
+## 📖 **How to use**
+
+1. Copy the `styles/` folder into your project. No additional packages are required if SCSS compilation is already configured.
+
+2. Use existing main.scss (from this system) or import system to your main SCSS entry point (e.g., main.scss):
+
+   ```scss
+   @use './styles/main' as *;
+   ```
+
+   This automatically includes:
+   - **Tokens** (colors, spacing, typography, radius, shadows, breakpoints, animations)
+   - **Themes** (theme-schema, light, dark, etc.)
+   - **Core utilities** (mixins, functions, variables)
+   - **Base styles** (reset, globals, typography)
+
+3. Customize tokens and themes
+
+   General variables are generated in `_variables.scss`.
+
+   Theme variables are generated in theme's module, such as `_dark.scss` or `_light.scss` and applied using a data-theme attribute:
 
    ```html
    <body data-theme="light">
    	...
    </body>
-
    <body data-theme="dark">
    	...
    </body>
    ```
 
-5. Responsive Utilities
+4. Responsive Utilities
 
    Use the included breakpoint mixin for desktop-first or mobile-first queries (true = mobile-first):
 
@@ -68,40 +93,282 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
    }
    ```
 
-6. Extending and Customizing
-   - Add new tokens: Create SCSS maps in tokens/ and include them in \_variables.scss.
-   - Override themes: Extend existing theme maps in themes/ or create new ones.
+## 🧩 **Configuration**
 
-7. Example: Button Module
+<details>
+<summary><strong>🔣 Variables</strong></summary>
 
-   ```scss
-   .button {
-   	background-color: var(--clr-button-bg);
-   	color: var(--clr-button-text);
-   	padding: var(--sp-md) var(--sp-lg);
-   	border-radius: var(--rd-sm);
-   	font-family: var(--ff-primary);
-   	font-weight: var(--fw-bold);
-   	box-shadow: var(--shd-sm);
-   	transition: all 0.2s ease;
+<br>
 
-   	&:hover {
-   		background-color: var(--clr-button-bg-hover);
-   	}
-   }
-   ```
+To configure variables you need to edit `/tokens/*`, for example `/tokens/_typography.scss`:
 
-   ```html
-   <button class="button">Click me</button>
-   ```
+```scss
+/// Typography Tokens
+///
+/// Core typography settings:
+/// - Font families: primary, accent (optional)
+/// - Font weights: light, regular, medium, bold, black
+/// - Font sizes: default + h1–h6, automatically converted to rems (in /core/variables)
 
-   This button automatically adapts to tokens and current theme.
+$font-families: (
+	primary: 'JetBrains, sans-serif',
+	accent: 'Tektur, sans-serif'
+);
+
+$font-weights: (
+	light: 300,
+	regular: 400,
+	medium: 500,
+	bold: 700,
+	black: 900
+);
+
+$font-sizes: (
+	default: 16px,
+	h1: 30px,
+	h2: 24px,
+	h3: 20px,
+	h4: 18px,
+	h5: 16px,
+	h6: 14px
+);
+```
+
+Then to edit `/core/_variables.scss` for generation CSS variables:
+
+```scss
+$tokens: (
+	colors: (
+		map: $colors,
+		prefix: 'clr'
+	),
+	font-families: (
+		map: $font-families,
+		prefix: 'ff'
+	),
+	font-weights: (
+		map: $font-weights,
+		prefix: 'fw'
+	),
+	font-sizes: (
+		map: $font-sizes,
+		prefix: 'fs',
+		transform: 'rem'
+	),
+	spacing: (
+		map: $spacing,
+		prefix: 'sp',
+		transform: 'rem'
+	),
+	radius: (
+		map: $radius,
+		prefix: 'rd',
+		transform: 'rem'
+	),
+	shadows: (
+		map: $shadows,
+		prefix: 'shd',
+		transform: 'rem'
+	)
+);
+
+:root {
+	@include generate-tokens($tokens);
+}
+```
+
+> 💡 to generate variables, generate-tokens mixin exists in `/core/mixins`
+
+<br>
+</details>
+
+<details>
+<summary><strong>✒️ Fonts</strong></summary>
+
+<br>
+
+To configure fonts you need to edit `/base/_fonts.scss` file in which fonts are connected.
+
+```scss
+/// Font Loading Guidelines
+///
+/// 1️ Use `.woff2` fonts for optimal loading and modern browser support.
+/// 2️⃣ Include `.woff` as a fallback for older browsers.
+/// 3️⃣ Include multiple weights/styles in separate `@font-face` declarations.
+/// 4️⃣ For variable fonts, define a range of weights in one declaration.
+///
+/// - Always use `font-display: swap` to improve UX and avoid invisible text.
+/// - Keep file paths relative to your CSS/SCSS file location.
+/// - Include all font weights used in your project.
+/// - Consider hosting fonts locally for faster loading and offline support.
+/// - Variable fonts can be animated or have dynamic weight changes with CSS.
+
+@font-face {
+	font-family: 'CustomFont';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src:
+		url('path/to/CustomFont.woff2') format('woff2'),
+		url('path/to/CustomFont.woff') format('woff');
+}
+```
+
+<br>
+</details>
+
+<details>
+<summary><strong>🎨 Themes</strong></summary>
+
+<br>
+
+To configure themes, first you need to edit colors `/tokens/_colors.scss`:
+
+```scss
+@use 'sass:color';
+
+/// Color Tokens
+///
+/// Defines the core color palette for the project:
+/// - $brand-color: base brand color
+/// - $colors: derived colors for consistent theming
+///
+/// Notes:
+/// - Colors are defined using HSL for easier manipulation with `color.adjust()`
+/// - Derived colors help maintain visual hierarchy and consistency
+
+$brand-color: hsl(40deg 100% 50%);
+$colors: (
+	accent: $brand-color,
+	primary: color.adjust($brand-color, $saturation: -60%, $lightness: +30%),
+	secondary: color.adjust($brand-color, $saturation: -80%, $lightness: -20%),
+	neutral: color.adjust($brand-color, $saturation: -100%, $lightness: -30%)
+);
+```
+
+> 💡 HSL is comfortable to setup shades with color.adjust().
+
+then to setup your layout schema in `/themes/_theme-schema.scss`:
+
+```scss
+/// Theme Schema
+///
+/// Defines the required structure for theme maps in the project.
+///
+/// $theme-required-keys:
+/// - Specifies which keys and nested keys must exist in a theme
+/// - Used to validate themes before generating CSS variables
+/// - Ensures consistency and completeness across different themes
+///
+/// $theme-allowed-states:
+/// - Lists all valid "state" keys that can exist at the lowest level of a theme map
+/// - Examples of states: '_', 'hover', 'active', 'focus', 'disabled', 'muted', etc.
+/// - Used during theme validation to allow these keys without triggering warnings
+/// - Ensures that developers cannot accidentally add arbitrary keys at the state level
+
+$theme-allowed-states: (
+	'_',
+	'hover',
+	'active',
+	'focus',
+	'disabled',
+	'muted',
+	'selected',
+	'hidden',
+	'error',
+	'success',
+	'warning'
+);
+
+$theme-required-keys: (
+	header: (
+		bg: (),
+		text: ()
+	),
+	main: (
+		bg: (),
+		text: ()
+	),
+	footer: (
+		bg: (),
+		text: ()
+	)
+);
+```
+
+and configure your theme in module `/themes/_dark.scss` or `/themes/_light.scss`:
+
+```scss
+@use 'sass:map';
+@use '../tokens/colors' as *;
+@use '../core/mixins' as *;
+@use './theme-schema' as *;
+
+/// Theme map for dark mode
+///
+/// Defines color values for different UI elements following the structure
+/// specified in `$theme-required-keys`.
+///
+/// - Can include colors for headers, footers, buttons, text, etc.
+/// - Used with `validate-theme()` to ensure all required keys are present.
+/// - Allows generating CSS variables for theming (light, dark, or custom themes).
+///
+/// Notes:
+/// - Theme maps can be extended or modified for different projects.
+/// - Helps maintain consistent styling across all components.
+
+$dark: (
+	header: (
+		bg: (
+			_: map.get($colors, neutral) // default appearance
+			hover: map.get($colors, primary) // hover state
+			active: map.get($colors, secondary) // active state
+		),
+		text: (
+			_: map.get($colors, primary)
+		)
+	),
+	main: (
+		bg: (
+			_: map.get($colors, secondary),
+			hover: map.get($colors, neutral)
+		),
+		text: (
+			_: map.get($colors, primary)
+		)
+	),
+	footer: (
+		bg: (
+			_: map.get($colors, neutral)
+		),
+		text: (
+			_: map.get($colors, primary)
+		)
+	)
+);
+
+@include validate-theme($dark, $theme-required-keys, $theme-allowed-states);
+
+[data-theme='dark'] {
+	@include generate-theme($dark, 'clr');
+}
+```
+
+> 💡 `_` is the default state. It corresponds to the element's normal appearance without any special states such as hover, active, or disabled.
+
+> 💡 to generate themes, generate-theme mixin exists in `/core/mixins`
+
+> 💡 to validate themes, validate-theme mixin exists in `/core/mixins` and it uses `/themes/_theme-schema.scss` to keep structure
+
+also you can create or custom theme, for example `/themes/_neon.scss` and just import it to `/themes/_index.scss`.
+
+</details>
 
 ## 📂 **Folder structure**
 
-- **base/** — base styles and global rules (reset, fonts, base elements)
+- **base/** — base styles and global rules (reset, fonts, basic elements)
 - **core/** — mixins, functions and variable generation
-- **themes/** — theme maps (light, dark, etc.)
+- **themes/** — theme maps (theme-schema, light, dark, etc.)
 - **tokens/** — core values: colors, spacing, radius, shadows, breakpoints, animations, typography
 
 <pre lang="md">
@@ -136,6 +403,3 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
  │
  └── 📄 main.scss
 </pre>
-
-<br>
-</details>
