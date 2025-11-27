@@ -1,34 +1,55 @@
 @use '../tokens/index' as *;
+@use '../core/mixins' as *;
+
+/// Token Variables Generator
+///
+/// Generates CSS custom properties (variables) from design tokens.
+/// @see generate-tokens
+///
+/// - Combines multiple token groups: colors, spacing, typography, radius, shadows
+/// - Each group has a `map` of values, a `prefix` for variable names, and optional `transform` that uses px-to-rem function
+/// - Useful for theming and maintaining consistent design across the project
+///
+/// Usage:
+/// :root {
+///   @include generate-tokens($tokens);
+/// }
 
 $tokens: (
 	colors: (
 		map: $colors,
-		prefix: 'clr-'
-	),
-	spacing: (
-		map: $spacing,
-		prefix: 'sp-',
-		transform: 'rem'
-	),
-	font-sizes: (
-		map: $font-sizes,
-		prefix: 'fs-',
-		transform: 'rem'
+		prefix: 'clr'
 	),
 	font-families: (
 		map: $font-families,
-		prefix: 'ff-'
+		prefix: 'ff'
 	),
 	font-weights: (
 		map: $font-weights,
-		prefix: 'fw-'
+		prefix: 'fw'
+	),
+	font-sizes: (
+		map: $font-sizes,
+		prefix: 'fs',
+		transform: 'rem'
+	),
+	spacing: (
+		map: $spacing,
+		prefix: 'sp',
+		transform: 'rem'
 	),
 	radius: (
 		map: $radius,
-		prefix: 'rd-'
+		prefix: 'rd',
+		transform: 'rem'
 	),
 	shadows: (
 		map: $shadows,
-		prefix: 'shd-'
+		prefix: 'shd',
+		transform: 'rem'
 	)
 );
+
+:root {
+	@include generate-tokens($tokens);
+}
