@@ -334,9 +334,7 @@ All SCSS files in this system are linted and formatted locally before pushing to
 <summary><strong>Prettier</strong></summary>
 For consistent code formatting.
 
-.prettierrc
-
-```json
+```json .prettierrc
 {
 	"trailingComma": "none",
 	"arrowParens": "avoid",
@@ -355,9 +353,7 @@ For consistent code formatting.
 <summary><strong>Stylelint</strong></summary>
 For enforcing SCSS/CSS best practices.
 
-.stylelintrc.cjs
-
-```js
+```js .stylelintrc.cjs
 module.exports = {
 	extends: ['stylelint-config-standard-scss'],
 	plugins: ['stylelint-scss'],
