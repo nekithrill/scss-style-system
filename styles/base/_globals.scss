@@ -9,7 +9,7 @@
 		'liga' 1,
 		'kern' 1;
 
-	accent-color: var(--clr-accent, #ff9800);
+	accent-color: var(--clr-accent, lime);
 }
 
 html {
@@ -39,14 +39,7 @@ html {
 
 body {
 	font-size: var(--fs-default);
-	font-family: var(
-		--ff-primary,
-		system-ui,
-		-apple-system,
-		'Segoe UI',
-		Roboto,
-		sans-serif
-	);
+	font-family: var(--ff-primary);
 	font-weight: var(--fw-regular);
 	color: var(--clr-text);
 }
