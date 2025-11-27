@@ -1,10 +1,9 @@
-/* Breakpoint Tokens
- *
- * Defines screen width breakpoints for responsive design:
- * - Keys: xs, sm, md, lg, xl, 2xl
- * - Values: min-width in pixels
- * - Used for media queries and layout adjustments
- */
+/// Breakpoint Tokens
+///
+/// Defines screen width breakpoints for responsive design:
+/// - Keys: xs, sm, md, lg, xl, 2xl
+/// - Values: min-width in pixels
+/// - Used for media queries and layout adjustments
 
 $breakpoints: (
 	'xs': 360px,

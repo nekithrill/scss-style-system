@@ -1,10 +1,9 @@
-/* Spacing Tokens
- *
- * Defines spacing scale for consistent layout:
- * - Base unit: 8px
- * - Keys are multiples of base unit (0–8)
- * - Usage: margin, padding, gap, grid spacing
- */
+/// Spacing Tokens
+///
+/// Defines spacing scale for consistent layout:
+/// - Base unit: 8px
+/// - Keys are multiples of the base unit (0–8)
+/// - Usage: margin, padding, gap, grid spacing
 
 $spacing: (
 	0: 0,

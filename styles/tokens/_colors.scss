@@ -1,16 +1,16 @@
-/* Color Tokens
- *
- * Defines the core color palette for the project.
- *
- * - $brandcolor: base brand color
- * - $colors: derived colors for consistent theming
- *
- * Notes:
- * - Colors are defined using HSL for easier manipulation with adjust-color()
- * - Derived colors help maintain visual hierarchy and consistency
- */
+@use 'sass:color';
 
-$brand-color: hsl(40 100% 50%);
+/// Color Tokens
+///
+/// Defines the core color palette for the project:
+/// - $brand-color: base brand color
+/// - $colors: derived colors for consistent theming
+///
+/// Notes:
+/// - Colors are defined using HSL for easier manipulation with `color.adjust()`
+/// - Derived colors help maintain visual hierarchy and consistency
+
+$brand-color: hsl(40deg 100% 50%);
 $colors: (
 	accent: $brand-color,
 	primary: color.adjust($brand-color, $saturation: -60%, $lightness: +30%),
