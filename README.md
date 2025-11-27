@@ -33,44 +33,6 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
    Theme variables are generated in theme's module, such as `_dark.scss` or `_light.scss` and applied using a data-theme attribute:
 
    ```html
-
-   ```
-
-# 🎨 **SCSS styles system**
-
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=ffffff)](https://www.w3.org/TR/CSS/)
-[![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=ffffff)](https://sass-lang.com/)
-
-This SCSS Styles System is modular, scalable, and flexible, allowing you to:
-
-- Centralize tokens (colors, spacing, typography, shadows, radius, breakpoints, animations)
-- Easily create and switch themes (light, dark, custom themes)
-- Use mixins and functions to generate CSS variables and reusable patterns
-- Scale projects by adding new tokens, themes, and styles without breaking existing structure
-
-## 📖 **How to use**
-
-1. Copy the `styles/` folder into your project. No additional packages are required if SCSS compilation is already configured.
-
-2. Use existing main.scss (from this system) or import system to your main SCSS entry point (e.g., main.scss):
-
-   ```scss
-   @use './styles/main' as *;
-   ```
-
-   This automatically includes:
-   - **Tokens** (colors, spacing, typography, radius, shadows, breakpoints, animations)
-   - **Themes** (theme-schema, light, dark, etc.)
-   - **Core utilities** (mixins, functions, variables)
-   - **Base styles** (reset, globals, typography)
-
-3. Customize tokens and themes
-
-   General variables are generated in `_variables.scss`.
-
-   Theme variables are generated in theme's module, such as `_dark.scss` or `_light.scss` and applied using a data-theme attribute:
-
-   ```html
    <body data-theme="light">
    	...
    </body>
