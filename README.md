@@ -143,6 +143,8 @@ $tokens: (
 }
 ```
 
+> 💡 if you want another prefixes, change prefix value in group
+
 > 💡 to generate variables, generate-tokens mixin exists in `/core/mixins`
 
 <br>
