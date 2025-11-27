@@ -1,33 +1,43 @@
-/* Theme Schema
- *
- * Defines the required structure for theme maps in the project.
- *
- * $theme-required-keys:
- * - Specifies which keys and nested keys must exist in a theme
- * - Used to validate themes before generating CSS variables
- * - Ensures consistency and completeness across different themes
- *
- * Notes:
- * - The actual keys may vary depending on the project
- * - Helps maintain a predictable theming system for all components
- */
+/// Theme Schema
+///
+/// Defines the required structure for theme maps in the project.
+///
+/// $theme-required-keys:
+/// - Specifies which keys and nested keys must exist in a theme
+/// - Used to validate themes before generating CSS variables
+/// - Ensures consistency and completeness across different themes
+///
+/// $theme-allowed-states:
+/// - Lists all valid "state" keys that can exist at the lowest level of a theme map
+/// - Examples of states: '_', 'hover', 'active', 'focus', 'disabled', 'muted', etc.
+/// - Used during theme validation to allow these keys without triggering warnings
+/// - Ensures that developers cannot accidentally add arbitrary keys at the state level
+
+$theme-allowed-states: (
+	'_',
+	'hover',
+	'active',
+	'focus',
+	'disabled',
+	'muted',
+	'selected',
+	'hidden',
+	'error',
+	'success',
+	'warning'
+);
 
 $theme-required-keys: (
 	header: (
-		bg,
-		text
+		bg: (),
+		text: ()
+	),
+	main: (
+		bg: (),
+		text: ()
 	),
 	footer: (
-		bg,
-		text
-	),
-	button: (
-		bg,
-		text,
-		border
-	),
-	text: (
-		primary,
-		muted
+		bg: (),
+		text: ()
 	)
 );
