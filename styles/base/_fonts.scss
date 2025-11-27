@@ -1,23 +1,17 @@
-// ============================================================
-// FONT LOADING INSTRUCTIONS
-// ============================================================
+/// Font Loading Guidelines
+///
+/// 1️ Use `.woff2` fonts for optimal loading and modern browser support.
+/// 2️⃣ Include `.woff` as a fallback for older browsers.
+/// 3️⃣ Include multiple weights/styles in separate `@font-face` declarations.
+/// 4️⃣ For variable fonts, define a range of weights in one declaration.
+///
+/// - Always use `font-display: swap` to improve UX and avoid invisible text.
+/// - Keep file paths relative to your CSS/SCSS file location.
+/// - Include all font weights used in your project.
+/// - Consider hosting fonts locally for faster loading and offline support.
+/// - Variable fonts can be animated or have dynamic weight changes with CSS.
 
-// 1️⃣ Use .woff2 fonts for optimal loading and modern browser support.
-// 2️⃣ Include .woff as a fallback for older browsers.
-// 3️⃣ If your font has multiple weights/styles, include them in separate @font-face declarations.
-// 4️⃣ For variable fonts, you can define a range of weights in one declaration.
-
-// ✅ Always use font-display: swap for better UX and to avoid invisible text.
-// ✅ Keep file paths relative to your CSS/SCSS file location.
-// ✅ Include all font weights you plan to use in your project.
-// ✅ Consider hosting fonts locally for faster loading and offline support.
-// ✅ For variable fonts, you can animate or dynamically change weights with CSS.
-
-// ------------------------------------------------------------
-// Example: Standard Fonts with Multiple Weights
-// ------------------------------------------------------------
-
-// Regular (400)
+/// Regular (400)
 @font-face {
 	font-family: JetBrains;
 	font-weight: 400;
@@ -28,7 +22,7 @@
 		url('path/to/JetBrains-Regular.woff') format('woff');
 }
 
-// Medium (500)
+/// Medium (500)
 @font-face {
 	font-family: JetBrains;
 	font-weight: 500;
@@ -39,7 +33,7 @@
 		url('path/to/JetBrains-Medium.woff') format('woff');
 }
 
-// Bold (700)
+/// Bold (700)
 @font-face {
 	font-family: JetBrains;
 	font-weight: 700;
@@ -50,13 +44,10 @@
 		url('path/to/JetBrains-Bold.woff') format('woff');
 }
 
-// ------------------------------------------------------------
-// Example: Variable Font (Weight Range 300–700)
-// ------------------------------------------------------------
-
+/// Variable font (weight range 300-700)
 @font-face {
 	font-family: JetBrains;
-	font-weight: 300 700; // define range for variable font
+	font-weight: 300 700; // range for variable font
 	font-style: normal;
 	font-display: swap;
 	src:
