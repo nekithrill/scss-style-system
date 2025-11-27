@@ -1,10 +1,14 @@
-/// Desktop-first media query mixin
-/// @param $size - breakpoint key
-/// @param $min-width - true -> mobile-first
-///
-/// Usage:
-/// @include breakpoint('md') { ... }           // max-width: 768px
-/// @include breakpoint('md', true) { ... }     // min-width: 768px
+@use 'sass:meta';
+@use 'sass:map';
+@use 'sass:list';
+@use './functions' as *;
+
+/// Breakpoint mixin
+/// @param {string} $size - breakpoint key from $breakpoints
+/// @param {bool} $min-width - true for min-width (mobile-first), false for max-width (desktop-first)
+/// @example
+/// @include breakpoint('md') { ... }        // max-width: 768px
+/// @include breakpoint('md', true) { ... }  // min-width: 768px
 @mixin breakpoint($size, $min-width: false) {
 	$query: map.get($breakpoints, $size);
 
@@ -19,25 +23,6 @@
 	} @else {
 		@media (max-width: $query) {
 			@content;
-		}
-	}
-}
-
-/// Theme variables generator
-/// @param {map} $theme-map - A nested map describing theme values.
-/// @param {string|null} $prefix - Optional prefix applied to all nested variable names.
-@mixin generate-theme($theme-map, $prefix: null) {
-	@if meta.type-of($theme-map) != 'map' {
-		@error "generate-theme: Expected $theme-map to be a map, got `#{type-of($theme-map)}`.";
-	}
-
-	@each $key, $value in $theme-map {
-		$name: if($prefix != null, '#{$prefix}-#{$key}', $key);
-
-		@if meta.type-of($value) == 'map' {
-			@include generate-theme($value, $name);
-		} @else {
-			--#{$name}: #{$value};
 		}
 	}
 }
@@ -68,7 +53,7 @@
 		}
 
 		@each $key, $value in $map {
-			$css-var: --#{$prefix}#{$key};
+			$css-var: --#{$prefix}-#{$key};
 
 			@if $transform == rem {
 				#{$css-var}: #{px-to-rem($value)};
@@ -79,27 +64,84 @@
 	}
 }
 
-/// Theme validation
-/// @param $theme-map - theme map
-/// @param $required-keys - required keys list
-@mixin validate-theme($theme-map, $required-keys) {
-	@if meta.type-of($theme-map) !=
-		'map' or
-		meta.type-of($required-keys) !=
-		'list'
-	{
-		@error "validate-theme: Invalid arguments, expected (map, list).";
+/// Theme CSS variables generator
+/// @param {map} $map - theme map (nested keys allowed)
+/// @param {string|null} $prefix - optional CSS variable prefix
+@mixin generate-theme($map, $prefix: null) {
+	@if meta.type-of($map) != 'map' {
+		@error "generate-theme: expected map, got `#{meta.type-of($map)}`.";
 	}
 
-	@each $key in $required-keys {
+	@if map.has-key($map, _) {
+		$default-value: map.get($map, _);
+		$var-name: if($prefix == null, '', $prefix);
+		--#{$var-name}: #{$default-value};
+	}
+
+	@if map.has-key($map, default) {
+		$default-value: map.get($map, default);
+		$var-name: if($prefix == null, '', $prefix);
+		--#{$var-name}: #{$default-value};
+	}
+
+	@each $key, $value in $map {
+		@if $key != _ and $key != default {
+			$new-prefix: if($prefix == null, $key, '#{$prefix}-#{$key}');
+
+			@if meta.type-of($value) == 'map' {
+				@include generate-theme($value, $new-prefix);
+			} @else {
+				--#{$new-prefix}: #{$value};
+			}
+		}
+	}
+}
+
+/// Theme validation (recursive)
+/// @param {map} $theme-map - theme map to validate
+/// @param {map} $required-keys - required keys structure
+/// @param {list} $allowed-states - allowed lower-level states (e.g., _, hover, active)
+/// @param {string|null} $parent - internal recursion path
+@mixin validate-theme(
+	$theme-map,
+	$required-keys,
+	$allowed-states,
+	$parent: null
+) {
+	@if meta.type-of($theme-map) != 'map' {
+		@error "validate-theme: Expected $theme-map to be a map, got `#{meta.type-of($theme-map)}`.";
+	}
+
+	@if meta.type-of($required-keys) != 'map' {
+		@error "validate-theme: Expected $required-keys to be a map, got `#{meta.type-of($required-keys)}`.";
+	}
+
+	@each $key, $value in $required-keys {
+		$full-key: if($parent != null, '#{$parent}.#{$key}', $key);
+
 		@if not map.has-key($theme-map, $key) {
-			@error "⚠️ Theme map is missing key `#{$key}`!";
+			@error "⚠️ Theme map is missing key `#{$full-key}`!";
+		} @else if meta.type-of($value) == 'map' {
+			@include validate-theme(
+				map.get($theme-map, $key),
+				$value,
+				$allowed-states,
+				$full-key
+			);
 		}
 	}
 
 	@each $key, $value in $theme-map {
-		@if not list.index($required-keys, $key) {
-			@warn "⚠️ Theme map contains extra key `#{$key}`!";
+		$full-key: if($parent != null, '#{$parent}.#{$key}', $key);
+
+		$is-allowed-state: if(
+			list.index($allowed-states, $key) != null,
+			true,
+			false
+		);
+
+		@if not map.has-key($required-keys, $key) and not $is-allowed-state {
+			@warn "⚠️ Theme map contains extra key `#{$full-key}`!";
 		}
 	}
 }
