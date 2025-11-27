@@ -10,6 +10,7 @@
 /// $theme-allowed-states:
 /// - Lists all valid "state" keys that can exist at the lowest level of a theme map
 /// - Examples of states: '_', 'hover', 'active', 'focus', 'disabled', 'muted', etc.
+/// - The default state is a '_'. It corresponds to the element's normal appearance without any special states such as hover, active, or disabled.
 /// - Used during theme validation to allow these keys without triggering warnings
 /// - Ensures that developers cannot accidentally add arbitrary keys at the state level
 
