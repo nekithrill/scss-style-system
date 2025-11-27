@@ -58,7 +58,7 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
 ## 🧩 **Configuration**
 
 <details>
-<summary><strong>🔣 Variables</strong></summary>
+<summary><strong>Variables</strong></summary>
 
 <br>
 
@@ -145,7 +145,7 @@ $tokens: (
 </details>
 
 <details>
-<summary><strong>✒️ Fonts</strong></summary>
+<summary><strong>Fonts</strong></summary>
 
 <br>
 
@@ -180,7 +180,7 @@ To configure fonts you need to edit `/base/_fonts.scss` file in which fonts are 
 </details>
 
 <details>
-<summary><strong>🎨 Themes</strong></summary>
+<summary><strong>Themes</strong></summary>
 
 <br>
 
@@ -323,6 +323,88 @@ $dark: (
 > 💡 to validate themes, validate-theme mixin exists in `/core/mixins` and it uses `/themes/_theme-schema.scss` to keep structure
 
 also you can create or custom theme, for example `/themes/_neon.scss` and just import it to `/themes/_index.scss`.
+
+</details>
+
+## 🛠️ **Code quality & formatting**
+
+All SCSS files in this system are linted and formatted locally before pushing to the repository:
+
+<details>
+<summary><strong>Prettier</strong></summary>
+For consistent code formatting.
+
+.prettierrc
+
+```json
+{
+	"trailingComma": "none",
+	"arrowParens": "avoid",
+	"jsxSingleQuote": true,
+	"bracketSpacing": true,
+	"singleQuote": true,
+	"useTabs": true,
+	"semi": false,
+	"tabWidth": 2
+}
+```
+
+</details>
+
+<details>
+<summary><strong>Stylelint</strong></summary>
+For enforcing SCSS/CSS best practices.
+
+.stylelintrc.cjs
+
+```js
+module.exports = {
+	extends: ['stylelint-config-standard-scss'],
+	plugins: ['stylelint-scss'],
+	rules: {
+		// Overrides
+		'at-rule-no-unknown': null,
+		'custom-property-empty-line-before': null,
+		'declaration-empty-line-before': null,
+
+		// Colors & alpha
+		'color-hex-length': 'long',
+		'color-function-notation': 'modern',
+		'alpha-value-notation': 'percentage',
+
+		// Fonts & Strings
+		'font-family-name-quotes': 'always-where-recommended',
+		'length-zero-no-unit': true,
+
+		// Declarations
+		'declaration-block-no-duplicate-properties': true,
+		'declaration-block-no-redundant-longhand-properties': true,
+		'declaration-block-no-shorthand-property-overrides': true,
+
+		// Selectors
+		'no-duplicate-selectors': true,
+		'no-descending-specificity': true,
+		'selector-no-qualifying-type': true,
+		'selector-max-id': 0,
+		'selector-max-class': 4,
+		'max-nesting-depth': 4,
+
+		// Vendor Prefixes
+		'property-no-vendor-prefix': true,
+		'value-no-vendor-prefix': true,
+
+		// SCSS
+		'scss/at-rule-no-unknown': true,
+		'scss/at-mixin-pattern': '^[-a-z]+$',
+		'scss/at-function-pattern': '^[-a-z]+$',
+		'scss/dollar-variable-pattern': '^[-a-z]+$',
+		'scss/dollar-variable-empty-line-before': null,
+		'scss/no-duplicate-dollar-variables': true,
+		'scss/no-global-function-names': true,
+		'scss/selector-no-redundant-nesting-selector': true
+	}
+}
+```
 
 </details>
 
