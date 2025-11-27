@@ -1,39 +1,51 @@
-/* Theme
- *
- * Defines a theme map containing color values for different UI elements.
- *
- * - The map should follow the structure specified in $theme-required-keys
- * - Can include colors for headers, footers, buttons, text, etc.
- * - Used with `validate-theme()` to ensure all required keys are present
- * - Allows generating CSS variables for theming (light, dark, or custom themes)
- *
- * Notes:
- * - Theme maps can be extended or modified as needed for different projects
- * - Helps maintain consistent styling across all components
- */
-
+@use 'sass:map';
 @use '../tokens/colors' as *;
 @use '../core/mixins' as *;
 @use './theme-schema' as *;
 
+/// Theme map for light mode
+///
+/// Defines color values for different UI elements following the structure
+/// specified in `$theme-required-keys`.
+///
+/// - Can include colors for headers, footers, buttons, text, etc.
+/// - Used with `validate-theme()` to ensure all required keys are present.
+/// - Allows generating CSS variables for theming (light, dark, or custom themes).
+///
+/// Notes:
+/// - Theme maps can be extended or modified for different projects.
+/// - Helps maintain consistent styling across all components.
+
 $light: (
 	header: (
-		bg: map.get($colors, gray-900),
-		text: map.get($colors, white)
+		bg: (
+			_: map.get($colors, neutral)
+		),
+		text: (
+			_: map.get($colors, secondary)
+		)
+	),
+	main: (
+		bg: (
+			_: map.get($colors, primary),
+			hover: map.get($colors, neutral)
+		),
+		text: (
+			_: map.get($colors, secondary)
+		)
 	),
 	footer: (
-		bg: map.get($colors, gray-900),
-		text: map.get($colors, white)
-	),
-	button: (
-		bg: map.get($colors, blue-700),
-		text: map.get($colors, white),
-		border: map.get($colors, blue-700)
-	),
-	text: (
-		primary: map.get($colors, white),
-		muted: map.get($colors, gray-100)
+		bg: (
+			_: map.get($colors, neutral)
+		),
+		text: (
+			_: map.get($colors, secondary)
+		)
 	)
 );
 
-@include validate-theme($light, $theme-required-keys);
+@include validate-theme($light, $theme-required-keys, $theme-allowed-states);
+
+[data-theme='light'] {
+	@include generate-theme($light, 'clr');
+}
