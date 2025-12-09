@@ -1,7 +1,5 @@
-@use 'sass:map';
 @use '../tokens/colors' as *;
-@use '../core/mixins' as *;
-@use './theme-schema' as *;
+@use '../core/functions' as *;
 
 /// Theme map for dark mode
 ///
@@ -19,33 +17,27 @@
 $dark: (
 	header: (
 		bg: (
-			_: map.get($colors, neutral)
+			_: clr(neutral)
 		),
 		text: (
-			_: map.get($colors, primary)
+			_: clr(primary)
 		)
 	),
 	main: (
 		bg: (
-			_: map.get($colors, secondary),
-			hover: map.get($colors, neutral)
+			_: clr(secondary),
+			hover: clr(neutral)
 		),
 		text: (
-			_: map.get($colors, primary)
+			_: clr(primary)
 		)
 	),
 	footer: (
 		bg: (
-			_: map.get($colors, neutral)
+			_: clr(neutral)
 		),
 		text: (
-			_: map.get($colors, primary)
+			_: clr(primary)
 		)
 	)
 );
-
-@include validate-theme($dark, $theme-required-keys, $theme-allowed-states);
-
-[data-theme='dark'] {
-	@include generate-theme($dark, 'clr');
-}

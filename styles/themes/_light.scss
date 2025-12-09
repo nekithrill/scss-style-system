@@ -1,7 +1,5 @@
-@use 'sass:map';
 @use '../tokens/colors' as *;
-@use '../core/mixins' as *;
-@use './theme-schema' as *;
+@use '../core/functions' as *;
 
 /// Theme map for light mode
 ///
@@ -19,33 +17,27 @@
 $light: (
 	header: (
 		bg: (
-			_: map.get($colors, neutral)
+			_: clr(neutral)
 		),
 		text: (
-			_: map.get($colors, secondary)
+			_: clr(secondary)
 		)
 	),
 	main: (
 		bg: (
-			_: map.get($colors, primary),
-			hover: map.get($colors, neutral)
+			_: clr(primary),
+			hover: clr(neutral)
 		),
 		text: (
-			_: map.get($colors, secondary)
+			_: clr(secondary)
 		)
 	),
 	footer: (
 		bg: (
-			_: map.get($colors, neutral)
+			_: clr(neutral)
 		),
 		text: (
-			_: map.get($colors, secondary)
+			_: clr(secondary)
 		)
 	)
 );
-
-@include validate-theme($light, $theme-required-keys, $theme-allowed-states);
-
-[data-theme='light'] {
-	@include generate-theme($light, 'clr');
-}
