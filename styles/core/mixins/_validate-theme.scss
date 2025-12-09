@@ -1,0 +1,53 @@
+@use 'sass:meta';
+@use 'sass:map';
+@use 'sass:list';
+
+/// Theme validator (recursive)
+/// @param {map} $theme-map - theme map to validate
+/// @param {map} $required-keys - required keys structure
+/// @param {list} $allowed-leaf-keys - allowed keys at the deepest nesting level (e.g., _, hover, active, error, success)
+/// @param {string|null} $parent - internal recursion path
+
+@mixin validate-theme(
+	$theme-map,
+	$required-keys,
+	$allowed-leaf-keys,
+	$parent: null
+) {
+	@if meta.type-of($theme-map) != 'map' {
+		@error "validate-theme: Expected $theme-map to be a map, got `#{meta.type-of($theme-map)}`.";
+	}
+
+	@if meta.type-of($required-keys) != 'map' {
+		@error "validate-theme: Expected $required-keys to be a map, got `#{meta.type-of($required-keys)}`.";
+	}
+
+	@each $key, $value in $required-keys {
+		$full-key: if($parent != null, '#{$parent}.#{$key}', $key);
+
+		@if not map.has-key($theme-map, $key) {
+			@error "⚠️ Theme map is missing required key `#{$full-key}`!";
+		} @else if meta.type-of($value) == 'map' {
+			@include validate-theme(
+				map.get($theme-map, $key),
+				$value,
+				$allowed-leaf-keys,
+				$full-key
+			);
+		}
+	}
+
+	@each $key, $value in $theme-map {
+		$full-key: if($parent != null, '#{$parent}.#{$key}', $key);
+
+		$is-allowed-leaf: if(
+			list.index($allowed-leaf-keys, $key) != null,
+			true,
+			false
+		);
+
+		@if not map.has-key($required-keys, $key) and not $is-allowed-leaf {
+			@warn "⚠️ Theme map contains unexpected key `#{$full-key}` that is not in the schema or leaf keys whitelist!";
+		}
+	}
+}

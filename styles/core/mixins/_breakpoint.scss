@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../../tokens/breakpoints' as *;
+
+/// Breakpoint mixin
+/// @param {string} $size - breakpoint key from $breakpoints
+/// @param {bool} $min-width - true for min-width (mobile-first), false for max-width (desktop-first)
+/// @example
+/// @include breakpoint('md') { ... }        // max-width: 768px
+/// @include breakpoint('md', true) { ... }  // min-width: 768px
+
+@mixin breakpoint($size, $min-width: false) {
+	$query: map.get($breakpoints, $size);
+
+	@if not $query {
+		@error "⚠️ Breakpoint `#{$size}` not found in $breakpoints map.";
+	}
+
+	@if $min-width {
+		@media (min-width: $query) {
+			@content;
+		}
+	} @else {
+		@media (max-width: $query) {
+			@content;
+		}
+	}
+}
