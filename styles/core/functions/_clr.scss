@@ -29,6 +29,7 @@
 /// - Provides cleaner syntax compared to map.get($colors, ...)
 /// - Centralizes color access logic
 /// - Easy to extend with validation or fallback logic if needed
+
 @function clr($key) {
 	@if not map.has-key($colors, $key) {
 		@warn "Color key '#{$key}' not found in $colors map.";
