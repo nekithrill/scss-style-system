@@ -1,0 +1,36 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+/// Theme CSS variables generator
+/// @param {map} $map - theme map (nested keys allowed)
+/// @param {string|null} $prefix - optional CSS variable prefix
+
+@mixin generate-theme($map, $prefix: null) {
+	@if meta.type-of($map) != 'map' {
+		@error "generate-theme: expected map, got `#{meta.type-of($map)}`.";
+	}
+
+	@if map.has-key($map, _) {
+		$default-value: map.get($map, _);
+		$var-name: if($prefix == null, '', $prefix);
+		--#{$var-name}: #{$default-value};
+	}
+
+	@if map.has-key($map, default) {
+		$default-value: map.get($map, default);
+		$var-name: if($prefix == null, '', $prefix);
+		--#{$var-name}: #{$default-value};
+	}
+
+	@each $key, $value in $map {
+		@if $key != _ and $key != default {
+			$new-prefix: if($prefix == null, $key, '#{$prefix}-#{$key}');
+
+			@if meta.type-of($value) == 'map' {
+				@include generate-theme($value, $new-prefix);
+			} @else {
+				--#{$new-prefix}: #{$value};
+			}
+		}
+	}
+}

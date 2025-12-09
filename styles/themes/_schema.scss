@@ -1,0 +1,66 @@
+/// Theme Schema
+///
+/// Defines the required structure for theme maps in the project.
+///
+/// $theme-required-keys:
+/// - Specifies which keys and nested keys must exist in a theme
+/// - Used to validate themes before generating CSS variables
+/// - Ensures consistency and completeness across different themes
+///
+/// $theme-leaf-keys:
+/// - Whitelist of keys allowed at the deepest nesting level of a theme map
+/// - These keys represent the final values (color, size, etc.) in the theme hierarchy
+/// - Used during theme validation to allow these keys without triggering warnings
+/// - Prevents typos and maintains consistency across themes
+///
+/// Valid leaf key categories:
+/// - Default state: '_' (required base value)
+/// - Interactive states: 'hover', 'active', 'focus', 'disabled'
+/// - Semantic variants: 'error', 'success', 'warning', 'info'
+/// - Visual variants: 'muted', 'selected', 'highlighted', 'hidden'
+/// - Custom variants: add project-specific keys as needed
+///
+/// Examples of valid usage:
+///   button: (
+///     primary: (
+///       _: #3b82f6,        ✅ default/base state
+///       hover: #2563eb     ✅ interaction state
+///     )
+///   )
+///
+///   alert: (
+///     bg: (
+///       _: #f9fafb,
+///       error: #fee2e2,    ✅ semantic variant
+///       success: #d1fae5   ✅ semantic variant
+///     )
+///   )
+
+$theme-leaf-keys: (
+	'_',
+	'hover',
+	'active',
+	'focus',
+	'disabled',
+	'muted',
+	'selected',
+	'hidden',
+	'error',
+	'success',
+	'warning'
+);
+
+$theme-required-keys: (
+	header: (
+		bg: (),
+		text: ()
+	),
+	main: (
+		bg: (),
+		text: ()
+	),
+	footer: (
+		bg: (),
+		text: ()
+	)
+);

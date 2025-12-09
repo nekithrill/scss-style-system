@@ -10,6 +10,8 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
 - Use mixins and functions to generate CSS variables and reusable patterns
 - Scale projects by adding new tokens, themes, and styles without breaking existing structure
 
+<br>
+
 ## 📖 **How to use**
 
 1. Copy the `styles/` folder into your project. No additional packages are required if SCSS compilation is already configured.
@@ -54,6 +56,8 @@ This SCSS Styles System is modular, scalable, and flexible, allowing you to:
    	// min-width: md
    }
    ```
+
+<br>
 
 ## 🧩 **Configuration**
 
@@ -138,6 +142,8 @@ $tokens: (
 	@include generate-tokens($tokens);
 }
 ```
+
+> 💡 if you want another prefixes, change prefix value in group
 
 > 💡 to generate variables, generate-tokens mixin exists in `/core/mixins`
 
@@ -326,6 +332,8 @@ also you can create or custom theme, for example `/themes/_neon.scss` and just i
 
 </details>
 
+<br>
+
 ## 🛠️ **Code quality & formatting**
 
 All SCSS files in this system are linted and formatted locally before pushing to the repository:
@@ -403,6 +411,8 @@ module.exports = {
 ```
 
 </details>
+
+<br>
 
 ## 📂 **Folder structure**
 

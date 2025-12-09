@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use '../../tokens/colors' as *;
+
+/// Shorthand function for accessing color tokens
+///
+/// Returns a color value from the $colors map by its key.
+/// Simplifies color access and reduces verbosity in theme definitions.
+///
+/// @param {string} $key - The color key from $colors map
+/// @return {color} The color value associated with the key
+///
+/// @example scss - Basic usage
+///   .element {
+///     background: clr(primary);
+///     color: clr(neutral);
+///   }
+///
+/// @example scss - In theme definition
+///   $dark: (
+///     header: (
+///       bg: clr(neutral),    // Instead of map.get($colors, neutral)
+///       text: clr(primary)
+///     )
+///   );
+///
+/// @throw Warning if the key doesn't exist in $colors map
+///
+/// Notes:
+/// - Provides cleaner syntax compared to map.get($colors, ...)
+/// - Centralizes color access logic
+/// - Easy to extend with validation or fallback logic if needed
+@function clr($key) {
+	@if not map.has-key($colors, $key) {
+		@warn "Color key '#{$key}' not found in $colors map.";
+		@return null;
+	}
+	@return map.get($colors, $key);
+}

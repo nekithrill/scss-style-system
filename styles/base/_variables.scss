@@ -1,5 +1,5 @@
 @use '../tokens/index' as *;
-@use '../core/mixins' as *;
+@use '../core/mixins/generate-tokens' as *;
 
 /// Token Variables Generator
 ///

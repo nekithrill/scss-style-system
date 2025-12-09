@@ -1,0 +1,16 @@
+@use 'light' as *;
+@use 'dark' as *;
+@use 'schema' as *;
+@use '../core/mixins/generate-theme' as *;
+@use '../core/mixins/validate-theme' as *;
+
+@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
+
+[data-theme='light'] {
+	@include generate-theme($light, 'clr');
+}
+
+[data-theme='dark'] {
+	@include generate-theme($dark, 'clr');
+}

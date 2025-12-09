@@ -1,0 +1,41 @@
+@use 'sass:meta';
+@use 'sass:map';
+@use '../functions/px-to-rem' as *;
+
+/// Tokens generator
+/// @param {map} $groups - A configuration map where each entry is:
+///   {
+///     map: <map>,
+///     prefix: <string>,
+///     transform: <any>  // "rem" supported
+///   }
+
+@mixin generate-tokens($groups) {
+	@if meta.type-of($groups) != 'map' {
+		@error "generate-tokens: Expected $groups to be a map, got `#{type-of($groups)}`.";
+	}
+
+	@each $group-name, $config in $groups {
+		$map: map.get($config, map);
+		$prefix: map.get($config, prefix);
+		$transform: map.get($config, transform);
+
+		@if not $map {
+			@error "generate-tokens: Group `#{$group-name}` is missing map key.";
+		}
+
+		@if not $prefix {
+			@error "generate-tokens: Group `#{$group-name}` is missing prefix.";
+		}
+
+		@each $key, $value in $map {
+			$css-var: --#{$prefix}-#{$key};
+
+			@if $transform == rem {
+				#{$css-var}: #{px-to-rem($value)};
+			} @else {
+				#{$css-var}: #{$value};
+			}
+		}
+	}
+}
