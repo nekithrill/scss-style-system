@@ -11,6 +11,7 @@
 /// - Derived colors help maintain visual hierarchy and consistency
 
 $brand-color: hsl(40deg 100% 50%);
+
 $colors: (
 	accent: $brand-color,
 	primary: color.adjust($brand-color, $saturation: -60%, $lightness: +30%),
