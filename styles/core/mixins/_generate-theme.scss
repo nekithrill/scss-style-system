@@ -1,36 +1,54 @@
 @use 'sass:map';
 @use 'sass:meta';
 
-/// Theme CSS variables generator
-/// @param {map} $map - theme map (nested keys allowed)
-/// @param {string|null} $prefix - optional CSS variable prefix
+/// Generate semantic CSS variables from theme map
+/// Creates CSS custom properties with 'clr' prefix for theming
+///
+/// Special key handling:
+/// - '_' key generates the base variable (e.g., --clr-main-bg: value)
+/// - Other keys generate variants (e.g., --clr-main-bg-hover: value)
+///
+/// @param {Map} $map - Theme map with nested structure
+/// @param {String} $prefix - CSS variable prefix (default: 'clr')
+///
+/// @example scss
+///   $theme: (
+///     main: (
+///       bg: (
+///         _: var(--clr-primary-300),
+///         hover: var(--clr-neutral-400)
+///       ),
+///       text: (
+///         _: var(--clr-secondary-500)
+///       )
+///     )
+///   );
+///
+///   [data-theme='dark'] {
+///     @include generate-theme($theme);
+///   }
+///
+///   // Generates:
+///   // --clr-main-bg: var(--clr-primary-300);
+///   // --clr-main-bg-hover: var(--clr-neutral-400);
+///   // --clr-main-text: var(--clr-secondary-500);
 
-@mixin generate-theme($map, $prefix: null) {
+@mixin generate-theme($map, $prefix: 'clr') {
 	@if meta.type-of($map) != 'map' {
-		@error "generate-theme: expected map, got `#{meta.type-of($map)}`.";
-	}
-
-	@if map.has-key($map, _) {
-		$default-value: map.get($map, _);
-		$var-name: if($prefix == null, '', $prefix);
-		--#{$var-name}: #{$default-value};
-	}
-
-	@if map.has-key($map, default) {
-		$default-value: map.get($map, default);
-		$var-name: if($prefix == null, '', $prefix);
-		--#{$var-name}: #{$default-value};
+		@error "generate-theme: Expected map, got `#{meta.type-of($map)}`.";
 	}
 
 	@each $key, $value in $map {
-		@if $key != _ and $key != default {
-			$new-prefix: if($prefix == null, $key, '#{$prefix}-#{$key}');
-
-			@if meta.type-of($value) == 'map' {
-				@include generate-theme($value, $new-prefix);
-			} @else {
-				--#{$new-prefix}: #{$value};
-			}
+		@if $key == '_' {
+			// Base value: --prefix
+			--#{$prefix}: #{$value};
+		} @else if meta.type-of($value) == 'map' {
+			// Nested map: recurse with updated prefix
+			$new-prefix: '#{$prefix}-#{$key}';
+			@include generate-theme($value, $new-prefix);
+		} @else {
+			// Leaf value: --prefix-key
+			--#{$prefix}-#{$key}: #{$value};
 		}
 	}
 }
