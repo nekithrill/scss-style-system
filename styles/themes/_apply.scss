@@ -8,9 +8,9 @@
 @include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
 
 [data-theme='light'] {
-	@include generate-theme($light, 'clr');
+	@include generate-theme($light);
 }
 
 [data-theme='dark'] {
-	@include generate-theme($dark, 'clr');
+	@include generate-theme($dark);
 }
