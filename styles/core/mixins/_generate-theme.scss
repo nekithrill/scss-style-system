@@ -29,10 +29,10 @@
 ///     @include generate-theme($theme);
 ///   }
 ///
-///   // Generates:
-///   // --clr-main-bg: var(--clr-primary-300);
-///   // --clr-main-bg-hover: var(--clr-neutral-400);
-///   // --clr-main-text: var(--clr-secondary-500);
+///   Generates:
+///   --clr-main-bg: var(--clr-primary-300);
+///   --clr-main-bg-hover: var(--clr-neutral-400);
+///   --clr-main-text: var(--clr-secondary-500);
 
 @mixin generate-theme($map, $prefix: 'clr') {
 	@if meta.type-of($map) != 'map' {

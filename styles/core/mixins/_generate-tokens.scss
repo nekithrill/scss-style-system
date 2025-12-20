@@ -89,6 +89,7 @@
 
 /// Check if map contains nested maps (first value is a map)
 /// @access private
+
 @function _is-nested-map($map) {
 	@if meta.type-of($map) != 'map' {
 		@return false;
