@@ -1,43 +1,53 @@
-@use '../tokens/colors' as *;
-@use '../core/functions' as *;
-
-/// Theme map for light mode
+/// Light Theme
+/// Color mappings for light mode using design tokens
 ///
-/// Defines color values for different UI elements following the structure
-/// specified in `$theme-required-keys`.
-///
-/// - Can include colors for headers, footers, buttons, text, etc.
-/// - Used with `validate-theme()` to ensure all required keys are present.
-/// - Allows generating CSS variables for theming (light, dark, or custom themes).
-///
-/// Notes:
-/// - Theme maps can be extended or modified for different projects.
-/// - Helps maintain consistent styling across all components.
+/// Structure:
+/// - Must match $theme-required-keys schema
+/// - Uses '_' for base values
+/// - Can include variants (check leaf keys in schema)
+/// - References color tokens with var(--clr-*)
 
 $light: (
-	header: (
+	selection: (
 		bg: (
-			_: clr(neutral)
+			_: var(--clr-primary-900)
 		),
 		text: (
-			_: clr(secondary)
+			_: var(--clr-primary-600)
+		)
+	),
+	scrollbar: (
+		thumb: (
+			_: yellow,
+			hover: purple
+		),
+		track: (
+			_: green
+		)
+	),
+	header: (
+		bg: (
+			_: var(--clr-secondary-700)
+		),
+		text: (
+			_: var(--clr-primary-600)
 		)
 	),
 	main: (
 		bg: (
-			_: clr(primary),
-			hover: clr(neutral)
+			_: var(--clr-neutral-500),
+			hover: var(--clr-secondary-400)
 		),
 		text: (
-			_: clr(secondary)
+			_: var(--clr-primary-300)
 		)
 	),
 	footer: (
 		bg: (
-			_: clr(neutral)
+			_: var(--clr-secondary-200)
 		),
 		text: (
-			_: clr(secondary)
+			_: var(--clr-primary-100)
 		)
 	)
 );

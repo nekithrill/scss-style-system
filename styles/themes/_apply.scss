@@ -4,6 +4,18 @@
 @use '../core/mixins/generate-theme' as *;
 @use '../core/mixins/validate-theme' as *;
 
+/// Theme Application
+/// Validates and generates CSS variables for light and dark themes
+///
+/// Process:
+/// 1. Validates theme structure against schema
+/// 2. Generates CSS custom properties with --clr prefix
+/// 3. Applies themes via [data-theme] attribute
+///
+/// Usage:
+/// <html data-theme="light">  → Light theme
+/// <html data-theme="dark">   → Dark theme
+
 @include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
 @include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
 

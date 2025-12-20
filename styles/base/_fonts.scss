@@ -1,15 +1,7 @@
-/// Font Loading Guidelines
-///
-/// 1️ Use `.woff2` fonts for optimal loading and modern browser support.
-/// 2️⃣ Include `.woff` as a fallback for older browsers.
-/// 3️⃣ Include multiple weights/styles in separate `@font-face` declarations.
-/// 4️⃣ For variable fonts, define a range of weights in one declaration.
-///
-/// - Always use `font-display: swap` to improve UX and avoid invisible text.
-/// - Keep file paths relative to your CSS/SCSS file location.
-/// - Include all font weights used in your project.
-/// - Consider hosting fonts locally for faster loading and offline support.
-/// - Variable fonts can be animated or have dynamic weight changes with CSS.
+/// Fonts connection
+/// Use .woff2 (modern) with .woff fallback
+/// Variable fonts support weight ranges
+/// font-display: swap for better UX
 
 /// Regular (400)
 @font-face {

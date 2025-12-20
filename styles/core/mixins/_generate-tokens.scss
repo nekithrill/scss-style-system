@@ -3,8 +3,8 @@
 @use '../functions/px-to-rem' as *;
 
 /// Generate CSS variables from design token maps
-/// Supports nested maps (colors) and flat maps (spacing, typography, etc.)
-/// Optionally transforms values using px-to-rem conversion
+/// Automatically detects nested (colors) vs flat (spacing) structure
+/// Optionally transforms px values to rem
 ///
 /// @param {Map} $tokens - Token configuration with groups
 ///
@@ -17,14 +17,17 @@
 ///   ),
 /// )
 ///
-/// @example scss
+/// @example scss - Input
 ///   $tokens: (
 ///     colors: (
-///       map: $all-palettes,
+///       map: (
+///         'primary': (100: #e0e7ff, 500: #6366f1),
+///         'success': (bg: #d1fae5, solid: #10b981)
+///       ),
 ///       prefix: 'clr',
 ///     ),
 ///     spacing: (
-///       map: $spacing,
+///       map: (1: 4px, 2: 8px, 4: 16px),
 ///       prefix: 'sp',
 ///       transform: 'rem',
 ///     ),
@@ -32,6 +35,20 @@
 ///
 ///   :root {
 ///     @include generate-tokens($tokens);
+///   }
+///
+/// @example css - Output
+///   :root {
+///     /* Nested maps (colors) */
+///     --clr-primary-100: #e0e7ff;
+///     --clr-primary-500: #6366f1;
+///     --clr-success-bg: #d1fae5;
+///     --clr-success-solid: #10b981;
+///
+///     /* Flat maps (spacing with transform) */
+///     --sp-1: 0.25rem;
+///     --sp-2: 0.5rem;
+///     --sp-4: 1rem;
 ///   }
 
 @mixin generate-tokens($tokens) {

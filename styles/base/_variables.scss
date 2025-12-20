@@ -10,19 +10,15 @@
 ///
 /// Generates CSS custom properties (variables) from design tokens.
 /// @see generate-tokens
+/// @see px-to-rem
 ///
 /// - Combines multiple token groups: colors, spacing, typography, radius, shadows, z-indexes.
 /// - Each group has a `map` of values, a `prefix` for variable names, and optional `transform` that uses px-to-rem function
 /// - Useful for theming and maintaining consistent design across the project
-///
-/// Usage:
-/// :root {
-///   @include generate-tokens($base-tokens);
-/// }
 
 $base-tokens: (
 	colors: (
-		map: $all-palettes,
+		map: $all-colors,
 		prefix: 'clr'
 	),
 	font-families: (

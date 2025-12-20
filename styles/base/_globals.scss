@@ -1,3 +1,7 @@
+/// Global Styles
+/// Base styling for HTML elements and browser defaults
+/// Sets up typography, accent colors, and common element resets
+
 :root {
 	font-family:
 		system-ui,
@@ -9,7 +13,7 @@
 		'liga' 1,
 		'kern' 1;
 
-	accent-color: var(--clr-accent, lime);
+	accent-color: var(--clr-accent);
 }
 
 html {

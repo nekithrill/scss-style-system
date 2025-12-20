@@ -12,7 +12,7 @@
 	$query: map.get($breakpoints, $size);
 
 	@if not $query {
-		@error "⚠️ Breakpoint `#{$size}` not found in $breakpoints map.";
+		@error "⚠️ Breakpoint '#{$size}' not found. Available: #{map.keys($breakpoints)}";
 	}
 
 	@if $min-width {

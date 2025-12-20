@@ -2,14 +2,15 @@
 @use 'sass:meta';
 
 /// Generate semantic CSS variables from theme map
-/// Creates CSS custom properties with 'clr' prefix for theming
-///
-/// Special key handling:
-/// - '_' key generates the base variable (e.g., --clr-main-bg: value)
-/// - Other keys generate variants (e.g., --clr-main-bg-hover: value)
+/// Recursively creates CSS custom properties with 'clr' prefix
 ///
 /// @param {Map} $map - Theme map with nested structure
-/// @param {String} $prefix - CSS variable prefix (default: 'clr')
+/// @param {String} $prefix - CSS variable prefix (default: 'clr', used internally for recursion)
+///
+/// Special key handling:
+/// - '_' key → generates base variable (e.g., --clr-main-bg)
+/// - Other keys → generate variants (e.g., --clr-main-bg-hover)
+/// - Nested maps → recurse with updated prefix
 ///
 /// @example scss
 ///   $theme: (

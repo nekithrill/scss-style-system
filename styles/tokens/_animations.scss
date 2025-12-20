@@ -1,0 +1,43 @@
+/// Animation Tokens
+/// Parameters for consistent motion design across the project
+///
+/// Contains:
+/// - Duration: animation/transition lengths
+/// - Easing: timing functions for natural motion
+/// - Delay: timing offsets for staggered animations
+///
+/// Usage in transitions:
+///   .button {
+///     transition: background-color var(--anim-duration-fast) var(--anim-ease-out);
+///   }
+///
+/// Usage in animations:
+///   @keyframes slideIn {
+///     from { transform: translateX(-100%); }
+///     to { transform: translateX(0); }
+///   }
+///
+///   .menu {
+///     animation: slideIn var(--anim-duration-normal) var(--anim-ease-out);
+///   }
+///
+/// Creating custom animations:
+/// 1. Define @keyframes in component file
+/// 2. Use animation tokens for duration and easing
+/// 3. Keep timing consistent with design system
+
+$duration: (
+	instant: 100ms,
+	fast: 200ms,
+	normal: 300ms,
+	slow: 500ms,
+	slower: 700ms
+);
+
+$easing: (
+	linear: linear,
+	ease-in: cubic-bezier(0.4, 0, 1, 1),
+	ease-out: cubic-bezier(0, 0, 0.2, 1),
+	ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
+	bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55)
+);
