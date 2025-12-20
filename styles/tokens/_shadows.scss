@@ -1,18 +1,20 @@
 /// Shadow Tokens
 ///
 /// Predefined shadow levels for consistent elevation across the project:
-/// - xs: extra small shadow
-/// - sm: small shadow
-/// - md: medium shadow
-/// - lg: large shadow
-/// - xl: extra large shadow
-/// - inset: inset shadow
+/// - xs: extra small shadow for subtle depth
+/// - sm: small shadow for buttons, inputs
+/// - md: medium shadow for cards
+/// - lg: large shadow for modals, dropdowns
+/// - xl: extra large shadow for major elevations
+/// - inset: inset shadow for pressed states
 ///
 /// Notes:
-/// - Shadows use `$base-shadow` as the color
-/// - Helps maintain consistent elevation and visual hierarchy
+/// - Uses alpha transparency for theme compatibility
+/// - Adjust $base-shadow color if needed for your design
 
-$base-shadow: hsl(0deg 0% 0% / 10%);
+/// Base shadow color (black with 10% opacity)
+/// Use rgba or oklch with alpha for theme compatibility
+$base-shadow: rgba(0, 0, 0, 0.1);
 
 $shadows: (
 	xs: 0 1px 2px $base-shadow,

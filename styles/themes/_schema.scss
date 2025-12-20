@@ -47,10 +47,19 @@ $theme-leaf-keys: (
 	'hidden',
 	'error',
 	'success',
-	'warning'
+	'warning',
+	'info'
 );
 
 $theme-required-keys: (
+	selection: (
+		bg: (),
+		text: ()
+	),
+	scrollbar: (
+		track: (),
+		thumb: ()
+	),
 	header: (
 		bg: (),
 		text: ()
@@ -64,3 +73,18 @@ $theme-required-keys: (
 		text: ()
 	)
 );
+
+/// To extend schema with custom components:
+/// - Add new top-level keys to $theme-required-keys
+/// - Nested structure must end with empty maps ()
+/// - Custom leaf keys can be added to $theme-leaf-keys if needed
+///
+/// Example extension:
+///   button: (
+///     primary: (),
+///     secondary: ()
+///   ),
+///   card: (
+///     bg: (),
+///     border: ()
+///   )

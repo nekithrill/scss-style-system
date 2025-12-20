@@ -1,0 +1,7 @@
+/// Text Selection
+/// Custom highlight colors for selected text
+
+::selection {
+	background-color: var(--clr-selection-bg);
+	color: var(--clr-selection-text);
+}
