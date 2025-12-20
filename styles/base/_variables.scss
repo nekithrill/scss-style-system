@@ -3,6 +3,7 @@
 @use '../tokens/spacing' as *;
 @use '../tokens/radius' as *;
 @use '../tokens/shadows' as *;
+@use '../tokens/animations' as *;
 @use '../tokens/z-index' as *;
 @use '../core/mixins/generate-tokens' as *;
 
@@ -48,6 +49,14 @@ $base-tokens: (
 		map: $shadows,
 		prefix: 'shd',
 		transform: 'rem'
+	),
+	duration: (
+		map: $duration,
+		prefix: 'anim-duration'
+	),
+	easing: (
+		map: $easing,
+		prefix: 'anim'
 	),
 	z-index: (
 		map: $z-index,

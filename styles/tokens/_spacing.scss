@@ -1,18 +1,22 @@
+@use 'sass:math';
+
 /// Spacing Tokens
 ///
-/// Defines spacing scale for consistent layout:
-/// - Base unit: 8px
-/// - Keys are multiples of the base unit (0–8)
-/// - Usage: margin, padding, gap, grid spacing
+/// 8px-based spacing scale for consistent layout
+/// All values are calculated from $base-unit
+/// Usage: margin, padding, gap, grid spacing
+
+/// Base spacing unit (8px system)
+$base-unit: 8px;
 
 $spacing: (
 	0: 0,
-	1: 8px,
-	2: 16px,
-	3: 24px,
-	4: 32px,
-	5: 40px,
-	6: 48px,
-	7: 56px,
-	8: 64px
+	1: $base-unit * 1,
+	2: $base-unit * 2,
+	3: $base-unit * 3,
+	4: $base-unit * 4,
+	5: $base-unit * 5,
+	6: $base-unit * 6,
+	7: $base-unit * 7,
+	8: $base-unit * 8
 );
