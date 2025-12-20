@@ -1,9 +1,12 @@
 /// Typography Tokens
 ///
 /// Core typography settings:
-/// - Font families: primary, accent (optional)
-/// - Font weights: light, regular, medium, bold, black
-/// - Font sizes: default + h1–h6, automatically converted to rems (in core/variables)
+/// - Font families: primary for body text, accent for headings (optional)
+/// - Font weights: light (300), regular (400), medium (500), bold (700), extra-bold (900)
+/// - Font sizes: base size + heading scales (h1-h6)
+///
+/// 💡 Font sizes automatically converted to rem in base/_variables.scss
+/// 💡 Default base size: 16px = 1rem
 
 $font-families: (
 	primary: 'JetBrains, sans-serif',
