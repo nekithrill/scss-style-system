@@ -1,20 +1,90 @@
-@use 'sass:color';
-
 /// Color Tokens
-///
-/// Defines the core color palette for the project:
-/// - $brand-color: base brand color
-/// - $colors: derived colors for consistent theming
-///
-/// Notes:
-/// - Colors are defined using HSL for easier manipulation with `color.adjust()`
-/// - Derived colors help maintain visual hierarchy and consistency
+/// Manual color definitions in OKLCH format for perceptual uniformity.
+/// Use any CSS format (HEX, RGB, HSL, OKLCH) - OKLCH recommended for accuracy.
 
-$brand-color: hsl(40deg 100% 50%);
+/// PRIMARY - Brand colors, accents, interactive elements
+/// Range: 100 (lightest) → 900 (darkest)
+$primary: (
+	100: oklch(95% 0.06 270deg),
+	200: oklch(85% 0.1 270deg),
+	300: oklch(75% 0.14 270deg),
+	400: oklch(65% 0.17 270deg),
+	500: oklch(60% 0.2 270deg),
+	600: oklch(48% 0.2 270deg),
+	700: oklch(36% 0.17 270deg),
+	800: oklch(24% 0.14 270deg),
+	900: oklch(12% 0.11 270deg)
+);
 
-$colors: (
-	accent: $brand-color,
-	primary: color.adjust($brand-color, $saturation: -60%, $lightness: +30%),
-	secondary: color.adjust($brand-color, $saturation: -80%, $lightness: -20%),
-	neutral: color.adjust($brand-color, $saturation: -100%, $lightness: -30%)
+/// SECONDARY - Backgrounds, surfaces, cards
+/// Light-biased for subtle backgrounds
+$secondary: (
+	100: oklch(99% 0 248deg),
+	200: oklch(97% 0 248deg),
+	300: oklch(95% 0 248deg),
+	400: oklch(92% 0 248deg),
+	500: oklch(88% 0 248deg),
+	600: oklch(82% 0.01 248deg),
+	700: oklch(74% 0.02 249deg),
+	800: oklch(64% 0.03 249deg),
+	900: oklch(52% 0.04 249deg)
+);
+
+/// NEUTRAL - Text, borders, icons, dividers
+/// Low chroma for true neutral grays
+$neutral: (
+	100: oklch(96% 0.01 220deg),
+	200: oklch(85% 0.02 220deg),
+	300: oklch(75% 0.02 220deg),
+	400: oklch(65% 0.03 220deg),
+	500: oklch(56% 0.04 220deg),
+	600: oklch(48% 0.03 220deg),
+	700: oklch(39% 0.03 220deg),
+	800: oklch(30% 0.02 220deg),
+	900: oklch(20% 0.01 220deg)
+);
+
+/// SUCCESS - Positive feedback, confirmations
+/// Keys: bg (alert background), border (outline), solid (button), text (label)
+$success: (
+	bg: oklch(95% 0.05 160deg),
+	border: oklch(70% 0.12 160deg),
+	solid: oklch(50% 0.15 160deg),
+	text: oklch(30% 0.15 160deg)
+);
+
+/// WARNING - Alerts, cautionary messages
+$warning: (
+	bg: oklch(95% 0.04 80deg),
+	border: oklch(75% 0.12 75deg),
+	solid: oklch(77% 0.16 70deg),
+	text: oklch(30% 0.12 70deg)
+);
+
+/// DANGER - Errors, destructive actions
+$danger: (
+	bg: oklch(95% 0.04 20deg),
+	border: oklch(70% 0.12 25deg),
+	solid: oklch(64% 0.21 25deg),
+	text: oklch(30% 0.15 25deg)
+);
+
+/// INFO - Information, tips, neutral notifications
+$info: (
+	bg: oklch(95% 0.04 260deg),
+	border: oklch(70% 0.11 260deg),
+	solid: oklch(62% 0.19 260deg),
+	text: oklch(30% 0.15 260deg)
+);
+
+/// All colors map for generation
+/// Remove any color group you don't need
+$all-palettes: (
+	'primary': $primary,
+	'secondary': $secondary,
+	'neutral': $neutral,
+	'success': $success,
+	'warning': $warning,
+	'danger': $danger,
+	'info': $info
 );
