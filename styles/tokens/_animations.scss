@@ -2,7 +2,7 @@
 /// Parameters for consistent motion design across the project
 ///
 /// Contains:
-/// - Duration: animation/transition lengths
+/// - Duration: animation/transition speeds
 /// - Easing: timing functions for natural motion
 /// - Delay: timing offsets for staggered animations
 ///
@@ -21,10 +21,20 @@
 ///     animation: slideIn var(--anim-duration-normal) var(--anim-ease-out);
 ///   }
 ///
-/// Creating custom animations:
-/// 1. Define @keyframes in component file
-/// 2. Use animation tokens for duration and easing
-/// 3. Keep timing consistent with design system
+/// Usage with delays (staggered animations):
+///   .list-item {
+///     animation: fadeIn var(--anim-duration-fast) var(--anim-ease-out);
+///
+///     &:nth-child(1) { animation-delay: var(--anim-delay-none); }
+///     &:nth-child(2) { animation-delay: var(--anim-delay-short); }
+///     &:nth-child(3) { animation-delay: var(--anim-delay-medium); }
+///   }
+///
+/// Best practices:
+/// - Use `ease-out` for entrances (elements appearing)
+/// - Use `ease-in` for exits (elements disappearing)
+/// - Use `ease-in-out` for continuous motion (carousels, sliders)
+/// - Keep delays short to avoid perceived lag
 
 $duration: (
 	instant: 100ms,
@@ -40,4 +50,11 @@ $easing: (
 	ease-out: cubic-bezier(0, 0, 0.2, 1),
 	ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
 	bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55)
+);
+
+$delay: (
+	none: 0ms,
+	short: 50ms,
+	medium: 100ms,
+	long: 200ms
 );
