@@ -14,22 +14,17 @@
 │    ├── 📄 _scrollbar.scss
 │    ├── 📄 _selection.scss
 │    ├── 📄 _utilities.scss
-│    ├── 📄 _variables.scss
-│    └── 📄 _index.scss
+│    └── 📄 _variables.scss
 │
 ├── 📁 core
 │    ├── 📁 functions
-│    │    ├── 📄 _px-to-rem.scss
-│    │    └── 📄 _index.scss
+│    │    └── 📄 _px-to-rem.scss
 │    │
-│    ├── 📁 mixins
-│    │    ├── 📄 _breakpoint.scss
-│    │    ├── 📄 _generate-theme.scss
-│    │    ├── 📄 _generate-tokens.scss
-│    │    ├── 📄 _validate-theme.scss
-│    │    └── 📄 _index.scss
-│    │
-│    └── 📄 _index.scss
+│    └── 📁 mixins
+│         ├── 📄 _breakpoint.scss
+│         ├── 📄 _generate-tokens.scss
+│         ├── 📄 _generate-theme.scss
+│         └── 📄 _validate-theme.scss
 │
 ├── 📁 themes
 │    ├── 📄 _apply.scss
@@ -45,8 +40,7 @@
 │    ├── 📄 _shadow.scss
 │    ├── 📄 _spacing.scss
 │    ├── 📄 _typography.scss
-│    ├── 📄 _z-index.scss
-│    └── 📄 _index.scss
+│    └── 📄 _z-index.scss
 │
 └── 📄 main.scss
 ```
