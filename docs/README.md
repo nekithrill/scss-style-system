@@ -7,6 +7,7 @@ Understanding the system structure and design principles.
 - [Code quality](01-architecture/code-quality.md)
 - [System architecture](01-architecture/system-architecture.md)
 - [Folder structure](01-architecture/folder-structure.md)
+- [Modularity](01-architecture/modularity.md)
 
 ### 🧩 Usage
 
