@@ -1,4 +1,4 @@
-## Improvements
+## ✨ Improvements
 
 > 💡 This system is designed to be practical and straightforward. Before considering any improvements, it's recommended to use the current setup in real projects and identify actual pain points. The improvements listed below are potential enhancements that may be implemented if they prove necessary through real-world usage.
 
