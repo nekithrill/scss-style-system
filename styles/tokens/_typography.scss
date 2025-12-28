@@ -1,12 +1,15 @@
+@use 'sass:map';
+
 /// Typography Tokens
 ///
 /// Core typography settings:
 /// - Font families: primary for body text, accent for headings (optional)
 /// - Font weights: light (300), regular (400), medium (500), bold (700), extra-bold (900)
-/// - Font sizes: base size + heading scales (h1-h6)
+/// - Font sizes: calculated from base size using multipliers
 ///
 /// 💡 Font sizes automatically converted to rem in base/_variables.scss
-/// 💡 Default base size: 16px = 1rem
+/// 💡 Change $base-font-size to scale entire typography system
+/// 💡 Adjust multipliers to change heading hierarchy
 
 $font-families: (
 	primary: 'JetBrains, sans-serif',
@@ -21,12 +24,23 @@ $font-weights: (
 	extra-bold: 900
 );
 
+$base-font-size: 16px;
+
+$font-size-multipliers: (
+	h1: 1.875,
+	h2: 1.5,
+	h3: 1.25,
+	h4: 1.125,
+	h5: 1,
+	h6: 0.875
+);
+
 $font-sizes: (
-	default: 16px,
-	h1: 30px,
-	h2: 24px,
-	h3: 20px,
-	h4: 18px,
-	h5: 16px,
-	h6: 14px
+	default: $base-font-size,
+	h1: $base-font-size * map.get($font-size-multipliers, h1),
+	h2: $base-font-size * map.get($font-size-multipliers, h2),
+	h3: $base-font-size * map.get($font-size-multipliers, h3),
+	h4: $base-font-size * map.get($font-size-multipliers, h4),
+	h5: $base-font-size * map.get($font-size-multipliers, h5),
+	h6: $base-font-size * map.get($font-size-multipliers, h6)
 );

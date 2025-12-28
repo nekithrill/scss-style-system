@@ -1,4 +1,29 @@
-@use './tokens/index' as *;
-@use './core/index' as *;
-@use './base/index' as *;
+/// ⚠️ Order is important
+/// 1. Tokens import (animations, breakpoints, colors, radius, shadows, spacing, typography, z-index)
+@use './tokens/animations' as *;
+@use './tokens/breakpoints' as *;
+@use './tokens/colors' as *;
+@use './tokens/radius' as *;
+@use './tokens/shadows' as *;
+@use './tokens/spacing' as *;
+@use './tokens/typography' as *;
+@use './tokens/z-index' as *;
+
+/// 2. Core import (mixins & functions)
+@use './core/functions/px-to-rem' as *;
+@use './core/mixins/breakpoint' as *;
+@use './core/mixins/generate-tokens' as *;
+@use './core/mixins/generate-theme' as *;
+@use './core/mixins/validate-theme' as *;
+
+/// 3. Basics import (fonts, reset, variables, globals, scrollbar, selection, utilities)
+@use './base/fonts' as *;
+@use './base/reset' as *;
+@use './base/variables' as *;
+@use './base/globals' as *;
+@use './base/scrollbar' as *;
+@use './base/selection' as *;
+@use './base/utilities' as *;
+
+/// 4. Theming
 @use './themes/apply' as *;

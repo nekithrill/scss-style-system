@@ -7,7 +7,8 @@
 /// - md: medium rounding for general components
 /// - lg: large rounding for cards and containers
 /// - xl: extra large rounding for cards and containers
-/// - full: fully rounded shapes (avatars, pills)
+/// - pill: pill-shaped elements (badges, tags, buttons with rounded ends)
+/// - full: fully rounded shapes (avatars, circles)
 
 $radius: (
 	none: 0,
@@ -16,5 +17,6 @@ $radius: (
 	md: 6px,
 	lg: 10px,
 	xl: 14px,
+	pill: 9999px,
 	full: 50%
 );
