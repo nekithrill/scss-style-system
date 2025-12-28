@@ -52,6 +52,10 @@ $theme-leaf-keys: (
 );
 
 $theme-required-keys: (
+	text: (
+		_: (),
+		accent: ()
+	),
 	selection: (
 		bg: (),
 		text: ()
@@ -60,6 +64,7 @@ $theme-required-keys: (
 		track: (),
 		thumb: ()
 	),
+
 	header: (
 		bg: (),
 		text: ()
