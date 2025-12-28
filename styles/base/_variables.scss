@@ -52,11 +52,15 @@ $base-tokens: (
 	),
 	duration: (
 		map: $duration,
-		prefix: 'anim-duration'
+		prefix: 'duration'
 	),
 	easing: (
 		map: $easing,
 		prefix: 'anim'
+	),
+	delay: (
+		map: $delay,
+		prefix: 'delay'
 	),
 	z-index: (
 		map: $z-index,
