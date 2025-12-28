@@ -7,39 +7,52 @@
 /// - Can include variants (check leaf keys in schema)
 /// - References color tokens with var(--clr-*)
 
+/// Light Theme
+/// Color mappings for light mode using design tokens
+///
+/// Structure:
+/// - Must match $theme-required-keys schema
+/// - Uses '_' for base values
+/// - Can include variants (check leaf keys in schema)
+/// - References color tokens with var(--clr-*)
+
 $light: (
+	text: (
+		_: var(--clr-neutral-900),
+		accent: var(--clr-primary-500)
+	),
 	selection: (
 		bg: (
-			_: var(--clr-primary-900)
+			_: var(--clr-primary-200)
 		),
 		text: (
-			_: var(--clr-primary-600)
+			_: var(--clr-primary-900)
 		)
 	),
 	scrollbar: (
 		thumb: (
-			_: yellow,
-			hover: purple
+			_: var(--clr-neutral-400),
+			hover: var(--clr-neutral-500)
 		),
 		track: (
-			_: green
+			_: var(--clr-neutral-100)
 		)
 	),
 	header: (
 		bg: (
-			_: var(--clr-secondary-700)
+			_: var(--clr-secondary-100)
 		),
 		text: (
-			_: var(--clr-primary-600)
+			_: var(--clr-neutral-900)
 		)
 	),
 	main: (
 		bg: (
-			_: var(--clr-neutral-500),
-			hover: var(--clr-secondary-400)
+			_: var(--clr-secondary-100),
+			hover: var(--clr-secondary-200)
 		),
 		text: (
-			_: var(--clr-primary-300)
+			_: var(--clr-neutral-800)
 		)
 	),
 	footer: (
@@ -47,7 +60,7 @@ $light: (
 			_: var(--clr-secondary-200)
 		),
 		text: (
-			_: var(--clr-primary-100)
+			_: var(--clr-neutral-700)
 		)
 	)
 );
