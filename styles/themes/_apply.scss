@@ -19,7 +19,7 @@
 @include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
 @include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
 
-[data-theme='light'] {
+:root {
 	@include generate-theme($light);
 }
 
