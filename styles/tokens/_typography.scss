@@ -26,21 +26,12 @@ $font-weights: (
 
 $base-font-size: 16px;
 
-$font-size-multipliers: (
-	h1: 1.875,
-	h2: 1.5,
-	h3: 1.25,
-	h4: 1.125,
-	h5: 1,
-	h6: 0.875
-);
-
 $font-sizes: (
 	default: $base-font-size,
-	h1: $base-font-size * map.get($font-size-multipliers, h1),
-	h2: $base-font-size * map.get($font-size-multipliers, h2),
-	h3: $base-font-size * map.get($font-size-multipliers, h3),
-	h4: $base-font-size * map.get($font-size-multipliers, h4),
-	h5: $base-font-size * map.get($font-size-multipliers, h5),
-	h6: $base-font-size * map.get($font-size-multipliers, h6)
+	h1: $base-font-size * 1.875,
+	h2: $base-font-size * 1.5,
+	h3: $base-font-size * 1.25,
+	h4: $base-font-size * 1.125,
+	h5: $base-font-size * 1,
+	h6: $base-font-size * 0.875
 );
