@@ -1,24 +1,20 @@
 @use 'sass:math';
 @use 'sass:meta';
 @use 'sass:list';
-@use '../../tokens/base' as *;
 
 /// Converts pixel values to rem units
 ///
 /// @param {Number | List} $value - Value in px, list of values, or zero
-/// @param {Number} $base - Base font-size in pixels (default: $base-font-size from tokens/_base.scss)
+/// @param {Number} $base - Base font-size in pixels (default: 16)
 /// @return {Number | List} - Corresponding rem value(s)
 ///
 /// Features:
-/// - Converts px to rem based on $base-font-size from tokens/_base.scss
-/// - Synchronized with typography system - change base once, everything updates
+/// - Converts px to rem based on base font size
 /// - Zero values (0, 0px, 0em, 0%, 0rem) return 0
 /// - Non-px units are returned as-is
 /// - Works recursively on lists (e.g., "10px 20px" → "0.625rem 1.25rem")
-///
-/// 💡 Change $base-font-size in tokens/_base.scss to update default font-size
 
-@function px-to-rem($value, $base: $base-font-size) {
+@function px-to-rem($value, $base: 16) {
 	@if meta.type-of($value) == 'number' {
 		@if $value == 0 {
 			@return 0;
