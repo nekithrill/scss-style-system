@@ -1,6 +1,5 @@
 /// ⚠️ Order is important
 /// 1. Tokens import (animations, breakpoints, colors, radius, shadows, spacing, typography, z-index)
-@use './tokens/base' as *;
 @use './tokens/animations' as *;
 @use './tokens/breakpoints' as *;
 @use './tokens/colors' as *;
