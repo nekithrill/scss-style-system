@@ -8,12 +8,9 @@
 /// - xl: extra large shadow for major elevations
 /// - inset: inset shadow for pressed states
 ///
-/// Notes:
-/// - Uses alpha transparency for theme compatibility
-/// - Adjust $base-shadow color if needed for your design
+/// 💡 All shadows use $base-shadow
+/// 💡 Change $base-shadow to adjust shadow color/opacity globally
 
-/// Base shadow color (black with 10% opacity)
-/// Use rgba or oklch with alpha for theme compatibility
 $base-shadow: rgb(0 0 0 / 10%);
 
 $shadows: (
