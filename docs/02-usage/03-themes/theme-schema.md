@@ -19,7 +19,7 @@ Component → Property → Leaf Key → Value
 **Example:**
 ```scss
 $theme: (
-	header: (            // Component
+	header: (              // Component
 		bg: (              // Property
 			_: #fff,       // Leaf key: base value
 			hover: #eee    // Leaf key: hover state
