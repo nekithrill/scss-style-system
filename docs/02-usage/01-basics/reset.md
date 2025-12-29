@@ -1,0 +1,179 @@
+## ♻️ Basic styles reset
+
+Modern CSS Reset based on modern best practices and browser defaults.
+
+> Sources:
+> [Josh Comeau's CSS Reset](https://www.joshwcomeau.com/css/custom-css-reset/),
+> [Andy Bell's Modern Reset](https://gist.github.com/Asjas/4b0736108d56197fce0ec9068145b421),
+> [Elad Shechter](https://github.com/elad2412/the-new-css-reset)
+
+---
+
+### Reset configuration
+
+```css
+/// 1. Box sizing reset
+/// Use border-box everywhere for predictable sizing
+/// Without this, padding/border increases element size
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/// 2. Remove default margins and padding
+/// Browsers add inconsistent margins to elements (p, h1-h6, ul, ol, etc.)
+/// Reset everything to 0 for consistent starting point
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/// 3. Body setup
+/// Natural line height for better readability (default is often 1.2)
+/// Enable font smoothing on macOS/iOS for better text rendering
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/// 4. Media elements
+/// Images and media should be responsive by default
+/// display: block removes bottom space caused by inline display
+/// max-width: 100% prevents overflow
+/// height: auto maintains aspect ratio
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/// 5. Form elements
+/// Inherit typography from parent instead of browser defaults
+/// Makes forms consistent with design system
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	color: inherit;
+}
+
+/// 6. Remove list styles
+/// Lists in navigation or UI components shouldn't have bullets/numbers
+/// 💡 Add them back in content areas where needed
+ol,
+ul {
+	list-style: none;
+}
+
+/// 7. Heading styles reset
+/// Headings shouldn't have default font-size/weight
+/// Use design tokens instead for consistent typography
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+/// 8. Links
+/// Remove default underline and use inherited color
+/// 💡 Add styles back in components/utilities
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/// 9. Buttons
+/// Remove all default button styles for clean slate
+/// Inherit font and color from parent
+button {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	font: inherit;
+	color: inherit;
+}
+
+/// 10. Tables
+/// Consistent table rendering across browsers
+/// border-collapse: collapse merges adjacent borders
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/// 11. Quotes
+/// Remove default quotation marks from blockquote and q elements
+/// 💡 Add custom quotes in components if needed
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+	content: '';
+	content: none;
+}
+
+/// 12. Text overflow
+/// Prevent long words from breaking layout
+/// overflow-wrap breaks words if needed to prevent overflow
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+/// 13. Root stacking context
+/// Create new stacking context for app root
+/// Prevents z-index issues with modals, tooltips, dropdowns
+/// Common root IDs for React/Next.js apps
+#root,
+#__next {
+	isolation: isolate;
+}
+```
+
+---
+
+### Customization example
+
+```scss
+/// Add custom resets
+button,
+input,
+textarea,
+select {
+	/// Remove iOS styling
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+/// Remove focus outline (ensure you add custom focus styles!)
+*:focus {
+	outline: none; // Only if you style :focus-visible
+}
+
+*:focus-visible {
+	outline: 2px solid var(--clr-primary-500);
+	outline-offset: 2px;
+}
+```
