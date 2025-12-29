@@ -1,19 +1,20 @@
+@use './base' as *;
+
 /// Spacing Tokens
 ///
-/// All values are calculated from $base-unit
+/// All values are calculated from $base-unit in tokens/_base.scss
 /// Usage: margin, padding, gap, grid spacing
-
-/// Base spacing unit (8px system)
-$base-unit: 8px;
+///
+/// 💡 Change $base-unit to scale the entire spacing system
 
 $spacing: (
 	0: 0,
-	1: $base-unit * 1,
-	2: $base-unit * 2,
-	3: $base-unit * 3,
-	4: $base-unit * 4,
-	5: $base-unit * 5,
-	6: $base-unit * 6,
-	7: $base-unit * 7,
-	8: $base-unit * 8
+	1: $base-spacing * 1,
+	2: $base-spacing * 2,
+	3: $base-spacing * 3,
+	4: $base-spacing * 4,
+	5: $base-spacing * 5,
+	6: $base-spacing * 6,
+	7: $base-spacing * 7,
+	8: $base-spacing * 8
 );

@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use './base' as *;
 
 /// Typography Tokens
 ///
@@ -8,7 +9,7 @@
 /// - Font sizes: calculated from base size using multipliers
 ///
 /// 💡 Font sizes automatically converted to rem in base/_variables.scss
-/// 💡 Change $base-font-size to scale entire typography system
+/// 💡 Change $base-font-size in tokens/_base.scss to scale entire typography system
 /// 💡 Adjust multipliers to change heading hierarchy
 
 $font-families: (
@@ -23,8 +24,6 @@ $font-weights: (
 	bold: 700,
 	extra-bold: 900
 );
-
-$base-font-size: 16px;
 
 $font-size-multipliers: (
 	h1: 1.875,
