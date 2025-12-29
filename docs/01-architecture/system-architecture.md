@@ -2,8 +2,8 @@
 
 The system is built on a **two-layer token architecture** that separates design decisions from implementation:
 
-**Layer 1: Design Tokens** — Raw design values (colors, spacing, typography)  
-**Layer 2: Semantic Themes** — Context-aware mappings for different themes
+**Layer 1: Design Tokens** - Raw design values (colors, spacing, typography)  
+**Layer 2: Semantic Themes** - Context-aware mappings for different themes
 
 This separation allows you to:
 
@@ -69,12 +69,11 @@ Themes define what each semantic variable means in different contexts (light/dar
 $light: (
 	main: (
 		bg: (
-			_: var(--clr-neutral-100),
-			// Light background
+			_: var(--clr-neutral-100), // Light background
 			hover: var(--clr-neutral-200)
 		),
 		text: (
-			_: var(--clr-neutral-900) // Dark text
+			_: var(--clr-neutral-900)  // Dark text
 		)
 	),
 	header: (
@@ -91,12 +90,12 @@ $light: (
 $dark: (
 	main: (
 		bg: (
-			_: var(--clr-neutral-900),
-			// Dark background
+			_: var(--clr-neutral-900),  // Dark background
+			
 			hover: var(--clr-neutral-800)
 		),
 		text: (
-			_: var(--clr-neutral-100) // Light text
+			_: var(--clr-neutral-100)  // Light text
 		)
 	),
 	header: (
@@ -175,15 +174,15 @@ For projects with multiple themes (light/dark mode, brand variations), use seman
 ```scss
 .card {
 	// Theme variables (colors/backgrounds that change)
-	background: var(--theme-main-bg);
-	color: var(--theme-main-text);
+	background: var(--clr-main-bg);
+	color: var(--clr-main-text);
 
 	// Direct tokens (same across all themes)
 	border-radius: var(--rd-md);
 	padding: var(--sp-4);
 
 	&:hover {
-		background: var(--theme-main-bg-hover);
+		background: var(--clr-main-bg-hover);
 	}
 }
 ```
@@ -253,7 +252,7 @@ For projects with multiple themes (light/dark mode, brand variations), use seman
 │                                                         │
 │    // Option 2: Semantic themes (multi-theme projects)  │
 │    .card {                                              │
-│      background: var(--theme-main-bg);   ← Theme        │
+│      background: var(--clr-main-bg);     ← Theme        │
 │      padding: var(--sp-4);               ← Token        │
 │    }                                                    │
 └─────────────────────────────────────────────────────────┘

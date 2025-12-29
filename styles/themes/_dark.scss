@@ -8,46 +8,50 @@
 /// - References color tokens with var(--clr-*)
 
 $dark: (
+	text: (
+		_: var(--clr-neutral-100),
+		accent: var(--clr-primary-400)
+	),
 	selection: (
 		bg: (
-			_: var(--clr-primary-900)
+			_: var(--clr-primary-700)
 		),
 		text: (
-			_: var(--clr-primary-600)
+			_: var(--clr-neutral-100)
 		)
 	),
 	scrollbar: (
 		thumb: (
-			_: yellow,
-			hover: purple
+			_: var(--clr-neutral-600),
+			hover: var(--clr-neutral-500)
 		),
 		track: (
-			_: green
+			_: var(--clr-neutral-900)
 		)
 	),
 	header: (
 		bg: (
-			_: var(--clr-primary-100)
+			_: var(--clr-neutral-900)
 		),
 		text: (
-			_: var(--clr-secondary-200)
+			_: var(--clr-neutral-100)
 		)
 	),
 	main: (
 		bg: (
-			_: var(--clr-primary-300),
-			hover: var(--clr-neutral-400)
+			_: var(--clr-neutral-800),
+			hover: var(--clr-neutral-700)
 		),
 		text: (
-			_: var(--clr-secondary-500)
+			_: var(--clr-neutral-200)
 		)
 	),
 	footer: (
 		bg: (
-			_: var(--clr-primary-600)
+			_: var(--clr-neutral-900)
 		),
 		text: (
-			_: var(--clr-neutral-700)
+			_: var(--clr-neutral-400)
 		)
 	)
 );

@@ -1,0 +1,22 @@
+/// Base units configuration
+///
+/// Foundational values used across the entire design system.
+/// Change these values to scale and customize the system globally.
+///
+/// These constants are imported by multiple token files to ensure
+/// consistency and avoid circular dependencies.
+
+/// Base font size for the system
+/// Default: 16px (browser default)
+/// Changing this will proportionally scale all font sizes and rem conversions
+$base-font-size: 16px;
+
+/// Base spacing unit (8px system)
+/// Default: 8px (common design system practice)
+/// Changing this will scale all spacing values proportionally
+$base-spacing: 8px;
+
+/// Base shadow color
+/// Default: rgba(0, 0, 0, 0.1) - black with 10% opacity
+/// Use rgba or oklch with alpha for theme compatibility
+$base-shadow: rgb(0 0 0 / 10%);
