@@ -27,12 +27,12 @@ All imports are centralized in `main.scss`, making it easy to remove any module 
 /// 1. Tokens import
 @use './tokens/colors' as *;
 @use './tokens/spacing' as *;
-// @use './tokens/shadows' as *;     ← Not using shadows? Comment out!
-// @use './tokens/animations' as *;  ← No animations? Comment out!
+// @use './tokens/shadows' as *;       ← Not using shadows? Comment out!
+// @use './tokens/animations' as *;    ← No animations? Comment out!
 
 // 2. Core import
 @use './core/mixins/breakpoint' as *;
-// @use './core/mixins/generate-theme' as *;  ← Single theme? Remove this!
+// @use './core/mixins/generate-theme' as *;  ← Don't need to generate theme? Comment out!
 
 // 3. Basics import
 @use './base/reset' as *;
@@ -72,7 +72,7 @@ $base-tokens: (
 		prefix: 'sp',
 		transform: 'rem'
 	),
-	// shadows: (               ← Remove this entire block
+	// shadows: (            ← Remove this entire block
 	// 	map: $shadows,
 	// 	prefix: 'shd',
 	// 	transform: 'rem'
@@ -92,9 +92,9 @@ Remove unused semantic colors from `/tokens/_colors.scss`:
 $all-colors: (
 	'primary': $primary,
 	'neutral': $neutral,
-	// 'secondary': $secondary,  ← Remove if not using
-	// 'success': $success,      ← Remove semantic colors
-	// 'warning': $warning,      ← if not building alerts/forms
+	// 'secondary': $secondary,   ← Remove if not using
+	// 'success': $success,       ← Remove semantic colors
+	// 'warning': $warning,       ← if not building alerts/forms
 	// 'danger': $danger,
 	 // 'info': $info,
 );
@@ -110,15 +110,15 @@ For single-theme projects, you can remove the entire theming system:
 
 ```scss
 // main.scss
-// @use './themes/apply' as *;  ← Remove themes
+// @use './themes/apply' as *;   ← Remove themes
 ```
 
 **Step 2:** Remove theme-related mixins
 
 ```scss
 // main.scss
-// @use './core/mixins/generate-theme' as *;  ← Not needed
-// @use './core/mixins/validate-theme' as *;  ← Not needed
+// @use './core/mixins/generate-theme' as *;   ← Not needed
+// @use './core/mixins/validate-theme' as *;   ← Not needed
 ```
 
 **Step 3:** (Optional) Delete the `/themes` folder entirely
@@ -135,16 +135,16 @@ If you want theming but only need one theme (e.g., light only):
 // themes/_apply.scss
 
 @use '../themes/light' as *;
-// @use '../themes/dark' as *;  ← Remove dark theme
+// @use '../themes/dark' as *;    ← Remove dark theme
 
 @include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
-// @include validate-theme($dark, ...);  ← Remove validation
+// @include validate-theme($dark, ...);    ← Remove validation
 
 :root {
 	@include generate-theme($light);
 }
 
-// [data-theme='dark'] {          ← Remove dark theme generation
+// [data-theme='dark'] {     ← Remove dark theme generation
 // 	@include generate-theme($dark);
 // }
 ```
@@ -159,12 +159,12 @@ You can remove any base styles you don't need:
 // main.scss
 
 @use './base/fonts' as *;
-@use './base/reset' as *; // ← Remove if using external reset
+@use './base/reset' as *;      // ← Remove if using external reset
 @use './base/variables' as *;
-@use './base/globals' as *; // ← Remove if not using global styles
-@use './base/scrollbar' as *; // ← Remove custom scrollbar
-@use './base/selection' as *; // ← Remove custom selection
-@use './base/utilities' as *; // ← Remove utility classes
+@use './base/globals' as *;    // ← Remove if not using global styles
+@use './base/scrollbar' as *;  // ← Remove custom scrollbar
+@use './base/selection' as *;  // ← Remove custom selection
+@use './base/utilities' as *;  // ← Remove utility classes
 ```
 
 ---
@@ -255,7 +255,7 @@ $base-tokens: (
 
 ```scss
 // Start by commenting out, not deleting
-// @use './themes/apply' as *;  ← Comment first to test
+// @use './themes/apply' as *;    ← Comment first to test
 ```
 
 **Step 3: Test your build**
