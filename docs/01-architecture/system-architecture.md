@@ -221,8 +221,8 @@ Avoid creating semantic variables for values that don't change between themes (s
         │    │ Theme mapping    │       │
         │    └────────┬─────────┘       │
         │             ↓                 │
-        │    --theme-main-bg            │
-        │    --theme-main-text          │
+        │    --clr-main-bg              │
+        │    --clr-main-text            │
         └───────────────┬───────────────┘
                         ↓
 ┌─────────────────────────────────────────────────────────┐
