@@ -14,9 +14,11 @@ A modular design token system for generating CSS variables with optional theming
 - 🎨 **OKLCH colors** - perceptually uniform color system
 - 🧩 **Fully modular** - remove unused features easily
 
+
+<br>
+
 ## 🚀 Quick Start
 
-### Prerequisites
 ```bash
 npm install --save-dev sass
 ```
@@ -62,6 +64,8 @@ sass styles/main.scss dist/styles.css
 
 > 💡 **Recommended:** Use component-scoped approach (Option B) for maximum flexibility. The base system compiles separately: `sass styles/main.scss dist/base.css`
 
+<br>
+
 ## 🎯 What's Included
 
 - **Design Tokens** - Colors, spacing, typography, radius, shadows (core)
@@ -69,6 +73,8 @@ sass styles/main.scss dist/styles.css
 - **Themes** - Light/dark/custom modes (optional)
 - **Mixins** - Breakpoints, utilities, helpers (optional)
 - **Base Styles** - Reset, globals, scrollbar (optional)
+
+<br>
 
 ## 💡 Best Used For
 
@@ -78,6 +84,8 @@ sass styles/main.scss dist/styles.css
 - ✅ Projects needing modular, removable features
 
 **Not a good fit?** Consider [Tailwind CSS](https://tailwindcss.com/) for utility-first, or vanilla CSS variables for zero build step.
+
+<br>
 
 ## 🛠️ Example Usage
 ```scss
@@ -101,6 +109,8 @@ sass styles/main.scss dist/styles.css
 	}
 }
 ```
+
+<br>
 
 ## 📖 Documentation
 
