@@ -4,8 +4,6 @@ This system is designed to be **modular** by default.
 You are encouraged to remove anything you don't need.
 Nothing here is mandatory - everything is opt-in.
 
----
-
 ### What can be removed?
 
 All imports are centralized in `main.scss`, making it easy to remove any module you don't need.
@@ -84,19 +82,56 @@ $base-tokens: (
 
 #### Removing color palettes
 
-Remove unused semantic colors from `/tokens/_colors.scss`:
+If you're not using certain semantic colors (like alerts or form states), you can remove them to keep your codebase clean.
 
+**Step 1:** Remove unused colors from the `$all-colors` map in `/tokens/_colors.scss`:
 ```scss
 // tokens/_colors.scss
 
 $all-colors: (
 	'primary': $primary,
 	'neutral': $neutral,
-	// 'secondary': $secondary,   ← Remove if not using
-	// 'success': $success,       ← Remove semantic colors
-	// 'warning': $warning,       ← if not building alerts/forms
+	// Remove these lines if not needed:
+	// 'secondary': $secondary,
+	// 'success': $success,
+	// 'warning': $warning,
 	// 'danger': $danger,
-	 // 'info': $info,
+	// 'info': $info,
+);
+```
+
+**Step 2:** Delete the corresponding color palette definitions from the same file:
+```scss
+// Delete these entire blocks if you removed them from $all-colors:
+
+$secondary: (
+	100: oklch(99% 0 248deg),
+	...
+	900: oklch(52% 0.04 249deg)
+);
+
+$success: (
+	bg: oklch(95% 0.05 160deg),
+	...
+	text: oklch(30% 0.15 160deg)
+);
+
+$warning: (
+	bg: oklch(95% 0.04 80deg),
+	...
+	text: oklch(30% 0.12 70deg)
+);
+
+$danger: (
+	bg: oklch(95% 0.04 20deg),
+	...
+	text: oklch(30% 0.15 25deg)
+);
+
+$info: (
+	bg: oklch(95% 0.04 260deg),
+	...
+	text: oklch(30% 0.15 260deg)
 );
 ```
 

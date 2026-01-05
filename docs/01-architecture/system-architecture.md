@@ -11,7 +11,7 @@ This separation allows you to:
 - Switch themes without changing component styles
 - Maintain consistency across light/dark modes
 
----
+<br>
 
 ## Layer 1: Design Tokens
 
@@ -52,7 +52,7 @@ $neutral: (
 }
 ```
 
----
+<br>
 
 ## Layer 2: Semantic Themes
 
@@ -60,20 +60,21 @@ $neutral: (
 
 **Location:** `/themes/*.scss`
 
-Themes define what each semantic variable means in different contexts (light/dark mode). They reference design tokens and create meaningful names like `--theme-main-bg` instead of `--clr-neutral-100`.
+Themes define what each semantic variable means in different contexts (light/dark mode). They reference design tokens and create meaningful names like `--clr-main-bg` instead of `--clr-neutral-100`.
+
+> 💡 **Note:** The underscore (`_`) represents the base/default value for a property. Modifiers like `hover`, `active` extend from this base.
 
 **Example:**
-
 ```scss
 // themes/_light.scss
 $light: (
 	main: (
 		bg: (
-			_: var(--clr-neutral-100), // Light background
-			hover: var(--clr-neutral-200)
+			_: var(--clr-neutral-100),     // Base: Light background
+			hover: var(--clr-neutral-200)   // Modifier: Hover state
 		),
 		text: (
-			_: var(--clr-neutral-900)  // Dark text
+			_: var(--clr-neutral-900)      // Base: Dark text
 		)
 	),
 	header: (
@@ -90,12 +91,11 @@ $light: (
 $dark: (
 	main: (
 		bg: (
-			_: var(--clr-neutral-900),  // Dark background
-			
-			hover: var(--clr-neutral-800)
+			_: var(--clr-neutral-900),     // Base: Dark background
+			hover: var(--clr-neutral-800)   // Modifier: Hover state
 		),
 		text: (
-			_: var(--clr-neutral-100)  // Light text
+			_: var(--clr-neutral-100)      // Base: Light text
 		)
 	),
 	header: (
@@ -109,35 +109,15 @@ $dark: (
 );
 ```
 
-**Generated CSS variables:**
-
-```css
-/* Light theme (default) */
-:root {
-	--theme-main-bg: var(--clr-neutral-100);
-	--theme-main-bg-hover: var(--clr-neutral-200);
-	--theme-main-text: var(--clr-neutral-900);
-	--theme-header-bg: var(--clr-primary-500);
-	--theme-header-text: var(--clr-neutral-100);
-}
-
-/* Dark theme */
-[data-theme='dark'] {
-	--theme-main-bg: var(--clr-neutral-900);
-	--theme-main-bg-hover: var(--clr-neutral-800);
-	--theme-main-text: var(--clr-neutral-100);
-	--theme-header-bg: var(--clr-primary-700);
-	--theme-header-text: var(--clr-neutral-100);
-}
-```
-
----
+<br>
 
 ## How components use the system
 
 The system is **flexible** - you can use it in different ways depending on your project needs.
 
 > 💡 **Note:** Design tokens (spacing, radius, typography, etc.) work the same everywhere and can be used directly in any approach. Semantic theme variables are optional and primarily used for colors and backgrounds that change between themes.
+
+---
 
 ### Option 1: Direct token usage (simple projects)
 
@@ -169,7 +149,7 @@ For small projects or prototypes, you can use design tokens directly in componen
 
 ### Option 2: Semantic theme variables (complex projects)
 
-For projects with multiple themes (light/dark mode, brand variations), use semantic theme variables **for colors/backgrounds** while keeping direct tokens for everything else:
+For projects with multiple themes (light/dark mode, brand variations), use semantic theme variables **for colors** while keeping direct tokens for everything else:
 
 ```scss
 .card {
@@ -201,6 +181,10 @@ For projects with multiple themes (light/dark mode, brand variations), use seman
 - Centralized theme management
 - No need to create theme variables for spacing, radius, etc.
 
+**What NOT to theme:**
+
+Avoid creating semantic variables for values that don't change between themes (spacing, radius, typography, shadows, z-index) - use direct tokens instead.
+
 ---
 
 **Why this works:**
@@ -209,7 +193,7 @@ For projects with multiple themes (light/dark mode, brand variations), use seman
 - Spacing, radius, typography stay the same → use tokens directly
 - Best of both worlds: flexibility where needed, simplicity where possible
 
----
+<br>
 
 ## Architecture Flow
 
