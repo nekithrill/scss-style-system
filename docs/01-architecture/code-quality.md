@@ -1,6 +1,8 @@
-## 🛠️ **Code quality & formatting**
+## 🛠️ Code quality & formatting
 
 All SCSS files in this system are linted and formatted before pushing. Some tests were also carried out.
+
+<br>
 
 ### Prettier
 
@@ -8,9 +10,7 @@ This system follows the Prettier configuration below to maintain consistent form
 
 > 💡 **Note:** Configuration files (`.prettierrc.cjs`) are available on the `sandbox` branch. These settings are provided for reference if you want to apply the same formatting rules.
 
-> 💡 **Dependencies required:** To use Prettier in your project, install:
-> - `prettier` 
-
+> 💡 **Dependencies required:** To use Prettier in your project, install `prettier`
 ```js
 module.exports = {
 	trailingComma: 'none',
@@ -24,7 +24,7 @@ module.exports = {
 }
 ```
 
----
+<br>
 
 ### Stylelint
 
@@ -83,7 +83,7 @@ module.exports = {
 }
 ```
 
----
+<br>
 
 ### Testing
 
