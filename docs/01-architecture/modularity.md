@@ -4,6 +4,8 @@ This system is designed to be **modular** by default.
 You are encouraged to remove anything you don't need.
 Nothing here is mandatory - everything is opt-in.
 
+<br>
+
 ### What can be removed?
 
 All imports are centralized in `main.scss`, making it easy to remove any module you don't need.
@@ -18,7 +20,6 @@ All imports are centralized in `main.scss`, making it easy to remove any module 
 3. Delete the file if it's no longer needed anywhere
 
 **Example:**
-
 ```scss
 // main.scss
 
@@ -42,21 +43,19 @@ All imports are centralized in `main.scss`, making it easy to remove any module 
 
 📝 For complete file structure, see [Folder Structure Guide](folder-structure.md)
 
----
+<br>
 
 #### Removing token groups
 
 If you don't need a specific token group (like shadows or animations):
 
 **Step 1:** Remove the `@use` import from `main.scss`
-
 ```scss
 // main.scss
 // @use './tokens/shadows' as *;  ← Comment out
 ```
 
 **Step 2:** Remove its configuration from `$base-tokens` in `/base/_variables.scss`
-
 ```scss
 // base/_variables.scss
 
@@ -74,11 +73,11 @@ $base-tokens: (
 	// 	map: $shadows,
 	// 	prefix: 'shd',
 	// 	transform: 'rem'
-	 // ),
+	// ),
 );
 ```
 
----
+<br>
 
 #### Removing color palettes
 
@@ -135,21 +134,19 @@ $info: (
 );
 ```
 
----
+<br>
 
 #### Removing theme system
 
 For single-theme projects, you can remove the entire theming system:
 
 **Step 1:** Comment out theme imports in `main.scss`
-
 ```scss
 // main.scss
 // @use './themes/apply' as *;   ← Remove themes
 ```
 
 **Step 2:** Remove theme-related mixins
-
 ```scss
 // main.scss
 // @use './core/mixins/generate-theme' as *;   ← Not needed
@@ -160,12 +157,11 @@ For single-theme projects, you can remove the entire theming system:
 
 **Result:** Use color tokens directly in your components instead of theme variables.
 
----
+<br>
 
 #### Removing individual themes
 
 If you want theming but only need one theme (e.g., light only):
-
 ```scss
 // themes/_apply.scss
 
@@ -184,12 +180,11 @@ If you want theming but only need one theme (e.g., light only):
 // }
 ```
 
----
+<br>
 
 #### Removing base styles
 
 You can remove any base styles you don't need:
-
 ```scss
 // main.scss
 
@@ -202,12 +197,11 @@ You can remove any base styles you don't need:
 @use './base/utilities' as *;  // ← Remove utility classes
 ```
 
----
+<br>
 
 ### Common removal scenarios
 
 #### Scenario 1: Simple landing page (no themes, minimal tokens)
-
 ```scss
 // main.scss
 
@@ -224,8 +218,9 @@ You can remove any base styles you don't need:
 // No themes needed - use tokens directly in components
 ```
 
-#### Scenario 2: React app with CSS-in-JS (tokens only)
+<br>
 
+#### Scenario 2: React app with CSS-in-JS (tokens only)
 ```scss
 // main.scss
 
@@ -248,8 +243,9 @@ You can remove any base styles you don't need:
 // `;
 ```
 
-#### Scenario 3: Prototype (only colors and spacing)
+<br>
 
+#### Scenario 3: Prototype (only colors and spacing)
 ```scss
 // main.scss - absolute minimum
 
@@ -276,7 +272,7 @@ $base-tokens: (
 // That's it! No themes, no extra mixins, no base styles
 ```
 
----
+<br>
 
 ### How to safely remove modules
 
@@ -287,7 +283,6 @@ $base-tokens: (
 - Check which mixins are imported → Remove unused ones
 
 **Step 2: Comment out imports**
-
 ```scss
 // Start by commenting out, not deleting
 // @use './themes/apply' as *;    ← Comment first to test
@@ -300,7 +295,6 @@ $base-tokens: (
 - Fix any missing dependencies
 
 **Step 4: Delete unused files**
-
 ```bash
 # Once you're sure, delete the unused files
 
@@ -311,7 +305,7 @@ rm src/styles/tokens/_shadows.scss     # Remove specific token file
 # Or manually delete through your file explorer/IDE
 ```
 
----
+<br>
 
 ### Benefits of removing unused modules
 
@@ -333,7 +327,7 @@ rm src/styles/tokens/_shadows.scss     # Remove specific token file
 - No unused or misleading artifacts
 - Cleaner and more predictable structure
 
----
+<br>
 
 ### When NOT to remove modules
 
@@ -346,7 +340,7 @@ rm src/styles/tokens/_shadows.scss     # Remove specific token file
 
 **Remember:** You can always add modules back later. Start minimal, add complexity only when needed.
 
----
+<br>
 
 ### Quick reference: What to keep vs remove
 
@@ -363,14 +357,14 @@ rm src/styles/tokens/_shadows.scss     # Remove specific token file
 | **Custom scrollbar** | Branded UI experience      | Default browser scrollbar   |
 | **Selection styles** | Branded experience         | Default selection behavior  |
 
----
+<br>
 
 ### Key Principles
 
 #### Flexibility over dogma
 
 - Use what makes sense for your project
-- There is no single “correct” setup
+- There is no single "correct" setup
 - Start simple and introduce complexity only when needed
 
 #### Modularity
