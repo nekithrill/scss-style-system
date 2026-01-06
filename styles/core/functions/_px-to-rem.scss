@@ -3,7 +3,6 @@
 @use 'sass:list';
 
 /// Converts pixel values to rem units
-///
 /// @param {Number | List} $value - Value in px, list of values, or zero
 /// @param {Number} $base - Base font-size in pixels (default: 16)
 /// @return {Number | List} - Corresponding rem value(s)
@@ -12,6 +11,7 @@
 /// - Converts px to rem based on base font size
 /// - Zero values (0, 0px, 0em, 0%, 0rem) return 0
 /// - Non-px units are returned as-is
+/// - Very large values (5000px+) stay in px (used for pill borders: 9999px)
 /// - Works recursively on lists (e.g., "10px 20px" → "0.625rem 1.25rem")
 
 @function px-to-rem($value, $base: 16) {
@@ -23,6 +23,10 @@
 		$unit: math.unit($value);
 
 		@if $unit == 'px' {
+			@if math.abs($value) >= 5000px {
+				@return $value;
+			}
+
 			@return math.div($value, $base * 1px) * 1rem;
 		}
 
