@@ -2,7 +2,7 @@
 
 Core mixins and functions for token generation, theming, and responsive design.
 
----
+<br>
 
 ## Mixins
 
@@ -140,15 +140,15 @@ $base-tokens: (
 
 **How it works:**
 
-**1. Auto-detects structure:**
+1. **Auto-detects structure:**
    - Nested maps (colors with shades) → `--prefix-palette-shade`
    - Flat maps (spacing, weights) → `--prefix-key`
 
-**2. Optional transformation:**
+2. **Optional transformation:**
    - `transform: 'rem'` converts px values to rem
    - Uses base font size of 16px
 
-**3. Error handling:**
+3. **Error handling:**
    - Missing `map` or `prefix` throws error
    - Invalid values are returned as-is
 
@@ -312,6 +312,8 @@ $light: (
 
 ---
 
+<br>
+
 ## Functions
 
 ### `px-to-rem` - Unit converter
@@ -336,6 +338,7 @@ Convert pixel values to rem units based on base font size.
 - Converts px to rem based on base font size (default 16px)
 - Zero values return `0` (any unit: `0`, `0px`, `0em`, `0%`, `0rem`)
 - Non-px units are returned as-is (%, em, rem, etc.)
+- Very large values (5000px+) stay in px (used for pill borders: 9999px)
 - Works recursively on lists
 
 **Usage:**
@@ -353,15 +356,45 @@ $percent: px-to-rem(50%);     // 50%
 $em: px-to-rem(2em);          // 2em
 $rem: px-to-rem(1.5rem);      // 1.5rem
 
+// Very large values (stay in px)
+$pill: px-to-rem(9999px);     // 9999px (not converted)
+$large: px-to-rem(5000px);    // 5000px (not converted)
+
 // Lists (recursive)
 $padding: px-to-rem(10px 20px 30px);  // 0.625rem 1.25rem 1.875rem
 $shadow: px-to-rem(0 4px 8px);        // 0 0.25rem 0.5rem
+$mixed: px-to-rem(4px 9999px);        // 0.25rem 9999px
 
-// Custom base
+// Custom base per-call
 $value: px-to-rem(32px, 20);  // 1.6rem (32 / 20 = 1.6)
 ```
 
----
+**Customizing default base:**
+
+If your project uses a different base font-size (e.g., 18px instead of 16px):
+
+1. Open `core/functions/_px-to-rem.scss`
+2. Change the function signature:
+```scss
+   @function px-to-rem($value, $base: 18) {  // Changed from 16 to 18
+```
+3. All conversions will now use 18px as the base
+
+> 💡 **Note:** This affects all rem conversions system-wide. Only change if your entire project uses a non-standard base font-size.
+
+**Special handling:**
+
+The function automatically handles edge cases:
+
+- **Zero values:** `0`, `0px`, `0em`, `0%`, `0rem` → `0`
+- **Non-px units:** `50%`, `2em`, `1.5rem` → returned as-is
+- **Very large values:** `5000px+` → stay in px (e.g., `9999px` for pill borders)
+- **Lists:** Processes each value recursively
+
+This ensures pill-shaped borders (`border-radius: 9999px`) and similar edge cases work correctly without conversion.
+
+
+<br>
 
 ## Best Practices
 
@@ -373,7 +406,7 @@ $value: px-to-rem(32px, 20);  // 1.6rem (32 / 20 = 1.6)
 **Token generation:**
 - Always include `prefix` for namespacing
 - Use `transform: 'rem'` for spacing, sizing, and layout tokens
-- Don't transform colors, weights, or unitless values
+- Don't transform colors, weights, shadows, or unitless values
 
 **Theme generation:**
 - Validate themes before generation in development
@@ -384,3 +417,4 @@ $value: px-to-rem(32px, 20);  // 1.6rem (32 / 20 = 1.6)
 - Used automatically by `generate-tokens` mixin
 - Don't use directly unless building custom utilities
 - Default 16px base aligns with browser defaults
+- Change default base only if your project requires it (rare)
