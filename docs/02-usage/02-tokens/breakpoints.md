@@ -1,11 +1,10 @@
 ## 📱 Breakpoint tokens
 
 Define screen width breakpoints for responsive design. Used with the [`breakpoint` mixin](../01-basics/core.md) to create consistent media queries across the project.
-
 ```scss
 // tokens/_breakpoints.scss
 
-/// Breakpoint values for responsive design
+// Breakpoint values for responsive design
 $breakpoints: (
 	'xs': 360px,   // Extra small devices (small phones)
 	'sm': 576px,   // Small devices (phones in landscape)
@@ -16,36 +15,34 @@ $breakpoints: (
 );
 ```
 
----
+<br>
 
 ### Customization examples
-
 ```scss
-/// Adjust breakpoint values
+// Adjust breakpoint values
 $breakpoints: (
-	'xs': 320px,   // ← Smaller phones
-	'sm': 640px,   // ← Adjusted
+	'xs': 320px,   // Smaller phones
+	'sm': 640px,   // Adjusted
 	'md': 768px,
 	'lg': 1024px,
-	'xl': 1440px,  // ← Wider desktops
-	'2xl': 1920px  // ← Full HD screens
+	'xl': 1440px,  // Wider desktops
+	'2xl': 1920px  // Full HD screens
 );
 
-/// Add custom breakpoints
+// Add custom breakpoints
 $breakpoints: (
 	// ... existing breakpoints
-	'tablet-portrait': 600px,  // ← Specific tablet size
-	'laptop': 1366px,          // ← Common laptop resolution
-	'4k': 2560px               // ← 4K displays
+	'tablet-portrait': 600px,  // Specific tablet size
+	'laptop': 1366px,          // Common laptop resolution
+	'4k': 2560px               // 4K displays
 );
 ```
 
----
+<br>
 
 ### Usage with breakpoint mixin
-
 ```scss
-/// Desktop-first (default)
+// Desktop-first (default)
 .container {
 	padding: 2rem;
 
@@ -58,7 +55,7 @@ $breakpoints: (
 	}
 }
 
-/// Mobile-first
+// Mobile-first
 .grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -73,9 +70,8 @@ $breakpoints: (
 }
 ```
 
-Result
-
-```scss
+**Generated CSS:**
+```css
 /* Desktop-first (default) */
 .container {
 	padding: 2rem;

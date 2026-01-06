@@ -2,11 +2,11 @@
 
 The schema defines the **required structure** and **allowed variations** for all themes in the system.
 
----
+<br>
 
 ## Understanding Leaf Keys
 
-**Leaf keys** are the final level in the theme hierarchy — they represent the actual color values and their variants (states).
+**Leaf keys** are the final level in the theme hierarchy - they represent the actual color values and their variants (states).
 
 ### Structure Hierarchy
 ```
@@ -54,30 +54,30 @@ button: (
 
 The validation system will catch this error during theme generation.
 
----
+<br>
 
 ## Default schema
 ```scss
 // themes/_schema.scss
 
-/// Allowed leaf keys (state variants)
-/// These are the only keys allowed at the deepest nesting level
+// Allowed leaf keys (state variants)
+// These are the only keys allowed at the deepest nesting level
 $theme-leaf-keys: (
-	'_',        // Base value (common but not required)
-	'hover',    // Hover state
-	'active',   // Active/pressed state
-	'focus',    // Focused state
-	'disabled', // Disabled state
-	'muted',    // Muted variant
-	'selected', // Selected state
-	'error',    // Error state
-	'success',  // Success state
-	'warning',  // Warning state
-	'info'      // Info state
+	'_',         // Base value (common but not required)
+	'hover',     // Hover state
+	'active',    // Active/pressed state
+	'focus',     // Focused state
+	'disabled',  // Disabled state
+	'muted',     // Muted variant
+	'selected',  // Selected state
+	'error',     // Error state
+	'success',   // Success state
+	'warning',   // Warning state
+	'info'       // Info state
 );
 
-/// Required keys (all themes must include these)
-/// Structure: component → property → () (leaf keys go here)
+// Required keys (all themes must include these)
+// Structure: component → property → () (leaf keys go here)
 $theme-required-keys: (
 	text: (
 		_: (),      // Default text color
@@ -106,7 +106,7 @@ $theme-required-keys: (
 );
 ```
 
----
+<br>
 
 ## Customizing Schema
 
@@ -119,21 +119,21 @@ Add components that your project needs:
 $theme-required-keys: (
 	// ... existing keys (text, selection, scrollbar, header, main, footer)
 	
-	/// Add button component
+	// Add button component
 	button: (
 		primary: (),
 		secondary: (),
 		danger: ()
 	),
 
-	/// Add card component
+	// Add card component
 	card: (
 		bg: (),
 		border: (),
 		text: ()
 	),
 
-	/// Add input component
+	// Add input component
 	input: (
 		bg: (),
 		border: (),
@@ -161,7 +161,7 @@ $light: (
 );
 ```
 
----
+<br>
 
 ### Adding Custom Leaf Keys
 
@@ -173,10 +173,10 @@ $theme-leaf-keys: (
 	'active',
 	'focus',
 	'disabled',
-	'highlighted',  // ← New: for highlighted items
-	'dimmed',       // ← New: for dimmed/inactive items
-	'loading',      // ← New: for loading states
-	'pressed'       // ← New: for pressed/clicked state
+	'highlighted',  // New: for highlighted items
+	'dimmed',       // New: for dimmed/inactive items
+	'loading',      // New: for loading states
+	'pressed'       // New: for pressed/clicked state
 );
 ```
 
@@ -187,14 +187,14 @@ $light: (
 		primary: (
 			_: var(--clr-primary-500),
 			hover: var(--clr-primary-600),
-			pressed: var(--clr-primary-700),    // ← Custom leaf key
-			loading: var(--clr-primary-400)     // ← Custom leaf key
+			pressed: var(--clr-primary-700),    // Custom leaf key
+			loading: var(--clr-primary-400)     // Custom leaf key
 		)
 	)
 );
 ```
 
----
+<br>
 
 ## How Validation Works
 
@@ -214,7 +214,7 @@ $light: (
 
 **Error:** `⚠️ Theme map is missing required key 'footer'!`
 
----
+<br>
 
 ### Leaf Keys Check
 
@@ -225,7 +225,7 @@ $light: (
 	header: (
 		bg: (
 			_: var(--clr-neutral-100),
-			hovered: var(--clr-neutral-200)  // ← TYPO: should be 'hover'
+			hovered: var(--clr-neutral-200)  // TYPO: should be 'hover'
 		)
 	)
 );
@@ -235,7 +235,7 @@ $light: (
 
 This catches typos in leaf keys like `hovered` instead of `hover`.
 
----
+<br>
 
 ### What's NOT Validated
 
@@ -276,7 +276,7 @@ text: (
 **Value types:**  
 The validator doesn't check if values are valid CSS (e.g., `var(--clr-invalid)`).
 
----
+<br>
 
 ## Best Practices
 
@@ -303,7 +303,7 @@ The validator doesn't check if values are valid CSS (e.g., `var(--clr-invalid)`)
 - Start minimal, expand as needed
 - Remove unused keys from schema for clarity
 
----
+<br>
 
 ## Example: Complete Custom Schema
 ```scss

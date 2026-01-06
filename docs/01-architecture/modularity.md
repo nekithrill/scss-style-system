@@ -23,7 +23,7 @@ All imports are centralized in `main.scss`, making it easy to remove any module 
 ```scss
 // main.scss
 
-/// 1. Tokens import
+// 1. Tokens import
 @use './tokens/colors' as *;
 @use './tokens/spacing' as *;
 // @use './tokens/shadows' as *;       ← Not using shadows? Comment out!

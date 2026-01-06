@@ -1,11 +1,10 @@
 ## 🎞️ Animation tokens
 
 Define timing parameters for consistent motion design across the project. Includes `duration`, `easing` and `delay` tokens for orchestrating smooth, predictable animations.
-
 ```scss
 // tokens/_animations.scss
 
-/// Duration: animation/transition speeds
+// Duration: animation/transition speeds
 $duration: (
 	instant: 100ms,  // Quick feedback (hovers, focus states)
 	fast: 200ms,     // Standard interactions (buttons, toggles)
@@ -14,7 +13,7 @@ $duration: (
 	slower: 700ms    // Elaborate effects (carousels, reveals)
 );
 
-/// Easing: timing functions for natural motion
+// Easing: timing functions for natural motion
 $easing: (
 	linear: linear,                                // Constant speed
 	ease-in: cubic-bezier(0.4, 0, 1, 1),           // Starts slow, ends fast
@@ -23,7 +22,7 @@ $easing: (
 	bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55) // Playful bounce effect
 );
 
-/// Delay: timing offsets for staggered animations
+// Delay: timing offsets for staggered animations
 $delay: (
 	none: 0ms,     // No delay
 	short: 50ms,   // Minimal stagger
@@ -32,12 +31,11 @@ $delay: (
 );
 ```
 
----
+<br>
 
 ### Usage examples
-
 ```scss
-/// Simple transition
+// Simple transition
 .button {
 	transition:
 		background-color var(--duration-fast) var(--anim-ease-out),
@@ -48,7 +46,7 @@ $delay: (
 	}
 }
 
-/// Keyframe animation
+// Keyframe animation
 @keyframes slideIn {
 	from {
 		transform: translateX(-100%);
@@ -64,7 +62,7 @@ $delay: (
 	animation: slideIn var(--duration-normal) var(--anim-ease-out);
 }
 
-/// Staggered list items
+// Staggered list items
 .list-item {
 	animation: fadeIn var(--duration-fast) var(--anim-ease-out);
 
@@ -80,38 +78,37 @@ $delay: (
 }
 ```
 
----
+<br>
 
 ### Customization examples
-
 ```scss
-/// Adjust animation speeds (faster for snappier feel)
+// Adjust animation speeds (faster for snappier feel)
 $duration: (
 	instant: 100ms,
-	fast: 150ms,    // ← Faster
-	normal: 250ms,  // ← Faster
-	slow: 400ms,    // ← Faster
-	slower: 600ms   // ← Faster
+	fast: 150ms,    // Faster
+	normal: 250ms,  // Faster
+	slow: 400ms,    // Faster
+	slower: 600ms   // Faster
 );
 
-/// Add custom easing
+// Add custom easing
 $easing: (
 	// ... existing values
-	spring: cubic-bezier(0.175, 0.885, 0.32, 1.275), // ← New spring effect
-	elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6)     // ← New elastic effect
+	spring: cubic-bezier(0.175, 0.885, 0.32, 1.275), // New spring effect
+	elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6)     // New elastic effect
 );
 
-/// Extend delay options
+// Extend delay options
 $delay: (
 	none: 0ms,
 	short: 50ms,
 	medium: 100ms,
 	long: 200ms,
-	extra-long: 400ms // ← New for dramatic reveals
+	extra-long: 400ms // New for dramatic reveals
 );
 ```
 
----
+<br>
 
 ### Best practices
 

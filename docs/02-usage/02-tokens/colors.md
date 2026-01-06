@@ -1,27 +1,26 @@
 ## 🎨 Color tokens
 
 Define color palettes using any CSS color format (HEX, RGB, HSL, OKLCH). OKLCH is recommended for perceptual uniformity and predictable lightness progression, but you can use whatever format works best for your project.
-
 ```scss
 // tokens/_colors.scss
 
-/// PRIMARY - Brand colors, accents, interactive elements
-/// Range: 100 (lightest) → 900 (darkest)
-/// Format: Use any CSS color format (HEX, RGB, HSL, OKLCH)
+// PRIMARY - Brand colors, accents, interactive elements
+// Range: 100 (lightest) → 900 (darkest)
+// Format: Use any CSS color format (HEX, RGB, HSL, OKLCH)
 $primary: (
 	100: oklch(95% 0.06 270deg),
 	200: oklch(85% 0.1 270deg),
 	300: oklch(75% 0.14 270deg),
 	400: oklch(65% 0.17 270deg),
-	500: oklch(60% 0.2 270deg),   	// Base brand color
+	500: oklch(60% 0.2 270deg),   // Base brand color
 	600: oklch(48% 0.2 270deg),
 	700: oklch(36% 0.17 270deg),
 	800: oklch(24% 0.14 270deg),
 	900: oklch(12% 0.11 270deg)
 );
 
-/// SECONDARY - Backgrounds, surfaces, cards
-/// Light-biased for subtle backgrounds
+// SECONDARY - Backgrounds, surfaces, cards
+// Light-biased for subtle backgrounds
 $secondary: (
 	100: oklch(99% 0 248deg),
 	200: oklch(97% 0 248deg),
@@ -34,8 +33,8 @@ $secondary: (
 	900: oklch(52% 0.04 249deg)
 );
 
-/// NEUTRAL - Text, borders, icons, dividers
-/// Low chroma for true neutral grays
+// NEUTRAL - Text, borders, icons, dividers
+// Low chroma for true neutral grays
 $neutral: (
 	100: oklch(96% 0.01 220deg),
 	200: oklch(85% 0.02 220deg),
@@ -48,8 +47,8 @@ $neutral: (
 	900: oklch(20% 0.01 220deg)
 );
 
-/// SUCCESS - Positive feedback, confirmations
-/// Keys: bg (alert background), border (outline), solid (button), text (label)
+// SUCCESS - Positive feedback, confirmations
+// Keys: bg (alert background), border (outline), solid (button), text (label)
 $success: (
 	bg: oklch(95% 0.05 160deg),
 	border: oklch(70% 0.12 160deg),
@@ -57,7 +56,7 @@ $success: (
 	text: oklch(30% 0.15 160deg)
 );
 
-/// WARNING - Alerts, cautionary messages
+// WARNING - Alerts, cautionary messages
 $warning: (
 	bg: oklch(95% 0.04 80deg),
 	border: oklch(75% 0.12 75deg),
@@ -65,7 +64,7 @@ $warning: (
 	text: oklch(30% 0.12 70deg)
 );
 
-/// DANGER - Errors, destructive actions
+// DANGER - Errors, destructive actions
 $danger: (
 	bg: oklch(95% 0.04 20deg),
 	border: oklch(70% 0.12 25deg),
@@ -73,7 +72,7 @@ $danger: (
 	text: oklch(30% 0.15 25deg)
 );
 
-/// INFO - Information, tips, neutral notifications
+// INFO - Information, tips, neutral notifications
 $info: (
 	bg: oklch(95% 0.04 260deg),
 	border: oklch(70% 0.11 260deg),
@@ -81,7 +80,7 @@ $info: (
 	text: oklch(30% 0.15 260deg)
 );
 
-/// All colors map for CSS variable generation
+// All colors map for CSS variable generation
 $all-colors: (
 	'primary': $primary,
 	'secondary': $secondary,
@@ -93,10 +92,9 @@ $all-colors: (
 );
 ```
 
----
+<br>
 
 ### Generated CSS variables
-
 ```css
 /* Nested palettes (100-900) */
 --clr-primary-100: oklch(95% 0.06 270deg);
@@ -109,12 +107,11 @@ $all-colors: (
 --clr-danger-text: oklch(30% 0.15 25deg);
 ```
 
----
+<br>
 
 ### Usage examples
-
 ```scss
-/// Direct usage with generated variables
+// Direct usage with generated variables
 .button {
 	background-color: var(--clr-primary-500);
 	color: var(--clr-neutral-100);
@@ -125,14 +122,14 @@ $all-colors: (
 	}
 }
 
-/// Alert components
+// Alert components
 .alert-success {
 	background-color: var(--clr-success-bg);
 	border: 1px solid var(--clr-success-border);
 	color: var(--clr-success-text);
 }
 
-/// Text hierarchy
+// Text hierarchy
 .heading {
 	color: var(--clr-neutral-900); // Dark text
 }
@@ -145,8 +142,8 @@ $all-colors: (
 	color: var(--clr-neutral-500); // Light text
 }
 
-/// Usage in theme modules
-/// Reference color tokens to create semantic theme variables
+// Usage in theme modules
+// Reference color tokens to create semantic theme variables
 $dark: (
 	header: (
 		bg: (
@@ -175,35 +172,34 @@ $dark: (
 );
 ```
 
----
+<br>
 
 ### Color format options
 
 You can use any CSS color format that suits your workflow:
-
 ```scss
-/// HEX format
+// HEX format
 $primary: (
 	100: #f5f3ff,
 	500: #8b5cf6,
 	900: #3b0764
 );
 
-/// RGB format
+// RGB format
 $primary: (
 	100: rgb(245, 243, 255),
 	500: rgb(139, 92, 246),
 	900: rgb(59, 7, 100)
 );
 
-/// HSL format
+// HSL format
 $primary: (
 	100: hsl(270, 100%, 98%),
 	500: hsl(270, 91%, 65%),
 	900: hsl(270, 87%, 21%)
 );
 
-/// OKLCH format (recommended)
+// OKLCH format (recommended)
 $primary: (
 	100: oklch(95% 0.06 270deg),
 	500: oklch(60% 0.2 270deg),
@@ -211,7 +207,7 @@ $primary: (
 );
 ```
 
----
+<br>
 
 ### Why OKLCH? (optional, but recommended)
 
@@ -220,8 +216,8 @@ OKLCH (Oklab Lightness Chroma Hue) provides perceptually uniform color manipulat
 **Format:** `oklch(L% C H)`
 
 - **L (Lightness):** 0% (black) → 100% (white)
-- **C (Chroma):** 0 (gray) → 0.4+ (vivid) — saturation/intensity
-- **H (Hue):** 0°-360° — color wheel position
+- **C (Chroma):** 0 (gray) → 0.4+ (vivid) - saturation/intensity
+- **H (Hue):** 0°-360° - color wheel position
 
 **Benefits over HSL/RGB:**
 
@@ -242,32 +238,31 @@ OKLCH (Oklab Lightness Chroma Hue) provides perceptually uniform color manipulat
 - Team is unfamiliar with OKLCH
 - Simple projects with few color variations
 
----
+<br>
 
 ### Customization examples
-
 ```scss
-/// Using HEX colors (from existing brand)
+// Using HEX colors (from existing brand)
 $primary: (
 	100: #e0e7ff,
 	200: #c7d2fe,
 	300: #a5b4fc,
 	400: #818cf8,
-	500: #6366f1,   	// Brand color
+	500: #6366f1,   // Brand color
 	600: #4f46e5,
 	700: #4338ca,
 	800: #3730a3,
 	900: #312e81
 );
 
-/// Mix formats (if needed)
+// Mix formats (if needed)
 $primary: (
 	100: #e0e7ff,                 // From brand guidelines
 	500: oklch(60% 0.2 270deg),   // Generated for consistency
 	900: rgb(49, 46, 129)         // From existing codebase
 );
 
-/// Add accent color
+// Add accent color
 $accent: (
 	100: #ffedd5,
 	500: #f97316,
@@ -276,12 +271,12 @@ $accent: (
 
 $all-colors: (
 	// ... existing colors
-	'accent': $accent // ← Add to generation
+	'accent': $accent // Add to generation
 );
 
-/// Custom semantic color
+// Custom semantic color
 $premium: (
-	bg: white;   // White background
+	bg: white,  // White background
 	solid: gold, // Gold button
 	text: brown  // Brown text
 );
@@ -292,7 +287,7 @@ $all-colors: (
 );
 ```
 
----
+<br>
 
 ### Color palette structure
 
@@ -308,27 +303,26 @@ $all-colors: (
 - Each key serves specific UI purpose
 - Maintains consistent visual hierarchy
 
----
+<br>
 
 ### Removing unused colors
-
 ```scss
-/// Minimal setup (only brand + neutrals)
+// Minimal setup (only brand + neutrals)
 $all-colors: (
 	'primary': $primary,
 	'neutral': $neutral // Removed: secondary, success, warning, danger, info
 );
 
-/// Dark theme only
+// Dark theme only
 $all-colors: (
 	'primary': $primary,
 	'neutral': $neutral,
 	'danger': $danger // Keep for errors
-	 // Removed: secondary, success, warning, info
+	// Removed: secondary, success, warning, info
 );
 ```
 
----
+<br>
 
 ### Best practices
 
