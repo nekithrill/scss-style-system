@@ -11,7 +11,7 @@ Connect custom fonts using `@font-face` declarations.
 ```scss
 // base/_fonts.scss
 
-/// Approach 1: Individual weights
+// Approach 1: Individual weights
 @font-face {
 	font-family: YourFont;
 	font-weight: 400;
@@ -32,7 +32,7 @@ Connect custom fonts using `@font-face` declarations.
 		url('/fonts/YourFont-Bold.woff') format('woff');
 }
 
-/// Approach 2: Variable font (weight range 300-700)
+// Approach 2: Variable font (weight range 300-700)
 @font-face {
 	font-family: YourFont;
 	font-weight: 300 700;
@@ -43,6 +43,8 @@ Connect custom fonts using `@font-face` declarations.
 		url('/fonts/YourFont-Variable.woff') format('woff');
 }
 ```
+
+<br>
 
 **Best practices:**
 

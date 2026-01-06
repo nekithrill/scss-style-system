@@ -11,6 +11,7 @@ This system follows the Prettier configuration below to maintain consistent form
 > 💡 **Note:** Configuration files (`.prettierrc.cjs`) are available on the `sandbox` branch. These settings are provided for reference if you want to apply the same formatting rules.
 
 > 💡 **Dependencies required:** To use Prettier in your project, install `prettier`
+
 ```js
 module.exports = {
 	trailingComma: 'none',
@@ -36,6 +37,7 @@ This system follows the Stylelint configuration below to enforce consistent SCSS
 > - `stylelint`
 > - `stylelint-scss`
 > - `stylelint-config-standard-scss`
+
 ```js
 module.exports = {
 	extends: ['stylelint-config-standard-scss'],

@@ -2,26 +2,24 @@
 
 Automatically generates CSS custom properties (variables) from design tokens using a centralized configuration. The system handles both nested maps (like color palettes) and flat maps (like spacing values), with optional unit transformation from pixels to rem.
 
-> 💡 You can use `transform: rem` for variable group to convert value to rem.
+> 💡 **Transform option:** Use `transform: 'rem'` for any variable group to automatically convert pixel values to rem units.
 
-> 💡 Every variable group has his own prefix which you can edit for your own preference:
->
-> - colors `--clr`;
-> - font-family `--ff`;
-> - font-weight `--fw`;
-> - font-size `--fs`;
-> - spacing `--sp`;
-> - radius `--rd`;
-> - shadows `--shd`;
-> - duration `--duration`;
-> - easing `--anim`;
-> - delay `--delay`;
+> 💡 **Default prefixes:** Every variable group has its own prefix which you can customize:
+> - colors `--clr`
+> - font-family `--ff`
+> - font-weight `--fw`
+> - font-size `--fs`
+> - spacing `--sp`
+> - radius `--rd`
+> - shadows `--shadow`
+> - duration `--dur`
+> - easing `--ease`
+> - delay `--delay`
 > - z-index `--z`
 
----
+<br>
 
 ### Token configuration
-
 ```scss
 // tokens/_index.scss
 
@@ -64,16 +62,15 @@ $base-tokens: (
 	),
 	shadows: (
 		map: $shadows,
-		prefix: 'shd',
-		transform: 'rem'
+		prefix: 'shadow',
 	),
 	duration: (
 		map: $duration,
-		prefix: 'duration'
+		prefix: 'dur'
 	),
 	easing: (
 		map: $easing,
-		prefix: 'anim'
+		prefix: 'ease'
 	),
 	delay: (
 		map: $delay,
@@ -90,26 +87,22 @@ $base-tokens: (
 }
 ```
 
----
+<br>
 
 ### How it works
 
 The `generate-tokens` mixin processes token groups and outputs CSS variables:
 
 **Token group structure:**
-
 ```scss
 group-name: (
-	map: $token-values,
-	// Required: source data
-	prefix: 'var-prefix',
-	// Required: CSS variable prefix
-	transform: 'rem' // Optional: convert px to rem
+	map: $token-values,    // Required: source data
+	prefix: 'var-prefix',  // Required: CSS variable prefix
+	transform: 'rem'       // Optional: convert px to rem
 );
 ```
 
 **Nested maps** (e.g., colors with shades):
-
 ```scss
 $colors: (
 	'primary': (
@@ -130,7 +123,6 @@ $colors: (
 ```
 
 **Flat maps** (e.g., spacing, font weights):
-
 ```scss
 $spacing: (
 	1: 4px,
@@ -144,10 +136,9 @@ $spacing: (
 // --sp-4: 1rem;
 ```
 
----
+<br>
 
 ### Adding new token groups
-
 ```scss
 // 1. Create token file
 // tokens/_borders.scss
@@ -163,10 +154,10 @@ $borders: (
 $base-tokens: (
 	// ... existing tokens
 	borders: (
-			map: $borders,
-			prefix: 'border',
-			transform: 'rem' // Optional
-		)
+		map: $borders,
+		prefix: 'border',
+		transform: 'rem'  // Optional
+	)
 );
 
 // 3. Generated output:
@@ -175,10 +166,9 @@ $base-tokens: (
 // --border-thick: 0.25rem;
 ```
 
----
+<br>
 
 ### Mixin reference
-
 ```scss
 /// Generate CSS variables from design token maps
 /// @param {Map} $tokens - Token configuration with groups

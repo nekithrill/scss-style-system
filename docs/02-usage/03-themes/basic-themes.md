@@ -4,7 +4,7 @@ The system includes `light` and `dark` themes by default.
 
 > 💡 To customize theme elements you need to edit [theme schema](theme-schema.md)
 
----
+<br>
 
 ### 🌞 Light Theme (\_light.scss)
 
@@ -61,7 +61,7 @@ $light: (
 );
 ```
 
----
+<br>
 
 ### 🌑 Dark Theme (\_dark.scss)
 

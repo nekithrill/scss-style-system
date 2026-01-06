@@ -2,17 +2,16 @@
 
 Follow these steps to add new design tokens to your project.
 
----
+<br>
 
 ### Create token file
 
 Define your token values in a new SCSS file inside the `tokens/` directory:
-
 ```scss
 // tokens/_borders.scss
 
-/// Border width tokens
-/// Consistent border thicknesses across the project
+// Border width tokens
+// Consistent border thicknesses across the project
 $borders: (
 	thin: 1px,    // Subtle dividers
 	normal: 2px,  // Standard borders
@@ -21,24 +20,23 @@ $borders: (
 );
 ```
 
----
+<br>
 
 ### Import and configure
 
 Add your new token to the generation configuration (see [Variables generation](../01-basics/variables-generation.md)):
-
 ```scss
 // tokens/_index.scss
 
-@use '../tokens/borders' as *; // ← Import new token file
+@use '../tokens/borders' as *; // Import new token file
 
 $base-tokens: (
 	// ... existing tokens (colors, spacing, typography, etc.)
 	borders: (
-			map: $borders,
-			prefix: 'border',
-			transform: 'rem' // Optional: convert px to rem
-		)
+		map: $borders,
+		prefix: 'border',
+		transform: 'rem'  // Optional: convert px to rem
+	)
 );
 
 :root {
@@ -46,12 +44,11 @@ $base-tokens: (
 }
 ```
 
----
+<br>
 
 ### Generated output
 
 CSS variables are automatically created with your specified prefix:
-
 ```css
 :root {
 	/* Generated from $borders */
@@ -62,12 +59,11 @@ CSS variables are automatically created with your specified prefix:
 }
 ```
 
----
+<br>
 
 ### Usage in component
 
 Use the generated CSS variables throughout your project:
-
 ```scss
 .card {
 	border: var(--border-normal) solid var(--clr-neutral-300);
@@ -86,12 +82,11 @@ Use the generated CSS variables throughout your project:
 }
 ```
 
----
+<br>
 
 ### Additional examples
 
 **Nested token structure (like colors):**
-
 ```scss
 // tokens/_elevations.scss
 
@@ -126,7 +121,6 @@ $base-tokens: (
 ```
 
 **Flat token structure without transformation:**
-
 ```scss
 // tokens/_icons.scss
 
@@ -141,7 +135,7 @@ $icon-sizes: (
 $base-tokens: (
 	icon-sizes: (
 		map: $icon-sizes,
-		prefix: 'icon' // No transform - keep px units
+		prefix: 'icon'  // No transform - keep px units
 	)
 );
 
@@ -152,7 +146,7 @@ $base-tokens: (
 // --icon-xl: 48px;
 ```
 
----
+<br>
 
 ### Best practices
 

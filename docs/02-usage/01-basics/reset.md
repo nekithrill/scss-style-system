@@ -7,42 +7,31 @@ Modern CSS Reset based on modern best practices and browser defaults.
 > [Andy Bell's Modern Reset](https://gist.github.com/Asjas/4b0736108d56197fce0ec9068145b421),
 > [Elad Shechter](https://github.com/elad2412/the-new-css-reset)
 
----
+<br>
 
 ### Reset configuration
-
-```css
-/// 1. Box sizing reset
-/// Use border-box everywhere for predictable sizing
-/// Without this, padding/border increases element size
+```scss
+// Box sizing - use border-box for predictable sizing
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
 }
 
-/// 2. Remove default margins and padding
-/// Browsers add inconsistent margins to elements (p, h1-h6, ul, ol, etc.)
-/// Reset everything to 0 for consistent starting point
+// Remove default margins/padding for consistent starting point
 * {
 	margin: 0;
 	padding: 0;
 }
 
-/// 3. Body setup
-/// Natural line height for better readability (default is often 1.2)
-/// Enable font smoothing on macOS/iOS for better text rendering
+// Body - better readability and text rendering
 body {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/// 4. Media elements
-/// Images and media should be responsive by default
-/// display: block removes bottom space caused by inline display
-/// max-width: 100% prevents overflow
-/// height: auto maintains aspect ratio
+// Media - responsive by default, maintain aspect ratio
 img,
 picture,
 video,
@@ -53,9 +42,7 @@ svg {
 	height: auto;
 }
 
-/// 5. Form elements
-/// Inherit typography from parent instead of browser defaults
-/// Makes forms consistent with design system
+// Form elements - inherit typography for consistency
 input,
 button,
 textarea,
@@ -64,17 +51,13 @@ select {
 	color: inherit;
 }
 
-/// 6. Remove list styles
-/// Lists in navigation or UI components shouldn't have bullets/numbers
-/// 💡 Add them back in content areas where needed
+// Lists - remove default styles (add back in content areas if needed)
 ol,
 ul {
 	list-style: none;
 }
 
-/// 7. Heading styles reset
-/// Headings shouldn't have default font-size/weight
-/// Use design tokens instead for consistent typography
+// Headings - reset to use design tokens instead
 h1,
 h2,
 h3,
@@ -85,17 +68,13 @@ h6 {
 	font-weight: inherit;
 }
 
-/// 8. Links
-/// Remove default underline and use inherited color
-/// 💡 Add styles back in components/utilities
+// Links - remove underline, inherit color
 a {
 	text-decoration: none;
 	color: inherit;
 }
 
-/// 9. Buttons
-/// Remove all default button styles for clean slate
-/// Inherit font and color from parent
+// Buttons - clean slate for custom styling
 button {
 	background: none;
 	border: none;
@@ -105,17 +84,13 @@ button {
 	color: inherit;
 }
 
-/// 10. Tables
-/// Consistent table rendering across browsers
-/// border-collapse: collapse merges adjacent borders
+// Tables - consistent rendering across browsers
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-/// 11. Quotes
-/// Remove default quotation marks from blockquote and q elements
-/// 💡 Add custom quotes in components if needed
+// Quotes - remove default quotation marks
 blockquote,
 q {
 	quotes: none;
@@ -129,9 +104,7 @@ q::after {
 	content: none;
 }
 
-/// 12. Text overflow
-/// Prevent long words from breaking layout
-/// overflow-wrap breaks words if needed to prevent overflow
+// Text overflow - prevent long words from breaking layout
 p,
 h1,
 h2,
@@ -142,34 +115,29 @@ h6 {
 	overflow-wrap: break-word;
 }
 
-/// 13. Root stacking context
-/// Create new stacking context for app root
-/// Prevents z-index issues with modals, tooltips, dropdowns
-/// Common root IDs for React/Next.js apps
+// Root stacking context - prevents z-index issues
 #root,
 #__next {
 	isolation: isolate;
 }
 ```
 
----
+<br>
 
 ### Customization example
-
 ```scss
-/// Add custom resets
+// Remove iOS default styling
 button,
 input,
 textarea,
 select {
-	/// Remove iOS styling
 	-webkit-appearance: none;
 	appearance: none;
 }
 
-/// Remove focus outline (ensure you add custom focus styles!)
+// Custom focus styles (replace default outline)
 *:focus {
-	outline: none; // Only if you style :focus-visible
+	outline: none; // Only if styling :focus-visible
 }
 
 *:focus-visible {

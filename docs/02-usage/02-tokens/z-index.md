@@ -1,13 +1,12 @@
 ## ⬆️⬇️ Z-index tokens
 
 Define stacking order for layered UI elements. Values are aligned with the **theme schema** to ensure consistent layering across components like header, footer, and modals.
-
 ```scss
 // tokens/_z-index.scss
 
-/// Z-index layering system
-/// Values correspond to theme components for semantic consistency
-/// Lower values = behind, higher values = in front
+// Z-index layering system
+// Values correspond to theme components for semantic consistency
+// Lower values = behind, higher values = in front
 $z-index: (
 	base: 0,           // Default layer
 	content: 100,      // Content sections
@@ -22,29 +21,29 @@ $z-index: (
 );
 ```
 
----
+<br>
 
 ### Generated CSS variables
-
 ```css
 :root {
 	--z-base: 0;
 	--z-content: 100;
 	--z-header: 200;
+	--z-sidebar: 200;
 	--z-footer: 200;
 	--z-dropdown: 300;
+	--z-sticky: 400;
 	--z-modal: 500;
 	--z-tooltip: 600;
 	--z-notification: 700;
 }
 ```
 
----
+<br>
 
 ### Usage examples
-
 ```scss
-/// Theme components (aligned with schema)
+// Theme components (aligned with schema)
 .header {
 	position: sticky;
 	top: 0;
@@ -58,7 +57,7 @@ $z-index: (
 	background: var(--theme-footer-bg);
 }
 
-/// Overlay components
+// Overlay components
 .dropdown {
 	position: absolute;
 	z-index: var(--z-dropdown); // 300
@@ -82,26 +81,17 @@ $z-index: (
 }
 ```
 
----
+<br>
 
 ### Relationship with theme schema
 
 Z-index tokens should align with your theme schema components:
-
 ```scss
 // Theme schema defines these components:
 $theme-required-keys: (
-	header: (
-		...
-	),
-	// z-index: 200
-	main: (
-			...
-		),
-	// z-index: 0 (base)
-	footer: (
-			...
-		) // z-index: 200
+	header: (...),  // z-index: 200
+	main: (...),    // z-index: 0 (base)
+	footer: (...)   // z-index: 200
 );
 
 // Z-index tokens provide matching values:
@@ -112,12 +102,12 @@ $z-index: (
 );
 ```
 
----
+<br>
 
 ### Customization examples
 
+**Adjust layering hierarchy:**
 ```scss
-/// Adjust layering hierarchy
 $z-index: (
 	base: 0,
 	content: 100,
@@ -125,21 +115,25 @@ $z-index: (
 	sidebar: 200,
 	footer: 200,
 	dropdown: 300,
-	sticky: 400,       // ← New
-	modal: 500,        // ← Moved up
-	tooltip: 600,      // ← Moved up
-	notification: 700  // ← New (highest)
+	sticky: 400,       // New
+	modal: 500,        // Moved up
+	tooltip: 600,      // Moved up
+	notification: 700  // New (highest)
 );
+```
 
-/// Add component-specific layers
+**Add component-specific layers:**
+```scss
 $z-index: (
 	// ... existing values
 	'drawer': 450,    // Side drawer (between sticky and modal)
 	'popover': 550,   // Popover (between modal and tooltip)
 	'loading': 800    // Loading overlay (above everything)
 );
+```
 
-/// Semantic grouping (alternative approach)
+**Semantic grouping (alternative approach):**
+```scss
 $z-index: (
 	// Base layers (0-99)
 	base: 0,
@@ -164,7 +158,7 @@ $z-index: (
 );
 ```
 
----
+<br>
 
 ### Best practices
 

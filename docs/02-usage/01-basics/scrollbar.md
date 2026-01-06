@@ -2,21 +2,20 @@
 
 Configure scrollbar appearance across all browsers. Firefox uses standard CSS properties (`scrollbar-width`, `scrollbar-color`), while Webkit browsers (Chrome, Safari, Edge) rely on pseudo-elements like `::-webkit-scrollbar`.
 
----
+<br>
 
 ### Basic scrollbar configuration
-
 ```scss
 // base/_scrollbar.scss
 
 html {
-	/// Firefox scrollbar (thin style)
+	// Firefox scrollbar (thin style)
 	@supports (scrollbar-width: thin) and (not selector(::-webkit-scrollbar)) {
 		scrollbar-width: thin;
 		scrollbar-color: var(--clr-scrollbar-thumb) var(--clr-scrollbar-track);
 	}
 
-	/// Webkit scrollbar (Chrome, Safari, Edge)
+	// Webkit scrollbar (Chrome, Safari, Edge)
 	&::-webkit-scrollbar {
 		width: 0.5rem;
 
@@ -35,25 +34,24 @@ html {
 }
 ```
 
----
+<br>
 
 ### Customization examples
-
 ```scss
-/// Different scrollbar width
+// Different scrollbar width
 html::-webkit-scrollbar {
-	width: 0.75rem;  s// Thicker scrollbar
+	width: 0.75rem;  // Thicker scrollbar
 	height: 0.75rem; // For horizontal scroll
 }
 
-/// Rounded scrollbar thumb
+// Rounded scrollbar thumb
 html::-webkit-scrollbar-thumb {
 	border-radius: var(--rd-full);  // Fully rounded
 	border: 2px solid transparent;  // Gap around thumb
 	background-clip: padding-box;   // Clip to padding
 }
 
-/// Hide scrollbar but keep functionality
+// Hide scrollbar but keep functionality
 .no-scrollbar {
 	scrollbar-width: none; // Firefox
 
@@ -62,7 +60,7 @@ html::-webkit-scrollbar-thumb {
 	}
 }
 
-/// Colored scrollbar for specific element
+// Colored scrollbar for specific element
 .custom-scroll {
 	scrollbar-color: #ff6b6b #f8f9fa; // Firefox
 
@@ -72,7 +70,7 @@ html::-webkit-scrollbar-thumb {
 }
 ```
 
----
+<br>
 
 ### Available options
 

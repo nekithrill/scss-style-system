@@ -2,10 +2,9 @@
 
 > 💡 To customize theme elements you need to edit [theme schema](theme-schema.md)
 
----
+<br>
 
 ### Create a new theme file
-
 ```scss
 // themes/_high-contrast.scss
 
@@ -55,30 +54,29 @@ $high-contrast: (
 );
 ```
 
----
+<br>
 
 ### Add to application
-
 ```scss
 // themes/_apply.scss
 
 @use 'light' as *;
 @use 'dark' as *;
-@use 'high-contrast' as *; // ← Import new theme
+@use 'high-contrast' as *; // Import new theme
 @use 'schema' as *;
 @use '../core/mixins/generate-theme' as *;
 @use '../core/mixins/validate-theme' as *;
 
-/// Validate all themes
+// Validate all themes
 @include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
 @include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
 @include validate-theme(
 	$high-contrast,
 	$theme-required-keys,
 	$theme-leaf-keys
-); // ← Add new theme validation
+); // Validate new theme
 
-/// Generate theme CSS
+// Generate theme CSS
 [data-theme='light'] {
 	@include generate-theme($light);
 }
@@ -88,6 +86,6 @@ $high-contrast: (
 }
 
 [data-theme='high-contrast'] {
-	@include generate-theme($high-contrast); // ← Add new theme generation
+	@include generate-theme($high-contrast); // Generate new theme
 }
 ```

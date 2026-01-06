@@ -2,7 +2,7 @@
 
 This section configures basic styles for the entire application: fonts, colors, scroll behavior, and other fundamental settings that are applied to all elements by default.
 
----
+<br>
 
 ### Basic configuration
 
@@ -10,7 +10,7 @@ This section configures basic styles for the entire application: fonts, colors, 
 // base/_globals.scss
 
 :root {
-	/// System font stack (fallback)
+	// System font stack (fallback)
 	font-family:
 		system-ui,
 		-apple-system,
@@ -18,35 +18,35 @@ This section configures basic styles for the entire application: fonts, colors, 
 		Roboto,
 		sans-serif;
 
-	/// Font features (ligatures and kerning)
+	// Font features (ligatures and kerning)
 	font-feature-settings:
 		'liga' 1,
 		'kern' 1;
 
-	/// Body defaults (overridden by themes if present)
+	// Body defaults (overridden by themes if present)
 	--clr-text: var(--clr-neutral-900);
 	--clr-text-accent: var(--clr-primary-500);
 
-	/// Accent color for native form controls (checkboxes, radio, progress)
+	// Accent color for native form controls (checkboxes, radio, progress)
 	accent-color: var(--body-accent);
 }
 
 html {
-	/// Smooth scrolling for anchor links
+	// Smooth scrolling for anchor links
 	scroll-behavior: smooth;
 
-	/// Base font size for rem calculations (default: 16px)
-	/// All rem values are calculated relative to this
+	// Base font size for rem calculations (default: 16px)
+	// All rem values are calculated relative to this
 	font-size: var(--fs-default);
 }
 
 body {
-	/// Typography from tokens
+	// Typography from tokens
 	font-family: var(--ff-primary);
 	font-weight: var(--fw-regular);
 
-	/// Color and background
-	/// Alias for general text color that can be overridden by theme
+	// Color and background
+	// Alias for general text color that can be overridden by theme
 	color: var(--clr-text);
 }
 
@@ -102,7 +102,7 @@ p {
 
 > 💡 **Note:** The `--clr-body-*` aliases provide defaults that work without themes. When themes are enabled, they automatically override these values for light/dark mode support.
 
----
+<br>
 
 ### Customization example
 
@@ -160,7 +160,7 @@ html {
 }
 ```
 
----
+<br>
 
 ### How themes override globals
 

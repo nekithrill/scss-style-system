@@ -47,16 +47,15 @@ $base-tokens: (
 	),
 	shadows: (
 		map: $shadows,
-		prefix: 'shd',
-		transform: 'rem'
+		prefix: 'shadow',
 	),
 	duration: (
 		map: $duration,
-		prefix: 'duration'
+		prefix: 'dur'
 	),
 	easing: (
 		map: $easing,
-		prefix: 'anim'
+		prefix: 'ease'
 	),
 	delay: (
 		map: $delay,
