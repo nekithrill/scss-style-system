@@ -1,32 +1,32 @@
 ## 📏 Spacing tokens
 
-Define consistent spacing values based on an 8px grid system. All spacing is calculated from `$base-unit` for easy scaling across the entire project.
-
+Define consistent spacing values based on an 8px grid system. All spacing is calculated from `$base-spacing` for easy scaling across the entire project.
 ```scss
 // tokens/_spacing.scss
 
-/// Base spacing unit (8px system)
-$base-unit: 8px;
+// Base spacing unit (8px system)
+// Change this to scale the entire spacing system
+$base-spacing: 8px;
 
-/// Spacing scale calculated from base unit
-/// All values are multiples of 8px for grid alignment
+// Spacing scale calculated from base spacing
 $spacing: (
-	0: 0,                // No spacing
-	1: $base-unit * 1,   // 8px  - Tight spacing
-	2: $base-unit * 2,   // 16px - Small spacing
-	3: $base-unit * 3,   // 24px - Medium spacing
-	4: $base-unit * 4,   // 32px - Large spacing
-	5: $base-unit * 5,   // 40px - Extra large spacing
-	6: $base-unit * 6,   // 48px - Section spacing
-	7: $base-unit * 7,   // 56px - Large section spacing
-	8: $base-unit * 8    // 64px - Hero spacing
+	0: 0,
+	1: $base-spacing * 1,  // 8px
+	2: $base-spacing * 2,  // 16px
+	3: $base-spacing * 3,  // 24px
+	4: $base-spacing * 4,  // 32px
+	5: $base-spacing * 5,  // 40px
+	6: $base-spacing * 6,  // 48px
+	7: $base-spacing * 7,  // 56px
+	8: $base-spacing * 8   // 64px
 );
 ```
 
----
+> 💡 **Note:** Spacing values are automatically converted to rem in `base/_variables.scss`
+
+<br>
 
 ### Generated CSS variables
-
 ```css
 :root {
 	--sp-0: 0;       /* 0 */
@@ -41,12 +41,11 @@ $spacing: (
 }
 ```
 
----
+<br>
 
 ### Usage examples
-
 ```scss
-/// Component spacing
+// Component spacing
 .button {
 	padding: var(--sp-1) var(--sp-2); // 8px 16px - compact button
 }
@@ -56,7 +55,7 @@ $spacing: (
 	margin-bottom: var(--sp-4); // 32px - space between cards
 }
 
-/// Layout spacing
+// Layout spacing
 .container {
 	padding-inline: var(--sp-2);  // 16px - mobile padding
 
@@ -73,7 +72,7 @@ $spacing: (
 	}
 }
 
-/// Flexbox/Grid gaps
+// Flexbox/Grid gaps
 .flex-container {
 	display: flex;
 	gap: var(--sp-2);  // 16px - space between items
@@ -85,7 +84,7 @@ $spacing: (
 	gap: var(--sp-3);  // 24px - grid gap
 }
 
-/// Typography spacing
+// Typography spacing
 .heading {
 	margin-bottom: var(--sp-2); // 16px - heading to paragraph
 }
@@ -94,7 +93,7 @@ $spacing: (
 	margin-bottom: var(--sp-3); // 24px - paragraph to paragraph
 }
 
-/// Form elements
+// Form elements
 .form-group {
 	margin-bottom: var(--sp-3); // 24px - space between fields
 }
@@ -104,12 +103,11 @@ $spacing: (
 }
 ```
 
----
+<br>
 
 ### Spacing scale guide
-
 ```scss
-/// Visual reference for spacing values
+// Visual reference for spacing values
 // --sp-0: 0     |
 // --sp-1: 8px   |■
 // --sp-2: 16px  |■■
@@ -121,77 +119,86 @@ $spacing: (
 // --sp-8: 64px  |■■■■■■■■
 ```
 
----
+<br>
 
 ### Customization examples
 
+**Switch to 4px base (more granular control):**
 ```scss
-/// Switch to 4px base unit (more granular control)
-$base-unit: 4px;
+$base-spacing: 4px;
 
 $spacing: (
 	0: 0,
-	1: $base-unit * 1,    // 4px
-	2: $base-unit * 2,    // 8px
-	3: $base-unit * 3,    // 12px
-	4: $base-unit * 4,    // 16px
-	6: $base-unit * 6,    // 24px
-	8: $base-unit * 8,    // 32px
-	12: $base-unit * 12,  // 48px
-	16: $base-unit * 16   // 64px
+	1: $base-spacing * 1,    // 4px
+	2: $base-spacing * 2,    // 8px
+	3: $base-spacing * 3,    // 12px
+	4: $base-spacing * 4,    // 16px
+	6: $base-spacing * 6,    // 24px
+	8: $base-spacing * 8,    // 32px
+	12: $base-spacing * 12,  // 48px
+	16: $base-spacing * 16   // 64px
 );
+```
 
-/// Add larger spacing values for hero sections
+**Add larger spacing values for hero sections:**
+```scss
 $spacing: (
 	0: 0,
-	1: $base-unit * 1,    // 8px
-	2: $base-unit * 2,    // 16px
-	3: $base-unit * 3,    // 24px
-	4: $base-unit * 4,    // 32px
-	5: $base-unit * 5,    // 40px
-	6: $base-unit * 6,    // 48px
-	8: $base-unit * 8,    // 64px
-	10: $base-unit * 10,  // ← New: 80px
-	12: $base-unit * 12,  // ← New: 96px
-	16: $base-unit * 16,  // ← New: 128px
-	20: $base-unit * 20   // ← New: 160px
+	1: $base-spacing * 1,    // 8px
+	2: $base-spacing * 2,    // 16px
+	3: $base-spacing * 3,    // 24px
+	4: $base-spacing * 4,    // 32px
+	5: $base-spacing * 5,    // 40px
+	6: $base-spacing * 6,    // 48px
+	7: $base-spacing * 7,    // 56px
+	8: $base-spacing * 8,    // 64px
+	10: $base-spacing * 10,  // New: 80px
+	12: $base-spacing * 12,  // New: 96px
+	16: $base-spacing * 16,  // New: 128px
+	20: $base-spacing * 20   // New: 160px
 );
+```
 
-/// Add fractional spacing for fine-tuning
+**Add fractional spacing for fine-tuning:**
+```scss
 @use 'sass:math';
 
 $spacing: (
 	0: 0,
-	'0.5': math.div($base-unit, 2),  // 4px - hairline spacing
-	1: $base-unit * 1,               // 8px
-	'1.5': $base-unit * 1.5,         // 12px
-	2: $base-unit * 2,               // 16px
-	'2.5': $base-unit * 2.5,         // 20px
-	3: $base-unit * 3,               // 24px
-	4: $base-unit * 4,               // 32px
-	5: $base-unit * 5,               // 40px
-	6: $base-unit * 6,               // 48px
-	8: $base-unit * 8                // 64px
+	'0.5': math.div($base-spacing, 2),  // 4px - hairline spacing
+	1: $base-spacing * 1,               // 8px
+	'1.5': $base-spacing * 1.5,         // 12px
+	2: $base-spacing * 2,               // 16px
+	'2.5': $base-spacing * 2.5,         // 20px
+	3: $base-spacing * 3,               // 24px
+	4: $base-spacing * 4,               // 32px
+	5: $base-spacing * 5,               // 40px
+	6: $base-spacing * 6,               // 48px
+	7: $base-spacing * 7,               // 56px
+	8: $base-spacing * 8                // 64px
 );
+```
 
-/// Add semantic aliases for clarity
+**Add semantic aliases for clarity:**
+```scss
 $spacing: (
 	// Numeric scale
 	0: 0,
-	1: $base-unit * 1,
-	2: $base-unit * 2,
-	3: $base-unit * 3,
-	4: $base-unit * 4,
-	5: $base-unit * 5,
-	6: $base-unit * 6,
-	8: $base-unit * 8,
+	1: $base-spacing * 1,
+	2: $base-spacing * 2,
+	3: $base-spacing * 3,
+	4: $base-spacing * 4,
+	5: $base-spacing * 5,
+	6: $base-spacing * 6,
+	7: $base-spacing * 7,
+	8: $base-spacing * 8,
 
 	// Semantic aliases
-	'xs': $base-unit * 1,  // 8px
-	'sm': $base-unit * 2,  // 16px
-	'md': $base-unit * 3,  // 24px
-	'lg': $base-unit * 4,  // 32px
-	'xl': $base-unit * 6   // 48px
+	'xs': $base-spacing * 1,  // 8px
+	'sm': $base-spacing * 2,  // 16px
+	'md': $base-spacing * 3,  // 24px
+	'lg': $base-spacing * 4,  // 32px
+	'xl': $base-spacing * 6   // 48px
 );
 
 // Usage with aliases
@@ -200,7 +207,7 @@ $spacing: (
 }
 ```
 
----
+<br>
 
 ### Best practices
 
@@ -215,9 +222,8 @@ $spacing: (
 - **7-8 (56-64px):** Hero spacing - large layouts
 
 **Common patterns:**
-
 ```scss
-/// Consistent component spacing
+// Consistent component spacing
 .component {
 	// Internal spacing (padding): smaller values
 	padding: var(--sp-2); // 16px
@@ -226,7 +232,7 @@ $spacing: (
 	margin-bottom: var(--sp-4); // 32px
 }
 
-/// Responsive spacing (scale up on larger screens)
+// Responsive spacing (scale up on larger screens)
 .section {
 	padding: var(--sp-3); // 24px mobile
 
@@ -239,7 +245,7 @@ $spacing: (
 	}
 }
 
-/// Nested spacing (smaller for nested elements)
+// Nested spacing (smaller for nested elements)
 .card {
 	padding: var(--sp-4); // 32px outer
 
@@ -250,9 +256,8 @@ $spacing: (
 ```
 
 **Grid alignment:**
-
 ```scss
-/// Everything aligns to 8px grid
+// Everything aligns to 8px grid
 .layout {
 	padding: var(--sp-3); // 24px ✅ divisible by 8
 	gap: var(--sp-2);     // 16px ✅ divisible by 8
