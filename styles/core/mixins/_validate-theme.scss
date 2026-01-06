@@ -2,23 +2,12 @@
 @use 'sass:map';
 @use 'sass:list';
 
-/// Validate theme map structure
-/// Recursively checks if theme contains all required keys from schema
-/// Warns about unexpected keys not in schema or leaf keys whitelist
-///
-/// @param {Map} $theme-map - Theme map to validate
-/// @param {Map} $required-keys - Required keys structure from schema
-/// @param {List} $allowed-leaf-keys - Whitelisted keys at deepest level (e.g., _, hover, active, error)
-/// @param {String|Null} $parent - Internal recursion path (do not pass manually)
-///
-/// @example scss
-///   @include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
-///
-///   // Error if missing required key:
-///   // ⚠️ Theme map is missing required key `main.bg`!
-///
-///   // Warning if unexpected key:
-///   // ⚠️ Theme map contains unexpected key `main.unknown` that is not in the schema!
+/// Validate theme structure against schema
+/// Checks required keys and warns about unexpected keys
+/// @param {Map} $theme-map - Theme to validate
+/// @param {Map} $required-keys - Required structure from schema
+/// @param {List} $allowed-leaf-keys - Whitelisted leaf keys
+/// @param {String|Null} $parent - Internal recursion path
 
 @mixin validate-theme(
 	$theme-map,
