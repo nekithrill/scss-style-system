@@ -5,8 +5,6 @@
 
 A modular design token system for generating CSS variables with optional theming support. Built to work seamlessly with component-scoped styling (SCSS modules, CSS-in-JS).
 
----
-
 ## ✨ Key Features
 
 - 🎯 **Token-first architecture** - centralized design values
@@ -16,177 +14,106 @@ A modular design token system for generating CSS variables with optional theming
 - 🎨 **OKLCH colors** - perceptually uniform color system
 - 🧩 **Fully modular** - remove unused features easily
 
----
 
-## 🔍 What This System Provides
+<br>
 
-| Layer             | Purpose                                        | Optional    |
-| ----------------- | ---------------------------------------------- | ----------- |
-| **Design Tokens** | Raw values (colors, spacing, typography, etc.) | ❌ Core     |
-| **CSS Variables** | Generated from tokens with auto px → rem       | ❌ Core     |
-| **Themes**        | Light/dark/custom modes with semantic mappings | ✅ Optional |
-| **Mixins**        | Breakpoints, utilities, helpers                | ✅ Optional |
-| **Base Styles**   | Reset, globals, scrollbar, selection           | ✅ Optional |
+## 🚀 Quick Start
 
----
-
-## 💡 Recommended Usage
-
-This system is designed as a **foundation layer** that works with component-scoped styling:
-
-```
-┌─────────────────────────────────────────┐
-│ SCSS Style System (this)                │
-│ • Design tokens                         │
-│ • CSS variables                         │
-│ • Optional themes                       │
-│ • Utility mixins                        │
-└─────────────────┬───────────────────────┘
-                  │
-                  ↓
-┌─────────────────────────────────────────┐
-│ Your Components                         │
-│ • SCSS Modules                          │
-│ • CSS-in-JS                             │
-│ • Component-scoped styles               │
-└─────────────────────────────────────────┘
+```bash
+npm install --save-dev sass
 ```
 
-**Example:**
+### Installation
 
+**1. Copy the `/styles` folder to your project**
+
+**2. Choose your integration method:**
+
+**Option A: Standalone (main stylesheet)**
+```bash
+sass styles/main.scss dist/styles.css
+```
+```html
+<link rel="stylesheet" href="/dist/styles.css" />
+```
+
+**Option B: Component-scoped (recommended)**
 ```scss
 // Component.module.scss
 @use '@/styles/core/mixins/breakpoint' as *;
 
 .card {
-	padding: var(--sp-4); // System token
-	background: var(--theme-main-bg); // System theme (optional)
-
+	padding: var(--sp-4);
+	background: var(--theme-main-bg);
+	
 	@include breakpoint('md') {
-		// System mixin
 		padding: var(--sp-2);
 	}
 }
 ```
 
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-```bash
-npm install --save-dev sass
-# or install globally
-npm install -g sass
-```
-
-### Option 1: Standalone Usage
-
-Use as your main styling solution.
-
-**1. Copy files to your project:**
-
-```
-your-project/
-└── styles/          ← Copy this folder
-    ├── tokens/
-    ├── themes/
-    ├── base/
-    └── main.scss
-```
-
-**2. Compile:**
-
-```bash
-sass styles/main.scss dist/styles.css
-```
-
-**3. Link in HTML:**
-
-```html
-<link rel="stylesheet" href="/dist/styles.css" />
-```
-
----
-
-### Option 2: Integration with Existing System
-
-Import into your existing SCSS workflow.
-
-**1. Copy `/styles` folder to your project**
-
-**2. Import in your main SCSS file:**
-
+**Option C: Existing SCSS workflow**
 ```scss
 // your-styles.scss
 @use 'styles/main';
 
-// Your custom styles here
 .your-component {
-	color: var(--clr-primary-500); // Use system tokens
+	color: var(--clr-primary-500);
 }
 ```
 
-**3. Compile:**
+> 💡 **Recommended:** Use component-scoped approach (Option B) for maximum flexibility. The base system compiles separately: `sass styles/main.scss dist/base.css`
 
-```bash
-sass your-styles.scss dist/styles.css
-```
+<br>
 
----
+## 🎯 What's Included
 
-### Option 3: Component-Scoped (Recommended)
+- **Design Tokens** - Colors, spacing, typography, radius, shadows (core)
+- **CSS Variables** - Auto-generated with px → rem conversion (core)
+- **Themes** - Light/dark/custom modes (optional)
+- **Mixins** - Breakpoints, utilities, helpers (optional)
+- **Base Styles** - Reset, globals, scrollbar (optional)
 
-Use with SCSS modules or CSS-in-JS.
+<br>
 
-**1. Copy `/styles` folder**
+## 💡 Best Used For
 
-**2. Import only what you need:**
+- ✅ Projects with SCSS modules or CSS-in-JS
+- ✅ Design systems with centralized tokens
+- ✅ Multi-theme applications (light/dark mode)
+- ✅ Projects needing modular, removable features
 
+**Not a good fit?** Consider [Tailwind CSS](https://tailwindcss.com/) for utility-first, or vanilla CSS variables for zero build step.
+
+<br>
+
+## 🛠️ Example Usage
 ```scss
 // Component.module.scss
 @use '@/styles/core/mixins/breakpoint' as *;
 
-.component {
-	padding: var(--sp-4); // Use tokens
-
+.card {
+	// System tokens
+	padding: var(--sp-4);
+	border-radius: var(--rd-md);
+	background: var(--clr-main-bg);
+	color: var(--clr-main-text);
+	
+	// System mixin
 	@include breakpoint('md') {
-		// Use mixins
-		padding: var(--sp-2);
+		padding: var(--sp-6);
+	}
+	
+	&:hover {
+		background: var(--clr-main-bg-hover);
 	}
 }
 ```
 
-**3. Base system compiles separately:**
-
-```bash
-sass styles/main.scss dist/base.css
-```
-
----
-
-## 🎯 When to Use This System
-
-### ✅ Good fit for:
-
-- Projects using SCSS modules or CSS-in-JS
-- Design systems needing centralized tokens
-- Multi-theme applications (light/dark mode)
-- Consistent spacing, typography and others
-- Projects that need modular, removable features
-
-### ⚠️ Consider alternatives if:
-
-- You need utility-first CSS (use Tailwind CSS)
-- You want zero build step (use vanilla CSS + variables)
-- You need class-based components (use Bootstrap/Bulma)
-- Project is pure HTML/CSS without SCSS
-
----
+<br>
 
 ## 📖 Documentation
 
-Comprehensive guides for architecture, customization, and usage.
+**[📚 View full documentation](docs/README.md)**
 
-**[📚 View full documentation →](docs/README.md)**
+Learn about architecture, customization, theme setup, and advanced usage.

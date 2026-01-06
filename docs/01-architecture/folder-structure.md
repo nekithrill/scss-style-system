@@ -1,4 +1,4 @@
-## 📂 **Folder structure**
+## 📂 Folder structure
 
 - **/base** - fonts connection, global styles, basic styles reset, custom scrollbar, selection styling, utility classes, variables generation;
 - **/core** - mixins and functions;
@@ -44,3 +44,13 @@
 │
 └── 📄 main.scss
 ```
+
+> 💡 **Customization tips:**
+> - **Optional files:** You can safely remove `_scrollbar.scss`, `_selection.scss`, or `_dark.scss` if not needed. Just remember to remove their `@use` imports from `main.scss`.
+> - **Token files:** All files in `/tokens` are meant to be customized to match your project's design system.
+> - **Core files:** Files in `/core` contain the system logic - modify with caution or extend functionality as needed.
+
+> 💡 **File removal checklist:**
+> 1. Delete the file from its folder
+> 2. Remove the corresponding `@use` statement from `main.scss`
+> 3. Remove any related variable usage from your codebase

@@ -1,15 +1,16 @@
-## 🛠️ **Code quality & formatting**
+## 🛠️ Code quality & formatting
 
-All SCSS files in this system are linted and formatted locally before pushing. Also some tests were carried out.
+All SCSS files in this system are linted and formatted before pushing. Some tests were also carried out.
 
----
+<br>
 
 ### Prettier
 
-This system follows the following Prettier configuration to maintain consistent formatting.
+This system follows the Prettier configuration below to maintain consistent formatting.
 
-> 💡 Project is missing a `.prettierrc.cjs` file - these settings are provided in case you want to use the settings for the same formatting.
+> 💡 **Note:** Configuration files (`.prettierrc.cjs`) are available on the `sandbox` branch. These settings are provided for reference if you want to apply the same formatting rules.
 
+> 💡 **Dependencies required:** To use Prettier in your project, install `prettier`
 ```js
 module.exports = {
 	trailingComma: 'none',
@@ -23,19 +24,18 @@ module.exports = {
 }
 ```
 
----
+<br>
 
 ### Stylelint
 
-This system follows the following Stylelint configuration to enforce consistent SCSS/CSS best practices.
+This system follows the Stylelint configuration below to enforce consistent SCSS/CSS best practices.
 
-> 💡 Project does not include a `.stylelintrc.cjs` file – these settings are provided for reference to show how the system was formatted.
+> 💡 **Note:** Configuration files (`.stylelintrc.cjs`) are available on the `sandbox` branch. These settings are provided for reference to show how the system was formatted.
 
-> 💡 To use stylelint in your project, you need to install following dependencies:
-> `stylelint`
-> `stylelint-scss`.
-> `stylelint-config-standard-scss`
-
+> 💡 **Dependencies required:** To use Stylelint in your project, install:
+> - `stylelint`
+> - `stylelint-scss`
+> - `stylelint-config-standard-scss`
 ```js
 module.exports = {
 	extends: ['stylelint-config-standard-scss'],
@@ -83,7 +83,7 @@ module.exports = {
 }
 ```
 
----
+<br>
 
 ### Testing
 
