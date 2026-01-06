@@ -1,14 +1,13 @@
-/// Scrollbar Styles
-/// Custom scrollbar for webkit and Firefox
+// Custom scrollbar styles
 
 html {
-	/// Firefox scrollbar (thin style)
+	// Firefox
 	@supports (scrollbar-width: thin) and (not selector(::-webkit-scrollbar)) {
 		scrollbar-width: thin;
 		scrollbar-color: var(--clr-scrollbar-thumb) var(--clr-scrollbar-track);
 	}
 
-	/// Webkit scrollbar (Chrome, Safari, Edge)
+	// Webkit (Chrome, Safari, Edge)
 	&::-webkit-scrollbar {
 		width: 0.5rem;
 

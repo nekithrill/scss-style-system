@@ -1,15 +1,5 @@
-@use 'sass:map';
-
-/// Typography Tokens
-///
-/// Core typography settings:
-/// - Font families: primary for body text, accent for headings (optional)
-/// - Font weights: light (300), regular (400), medium (500), bold (700), extra-bold (900)
-/// - Font sizes: calculated from base size using multipliers
-///
-/// 💡 Font sizes automatically converted to rem in base/_variables.scss
-/// 💡 Change $base-font-size to scale entire typography system
-/// 💡 Adjust multipliers to change heading hierarchy
+// Typography tokens
+// Change $base-font-size to scale entire system
 
 $font-families: (
 	primary: 'JetBrains, sans-serif',

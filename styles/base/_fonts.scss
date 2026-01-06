@@ -1,9 +1,7 @@
-/// Fonts connection
-/// Use .woff2 (modern) with .woff fallback
-/// Variable fonts support weight ranges
-/// font-display: swap for better UX
+// Font face declarations
+// Update paths to match your font files location
 
-/// Regular (400)
+// Regular (400)
 @font-face {
 	font-family: JetBrains;
 	font-weight: 400;
@@ -14,7 +12,7 @@
 		url('path/to/JetBrains-Regular.woff') format('woff');
 }
 
-/// Medium (500)
+// Medium (500)
 @font-face {
 	font-family: JetBrains;
 	font-weight: 500;
@@ -25,7 +23,7 @@
 		url('path/to/JetBrains-Medium.woff') format('woff');
 }
 
-/// Bold (700)
+// Bold (700)
 @font-face {
 	font-family: JetBrains;
 	font-weight: 700;
@@ -36,10 +34,10 @@
 		url('path/to/JetBrains-Bold.woff') format('woff');
 }
 
-/// Variable font (weight range 300-700)
+// Variable font (weight range 300-700)
 @font-face {
 	font-family: JetBrains;
-	font-weight: 300 700; // range for variable font
+	font-weight: 300 700;
 	font-style: normal;
 	font-display: swap;
 	src:

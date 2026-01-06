@@ -1,6 +1,4 @@
-/// Global Styles
-/// Base styling for HTML elements and browser defaults
-/// Sets up typography, accent colors, and common element resets
+// Global styles and browser defaults
 
 :root {
 	font-family:
@@ -13,11 +11,10 @@
 		'liga' 1,
 		'kern' 1;
 
-	/// Text defaults (overridden by themes if present)
+	// Default text colors (overridden by themes if present)
 	--clr-text: var(--clr-neutral-900);
 	--clr-text-accent: var(--clr-primary-500);
 
-	/// Apply accent color
 	accent-color: var(--clr-text-accent);
 }
 
@@ -30,8 +27,6 @@ body {
 	font-family: var(--ff-primary);
 	font-weight: var(--fw-regular);
 	color: var(--clr-text);
-	/// Optional smooth transitions for theme changes
-	// transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 input,

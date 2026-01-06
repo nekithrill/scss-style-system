@@ -1,9 +1,7 @@
-/// Color Tokens
-/// Manual color definitions in OKLCH format for perceptual uniformity.
-/// Use any CSS format (HEX, RGB, HSL, OKLCH) - OKLCH recommended for accuracy.
+// Color tokens
+// OKLCH format recommended for perceptual uniformity
 
-/// PRIMARY - Brand colors, accents, interactive elements
-/// Range: 100 (lightest) → 900 (darkest)
+// PRIMARY - Brand colors, accents, interactive elements
 $primary: (
 	100: oklch(95% 0.06 270deg),
 	200: oklch(85% 0.1 270deg),
@@ -16,8 +14,7 @@ $primary: (
 	900: oklch(12% 0.11 270deg)
 );
 
-/// SECONDARY - Backgrounds, surfaces, cards
-/// Light-biased for subtle backgrounds
+// SECONDARY - Backgrounds, surfaces, cards
 $secondary: (
 	100: oklch(99% 0 248deg),
 	200: oklch(97% 0 248deg),
@@ -30,8 +27,7 @@ $secondary: (
 	900: oklch(52% 0.04 249deg)
 );
 
-/// NEUTRAL - Text, borders, icons, dividers
-/// Low chroma for true neutral grays
+// NEUTRAL - Text, borders, icons, dividers
 $neutral: (
 	100: oklch(96% 0.01 220deg),
 	200: oklch(85% 0.02 220deg),
@@ -44,8 +40,7 @@ $neutral: (
 	900: oklch(20% 0.01 220deg)
 );
 
-/// SUCCESS - Positive feedback, confirmations
-/// Keys: bg (alert background), border (outline), solid (button), text (label)
+// SUCCESS - Positive feedback, confirmations
 $success: (
 	bg: oklch(95% 0.05 160deg),
 	border: oklch(70% 0.12 160deg),
@@ -53,7 +48,7 @@ $success: (
 	text: oklch(30% 0.15 160deg)
 );
 
-/// WARNING - Alerts, cautionary messages
+// WARNING - Alerts, cautionary messages
 $warning: (
 	bg: oklch(95% 0.04 80deg),
 	border: oklch(75% 0.12 75deg),
@@ -61,7 +56,7 @@ $warning: (
 	text: oklch(30% 0.12 70deg)
 );
 
-/// DANGER - Errors, destructive actions
+// DANGER - Errors, destructive actions
 $danger: (
 	bg: oklch(95% 0.04 20deg),
 	border: oklch(70% 0.12 25deg),
@@ -69,7 +64,7 @@ $danger: (
 	text: oklch(30% 0.15 25deg)
 );
 
-/// INFO - Information, tips, neutral notifications
+// INFO - Information, tips, neutral notifications
 $info: (
 	bg: oklch(95% 0.04 260deg),
 	border: oklch(70% 0.11 260deg),
@@ -77,8 +72,7 @@ $info: (
 	text: oklch(30% 0.15 260deg)
 );
 
-/// All colors map for generation
-/// Remove any color group you don't need
+// All colors map for CSS variable generation
 $all-colors: (
 	'primary': $primary,
 	'secondary': $secondary,

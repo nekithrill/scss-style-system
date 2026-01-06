@@ -1,20 +1,4 @@
-/// Light Theme
-/// Color mappings for light mode using design tokens
-///
-/// Structure:
-/// - Must match $theme-required-keys schema
-/// - Uses '_' for base values
-/// - Can include variants (check leaf keys in schema)
-/// - References color tokens with var(--clr-*)
-
-/// Light Theme
-/// Color mappings for light mode using design tokens
-///
-/// Structure:
-/// - Must match $theme-required-keys schema
-/// - Uses '_' for base values
-/// - Can include variants (check leaf keys in schema)
-/// - References color tokens with var(--clr-*)
+// Light theme color mappings
 
 $light: (
 	text: (

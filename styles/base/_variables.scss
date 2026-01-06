@@ -7,15 +7,9 @@
 @use '../tokens/z-index' as *;
 @use '../core/mixins/generate-tokens' as *;
 
-/// Token Variables Generator
-///
-/// Generates CSS custom properties (variables) from design tokens.
-/// @see generate-tokens
-/// @see px-to-rem
-///
-/// - Combines multiple token groups: colors, spacing, typography, radius, shadows, z-indexes.
-/// - Each group has a `map` of values, a `prefix` for variable names, and optional `transform` that uses px-to-rem function
-/// - Useful for theming and maintaining consistent design across the project
+// Token configuration for CSS variable generation
+// Each group requires 'map' and 'prefix'
+// Optional 'transform: rem' converts px values to rem
 
 $base-tokens: (
 	colors: (
@@ -47,7 +41,7 @@ $base-tokens: (
 	),
 	shadows: (
 		map: $shadows,
-		prefix: 'shadow',
+		prefix: 'shadow'
 	),
 	duration: (
 		map: $duration,

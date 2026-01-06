@@ -1,15 +1,5 @@
-/// Shadow Tokens
-///
-/// Predefined shadow levels for consistent elevation across the project:
-/// - xs: extra small shadow for subtle depth
-/// - sm: small shadow for buttons, inputs
-/// - md: medium shadow for cards
-/// - lg: large shadow for modals, dropdowns
-/// - xl: extra large shadow for major elevations
-/// - inset: inset shadow for pressed states
-///
-/// 💡 All shadows use $base-shadow
-/// 💡 Change $base-shadow to adjust shadow color/opacity globally
+// Shadow tokens
+// Change $base-shadow to adjust color/opacity globally
 
 $base-shadow: rgb(0 0 0 / 10%);
 

@@ -1,11 +1,4 @@
-/// Dark Theme
-/// Color mappings for dark mode using design tokens
-///
-/// Structure:
-/// - Must match $theme-required-keys schema
-/// - Uses '_' for base values
-/// - Can include variants (check leaf keys in schema)
-/// - References color tokens with var(--clr-*)
+// Dark theme color mappings
 
 $dark: (
 	text: (
