@@ -25,7 +25,6 @@ module.exports = {
 		'no-duplicate-selectors': true,
 		'no-descending-specificity': true,
 		'selector-no-qualifying-type': true,
-		'selector-max-id': 0,
 		'selector-max-class': 4,
 		'max-nesting-depth': 4,
 
