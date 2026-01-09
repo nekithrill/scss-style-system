@@ -16,3 +16,6 @@ pnpm-lock.yaml
 # Logs
 npm-debug.log*
 *.log
+
+dist/
+*.md
