@@ -1,15 +1,4 @@
-/// Z-index Tokens
-///
-/// Layering system for stacking contexts:
-/// - base: default layer (0)
-/// - content: main content (100)
-/// - header/sidebar/footer: UI chrome (200)
-/// - dropdown: floating UI (300)
-/// - modal: overlays (500)
-/// - tooltip: highest priority (600)
-///
-/// Usage:
-///   z-index: var(--z-modal);
+// Z-index tokens for stacking contexts
 
 $z-index: (
 	base: 0,

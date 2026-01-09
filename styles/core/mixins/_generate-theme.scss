@@ -1,38 +1,9 @@
 @use 'sass:map';
 @use 'sass:meta';
 
-/// Generate semantic CSS variables from theme map
-/// Recursively creates CSS custom properties with 'clr' prefix
-///
+/// Generate CSS variables from theme map
 /// @param {Map} $map - Theme map with nested structure
-/// @param {String} $prefix - CSS variable prefix (default: 'clr', used internally for recursion)
-///
-/// Special key handling:
-/// - '_' key → generates base variable (e.g., --clr-main-bg)
-/// - Other keys → generate variants (e.g., --clr-main-bg-hover)
-/// - Nested maps → recurse with updated prefix
-///
-/// @example scss
-///   $theme: (
-///     main: (
-///       bg: (
-///         _: var(--clr-primary-300),
-///         hover: var(--clr-neutral-400)
-///       ),
-///       text: (
-///         _: var(--clr-secondary-500)
-///       )
-///     )
-///   );
-///
-///   [data-theme='dark'] {
-///     @include generate-theme($theme);
-///   }
-///
-///   Generates:
-///   --clr-main-bg: var(--clr-primary-300);
-///   --clr-main-bg-hover: var(--clr-neutral-400);
-///   --clr-main-text: var(--clr-secondary-500);
+/// @param {String} $prefix - CSS variable prefix (default: 'clr')
 
 @mixin generate-theme($map, $prefix: 'clr') {
 	@if meta.type-of($map) != 'map' {

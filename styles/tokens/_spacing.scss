@@ -1,9 +1,5 @@
-/// Spacing Tokens
-///
-/// All values are calculated from $base-spacing
-/// Usage: margin, padding, gap, grid spacing
-///
-/// 💡 Change $base-spacing to scale the entire spacing system
+// Spacing tokens based on 8px grid
+// Change $base-spacing to scale entire system
 
 $base-spacing: 8px;
 

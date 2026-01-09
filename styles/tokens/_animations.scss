@@ -1,40 +1,5 @@
-/// Animation Tokens
-/// Parameters for consistent motion design across the project
-///
-/// Contains:
-/// - Duration: animation/transition speeds
-/// - Easing: timing functions for natural motion
-/// - Delay: timing offsets for staggered animations
-///
-/// Usage in transitions:
-///   .button {
-///     transition: background-color var(--anim-duration-fast) var(--anim-ease-out);
-///   }
-///
-/// Usage in animations:
-///   @keyframes slideIn {
-///     from { transform: translateX(-100%); }
-///     to { transform: translateX(0); }
-///   }
-///
-///   .menu {
-///     animation: slideIn var(--anim-duration-normal) var(--anim-ease-out);
-///   }
-///
-/// Usage with delays (staggered animations):
-///   .list-item {
-///     animation: fadeIn var(--anim-duration-fast) var(--anim-ease-out);
-///
-///     &:nth-child(1) { animation-delay: var(--anim-delay-none); }
-///     &:nth-child(2) { animation-delay: var(--anim-delay-short); }
-///     &:nth-child(3) { animation-delay: var(--anim-delay-medium); }
-///   }
-///
-/// Best practices:
-/// - Use `ease-out` for entrances (elements appearing)
-/// - Use `ease-in` for exits (elements disappearing)
-/// - Use `ease-in-out` for continuous motion (carousels, sliders)
-/// - Keep delays short to avoid perceived lag
+// Animation tokens
+// Duration, easing, and delay values for consistent motion
 
 $duration: (
 	instant: 100ms,

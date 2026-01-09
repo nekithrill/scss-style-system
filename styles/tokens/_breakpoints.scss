@@ -1,16 +1,4 @@
-/// Breakpoint Tokens
-///
-/// Defines screen width breakpoints for responsive design:
-/// - xs (360px):  Extra small devices (small phones)
-/// - sm (576px):  Small devices (phones in landscape)
-/// - md (768px):  Medium devices (tablets)
-/// - lg (1024px): Large devices (desktops, laptops)
-/// - xl (1280px): Extra large devices (large desktops)
-/// - 2xl (1536px): 2X extra large devices (wide screens)
-///
-/// 💡 Used with breakpoint mixin for media queries
-/// 💡 Desktop-first: @include breakpoint('md') → max-width: 768px
-/// 💡 Mobile-first: @include breakpoint('md', true) → min-width: 768px
+// Breakpoint tokens for responsive design
 
 $breakpoints: (
 	'xs': 360px,
