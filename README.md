@@ -14,22 +14,26 @@ A modular design token system for generating CSS variables with optional theming
 - 🎨 **OKLCH colors** - perceptually uniform color system
 - 🧩 **Fully modular** - remove unused features easily
 
-
 <br>
 
 ## 🚀 Quick Start
 
+### Step 1: Install Sass
 ```bash
 npm install --save-dev sass
 ```
 
-### Installation
+### Step 2: Download & Copy
 
-**1. Copy the `/styles` folder to your project**
+1. Download the latest release from [Releases](https://github.com/nekithrill/scss-style-system/releases)
+2. Copy the `styles/` folder to your project
 
-**2. Choose your integration method:**
+### Step 3: Choose Integration Method
 
-**Option A: Standalone (main stylesheet)**
+<details>
+<summary><b>Option A: Standalone stylesheet</b> (simplest)</summary>
+
+Compile the main stylesheet and link it in HTML:
 ```bash
 sass styles/main.scss dist/styles.css
 ```
@@ -37,14 +41,28 @@ sass styles/main.scss dist/styles.css
 <link rel="stylesheet" href="/dist/styles.css" />
 ```
 
-**Option B: Component-scoped (recommended)**
+Use CSS variables in your styles:
+```css
+.card {
+	padding: var(--sp-4);
+	background: var(--clr-main-bg);
+	border-radius: var(--rd-md);
+}
+```
+
+</details>
+
+<details>
+<summary><b>Option B: Component-scoped</b> (recommended)</summary>
+
+Import specific utilities in component stylesheets:
 ```scss
 // Component.module.scss
 @use '@/styles/core/mixins/breakpoint' as *;
 
 .card {
 	padding: var(--sp-4);
-	background: var(--theme-main-bg);
+	background: var(--clr-main-bg);
 	
 	@include breakpoint('md') {
 		padding: var(--sp-2);
@@ -52,17 +70,31 @@ sass styles/main.scss dist/styles.css
 }
 ```
 
-**Option C: Existing SCSS workflow**
+Compile base system separately:
+```bash
+sass styles/main.scss dist/base.css
+```
+```html
+<link rel="stylesheet" href="/dist/base.css" />
+```
+
+</details>
+
+<details>
+<summary><b>Option C: Existing SCSS project</b></summary>
+
+Import in your existing SCSS workflow:
 ```scss
 // your-styles.scss
 @use 'styles/main';
 
 .your-component {
 	color: var(--clr-primary-500);
+	padding: var(--sp-3);
 }
 ```
 
-> 💡 **Recommended:** Use component-scoped approach (Option B) for maximum flexibility. The base system compiles separately: `sass styles/main.scss dist/base.css`
+</details>
 
 <br>
 
