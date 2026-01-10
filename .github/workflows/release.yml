@@ -1,0 +1,60 @@
+name: Release Build
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Prepare release files
+        run: |
+          # Create build directory
+          mkdir -p build/scss-style-system
+          
+          # Copy styles folder with all contents
+          cp -r styles build/scss-style-system/
+          
+          # Copy LICENSE file
+          cp LICENSE build/scss-style-system/
+          
+          # Show what we're packaging
+          echo "📦 Contents of release archive:"
+          tree build/scss-style-system || ls -R build/scss-style-system
+      
+      - name: Create ZIP archive
+        run: |
+          cd build
+          zip -r scss-style-system-${{ github.event.release.tag_name }}.zip scss-style-system/
+          cd ..
+          
+          # Show archive info
+          echo "✅ ZIP created:"
+          ls -lh build/*.zip
+      
+      - name: Create TAR.GZ archive
+        run: |
+          cd build
+          tar -czf scss-style-system-${{ github.event.release.tag_name }}.tar.gz scss-style-system/
+          cd ..
+          
+          # Show archive info
+          echo "✅ TAR.GZ created:"
+          ls -lh build/*.tar.gz
+      
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/scss-style-system-${{ github.event.release.tag_name }}.zip
+            build/scss-style-system-${{ github.event.release.tag_name }}.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
