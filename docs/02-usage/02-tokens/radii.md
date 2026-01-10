@@ -28,7 +28,7 @@ $radius: (
 	--rd-md: 0.375rem;   /* 6px */
 	--rd-lg: 0.625rem;   /* 10px */
 	--rd-xl: 0.875rem;   /* 14px */
-	--rd-pill: 9999px;   /* Not converted (1000px+ stays in px) */
+	--rd-pill: 9999px;   /* Not converted (5000px+ stays in px) */
 	--rd-full: 50%;      /* Percentage stays as-is */
 }
 ```
