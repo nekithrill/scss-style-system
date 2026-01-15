@@ -1,5 +1,5 @@
 {
-	"name": "styles-system",
+	"name": "scss-style-system-demo",
 	"version": "1.0.0",
 	"description": "[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=ffffff)](https://www.w3.org/TR/CSS/)\r [![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=ffffff)](https://sass-lang.com/)",
 	"homepage": "https://github.com/nekithrill/scss-style-system#readme",
@@ -10,7 +10,7 @@
 		"type": "git",
 		"url": "git+https://github.com/nekithrill/scss-style-system.git"
 	},
-	"license": "ISC",
+	"license": "MIT",
 	"author": "",
 	"type": "commonjs",
 	"main": "index.js",
@@ -19,7 +19,7 @@
 		"check:format": "prettier --check .",
 		"fix:style": "stylelint \"styles/**/*.{css,scss}\" --fix",
 		"fix:format": "prettier --write .",
-		"build": "npx sass styles/main.scss dist/main.css --style=expanded"
+		"build": "npx sass styles/main.scss demo/dist/tokens.css --style=expanded --no-source-map"
 	},
 	"devDependencies": {
 		"prettier": "^3.6.2",
