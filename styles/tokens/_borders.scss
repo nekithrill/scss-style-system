@@ -1,0 +1,18 @@
+// Border-radius and stroke-width tokens
+
+$border-radius: (
+	none: 0,
+	xs: 2px,
+	sm: 4px,
+	md: 6px,
+	lg: 10px,
+	xl: 14px,
+	pill: 9999px,
+	full: 50%
+);
+
+$stroke-width: (
+	thin: 1px,
+	normal: 2px,
+	thick: 4px
+);
