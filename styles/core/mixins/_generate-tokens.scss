@@ -27,7 +27,12 @@
 			@each $palette-name, $palette in $map {
 				@if meta.type-of($palette) == 'map' {
 					@each $shade, $value in $palette {
-						$final-value: if($transform == 'rem', px-to-rem($value), $value);
+						$final-value: $value;
+
+						@if $transform == 'rem' {
+							$final-value: px-to-rem($value);
+						}
+
 						--#{$prefix}-#{$palette-name}-#{$shade}: #{$final-value};
 					}
 				}
@@ -35,7 +40,12 @@
 		} @else {
 			// FLAT: --prefix-name (e.g., --sp-4, --fw-bold)
 			@each $key, $value in $map {
-				$final-value: if($transform == 'rem', px-to-rem($value), $value);
+				$final-value: $value;
+
+				@if $transform == 'rem' {
+					$final-value: px-to-rem($value);
+				}
+
 				--#{$prefix}-#{$key}: #{$final-value};
 			}
 		}
@@ -49,8 +59,10 @@
 	@if meta.type-of($map) != 'map' {
 		@return false;
 	}
+
 	@each $key, $value in $map {
 		@return meta.type-of($value) == 'map';
 	}
+
 	@return false;
 }
