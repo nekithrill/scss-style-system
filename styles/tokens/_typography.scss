@@ -2,8 +2,15 @@
 // Change $base-font-size to scale entire system
 
 $font-families: (
-	primary: 'JetBrains, sans-serif',
-	accent: 'Tektur, sans-serif'
+	primary: 'JetBrains',
+	accent: 'Tektur',
+	system: (
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		sans-serif
+	)
 );
 
 $font-weights: (
