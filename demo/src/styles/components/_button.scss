@@ -1,0 +1,121 @@
+// Button component
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--sp-2);
+	padding: var(--sp-2) var(--sp-4);
+	border: none;
+	border-radius: var(--rd-md);
+	font-size: var(--fs-default);
+	font-weight: var(--fw-medium);
+	font-family: inherit;
+	cursor: pointer;
+	transition: all var(--dur-fast) var(--ease-out);
+	text-decoration: none;
+	white-space: nowrap;
+	
+	// Default (primary) variant
+	background: var(--clr-accent-bg);
+	color: var(--clr-accent-text);
+	
+	&:hover {
+		background: var(--clr-accent-bg-hover);
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-sm);
+	}
+	
+	&:active {
+		background: var(--clr-accent-bg-active);
+		transform: translateY(0);
+		box-shadow: none;
+	}
+	
+	&:disabled {
+		background: var(--clr-main-bg-disabled);
+		color: var(--clr-text-disabled);
+		cursor: not-allowed;
+		opacity: 0.6;
+		
+		&:hover {
+			transform: none;
+			box-shadow: none;
+		}
+	}
+	
+	// Variants
+	&--primary {
+		background: var(--clr-primary-500);
+		color: white;
+		
+		&:hover {
+			background: var(--clr-primary-600);
+		}
+		
+		&:active {
+			background: var(--clr-primary-700);
+		}
+	}
+	
+	&--secondary {
+		background: var(--clr-secondary-500);
+		color: white;
+		
+		&:hover {
+			background: var(--clr-secondary-600);
+		}
+		
+		&:active {
+			background: var(--clr-secondary-700);
+		}
+	}
+	
+	&--success {
+		background: var(--clr-success-solid);
+		color: white;
+		
+		&:hover {
+			background: var(--clr-success-border);
+		}
+		
+		&:active {
+			opacity: 0.9;
+		}
+	}
+	
+	&--danger {
+		background: var(--clr-danger-solid);
+		color: white;
+		
+		&:hover {
+			background: var(--clr-danger-border);
+		}
+		
+		&:active {
+			opacity: 0.9;
+		}
+	}
+	
+	// Sizes
+	&--sm {
+		padding: var(--sp-1) var(--sp-3);
+		font-size: var(--fs-small);
+	}
+	
+	&--lg {
+		padding: var(--sp-3) var(--sp-5);
+		font-size: var(--fs-h5);
+	}
+}
+
+@media (max-width: 768px) {
+	.btn {
+		padding: var(--sp-2) var(--sp-3);
+		font-size: var(--fs-small);
+		
+		&--lg {
+			padding: var(--sp-3) var(--sp-4);
+			font-size: var(--fs-default);
+		}
+	}
+}

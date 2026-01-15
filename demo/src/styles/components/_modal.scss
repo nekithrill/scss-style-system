@@ -1,0 +1,130 @@
+// Modal
+.modal {
+	position: fixed;
+	inset: 0;
+	z-index: var(--z-modal);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: all var(--dur-normal) var(--ease-out);
+	
+	&--open {
+		opacity: 1;
+		visibility: visible;
+		
+		.modal__content {
+			transform: scale(1);
+		}
+		
+		.modal__overlay {
+			opacity: 1;
+		}
+	}
+	
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+		opacity: 0;
+		transition: opacity var(--dur-normal) var(--ease-out);
+		backdrop-filter: blur(2px);
+	}
+	
+	&__content {
+		position: relative;
+		z-index: 1;
+		max-width: 500px;
+		width: 90%;
+		max-height: 90vh;
+		overflow-y: auto;
+		padding: var(--sp-6);
+		background: var(--clr-card-bg);
+		color: var(--clr-card-text);
+		border-radius: var(--rd-xl);
+		box-shadow: var(--shadow-xl);
+		transform: scale(0.95);
+		transition: transform var(--dur-normal) var(--ease-out);
+		
+		h3 {
+			margin: 0 0 var(--sp-3) 0;
+			color: var(--clr-text);
+			font-size: var(--fs-h3);
+			font-weight: var(--fw-bold);
+		}
+		
+		p {
+			margin: 0 0 var(--sp-4) 0;
+			color: var(--clr-text);
+			line-height: 1.6;
+		}
+	}
+	
+	&__close {
+		position: absolute;
+		top: var(--sp-4);
+		right: var(--sp-4);
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--clr-surface-bg);
+		color: var(--clr-text);
+		border: none;
+		border-radius: var(--rd-md);
+		font-size: 1.25rem;
+		cursor: pointer;
+		transition: all var(--dur-fast) var(--ease-out);
+		
+		&:hover {
+			background: var(--clr-main-bg-hover);
+			transform: rotate(90deg);
+		}
+		
+		&:active {
+			transform: rotate(90deg) scale(0.95);
+		}
+	}
+	
+	&__actions {
+		display: flex;
+		gap: var(--sp-3);
+		justify-content: flex-end;
+		margin-top: var(--sp-5);
+	}
+}
+
+@media (max-width: 768px) {
+	.modal {
+		&__content {
+			width: 95%;
+			padding: var(--sp-5);
+			
+			h3 {
+				font-size: var(--fs-h4);
+				padding-right: var(--sp-6);
+			}
+			
+			p {
+				font-size: var(--fs-small);
+			}
+		}
+		
+		&__close {
+			width: 28px;
+			height: 28px;
+			font-size: 1rem;
+		}
+		
+		&__actions {
+			flex-direction: column-reverse;
+			gap: var(--sp-2);
+			
+			.btn {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,105 @@
+// Demo page specific styles
+.demo-main {
+	min-height: 70vh;
+	padding: var(--sp-6) 0;
+	background: var(--clr-main-bg);
+}
+
+// Smooth transitions for theme changes
+html {
+	* {
+		transition-property: background-color, border-color, color;
+		transition-duration: var(--dur-normal);
+		transition-timing-function: var(--ease-out);
+	}
+	
+	// Exclude elements that shouldn't animate
+	*:is(
+		.spacing-bar,
+		.color-swatch,
+		.radius-box,
+		.shadow-card,
+		.btn,
+		.card,
+		.alert,
+		.badge,
+		.modal
+	) {
+		transition-property: all;
+	}
+}
+
+// Prevent layout shift during theme transition
+body {
+	background: var(--clr-main-bg);
+	color: var(--clr-text);
+}
+
+// Custom scrollbar for demo
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--clr-main-bg);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--clr-border);
+	border-radius: var(--rd-pill);
+	border: 3px solid var(--clr-main-bg);
+	
+	&:hover {
+		background: var(--clr-text-muted);
+	}
+}
+
+// Firefox scrollbar
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--clr-border) var(--clr-main-bg);
+}
+
+// Focus visible styles for accessibility
+:focus-visible {
+	outline: 2px solid var(--clr-accent-border);
+	outline-offset: 2px;
+	border-radius: var(--rd-sm);
+}
+
+// Remove focus outline for mouse users
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+// Loading state animation (for future use)
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.loading {
+	animation: pulse var(--dur-slow) var(--ease-in-out) infinite;
+}
+
+// Print styles
+@media print {
+	.demo-header,
+	.demo-nav,
+	.demo-footer {
+		display: none;
+	}
+	
+	.demo-section {
+		page-break-inside: avoid;
+	}
+	
+	body {
+		background: white;
+		color: black;
+	}
+}

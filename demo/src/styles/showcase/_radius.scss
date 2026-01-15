@@ -1,0 +1,72 @@
+// Radius grid
+.radius-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: var(--sp-4);
+}
+
+.radius-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--sp-2);
+}
+
+.radius-box {
+	width: 80px;
+	height: 80px;
+	background: linear-gradient(
+		135deg,
+		var(--clr-primary-400),
+		var(--clr-primary-600)
+	);
+	border: 2px solid var(--clr-primary-700);
+	transition: all var(--dur-normal) var(--ease-out);
+	
+	&--pill {
+		width: 120px;
+		height: 60px;
+	}
+	
+	&--circle {
+		width: 80px;
+		height: 80px;
+	}
+}
+
+.radius-item {
+	span {
+		font-size: var(--fs-small);
+		font-family: var(--ff-mono);
+		color: var(--clr-text);
+		font-weight: var(--fw-medium);
+		text-align: center;
+	}
+	
+	&:hover .radius-box {
+		transform: scale(1.1);
+		box-shadow: var(--shadow-lg);
+	}
+}
+
+@media (max-width: 768px) {
+	.radius-grid {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+		gap: var(--sp-3);
+	}
+	
+	.radius-box {
+		width: 60px;
+		height: 60px;
+		
+		&--pill {
+			width: 100px;
+			height: 50px;
+		}
+		
+		&--circle {
+			width: 60px;
+			height: 60px;
+		}
+	}
+}

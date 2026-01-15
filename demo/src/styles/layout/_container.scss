@@ -1,0 +1,60 @@
+// Container for centering content
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--sp-4);
+	
+	@media (max-width: 768px) {
+		padding: 0 var(--sp-3);
+	}
+}
+
+// Demo sections
+.demo-section {
+	margin-bottom: var(--sp-8);
+	scroll-margin-top: var(--sp-6);
+	
+	h2 {
+		margin-bottom: var(--sp-2);
+		color: var(--clr-text);
+		font-size: var(--fs-h2);
+		font-weight: var(--fw-bold);
+	}
+	
+	&__description {
+		margin-bottom: var(--sp-5);
+		color: var(--clr-text-muted);
+		font-size: var(--fs-default);
+	}
+}
+
+// Token groups
+.token-group {
+	margin-bottom: var(--sp-6);
+	
+	h3 {
+		margin-bottom: var(--sp-3);
+		color: var(--clr-text);
+		font-size: var(--fs-h4);
+		font-weight: var(--fw-medium);
+	}
+}
+
+// Component groups
+.component-group {
+	margin-bottom: var(--sp-6);
+	
+	h3 {
+		margin-bottom: var(--sp-4);
+		color: var(--clr-text);
+		font-size: var(--fs-h4);
+		font-weight: var(--fw-medium);
+	}
+}
+
+.component-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sp-3);
+	align-items: center;
+}

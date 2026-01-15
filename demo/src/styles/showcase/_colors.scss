@@ -1,0 +1,94 @@
+// Color palette grid
+.color-palette {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+	gap: var(--sp-2);
+	margin-bottom: var(--sp-4);
+}
+
+.color-swatch {
+	aspect-ratio: 1;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding: var(--sp-2);
+	border-radius: var(--rd-sm);
+	border: 1px solid var(--clr-border);
+	position: relative;
+	overflow: hidden;
+	
+	&__label {
+		font-size: var(--fs-small);
+		font-weight: var(--fw-bold);
+		color: inherit;
+		mix-blend-mode: difference;
+		filter: invert(1) grayscale(1) contrast(2);
+		z-index: 1;
+	}
+}
+
+// Semantic colors display
+.semantic-colors {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: var(--sp-4);
+}
+
+.semantic-color {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--sp-2);
+	
+	&__preview {
+		width: 100%;
+		aspect-ratio: 16/9;
+		border-radius: var(--rd-md);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	&__dot {
+		width: 48px;
+		height: 48px;
+		border-radius: var(--rd-full);
+		border: 3px solid white;
+		box-shadow: var(--shadow-sm);
+	}
+	
+	span {
+		font-weight: var(--fw-medium);
+		color: var(--clr-text);
+	}
+}
+
+// Theme colors display
+.theme-colors {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: var(--sp-4);
+}
+
+.theme-color-item {
+	border-radius: var(--rd-md);
+	overflow: hidden;
+	border: 1px solid var(--clr-border);
+}
+
+.theme-color-preview {
+	padding: var(--sp-5);
+	text-align: center;
+	
+	p {
+		margin: 0 0 var(--sp-1) 0;
+		font-size: var(--fs-h5);
+		font-weight: var(--fw-bold);
+	}
+	
+	small {
+		font-size: var(--fs-small);
+		opacity: 0.8;
+		font-family: var(--ff-mono);
+	}
+}

@@ -1,0 +1,99 @@
+// Animation demos
+.animation-demos {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: var(--sp-5);
+}
+
+.animation-demo {
+	h3 {
+		margin-bottom: var(--sp-3);
+		color: var(--clr-text);
+		font-size: var(--fs-h5);
+		font-weight: var(--fw-medium);
+	}
+}
+
+.anim-btn {
+	display: block;
+	width: 100%;
+	padding: var(--sp-3) var(--sp-4);
+	margin-bottom: var(--sp-2);
+	background: var(--clr-surface-bg);
+	color: var(--clr-text);
+	border: 1px solid var(--clr-border);
+	border-radius: var(--rd-md);
+	font-size: var(--fs-default);
+	font-weight: var(--fw-medium);
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			to right,
+			transparent,
+			rgba(255, 255, 255, 0.2),
+			transparent
+		);
+		transition: left var(--dur-normal) var(--ease-out);
+	}
+	
+	&:hover {
+		background: var(--clr-card-bg);
+		border-color: var(--clr-accent-border);
+	}
+	
+	// Animation on click
+	&.animating {
+		&::before {
+			left: 100%;
+		}
+		
+		&[data-duration="instant"]::before {
+			transition-duration: var(--dur-instant);
+		}
+		
+		&[data-duration="fast"]::before {
+			transition-duration: var(--dur-fast);
+		}
+		
+		&[data-duration="normal"]::before {
+			transition-duration: var(--dur-normal);
+		}
+		
+		&[data-duration="slow"]::before {
+			transition-duration: var(--dur-slow);
+		}
+		
+		&[data-easing="in"]::before {
+			transition-timing-function: var(--ease-in);
+		}
+		
+		&[data-easing="out"]::before {
+			transition-timing-function: var(--ease-out);
+		}
+		
+		&[data-easing="in-out"]::before {
+			transition-timing-function: var(--ease-in-out);
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.animation-demos {
+		grid-template-columns: 1fr;
+		gap: var(--sp-4);
+	}
+	
+	.anim-btn {
+		padding: var(--sp-2) var(--sp-3);
+		font-size: var(--fs-small);
+	}
+}

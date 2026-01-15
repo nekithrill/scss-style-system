@@ -1,0 +1,51 @@
+// Shadow grid
+.shadow-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: var(--sp-4);
+}
+
+.shadow-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--sp-2);
+	padding: var(--sp-5);
+	background: var(--clr-card-bg);
+	border-radius: var(--rd-lg);
+	min-height: 150px;
+	transition: transform var(--dur-normal) var(--ease-out);
+	
+	strong {
+		font-size: var(--fs-h4);
+		color: var(--clr-text);
+		font-weight: var(--fw-bold);
+	}
+	
+	small {
+		font-size: var(--fs-small);
+		color: var(--clr-text-muted);
+		text-align: center;
+	}
+	
+	&:hover {
+		transform: translateY(-4px);
+	}
+}
+
+@media (max-width: 768px) {
+	.shadow-grid {
+		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+		gap: var(--sp-3);
+	}
+	
+	.shadow-card {
+		padding: var(--sp-4);
+		min-height: 120px;
+		
+		strong {
+			font-size: var(--fs-h5);
+		}
+	}
+}

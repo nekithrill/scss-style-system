@@ -1,0 +1,58 @@
+// Demo navigation
+.demo-nav {
+	display: flex;
+	gap: var(--sp-3);
+	margin-bottom: var(--sp-6);
+	padding: var(--sp-3);
+	background: var(--clr-surface-bg);
+	border-radius: var(--rd-lg);
+	overflow-x: auto;
+	
+	// Hide scrollbar but keep functionality
+	scrollbar-width: thin;
+	scrollbar-color: var(--clr-border) transparent;
+	
+	&::-webkit-scrollbar {
+		height: 4px;
+	}
+	
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		background: var(--clr-border);
+		border-radius: var(--rd-pill);
+	}
+	
+	a {
+		display: inline-block;
+		padding: var(--sp-2) var(--sp-4);
+		color: var(--clr-text);
+		text-decoration: none;
+		font-weight: var(--fw-medium);
+		border-radius: var(--rd-md);
+		white-space: nowrap;
+		transition: background var(--dur-fast) var(--ease-out),
+		            color var(--dur-fast) var(--ease-out);
+		
+		&:hover {
+			background: var(--clr-main-bg-hover);
+			color: var(--clr-text);
+		}
+		
+		&:active {
+			background: var(--clr-main-bg-active);
+		}
+	}
+	
+	@media (max-width: 768px) {
+		gap: var(--sp-2);
+		padding: var(--sp-2);
+		
+		a {
+			padding: var(--sp-1) var(--sp-3);
+			font-size: var(--fs-small);
+		}
+	}
+}

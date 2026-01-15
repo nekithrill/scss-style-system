@@ -1,0 +1,71 @@
+// Spacing scale visualization
+.spacing-scale {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-3);
+}
+
+.spacing-item {
+	display: flex;
+	align-items: center;
+	gap: var(--sp-3);
+}
+
+.spacing-bar {
+	height: 32px;
+	background: linear-gradient(
+		to right,
+		var(--clr-primary-400),
+		var(--clr-primary-600)
+	);
+	border-radius: var(--rd-sm);
+	min-width: 4px;
+	transition: all var(--dur-normal) var(--ease-out);
+	
+	// Add visual indicator
+	position: relative;
+	
+	&::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 3px;
+		height: 100%;
+		background: var(--clr-primary-900);
+		border-radius: 0 var(--rd-sm) var(--rd-sm) 0;
+	}
+}
+
+.spacing-label {
+	font-size: var(--fs-default);
+	font-family: var(--ff-mono);
+	color: var(--clr-text);
+	font-weight: var(--fw-medium);
+	white-space: nowrap;
+	min-width: 200px;
+}
+
+// Hover effect
+.spacing-item:hover {
+	.spacing-bar {
+		background: linear-gradient(
+			to right,
+			var(--clr-primary-500),
+			var(--clr-primary-700)
+		);
+		box-shadow: var(--shadow-sm);
+	}
+}
+
+@media (max-width: 768px) {
+	.spacing-label {
+		font-size: var(--fs-small);
+		min-width: 150px;
+	}
+	
+	.spacing-bar {
+		height: 24px;
+	}
+}

@@ -1,0 +1,52 @@
+// Typography scale
+.type-scale {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-4);
+	margin-bottom: var(--sp-5);
+}
+
+.type-example {
+	margin: 0;
+	color: var(--clr-text);
+	line-height: 1.5;
+	
+	// Add subtle background on hover
+	padding: var(--sp-2);
+	border-radius: var(--rd-sm);
+	transition: background var(--dur-fast) var(--ease-out);
+	
+	&:hover {
+		background: var(--clr-surface-bg);
+	}
+}
+
+// Font weights display
+.font-weights {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-3);
+	
+	p {
+		margin: 0;
+		font-size: var(--fs-h4);
+		color: var(--clr-text);
+		padding: var(--sp-2);
+		border-radius: var(--rd-sm);
+		transition: background var(--dur-fast) var(--ease-out);
+		
+		&:hover {
+			background: var(--clr-surface-bg);
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.type-scale {
+		gap: var(--sp-3);
+	}
+	
+	.type-example {
+		padding: var(--sp-1);
+	}
+}

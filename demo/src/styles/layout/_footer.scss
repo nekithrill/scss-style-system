@@ -1,0 +1,34 @@
+// Demo footer
+.demo-footer {
+	margin-top: var(--sp-8);
+	padding: var(--sp-6) 0;
+	background: var(--clr-surface-bg);
+	border-top: 1px solid var(--clr-border);
+	text-align: center;
+	
+	p {
+		margin: var(--sp-2) 0;
+		color: var(--clr-text-muted);
+		font-size: var(--fs-default);
+	}
+	
+	a {
+		color: var(--clr-accent-text);
+		text-decoration: none;
+		font-weight: var(--fw-medium);
+		transition: color var(--dur-fast) var(--ease-out);
+		
+		&:hover {
+			color: var(--clr-accent-text-hover);
+			text-decoration: underline;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		padding: var(--sp-5) 0;
+		
+		p {
+			font-size: var(--fs-small);
+		}
+	}
+}

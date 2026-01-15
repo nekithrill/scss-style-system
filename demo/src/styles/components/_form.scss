@@ -1,0 +1,83 @@
+// Form elements
+.demo-form {
+	max-width: 600px;
+}
+
+.form-group {
+	margin-bottom: var(--sp-4);
+	
+	label {
+		display: block;
+		margin-bottom: var(--sp-1);
+		color: var(--clr-text);
+		font-size: var(--fs-default);
+		font-weight: var(--fw-medium);
+	}
+}
+
+// Input styles
+.input,
+.select,
+.textarea {
+	width: 100%;
+	padding: var(--sp-2) var(--sp-3);
+	background: var(--clr-card-bg);
+	color: var(--clr-text);
+	border: 1px solid var(--clr-border);
+	border-radius: var(--rd-sm);
+	font-size: var(--fs-default);
+	font-family: inherit;
+	transition: all var(--dur-fast) var(--ease-out);
+	
+	&::placeholder {
+		color: var(--clr-text-muted);
+		opacity: 0.7;
+	}
+	
+	&:hover {
+		border-color: var(--clr-accent-border);
+	}
+	
+	&:focus {
+		outline: none;
+		border-color: var(--clr-accent-border);
+		box-shadow: 0 0 0 3px var(--clr-accent-bg);
+	}
+	
+	&:disabled {
+		background: var(--clr-main-bg-disabled);
+		color: var(--clr-text-disabled);
+		cursor: not-allowed;
+		opacity: 0.6;
+	}
+}
+
+// Select specific styles
+.select {
+	cursor: pointer;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right var(--sp-3) center;
+	padding-right: var(--sp-6);
+}
+
+// Textarea specific styles
+.textarea {
+	resize: vertical;
+	min-height: 100px;
+	line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+	.input,
+	.select,
+	.textarea {
+		padding: var(--sp-2);
+		font-size: var(--fs-small);
+	}
+	
+	.select {
+		padding-right: var(--sp-5);
+	}
+}
