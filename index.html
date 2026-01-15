@@ -1,52 +1,770 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="dist/main.css" />
-		<title>SCSS styles system</title>
+		<title>SCSS Style System - Demo</title>
+		<link rel="stylesheet" href="demo/dist/tokens.css" />
+		<link rel="stylesheet" href="demo/dist/styles.css" />
 	</head>
-
-	<body
-		style="margin: 0; display: flex; flex-direction: column; min-height: 100vh"
-	>
-		<header
-			style="
-				background-color: var(--clr-header-bg);
-				color: var(--clr-header-text);
-				width: 100%;
-				padding: 1rem;
-				text-align: center;
-			"
-		>
-			HEADER
+	<body>
+		<!-- Header with theme toggle -->
+		<header class="demo-header">
+			<div class="container">
+				<h1>🎨 SCSS Style System</h1>
+				<p class="demo-header__subtitle">
+					Interactive Demo & Component Showcase
+				</p>
+				<button id="theme-toggle" class="btn btn--secondary">
+					<span class="theme-icon">🌙</span>
+					Toggle Theme
+				</button>
+			</div>
 		</header>
 
-		<main
-			style="
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				background-color: var(--clr-main-bg);
-				color: var(--clr-main-text);
-				padding: 1rem;
-			"
-		>
-			MAIN
+		<!-- Main content -->
+		<main class="demo-main">
+			<div class="container">
+				<!-- Navigation -->
+				<nav class="demo-nav">
+					<a href="#colors">Colors</a>
+					<a href="#spacing">Spacing</a>
+					<a href="#typography">Typography</a>
+					<a href="#radius">Radius</a>
+					<a href="#shadows">Shadows</a>
+					<a href="#animations">Animations</a>
+					<a href="#components">Components</a>
+				</nav>
+
+				<!-- Colors Section -->
+				<section id="colors" class="demo-section">
+					<h2>🎨 Colors</h2>
+					<p class="demo-section__description">
+						OKLCH color system with perceptually uniform scales
+					</p>
+
+					<!-- Primary Colors -->
+					<div class="token-group">
+						<h3>Primary</h3>
+						<div class="color-palette">
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-100)"
+							>
+								<span class="color-swatch__label">100</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-200)"
+							>
+								<span class="color-swatch__label">200</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-300)"
+							>
+								<span class="color-swatch__label">300</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-400)"
+							>
+								<span class="color-swatch__label">400</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-500)"
+							>
+								<span class="color-swatch__label">500</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-600)"
+							>
+								<span class="color-swatch__label">600</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-700)"
+							>
+								<span class="color-swatch__label">700</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-800)"
+							>
+								<span class="color-swatch__label">800</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-primary-900)"
+							>
+								<span class="color-swatch__label">900</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Secondary Colors -->
+					<div class="token-group">
+						<h3>Secondary</h3>
+						<div class="color-palette">
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-100)"
+							>
+								<span class="color-swatch__label">100</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-200)"
+							>
+								<span class="color-swatch__label">200</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-300)"
+							>
+								<span class="color-swatch__label">300</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-400)"
+							>
+								<span class="color-swatch__label">400</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-500)"
+							>
+								<span class="color-swatch__label">500</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-600)"
+							>
+								<span class="color-swatch__label">600</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-700)"
+							>
+								<span class="color-swatch__label">700</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-800)"
+							>
+								<span class="color-swatch__label">800</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-secondary-900)"
+							>
+								<span class="color-swatch__label">900</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Neutral Colors -->
+					<div class="token-group">
+						<h3>Neutral</h3>
+						<div class="color-palette">
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-100)"
+							>
+								<span class="color-swatch__label">100</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-200)"
+							>
+								<span class="color-swatch__label">200</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-300)"
+							>
+								<span class="color-swatch__label">300</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-400)"
+							>
+								<span class="color-swatch__label">400</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-500)"
+							>
+								<span class="color-swatch__label">500</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-600)"
+							>
+								<span class="color-swatch__label">600</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-700)"
+							>
+								<span class="color-swatch__label">700</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-800)"
+							>
+								<span class="color-swatch__label">800</span>
+							</div>
+							<div
+								class="color-swatch"
+								style="background: var(--clr-neutral-900)"
+							>
+								<span class="color-swatch__label">900</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Semantic Colors -->
+					<div class="token-group">
+						<h3>Semantic</h3>
+						<div class="semantic-colors">
+							<div class="semantic-color">
+								<div
+									class="semantic-color__preview"
+									style="
+										background: var(--clr-success-bg);
+										border: 2px solid var(--clr-success-border);
+									"
+								>
+									<div
+										class="semantic-color__dot"
+										style="background: var(--clr-success-solid)"
+									></div>
+								</div>
+								<span>Success</span>
+							</div>
+							<div class="semantic-color">
+								<div
+									class="semantic-color__preview"
+									style="
+										background: var(--clr-warning-bg);
+										border: 2px solid var(--clr-warning-border);
+									"
+								>
+									<div
+										class="semantic-color__dot"
+										style="background: var(--clr-warning-solid)"
+									></div>
+								</div>
+								<span>Warning</span>
+							</div>
+							<div class="semantic-color">
+								<div
+									class="semantic-color__preview"
+									style="
+										background: var(--clr-danger-bg);
+										border: 2px solid var(--clr-danger-border);
+									"
+								>
+									<div
+										class="semantic-color__dot"
+										style="background: var(--clr-danger-solid)"
+									></div>
+								</div>
+								<span>Danger</span>
+							</div>
+							<div class="semantic-color">
+								<div
+									class="semantic-color__preview"
+									style="
+										background: var(--clr-info-bg);
+										border: 2px solid var(--clr-info-border);
+									"
+								>
+									<div
+										class="semantic-color__dot"
+										style="background: var(--clr-info-solid)"
+									></div>
+								</div>
+								<span>Info</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Theme Colors -->
+					<div class="token-group">
+						<h3>Theme Colors</h3>
+						<div class="theme-colors">
+							<div class="theme-color-item">
+								<div
+									class="theme-color-preview"
+									style="
+										background: var(--clr-main-bg);
+										color: var(--clr-main-text);
+									"
+								>
+									<p>Main Background</p>
+									<small>--clr-main-bg</small>
+								</div>
+							</div>
+							<div class="theme-color-item">
+								<div
+									class="theme-color-preview"
+									style="
+										background: var(--clr-surface-bg);
+										color: var(--clr-surface-text);
+									"
+								>
+									<p>Surface</p>
+									<small>--clr-surface-bg</small>
+								</div>
+							</div>
+							<div class="theme-color-item">
+								<div
+									class="theme-color-preview"
+									style="
+										background: var(--clr-card-bg);
+										color: var(--clr-card-text);
+									"
+								>
+									<p>Card</p>
+									<small>--clr-card-bg</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Spacing Section -->
+				<section id="spacing" class="demo-section">
+					<h2>📏 Spacing</h2>
+					<p class="demo-section__description">
+						8px grid system (sp-0 to sp-8)
+					</p>
+
+					<div class="spacing-scale">
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-0)"></div>
+							<span class="spacing-label">sp-0 (0)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-1)"></div>
+							<span class="spacing-label">sp-1 (0.5rem / 8px)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-2)"></div>
+							<span class="spacing-label">sp-2 (1rem / 16px)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-3)"></div>
+							<span class="spacing-label">sp-3 (1.5rem / 24px)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-4)"></div>
+							<span class="spacing-label">sp-4 (2rem / 32px)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-5)"></div>
+							<span class="spacing-label">sp-5 (2.5rem / 40px)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-6)"></div>
+							<span class="spacing-label">sp-6 (3rem / 48px)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-7)"></div>
+							<span class="spacing-label">sp-7 (3.5rem / 56px)</span>
+						</div>
+						<div class="spacing-item">
+							<div class="spacing-bar" style="width: var(--sp-8)"></div>
+							<span class="spacing-label">sp-8 (4rem / 64px)</span>
+						</div>
+					</div>
+				</section>
+
+				<!-- Typography Section -->
+				<section id="typography" class="demo-section">
+					<h2>✍️ Typography</h2>
+					<p class="demo-section__description">
+						Type scale with consistent rhythm
+					</p>
+
+					<div class="type-scale">
+						<h1 class="type-example">Heading 1 - 1.875rem (30px)</h1>
+						<h2 class="type-example">Heading 2 - 1.5rem (24px)</h2>
+						<h3 class="type-example">Heading 3 - 1.25rem (20px)</h3>
+						<h4 class="type-example">Heading 4 - 1.125rem (18px)</h4>
+						<h5 class="type-example">Heading 5 - 1rem (16px)</h5>
+						<h6 class="type-example">Heading 6 - 0.875rem (14px)</h6>
+						<p class="type-example">
+							Body text - 1rem (16px) - The quick brown fox jumps over the lazy
+							dog.
+						</p>
+						<small class="type-example"
+							>Small text - 0.875rem (14px) - Additional information or
+							captions</small
+						>
+					</div>
+
+					<div class="token-group">
+						<h3>Font Weights</h3>
+						<div class="font-weights">
+							<p style="font-weight: var(--fw-regular)">Regular (400)</p>
+							<p style="font-weight: var(--fw-medium)">Medium (500)</p>
+							<p style="font-weight: var(--fw-bold)">Bold (700)</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Radius Section -->
+				<section id="radius" class="demo-section">
+					<h2>⭕ Border Radius</h2>
+					<p class="demo-section__description">
+						From sharp corners to fully rounded
+					</p>
+
+					<div class="radius-grid">
+						<div class="radius-item">
+							<div
+								class="radius-box"
+								style="border-radius: var(--rd-none)"
+							></div>
+							<span>none (0)</span>
+						</div>
+						<div class="radius-item">
+							<div class="radius-box" style="border-radius: var(--rd-xs)"></div>
+							<span>xs (2px)</span>
+						</div>
+						<div class="radius-item">
+							<div class="radius-box" style="border-radius: var(--rd-sm)"></div>
+							<span>sm (4px)</span>
+						</div>
+						<div class="radius-item">
+							<div class="radius-box" style="border-radius: var(--rd-md)"></div>
+							<span>md (6px)</span>
+						</div>
+						<div class="radius-item">
+							<div class="radius-box" style="border-radius: var(--rd-lg)"></div>
+							<span>lg (10px)</span>
+						</div>
+						<div class="radius-item">
+							<div class="radius-box" style="border-radius: var(--rd-xl)"></div>
+							<span>xl (14px)</span>
+						</div>
+						<div class="radius-item">
+							<div
+								class="radius-box radius-box--pill"
+								style="border-radius: var(--rd-pill)"
+							></div>
+							<span>pill (9999px)</span>
+						</div>
+						<div class="radius-item">
+							<div
+								class="radius-box radius-box--circle"
+								style="border-radius: var(--rd-full)"
+							></div>
+							<span>full (50%)</span>
+						</div>
+					</div>
+				</section>
+
+				<!-- Shadows Section -->
+				<section id="shadows" class="demo-section">
+					<h2>🌑 Shadows</h2>
+					<p class="demo-section__description">
+						Elevation system for depth and hierarchy
+					</p>
+
+					<div class="shadow-grid">
+						<div class="shadow-card" style="box-shadow: var(--shadow-xs)">
+							<strong>XS</strong>
+							<small>Subtle depth</small>
+						</div>
+						<div class="shadow-card" style="box-shadow: var(--shadow-sm)">
+							<strong>SM</strong>
+							<small>Buttons, inputs</small>
+						</div>
+						<div class="shadow-card" style="box-shadow: var(--shadow-md)">
+							<strong>MD</strong>
+							<small>Cards, panels</small>
+						</div>
+						<div class="shadow-card" style="box-shadow: var(--shadow-lg)">
+							<strong>LG</strong>
+							<small>Dropdowns, popovers</small>
+						</div>
+						<div class="shadow-card" style="box-shadow: var(--shadow-xl)">
+							<strong>XL</strong>
+							<small>Modals, dialogs</small>
+						</div>
+					</div>
+				</section>
+
+				<!-- Animations Section -->
+				<section id="animations" class="demo-section">
+					<h2>⚡ Animations</h2>
+					<p class="demo-section__description">Consistent timing and easing</p>
+
+					<div class="animation-demos">
+						<div class="animation-demo">
+							<h3>Duration</h3>
+							<button class="anim-btn" data-duration="instant">
+								Instant (100ms)
+							</button>
+							<button class="anim-btn" data-duration="fast">
+								Fast (200ms)
+							</button>
+							<button class="anim-btn" data-duration="normal">
+								Normal (300ms)
+							</button>
+							<button class="anim-btn" data-duration="slow">
+								Slow (500ms)
+							</button>
+						</div>
+
+						<div class="animation-demo">
+							<h3>Easing</h3>
+							<button class="anim-btn" data-easing="in">Ease In</button>
+							<button class="anim-btn" data-easing="out">Ease Out</button>
+							<button class="anim-btn" data-easing="in-out">Ease In-Out</button>
+						</div>
+					</div>
+				</section>
+
+				<!-- Components Section -->
+				<section id="components" class="demo-section">
+					<h2>🧩 Components</h2>
+					<p class="demo-section__description">
+						Real-world component examples using the system
+					</p>
+
+					<!-- Buttons -->
+					<div class="component-group">
+						<h3>Buttons</h3>
+						<div class="component-grid">
+							<button class="btn btn--primary">Primary Button</button>
+							<button class="btn btn--secondary">Secondary Button</button>
+							<button class="btn btn--success">Success Button</button>
+							<button class="btn btn--danger">Danger Button</button>
+							<button class="btn btn--primary btn--sm">Small Button</button>
+							<button class="btn btn--primary btn--lg">Large Button</button>
+							<button class="btn btn--primary" disabled>Disabled</button>
+						</div>
+					</div>
+
+					<!-- Cards -->
+					<div class="component-group">
+						<h3>Cards</h3>
+						<div class="cards-grid">
+							<div class="card">
+								<h4>Simple Card</h4>
+								<p>This is a card with basic styling using design tokens.</p>
+							</div>
+							<div class="card card--elevated">
+								<h4>Elevated Card</h4>
+								<p>This card has a larger shadow for emphasis.</p>
+							</div>
+							<div class="card card--interactive">
+								<h4>Interactive Card</h4>
+								<p>Hover to see the effect. Perfect for clickable cards.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Forms -->
+					<div class="component-group">
+						<h3>Form Elements</h3>
+						<form class="demo-form">
+							<div class="form-group">
+								<label for="name">Name</label>
+								<input
+									type="text"
+									id="name"
+									class="input"
+									placeholder="Enter your name"
+								/>
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input
+									type="email"
+									id="email"
+									class="input"
+									placeholder="your@email.com"
+								/>
+							</div>
+							<div class="form-group">
+								<label for="country">Country</label>
+								<select id="country" class="select">
+									<option>Select country</option>
+									<option>Ukraine</option>
+									<option>USA</option>
+									<option>UK</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="message">Message</label>
+								<textarea
+									id="message"
+									class="textarea"
+									rows="4"
+									placeholder="Your message..."
+								></textarea>
+							</div>
+							<button type="submit" class="btn btn--primary">Submit</button>
+						</form>
+					</div>
+
+					<!-- Alerts -->
+					<div class="component-group">
+						<h3>Alerts</h3>
+						<div class="alerts-stack">
+							<div class="alert alert--success">
+								<strong>Success!</strong> Your changes have been saved.
+							</div>
+							<div class="alert alert--warning">
+								<strong>Warning!</strong> Please review your information.
+							</div>
+							<div class="alert alert--danger">
+								<strong>Error!</strong> Something went wrong.
+							</div>
+							<div class="alert alert--info">
+								<strong>Info!</strong> You have 3 unread messages.
+							</div>
+						</div>
+					</div>
+
+					<!-- Badges -->
+					<div class="component-group">
+						<h3>Badges</h3>
+						<div class="component-grid">
+							<span class="badge badge--primary">New</span>
+							<span class="badge badge--success">Active</span>
+							<span class="badge badge--warning">Pending</span>
+							<span class="badge badge--danger">Urgent</span>
+							<span class="badge badge--neutral">Draft</span>
+						</div>
+					</div>
+
+					<!-- Modal Demo -->
+					<div class="component-group">
+						<h3>Modal</h3>
+						<button id="open-modal" class="btn btn--primary">Open Modal</button>
+					</div>
+				</section>
+			</div>
 		</main>
 
-		<footer
-			style="
-				background-color: var(--clr-footer-bg);
-				color: var(--clr-footer-text);
-				width: 100%;
-				padding: 1rem;
-				text-align: center;
-			"
-		>
-			FOOTER
+		<!-- Footer -->
+		<footer class="demo-footer">
+			<div class="container">
+				<p>
+					Built with
+					<a href="https://github.com/nekithrill/scss-style-system"
+						>SCSS Style System</a
+					>
+				</p>
+				<p>
+					<a href="https://github.com/nekithrill/scss-style-system">GitHub</a> ·
+					<a
+						href="https://github.com/nekithrill/scss-style-system/tree/main/docs"
+						>Documentation</a
+					>
+					·
+					<a href="https://github.com/nekithrill/scss-style-system/releases"
+						>Download</a
+					>
+				</p>
+			</div>
 		</footer>
+
+		<!-- Modal Overlay -->
+		<div id="modal" class="modal">
+			<div class="modal__overlay"></div>
+			<div class="modal__content">
+				<button class="modal__close" id="close-modal">✕</button>
+				<h3>Modal Title</h3>
+				<p>
+					This is an example modal using the design system. It demonstrates the
+					z-index system and overlay styling.
+				</p>
+				<div class="modal__actions">
+					<button class="btn btn--secondary" id="modal-cancel">Cancel</button>
+					<button class="btn btn--primary" id="modal-confirm">Confirm</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Scripts -->
+		<script>
+			// Theme toggle
+			const themeToggle = document.getElementById('theme-toggle')
+			const html = document.documentElement
+			const themeIcon = document.querySelector('.theme-icon')
+
+			themeToggle.addEventListener('click', () => {
+				const currentTheme = html.getAttribute('data-theme')
+				const newTheme = currentTheme === 'light' ? 'dark' : 'light'
+
+				html.setAttribute('data-theme', newTheme)
+				themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️'
+
+				// Save preference
+				localStorage.setItem('theme', newTheme)
+			})
+
+			// Load saved theme
+			const savedTheme = localStorage.getItem('theme') || 'light'
+			html.setAttribute('data-theme', savedTheme)
+			themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️'
+
+			// Modal
+			const modal = document.getElementById('modal')
+			const openModal = document.getElementById('open-modal')
+			const closeModal = document.getElementById('close-modal')
+			const cancelModal = document.getElementById('modal-cancel')
+			const confirmModal = document.getElementById('modal-confirm')
+
+			openModal.addEventListener('click', () => {
+				modal.classList.add('modal--open')
+				document.body.style.overflow = 'hidden'
+			})
+
+			const closeModalFn = () => {
+				modal.classList.remove('modal--open')
+				document.body.style.overflow = ''
+			}
+
+			closeModal.addEventListener('click', closeModalFn)
+			cancelModal.addEventListener('click', closeModalFn)
+			confirmModal.addEventListener('click', () => {
+				alert('Confirmed!')
+				closeModalFn()
+			})
+
+			modal
+				.querySelector('.modal__overlay')
+				.addEventListener('click', closeModalFn)
+
+			// Smooth scroll for navigation
+			document.querySelectorAll('.demo-nav a').forEach(link => {
+				link.addEventListener('click', e => {
+					e.preventDefault()
+					const target = document.querySelector(link.getAttribute('href'))
+					target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+				})
+			})
+
+			// Animation demos
+			document.querySelectorAll('.anim-btn').forEach(btn => {
+				btn.addEventListener('click', function () {
+					this.classList.add('animating')
+					setTimeout(() => {
+						this.classList.remove('animating')
+					}, 1000)
+				})
+			})
+		</script>
 	</body>
 </html>
