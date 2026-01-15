@@ -1,10 +1,12 @@
-// Light theme color mappings
+// Light theme color mappings for demo
 
 $light: (
 	text: (
 		_: var(--clr-neutral-900),
-		accent: var(--clr-primary-500)
+		accent: var(--clr-primary-500),
+		muted: var(--clr-neutral-600)
 	),
+	
 	selection: (
 		bg: (
 			_: var(--clr-primary-200)
@@ -13,6 +15,7 @@ $light: (
 			_: var(--clr-primary-900)
 		)
 	),
+	
 	scrollbar: (
 		thumb: (
 			_: var(--clr-neutral-400),
@@ -22,6 +25,7 @@ $light: (
 			_: var(--clr-neutral-100)
 		)
 	),
+	
 	header: (
 		bg: (
 			_: var(--clr-secondary-100)
@@ -30,6 +34,7 @@ $light: (
 			_: var(--clr-neutral-900)
 		)
 	),
+	
 	main: (
 		bg: (
 			_: var(--clr-secondary-100),
@@ -39,12 +44,51 @@ $light: (
 			_: var(--clr-neutral-800)
 		)
 	),
+	
+	surface: (
+		bg: (
+			_: var(--clr-secondary-200)
+		),
+		text: (
+			_: var(--clr-neutral-900)
+		)
+	),
+	
+	card: (
+		bg: (
+			_: white
+		),
+		text: (
+			_: var(--clr-neutral-900)
+		)
+	),
+	
 	footer: (
 		bg: (
 			_: var(--clr-secondary-200)
 		),
 		text: (
 			_: var(--clr-neutral-700)
+		)
+	),
+	
+	border: (
+		_: var(--clr-neutral-300),
+		accent: var(--clr-primary-500)
+	),
+	
+	accent: (
+		bg: (
+			_: var(--clr-primary-500),
+			hover: var(--clr-primary-600),
+			active: var(--clr-primary-700)
+		),
+		text: (
+			_: white,
+			hover: white
+		),
+		border: (
+			_: var(--clr-primary-500)
 		)
 	)
 );

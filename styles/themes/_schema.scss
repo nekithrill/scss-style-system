@@ -1,4 +1,4 @@
-// Theme schema
+// Theme schema for demo
 // Defines required structure and allowed leaf keys for theme validation
 
 // Allowed leaf keys (state variants)
@@ -8,39 +8,60 @@ $theme-leaf-keys: (
 	'active',
 	'focus',
 	'disabled',
-	'muted',
-	'selected',
-	'hidden',
-	'error',
-	'success',
-	'warning',
-	'info'
+	'muted'
 );
 
-// Required theme structure
+// Required theme structure based on demo HTML needs
 $theme-required-keys: (
 	text: (
 		_: (),
-		accent: ()
+		accent: (),
+		muted: ()
 	),
+	
 	selection: (
 		bg: (),
 		text: ()
 	),
+	
 	scrollbar: (
 		track: (),
-		thumb: ()
+		thumb: (),
 	),
+	
 	header: (
 		bg: (),
 		text: ()
 	),
+	
 	main: (
 		bg: (),
 		text: ()
 	),
+	
+	surface: (
+		bg: (),
+		text: ()
+	),
+	
+	card: (
+		bg: (),
+		text: ()
+	),
+
 	footer: (
 		bg: (),
 		text: ()
+	),
+	
+	border: (
+		_: (),
+		accent: ()
+	),
+
+	accent: (
+		bg: (),
+		text: (),
+		border: ()
 	)
 );
