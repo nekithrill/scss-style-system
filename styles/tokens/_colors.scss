@@ -12,7 +12,7 @@ $primary: (
 	700: oklch(36% 0.17 270deg),
 	800: oklch(24% 0.14 270deg),
 	900: oklch(12% 0.11 270deg)
-);
+) !default;
 
 // SECONDARY - Backgrounds, surfaces, cards
 $secondary: (
@@ -25,7 +25,7 @@ $secondary: (
 	700: oklch(74% 0.02 249deg),
 	800: oklch(64% 0.03 249deg),
 	900: oklch(52% 0.04 249deg)
-);
+) !default;
 
 // NEUTRAL - Text, borders, icons, dividers
 $neutral: (
@@ -38,7 +38,7 @@ $neutral: (
 	700: oklch(39% 0.03 220deg),
 	800: oklch(30% 0.02 220deg),
 	900: oklch(20% 0.01 220deg)
-);
+) !default;
 
 // SUCCESS - Positive feedback, confirmations
 $success: (
@@ -46,7 +46,7 @@ $success: (
 	border: oklch(70% 0.12 160deg),
 	solid: oklch(50% 0.15 160deg),
 	text: oklch(30% 0.15 160deg)
-);
+) !default;
 
 // WARNING - Alerts, cautionary messages
 $warning: (
@@ -54,7 +54,7 @@ $warning: (
 	border: oklch(75% 0.12 75deg),
 	solid: oklch(77% 0.16 70deg),
 	text: oklch(30% 0.12 70deg)
-);
+) !default;
 
 // DANGER - Errors, destructive actions
 $danger: (
@@ -62,7 +62,7 @@ $danger: (
 	border: oklch(70% 0.12 25deg),
 	solid: oklch(64% 0.21 25deg),
 	text: oklch(30% 0.15 25deg)
-);
+) !default;
 
 // INFO - Information, tips, neutral notifications
 $info: (
@@ -70,7 +70,7 @@ $info: (
 	border: oklch(70% 0.11 260deg),
 	solid: oklch(62% 0.19 260deg),
 	text: oklch(30% 0.15 260deg)
-);
+) !default;
 
 // All colors map for CSS variable generation
 $all-colors: (
@@ -81,4 +81,4 @@ $all-colors: (
 	'warning': $warning,
 	'danger': $danger,
 	'info': $info
-);
+) !default;

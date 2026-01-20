@@ -1,7 +1,7 @@
 // Spacing tokens based on 8px grid
 // Change $base-spacing to scale entire system
 
-$base-spacing: 8px;
+$base-spacing: 8px !default;
 
 $spacing: (
 	0: 0,

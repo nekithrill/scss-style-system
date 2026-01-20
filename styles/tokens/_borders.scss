@@ -9,10 +9,10 @@ $border-radius: (
 	xl: 14px,
 	pill: 9999px,
 	full: 50%
-);
+) !default;
 
 $stroke-width: (
 	thin: 1px,
 	normal: 2px,
 	thick: 4px
-);
+) !default;

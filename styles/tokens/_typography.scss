@@ -11,7 +11,7 @@ $font-families: (
 		Roboto,
 		sans-serif
 	)
-);
+) !default;
 
 $font-weights: (
 	light: 300,
@@ -19,9 +19,9 @@ $font-weights: (
 	medium: 500,
 	bold: 700,
 	extra-bold: 900
-);
+) !default;
 
-$base-font-size: 16px;
+$base-font-size: 16px !default;
 
 $font-sizes: (
 	default: $base-font-size,

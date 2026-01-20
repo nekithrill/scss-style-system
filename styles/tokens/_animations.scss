@@ -7,7 +7,7 @@ $duration: (
 	normal: 300ms,
 	slow: 500ms,
 	slower: 700ms
-);
+) !default;
 
 $easing: (
 	linear: linear,
@@ -15,11 +15,11 @@ $easing: (
 	ease-out: cubic-bezier(0, 0, 0.2, 1),
 	ease-in-out: cubic-bezier(0.4, 0, 0.2, 1),
 	bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55)
-);
+) !default;
 
 $delay: (
 	none: 0ms,
 	short: 50ms,
 	medium: 100ms,
 	long: 200ms
-);
+) !default;

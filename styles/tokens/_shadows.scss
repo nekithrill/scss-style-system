@@ -1,7 +1,7 @@
 // Shadow tokens
 // Change $base-shadow to adjust color/opacity globally
 
-$base-shadow: rgb(0 0 0 / 10%);
+$base-shadow: rgb(0 0 0 / 10%) !default;
 
 $shadows: (
 	xs: 0 1px 2px $base-shadow,
@@ -10,4 +10,4 @@ $shadows: (
 	lg: 0 4px 12px $base-shadow,
 	xl: 0 8px 24px $base-shadow,
 	inset: inset 0 2px 4px $base-shadow
-);
+) !default;
