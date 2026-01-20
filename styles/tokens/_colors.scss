@@ -1,75 +1,86 @@
 // Color tokens
 // OKLCH format recommended for perceptual uniformity
 
+// Hues for general colors
+$primary-hue: 270deg !default;
+$secondary-hue: 248deg !default;
+$neutral-hue: 220deg !default;
+
+// Hues for semantic colors
+$success-hue: 160deg !default;
+$warning-hue: 80deg !default;
+$danger-hue: 25deg !default;
+$info-hue: 260deg !default;
+
 // PRIMARY - Brand colors, accents, interactive elements
 $primary: (
-	100: oklch(95% 0.06 270deg),
-	200: oklch(85% 0.1 270deg),
-	300: oklch(75% 0.14 270deg),
-	400: oklch(65% 0.17 270deg),
-	500: oklch(60% 0.2 270deg),
-	600: oklch(48% 0.2 270deg),
-	700: oklch(36% 0.17 270deg),
-	800: oklch(24% 0.14 270deg),
-	900: oklch(12% 0.11 270deg)
+	100: oklch(95% 0.06 $primary-hue),
+	200: oklch(85% 0.1 $primary-hue),
+	300: oklch(75% 0.14 $primary-hue),
+	400: oklch(65% 0.17 $primary-hue),
+	500: oklch(60% 0.2 $primary-hue),
+	600: oklch(48% 0.2 $primary-hue),
+	700: oklch(36% 0.17 $primary-hue),
+	800: oklch(24% 0.14 $primary-hue),
+	900: oklch(12% 0.11 $primary-hue)
 ) !default;
 
 // SECONDARY - Backgrounds, surfaces, cards
 $secondary: (
-	100: oklch(99% 0 248deg),
-	200: oklch(97% 0 248deg),
-	300: oklch(95% 0 248deg),
-	400: oklch(92% 0 248deg),
-	500: oklch(88% 0 248deg),
-	600: oklch(82% 0.01 248deg),
-	700: oklch(74% 0.02 249deg),
-	800: oklch(64% 0.03 249deg),
-	900: oklch(52% 0.04 249deg)
+	100: oklch(99% 0 $secondary-hue),
+	200: oklch(97% 0 $secondary-hue),
+	300: oklch(95% 0 $secondary-hue),
+	400: oklch(92% 0 $secondary-hue),
+	500: oklch(88% 0 $secondary-hue),
+	600: oklch(82% 0.01 $secondary-hue),
+	700: oklch(74% 0.02 $secondary-hue),
+	800: oklch(64% 0.03 $secondary-hue),
+	900: oklch(52% 0.04 $secondary-hue)
 ) !default;
 
 // NEUTRAL - Text, borders, icons, dividers
 $neutral: (
-	100: oklch(96% 0.01 220deg),
-	200: oklch(85% 0.02 220deg),
-	300: oklch(75% 0.02 220deg),
-	400: oklch(65% 0.03 220deg),
-	500: oklch(56% 0.04 220deg),
-	600: oklch(48% 0.03 220deg),
-	700: oklch(39% 0.03 220deg),
-	800: oklch(30% 0.02 220deg),
-	900: oklch(20% 0.01 220deg)
+	100: oklch(96% 0.01 $neutral-hue),
+	200: oklch(85% 0.02 $neutral-hue),
+	300: oklch(75% 0.02 $neutral-hue),
+	400: oklch(65% 0.03 $neutral-hue),
+	500: oklch(56% 0.04 $neutral-hue),
+	600: oklch(48% 0.03 $neutral-hue),
+	700: oklch(39% 0.03 $neutral-hue),
+	800: oklch(30% 0.02 $neutral-hue),
+	900: oklch(20% 0.01 $neutral-hue)
 ) !default;
 
 // SUCCESS - Positive feedback, confirmations
 $success: (
-	bg: oklch(95% 0.05 160deg),
-	border: oklch(70% 0.12 160deg),
-	solid: oklch(50% 0.15 160deg),
-	text: oklch(30% 0.15 160deg)
+	bg: oklch(95% 0.05 $success-hue),
+	border: oklch(70% 0.12 $success-hue),
+	solid: oklch(50% 0.15 $success-hue),
+	text: oklch(30% 0.15 $success-hue)
 ) !default;
 
 // WARNING - Alerts, cautionary messages
 $warning: (
-	bg: oklch(95% 0.04 80deg),
-	border: oklch(75% 0.12 75deg),
-	solid: oklch(77% 0.16 70deg),
-	text: oklch(30% 0.12 70deg)
+	bg: oklch(95% 0.04 $warning-hue),
+	border: oklch(75% 0.12 $warning-hue),
+	solid: oklch(77% 0.16 $warning-hue),
+	text: oklch(30% 0.12 $warning-hue)
 ) !default;
 
 // DANGER - Errors, destructive actions
 $danger: (
-	bg: oklch(95% 0.04 20deg),
-	border: oklch(70% 0.12 25deg),
-	solid: oklch(64% 0.21 25deg),
-	text: oklch(30% 0.15 25deg)
+	bg: oklch(95% 0.04 $danger-hue),
+	border: oklch(70% 0.12 $danger-hue),
+	solid: oklch(64% 0.21 $danger-hue),
+	text: oklch(30% 0.15 $danger-hue)
 ) !default;
 
 // INFO - Information, tips, neutral notifications
 $info: (
-	bg: oklch(95% 0.04 260deg),
-	border: oklch(70% 0.11 260deg),
-	solid: oklch(62% 0.19 260deg),
-	text: oklch(30% 0.15 260deg)
+	bg: oklch(95% 0.04 $info-hue),
+	border: oklch(70% 0.11 $info-hue),
+	solid: oklch(62% 0.19 $info-hue),
+	text: oklch(30% 0.15 $info-hue)
 ) !default;
 
 // All colors map for CSS variable generation
