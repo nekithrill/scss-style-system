@@ -36,7 +36,7 @@ $base-tokens: (
 	),
 	radius: (
 		map: $border-radius,
-		prefix: 'radius',
+		prefix: 'rd',
 		transform: 'rem'
 	),
 	stroke: (
@@ -53,7 +53,7 @@ $base-tokens: (
 	),
 	easing: (
 		map: $easing,
-		prefix: 'ease'
+		prefix: 'tf'
 	),
 	delay: (
 		map: $delay,
