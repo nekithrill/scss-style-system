@@ -1,5 +1,3 @@
-> **📦 Type:** Usage Guide
-
 ## 🔄 Overriding system defaults
 
 How to override CSS variables and extend the system with your own values.

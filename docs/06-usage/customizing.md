@@ -1,5 +1,3 @@
-> **📦 Type:** Usage Guide
-
 ## 🎨 Customizing the system
 
 Learn how to adapt the design system to match your brand and design requirements.
