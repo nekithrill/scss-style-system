@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/tokens/_z-index.scss`
+> **🧭 Scope:** Stacking context and layer ordering
 > **📦 Type:** Token
 
 ## 🏔️ Z-index tokens

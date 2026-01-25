@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/base/_scrollbar.scss`
+> **🧭 Scope:** Custom scrollbar appearance
 > **📦 Type:** Basic
 
 ## 📜 Custom scrollbar

@@ -1,4 +1,5 @@
->  **📁 Location:** `styles/tokens/_breakpoints.scss`
+> **📁 Location:** `styles/tokens/_breakpoints.scss`
+> **🧭 Scope:** Responsive layout breakpoints
 > **📦 Type:** Token
 
 ## 📱 Breakpoint tokens

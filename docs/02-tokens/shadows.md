@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/tokens/_shadows.scss`
+> **🧭 Scope:** Elevation & depth across UI components
 > **📦 Type:** Token
 
 ## 🌫️ Shadow tokens

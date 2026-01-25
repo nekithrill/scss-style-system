@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/tokens/_spacing.scss`
+> **🧭 Scope:** Layout spacing and component paddings
 > **📦 Type:** Token
 
 ## 📏 Spacing tokens

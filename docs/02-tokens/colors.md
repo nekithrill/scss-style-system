@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/tokens/_colors.scss`
+> **🧭 Scope:** Color palette (semantic + brand)
 > **📦 Type:** Token
 
 ## 🎨 Color tokens

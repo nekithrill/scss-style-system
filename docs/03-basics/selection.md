@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/base/_selection.scss`
+> **🧭 Scope:** Text selection styling
 > **📦 Type:** Basic
 
 ## 🖱️ Text selection

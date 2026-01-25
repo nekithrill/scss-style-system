@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/tokens/_typography.scss`
+> **🧭 Scope:** Text styles, font scales and typographic rhythm
 > **📦 Type:** Token
 
 ## ✍️ Typography tokens

@@ -1,3 +1,7 @@
+> **📁 Location:** `styles/base/_reset.scss`
+> **🧭 Scope:** Browser style normalization
+> **📦 Type:** Basic
+
 ## 🔄 CSS Reset
 
 Minimal CSS reset that removes browser inconsistencies and provides a clean foundation.

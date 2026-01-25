@@ -1,3 +1,7 @@
+> **📁 Location:** `styles/base/_globals.scss`
+> **🧭 Scope:** Global element defaults and base styles
+> **📦 Type:** Basic
+
 ## 🌐 Global styles
 
 Foundation styles for html, body, and heading elements with design token integration.

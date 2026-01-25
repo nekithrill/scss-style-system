@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/base/_focus.scss`
+> **🧭 Scope:** Focus visibility and accessibility states
 > **📦 Type:** Basic
 
 ## ⌨️ Focus styles

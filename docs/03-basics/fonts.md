@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/base/_fonts.scss`
+> **🧭 Scope:** Global font-face definitions
 > **📦 Type:** Basic
 
 ## 🔤 Font loading

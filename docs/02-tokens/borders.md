@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/tokens/_borders.scss`
+> **🧭 Scope:** Borders, outlines and radius system
 > **📦 Type:** Token
 
 ## 🔲 Border tokens

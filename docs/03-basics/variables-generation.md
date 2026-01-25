@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/base/_variables.scss`
+> **🧭 Scope:** CSS custom properties generation
 > **📦 Type:** Basic
 
 ## 🏭 CSS Variables generation

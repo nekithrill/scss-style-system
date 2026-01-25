@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/tokens/_animations.scss`
+> **🧭 Scope:** Motion, transitions and interaction feedback
 > **📦 Type:** Token
 
 ## 🎞️ Animation tokens
