@@ -89,6 +89,4 @@ module.exports = {
 
 ### Testing
 
-...
-
-<!-- This system was tested on different types of projects and no problems were found. -->
+Comming soon...
