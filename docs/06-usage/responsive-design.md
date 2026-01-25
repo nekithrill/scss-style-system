@@ -77,3 +77,19 @@ The `breakpoint` mixin simplifies responsive design with automatic media query g
 	}
 }
 ```
+
+**Responsive typography:**
+
+```scss
+.heading {
+    font-size: var(--fs-h1);
+    
+    @include breakpoint('md') {
+        font-size: var(--fs-h2);
+    }
+    
+    @include breakpoint('sm') {
+        font-size: var(--fs-h3);
+    }
+}
+```
