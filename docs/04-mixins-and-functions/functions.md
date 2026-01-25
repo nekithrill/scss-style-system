@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/core/functions/*.scss`
+> **🧭 Scope:** Low-level utilities and value transformations
 > **📦 Type:** Core
 
 ## ⚙️ Functions
@@ -13,95 +14,22 @@ Utility functions for value transformations and calculations.
 
 **Location:** `styles/core/functions/_px-to-rem.scss`
 
-#### Signature
+#### ✍️ Signature
 
 ```scss
 @function px-to-rem($value, $base: 16)
 ```
 
-#### Parameters
+#### 🧩 Parameters
 
 - `$value` (Number | List) - Value in px, list of px values, or unitless zero
 - `$base` (Number, optional) - Base font-size in pixels. Default: `16`
 
-#### Returns
+#### 🔁 Returns
 
 (Number | List) - Corresponding rem value(s), or original value if not in pixels
 
-#### Basic usage
-
-```scss
-@use '@/styles/core/functions/px-to-rem' as *;
-
-// Single value
-.element {
-	padding: px-to-rem(24px);  // → 1.5rem
-	margin: px-to-rem(16px);   // → 1rem
-}
-
-// List of values
-.box {
-	padding: px-to-rem(16px 24px);  // → 1rem 1.5rem
-	margin: px-to-rem(8px 16px 24px 32px);  // → 0.5rem 1rem 1.5rem 2rem
-}
-
-// Zero values
-.flush {
-	margin: px-to-rem(0);  // → 0 (no unit)
-}
-```
-
-#### Advanced examples
-
-```scss
-// Custom base font size
-$custom-base: 18;
-
-.element {
-	font-size: px-to-rem(24px, $custom-base);  // → 1.3333rem (24/18)
-	padding: px-to-rem(18px, $custom-base);    // → 1rem (18/18)
-}
-
-// Complex CSS values (box-shadow)
-.card {
-	box-shadow: px-to-rem(0 4px 12px 0);
-	// → 0 0.25rem 0.75rem 0
-}
-
-// Border-radius with multiple values
-.rounded {
-	border-radius: px-to-rem(8px 8px 0 0);
-	// → 0.5rem 0.5rem 0 0
-}
-
-// Large values stay in pixels (≥5000px)
-.pill {
-	border-radius: px-to-rem(9999px);  // → 9999px (unchanged)
-}
-
-// Mixed units (non-px preserved)
-.mixed {
-	padding: px-to-rem(16px 2% 8px auto);
-	// → 1rem 2% 0.5rem auto
-}
-
-// In token generation
-@use '../functions/px-to-rem' as *;
-
-$spacing: (1: 8px, 2: 16px, 4: 32px);
-
-:root {
-	@each $key, $value in $spacing {
-		--sp-#{$key}: #{px-to-rem($value)};
-	}
-}
-// Generates:
-// --sp-1: 0.5rem;
-// --sp-2: 1rem;
-// --sp-4: 2rem;
-```
-
-#### How it works
+#### 🧠 How it works
 
 The function processes values through these steps:
 
@@ -123,7 +51,30 @@ The function processes values through these steps:
 - Lists are processed recursively, maintaining order
 - Colors and other non-numeric values in lists are preserved
 
-#### Best practices
+
+#### 🚀 Usage
+
+```scss
+@use '@/styles/core/functions/px-to-rem' as *;
+
+// Single value
+.element {
+	padding: px-to-rem(24px);  // → 1.5rem
+	margin: px-to-rem(16px);   // → 1rem
+}
+
+// List of values
+.box {
+	padding: px-to-rem(16px 24px);  // → 1rem 1.5rem
+	margin: px-to-rem(8px 16px 24px 32px);  // → 0.5rem 1rem 1.5rem 2rem
+}
+
+// Zero values
+.flush {
+	margin: px-to-rem(0);  // → 0 (no unit)
+}
+```
+#### ✔️ Best practices
 
 - ✅ **Do:** Use for spacing, sizing, and layout values that should scale with user preferences
 - ✅ **Do:** Set `$base` to match your root font-size if different from 16px

@@ -1,4 +1,5 @@
 > **📁 Location:** `styles/core/mixins/*.scss`
+> **🧭 Scope:** Stylesheet generation and system-level abstractions
 > **📦 Type:** Core
 
 ## ⚙️ Mixins
@@ -13,18 +14,31 @@ Reusable style patterns for responsive design, token generation, and theme manag
 
 **Location:** `styles/core/mixins/_breakpoint.scss`
 
-#### Signature
+#### ✍️ Signature
 
 ```scss
 @mixin breakpoint($size, $min-width: false)
 ```
 
-#### Parameters
+#### 🧩 Parameters
 
 - `$size` (String) - Breakpoint key from `$breakpoints` map (`'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'2xl'`)
 - `$min-width` (Boolean, optional) - `true` for mobile-first (min-width), `false` for desktop-first (max-width). Default: `false`
 
-#### Basic usage
+#### 🧠 How it works
+
+1. **Lookup:** Retrieves breakpoint value from `$breakpoints` map using the `$size` key
+2. **Validation:** Throws error if breakpoint key doesn't exist, listing available options
+3. **Query generation:** Creates either `min-width` or `max-width` media query based on `$min-width` flag
+4. **Content injection:** Inserts provided styles inside the media query using `@content`
+
+**Error handling:** If invalid breakpoint provided:
+```scss
+@include breakpoint('tablet');
+// Error: ⚠️ Breakpoint 'tablet' not found. Available: xs, sm, md, lg, xl, 2xl
+```
+
+#### 🚀 Usage
 
 ```scss
 @use '@/styles/core/mixins/breakpoint' as *;
@@ -63,7 +77,7 @@ Reusable style patterns for responsive design, token generation, and theme manag
 }
 ```
 
-#### Advanced examples
+**Advanced examples:**
 
 ```scss
 // Responsive grid
@@ -111,20 +125,7 @@ Reusable style patterns for responsive design, token generation, and theme manag
 }
 ```
 
-#### How it works
-
-1. **Lookup:** Retrieves breakpoint value from `$breakpoints` map using the `$size` key
-2. **Validation:** Throws error if breakpoint key doesn't exist, listing available options
-3. **Query generation:** Creates either `min-width` or `max-width` media query based on `$min-width` flag
-4. **Content injection:** Inserts provided styles inside the media query using `@content`
-
-**Error handling:** If invalid breakpoint provided:
-```scss
-@include breakpoint('tablet');
-// Error: ⚠️ Breakpoint 'tablet' not found. Available: xs, sm, md, lg, xl, 2xl
-```
-
-#### Best practices
+#### ✔️ Best practices
 
 - ✅ **Do:** Use desktop-first (default) for progressive enhancement
 - ✅ **Do:** Use mobile-first when starting with mobile design
@@ -166,20 +167,56 @@ Reusable style patterns for responsive design, token generation, and theme manag
 
 **Location:** `styles/core/mixins/_generate-tokens.scss`
 
-#### Signature
+#### ✍️ Signature
 
 ```scss
 @mixin generate-tokens($tokens)
 ```
 
-#### Parameters
+#### 🧩 Parameters
 
 - `$tokens` (Map) - Token configuration where each group contains:
   - `map` (Map, required) - Token values
   - `prefix` (String, required) - CSS variable prefix
   - `transform` (String, optional) - Set to `'rem'` to convert px to rem
 
-#### Basic usage
+#### 🧠 How it works
+
+1. **Group iteration:** Loops through each token group in the configuration map
+2. **Validation:** Checks for required `map` and `prefix` keys, throws error if missing
+3. **Structure detection:** Automatically determines if map is nested or flat:
+   - **Nested:** First value is a map → generates `--prefix-palette-shade` (e.g., `--clr-primary-500`)
+   - **Flat:** First value is not a map → generates `--prefix-key` (e.g., `--sp-4`)
+4. **Transformation:** If `transform: 'rem'` specified, applies `px-to-rem()` function
+5. **Variable generation:** Creates CSS custom properties with proper naming
+
+**Structure detection examples:**
+```scss
+// Nested map detected
+$colors: (
+	'primary': (100: #e0e7ff, 500: #6366f1)
+);
+// → --clr-primary-100, --clr-primary-500
+
+// Flat map detected
+$spacing: (1: 8px, 2: 16px);
+// → --sp-1, --sp-2
+```
+
+**Error handling:**
+```scss
+$tokens: (
+	colors: (
+		map: $colors
+		// Missing 'prefix'!
+	)
+);
+
+@include generate-tokens($tokens);
+// Error: generate-tokens: Group 'colors' missing 'prefix' key
+```
+
+#### 🚀 Usage
 
 ```scss
 @use '@/styles/core/mixins/generate-tokens' as *;
@@ -217,7 +254,7 @@ $base-tokens: (
 }
 ```
 
-#### Advanced examples
+**Advanced examples:**
 
 ```scss
 // Complete token setup
@@ -258,43 +295,7 @@ $base-tokens: (
 }
 ```
 
-#### How it works
-
-1. **Group iteration:** Loops through each token group in the configuration map
-2. **Validation:** Checks for required `map` and `prefix` keys, throws error if missing
-3. **Structure detection:** Automatically determines if map is nested or flat:
-   - **Nested:** First value is a map → generates `--prefix-palette-shade` (e.g., `--clr-primary-500`)
-   - **Flat:** First value is not a map → generates `--prefix-key` (e.g., `--sp-4`)
-4. **Transformation:** If `transform: 'rem'` specified, applies `px-to-rem()` function
-5. **Variable generation:** Creates CSS custom properties with proper naming
-
-**Structure detection examples:**
-```scss
-// Nested map detected
-$colors: (
-	'primary': (100: #e0e7ff, 500: #6366f1)
-);
-// → --clr-primary-100, --clr-primary-500
-
-// Flat map detected
-$spacing: (1: 8px, 2: 16px);
-// → --sp-1, --sp-2
-```
-
-**Error handling:**
-```scss
-$tokens: (
-	colors: (
-		map: $colors
-		// Missing 'prefix'!
-	)
-);
-
-@include generate-tokens($tokens);
-// Error: generate-tokens: Group 'colors' missing 'prefix' key
-```
-
-#### Best practices
+#### ✔️ Best practices
 
 - ✅ **Do:** Always include `prefix` for namespacing
 - ✅ **Do:** Use `transform: 'rem'` for spacing, sizing, typography
@@ -340,13 +341,13 @@ $base-tokens: (
 
 **Location:** `styles/core/mixins/_generate-theme.scss`
 
-#### Signature
+#### ✍️ Signature
 
 ```scss
 @mixin generate-theme($map, $prefix: 'clr')
 ```
 
-#### Parameters
+#### 🧩 Parameters
 
 - `$map` (Map) - Theme map with nested structure
 - `$prefix` (String, optional) - CSS variable prefix. Default: `'clr'`
@@ -356,7 +357,30 @@ $base-tokens: (
 - Other keys → variant variables (`--clr-main-bg-hover`)
 - Nested maps → recursive processing with updated prefix
 
-#### Basic usage
+#### 🧠 How it works
+
+1. **Map validation:** Checks if input is a map, throws error if not
+2. **Key iteration:** Loops through each key-value pair
+3. **Special key handling:**
+   - If key is `_` → generate base variable without suffix
+   - If value is map → recurse with updated prefix (`prefix-key`)
+   - Otherwise → generate leaf variable with key suffix (`prefix-key`)
+4. **Prefix building:** Concatenates parts with hyphens for proper CSS variable names
+
+**Prefix evolution:**
+```scss
+$theme: (
+	product: (           // prefix: 'clr'
+		card: (          // prefix: 'clr-product'
+			bg: (        // prefix: 'clr-product-card'
+				_: #fff  // → --clr-product-card-bg
+			)
+		)
+	)
+);
+```
+
+#### 🚀 Usage
 
 ```scss
 @use '@/styles/core/mixins/generate-theme' as *;
@@ -393,7 +417,7 @@ $dark: (
 }
 ```
 
-#### Advanced examples
+**Advanced examples:**
 
 ```scss
 // Complex theme with multiple levels
@@ -445,30 +469,7 @@ $light: (
 // --clr-button-secondary-text: var(--clr-neutral-900);
 ```
 
-#### How it works
-
-1. **Map validation:** Checks if input is a map, throws error if not
-2. **Key iteration:** Loops through each key-value pair
-3. **Special key handling:**
-   - If key is `_` → generate base variable without suffix
-   - If value is map → recurse with updated prefix (`prefix-key`)
-   - Otherwise → generate leaf variable with key suffix (`prefix-key`)
-4. **Prefix building:** Concatenates parts with hyphens for proper CSS variable names
-
-**Prefix evolution:**
-```scss
-$theme: (
-	product: (           // prefix: 'clr'
-		card: (          // prefix: 'clr-product'
-			bg: (        // prefix: 'clr-product-card'
-				_: #fff  // → --clr-product-card-bg
-			)
-		)
-	)
-);
-```
-
-#### Best practices
+#### ✔️ Best practices
 
 - ✅ **Do:** Validate themes before generation in development
 - ✅ **Do:** Use semantic component names (`header`, `button-primary`)
@@ -520,71 +521,20 @@ $theme: (
 
 **Location:** `styles/core/mixins/_validate-theme.scss`
 
-#### Signature
+#### ✍️ Signature
 
 ```scss
 @mixin validate-theme($theme-map, $required-keys, $allowed-leaf-keys, $parent: null)
 ```
 
-#### Parameters
+#### 🧩 Parameters
 
 - `$theme-map` (Map) - Theme map to validate
 - `$required-keys` (Map) - Required structure from schema
 - `$allowed-leaf-keys` (List) - Whitelisted leaf keys (`_`, `hover`, `active`, etc.)
 - `$parent` (String | Null, optional) - Internal recursion path (don't pass manually)
 
-#### Basic usage
-
-```scss
-@use '@/styles/themes/schema' as *;
-@use '@/styles/core/mixins/validate-theme' as *;
-
-// Validate before generating
-@include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
-
-// Then generate
-[data-theme='dark'] {
-	@include generate-theme($dark);
-}
-```
-
-#### Advanced examples
-
-```scss
-// Complete validation setup
-// themes/_schema.scss
-$theme-leaf-keys: (
-	'_', 'hover', 'active', 'focus',
-	'disabled', 'selected', 'error'
-);
-
-$theme-required-keys: (
-	text: (_: (), accent: ()),
-	header: (bg: (), text: ()),
-	main: (bg: (), text: ())
-);
-
-// themes/_light.scss
-@use './schema' as *;
-@use '../core/mixins/validate-theme' as *;
-@use '../core/mixins/generate-theme' as *;
-
-$light: (
-	text: (_: ..., accent: ...),
-	header: (bg: (_: ...), text: (_: ...)),
-	main: (bg: (_: ..., hover: ...), text: (_: ...))
-);
-
-// Validate in development
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
-
-// Generate
-[data-theme='light'] {
-	@include generate-theme($light);
-}
-```
-
-#### How it works
+#### 🧠 How it works
 
 1. **Type validation:** Checks if inputs are maps, throws error if not
 2. **Required key check:** Recursively verifies all required keys exist, throws error if missing
@@ -622,7 +572,58 @@ $light: (
 //          that is not in the schema or leaf keys whitelist!
 ```
 
-#### Best practices
+#### 🚀 Usage
+
+```scss
+@use '@/styles/themes/schema' as *;
+@use '@/styles/core/mixins/validate-theme' as *;
+
+// Validate before generating
+@include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
+
+// Then generate
+[data-theme='dark'] {
+	@include generate-theme($dark);
+}
+```
+
+**Advanced examples:**
+
+```scss
+// Complete validation setup
+// themes/_schema.scss
+$theme-leaf-keys: (
+	'_', 'hover', 'active', 'focus',
+	'disabled', 'selected', 'error'
+);
+
+$theme-required-keys: (
+	text: (_: (), accent: ()),
+	header: (bg: (), text: ()),
+	main: (bg: (), text: ())
+);
+
+// themes/_light.scss
+@use './schema' as *;
+@use '../core/mixins/validate-theme' as *;
+@use '../core/mixins/generate-theme' as *;
+
+$light: (
+	text: (_: ..., accent: ...),
+	header: (bg: (_: ...), text: (_: ...)),
+	main: (bg: (_: ..., hover: ...), text: (_: ...))
+);
+
+// Validate in development
+@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
+
+// Generate
+[data-theme='light'] {
+	@include generate-theme($light);
+}
+```
+
+#### ✔️ Best practices
 
 - ✅ **Do:** Run validation in development environment
 - ✅ **Do:** Fix errors (missing required keys) immediately
