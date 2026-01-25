@@ -45,9 +45,7 @@ $base-tokens: (
 }
 ```
 
----
-
-### Generated output
+**Generated output**
 
 CSS variables are automatically created with your specified prefix:
 ```css
@@ -173,4 +171,26 @@ $base-tokens: (
 
 ### ❌ Common mistakes
 
-Common mistakes
+**Don't use inconsistent prefixes:**
+```scss
+// ❌ Bad: Mixed prefixes
+borders: (
+    map: $borders,
+    prefix: 'bd'  // Should be 'border'
+)
+
+// ✅ Good: Consistent naming
+borders: (
+    map: $borders,
+    prefix: 'border'
+)
+```
+
+**Don't forget to import:**
+```scss
+// ❌ Bad: Token defined but not imported
+$custom-tokens: (...);
+
+// ✅ Good: Import in variables.scss
+@use '../tokens/custom' as *;
+```
