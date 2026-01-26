@@ -4,7 +4,7 @@
 
 <br>
 
-### Template to dependency migration
+### 📦 Template to dependency migration
 
 **Current state:**  
 The system is designed as a **starter template** - users copy files to their project and customize as needed. This approach prioritizes simplicity and full control over the codebase.
@@ -72,13 +72,9 @@ Only after the template approach has been validated through real-world usage in 
 
 > 💡 **Current recommendation:** Use the template approach (copy files). It's simpler, more flexible, and you own the code. Consider the dependency approach only for large teams managing multiple projects with the same design system.
 
-<br>
-
 ---
 
-<br>
-
-### Color system automation
+### 🤖 Color system automation
 
 **Current state:**  
 Color management is fully manual. Each color shade must be defined explicitly in the tokens file.
@@ -116,13 +112,9 @@ $primary: generate-palette(
 **When to implement:**  
 After testing the current system on multiple projects, if color maintenance becomes a pain point.
 
-<br>
-
 ---
 
-<br>
-
-### Token system improvement
+### 🧬 Token system improvement
 
 **Current state:**  
 The token system works as designed but may have limitations that only become apparent through real-world usage.
@@ -138,13 +130,9 @@ Based on feedback and testing across different projects, the token system may ne
 **When to implement:**  
 After identifying specific pain points through practical use. Changes will be driven by actual needs, not speculation.
 
-<br>
-
 ---
 
-<br>
-
-### Base styles improvement
+### 🧱 Base styles improvement
 
 **Current state:**  
 Base styles provide essential defaults for global elements (typography, links, etc.).
@@ -161,13 +149,9 @@ If the current base styles have gaps, errors, or don't cover common use cases di
 **When to implement:**  
 After real-world testing reveals specific issues or missing features in base styles.
 
-<br>
-
 ---
 
-<br>
-
-### Reset improvements
+### 🧹 Reset improvements
 
 **Current state:**  
 The reset provides a minimal foundation by removing browser inconsistencies.
