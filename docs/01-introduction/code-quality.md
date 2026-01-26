@@ -4,7 +4,7 @@ All SCSS files in this system are linted and formatted before pushing. Some test
 
 <br>
 
-### Prettier
+### 🎨 Prettier
 
 This system follows the Prettier configuration below to maintain consistent formatting.
 
@@ -25,9 +25,9 @@ module.exports = {
 }
 ```
 
-<br>
+---
 
-### Stylelint
+### 🧼 Stylelint
 
 This system follows the Stylelint configuration below to enforce consistent SCSS/CSS best practices.
 
@@ -85,8 +85,8 @@ module.exports = {
 }
 ```
 
-<br>
+---
 
-### Testing
+### 🧪 Testing
 
 Comming soon...
