@@ -3,7 +3,9 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=ffffff)](https://www.w3.org/TR/CSS/)
 [![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=ffffff)](https://sass-lang.com/)
 
-A modular design token system for generating CSS variables with optional theming support. Built to work seamlessly with component-scoped styling (SCSS modules, CSS-in-JS).
+A modular design token system for generating CSS variables with built-in theming support. Built to work seamlessly with component-scoped styling (SCSS modules, CSS-in-JS).
+
+<br>
 
 ## ✨ Key Features
 
@@ -16,6 +18,28 @@ A modular design token system for generating CSS variables with optional theming
 
 <br>
 
+## 🎯 Usage Patterns
+
+This system supports three workflows:
+
+### Modern Frameworks (Recommended)
+**Tools:** React + Vite, Next.js, Webpack  
+**How:** Auto-compilation, CSS Modules, hot reload  
+**Guide:** → [Quick Start](docs/01-introduction/getting-started.md)
+
+### Manual Compilation
+**Tools:** Sass CLI for static sites  
+**How:** Manual `sass` commands  
+**Guide:** → [Manual Setup](docs/01-introduction/getting-started.md#manual-compilation-static-sites)
+
+### Direct Token Import (Advanced)
+**Use case:** Import SCSS tokens without CSS variables  
+**Guide:** → [Direct Tokens](docs/01-introduction/getting-started.md)
+
+Most users should start with **Option 1**.
+
+<br>
+
 ## 🚀 Quick Start
 
 ### Step 1: Install Sass
@@ -23,94 +47,61 @@ A modular design token system for generating CSS variables with optional theming
 npm install --save-dev sass
 ```
 
-### Step 2: Download & Copy
-
-1. Download the latest release from [Releases](https://github.com/nekithrill/scss-style-system/releases)
-2. Copy the `styles/` folder to your project
-
-### Step 3: Choose Integration Method
-
-<details>
-<summary><b>Option A: Standalone stylesheet</b> (simplest)</summary>
-
-Compile the main stylesheet and link it in HTML:
-```bash
-sass styles/main.scss dist/styles.css
+### Step 2: Copy `styles/` folder to your project
 ```
-```html
-<link rel="stylesheet" href="/dist/styles.css" />
+your-project/
+├── src/
+│   └── styles/         ← Copy here
 ```
 
-Use CSS variables in your styles:
-```css
-.card {
-	padding: var(--sp-4);
-	background: var(--clr-main-bg);
-	border-radius: var(--rd-md);
-}
+### Step 3: Import in your app
+```jsx
+// main.jsx or _app.jsx
+import './styles/main.scss';
 ```
 
-</details>
-
-<details>
-<summary><b>Option B: Component-scoped</b> (recommended)</summary>
-
-Import specific utilities in component stylesheets:
+### Step 4: Use variables in your styles
 ```scss
 // Component.module.scss
-@use '@/styles/core/mixins/breakpoint' as *;
-
 .card {
-	padding: var(--sp-4);
-	background: var(--clr-main-bg);
-	
-	@include breakpoint('md') {
-		padding: var(--sp-2);
-	}
+    padding: var(--sp-4);
+    background: var(--clr-primary-500);
+    border-radius: var(--rd-md);
 }
 ```
 
-Compile base system separately:
-```bash
-sass styles/main.scss dist/base.css
-```
-```html
-<link rel="stylesheet" href="/dist/base.css" />
-```
+**Full guide:** [Getting Started](docs/01-introduction/getting-started.md)
 
-</details>
+<br>
 
-<details>
-<summary><b>Option C: Existing SCSS project</b></summary>
+## 🎨 Quick Customization
 
-Import in your existing SCSS workflow:
+Change your brand color with one line:
+
 ```scss
-// your-styles.scss
-@use 'styles/main';
-
-.your-component {
-	color: var(--clr-primary-500);
-	padding: var(--sp-3);
-}
+// styles/tokens/_colors.scss
+$primary-hue: 200deg !default;  // Blue instead of purple
 ```
 
-</details>
+All 9 shades (100-900) update automatically! 🎉
+
+**More:** [Customization guide](docs/06-usage/customizing.md)
 
 <br>
 
 ## 🎯 What's Included
 
-- **Design Tokens** - Colors, spacing, typography, radius, shadows (core)
-- **CSS Variables** - Auto-generated with px → rem conversion (core)
-- **Themes** - Light/dark/custom modes (optional)
-- **Mixins** - Breakpoints, utilities, helpers (optional)
-- **Base Styles** - Reset, globals, scrollbar (optional)
+- **Design Tokens** - Colors, spacing, typography, borders, shadows, animations
+- **CSS Variables** - Auto-generated with px → rem conversion
+- **Themes** (optional) - Light/dark mode with validation
+- **Mixins** (optional) - Breakpoints, utilities, helpers
+- **Base Styles** (optional) - Reset, globals, scrollbar
 
 <br>
 
 ## 💡 Best Used For
 
-- ✅ Projects with SCSS modules or CSS-in-JS
+- ✅ Component-based projects (React, Vue, Svelte)
 - ✅ Design systems with centralized tokens
 - ✅ Multi-theme applications (light/dark mode)
 - ✅ Projects needing modular, removable features
@@ -120,32 +111,42 @@ Import in your existing SCSS workflow:
 <br>
 
 ## 🛠️ Example Usage
+
 ```scss
 // Component.module.scss
 @use '@/styles/core/mixins/breakpoint' as *;
 
 .card {
-	// System tokens
-	padding: var(--sp-4);
-	border-radius: var(--rd-md);
-	background: var(--clr-main-bg);
-	color: var(--clr-main-text);
-	
-	// System mixin
-	@include breakpoint('md') {
-		padding: var(--sp-6);
-	}
-	
-	&:hover {
-		background: var(--clr-main-bg-hover);
-	}
+    // Design tokens
+    padding: var(--sp-4);
+    border-radius: var(--rd-md);
+    background: var(--clr-main-bg);
+    color: var(--clr-main-text);
+    
+    // Responsive
+    @include breakpoint('md') {
+        padding: var(--sp-6);
+    }
+    
+    // Theme-aware
+    &:hover {
+        background: var(--clr-main-bg-hover);
+    }
 }
 ```
+
+<br>
+
+## 🌐 Browser Support
+
+- ✅ Chrome 49+ (2016)
+- ✅ Firefox 31+ (2014)
+- ✅ Safari 9.1+ (2016)
+- ✅ Edge 15+ (2017)
+- ❌ IE11 not supported (requires CSS custom properties)
 
 <br>
 
 ## 📖 Documentation
 
 **[📚 View full documentation](docs/README.md)**
-
-Learn about architecture, customization, theme setup, and advanced usage.
