@@ -4,7 +4,7 @@ A modular SCSS design token system that generates CSS variables with built-in th
 
 <br>
 
-### What is this system?
+### 🧩 What is this system?
 
 This is a **token-first architecture** that separates design decisions from implementation. Instead of hardcoding values throughout your stylesheets, you define them once as tokens (colors, spacing, typography) and use them everywhere via CSS variables.
 
@@ -16,9 +16,9 @@ This is a **token-first architecture** that separates design decisions from impl
 - **Utility functions** - px→rem conversion, responsive breakpoints
 - **Modular structure** - Use only what you need
 
-<br>
+---
 
-### Key features
+### ✨ Key features
 
 #### 🎨 OKLCH color system with hue parameters
 
@@ -72,9 +72,9 @@ Only import what you need:
 @use './main' as *;
 ```
 
-<br>
+---
 
-### What's included
+### 📦 What's included
 
 #### Design tokens (`/tokens`)
 
@@ -120,9 +120,9 @@ Built-in light/dark mode support:
 - **dark** - Dark mode theme
 - **apply** - Theme validation and application
 
-<br>
+---
 
-### How it works
+### ⚙️ How it works
 
 #### Step 1: Define tokens (SCSS variables)
 
@@ -137,9 +137,9 @@ $primary: (
 ) !default;
 ```
 
-#### Step 2: Compile to CSS
+#### Step 2: System generates CSS variables
 
-The system automatically generates CSS variables:
+Modern bundlers (Vite, Next.js) automatically convert tokens to CSS variables:
 
 ```css
 :root {
@@ -149,73 +149,35 @@ The system automatically generates CSS variables:
 }
 ```
 
-#### Step 3: Use in your styles
+> 💡 **No manual compilation needed** with modern frameworks. For manual compilation setup, see [Getting Started - Option C](getting-started.md#option-c-standalone-htmlcss).
+
+#### Step 3: Use in your components
 
 ```scss
-// Your component styles
+// Component.module.scss (with modern bundlers)
 .button {
     padding: var(--sp-4);
     background: var(--clr-primary-500);
-    border-radius: var(--radius-md);
+    border-radius: var(--rd-md);
+    
+    &:hover {
+        background: var(--clr-primary-600);
+    }
 }
+```
 
-.button:hover {
-    background: var(--clr-primary-600);
+```jsx
+// Button.jsx
+import styles from './Button.module.scss';
+
+export function Button({ children }) {
+    return <button className={styles.button}>{children}</button>;
 }
 ```
 
-<br>
+---
 
-### Architecture overview
-
-The system uses a **two-layer architecture**:
-
-**Layer 1: Design Tokens** → Raw values that never change  
-**Layer 2: Semantic Themes** → Context-aware mappings that adapt to themes
-
-```
-┌─────────────────────────────────────────────┐
-│  Layer 1: Design Tokens                     │
-│  (Immutable - Same in all themes)           │
-│                                             │
-│  $primary: (100: ..., 500: ..., 900: ...)   │
-│  $neutral: (100: ..., 500: ..., 900: ...)   │
-├─────────────────────────────────────────────┤
-│  Layer 2: Semantic Themes                   │
-│  (Mutable - Changes per theme)              │
-│                                             │
-│  Light: --clr-text: var(--clr-neutral-900)  │
-│  Dark:  --clr-text: var(--clr-neutral-100)  │
-└─────────────────────────────────────────────┘
-```
-
-This separation allows you to:
-- Define colors once, use in multiple themes
-- Switch themes without changing component code
-- Maintain visual consistency across modes
-
-See [Architecture](architecture.md) for detailed explanation.
-
-<br>
-
-### Use cases
-
-#### ✅ Perfect for
-
-- **Component-based projects** - React, Vue, Svelte with CSS Modules
-- **Design systems** - Centralized tokens ensure consistency
-- **Multi-theme apps** - Built-in light/dark mode
-- **Rapid prototyping** - Change colors/spacing globally with one value
-
-#### ⚠️ Consider alternatives
-
-- **Need utility classes?** → Try [Tailwind CSS](https://tailwindcss.com/)
-- **No build step?** → Use plain CSS custom properties
-- **Simple project?** → Plain CSS might be simpler
-
-<br>
-
-### Quick customization examples
+### 🎨 Quick customization examples
 
 #### Change brand color
 
@@ -246,9 +208,116 @@ Result: Entire spacing scale becomes more compact (4px, 8px, 12px...).
 
 See [Customizing](../06-usage/customizing.md) for complete guide.
 
-<br>
+---
 
-### Project philosophy
+### 🏗️ Architecture overview
+
+The system uses a **two-layer architecture**:
+
+**Layer 1: Design Tokens** → Raw values that never change  
+**Layer 2: Semantic Themes** → Context-aware mappings that adapt to themes
+
+```
+┌─────────────────────────────────────────────┐
+│  Layer 1: Design Tokens                     │
+│  (Immutable - Same in all themes)           │
+│                                             │
+│  $primary: (100: ..., 500: ..., 900: ...)   │
+│  $neutral: (100: ..., 500: ..., 900: ...)   │
+├─────────────────────────────────────────────┤
+│  Layer 2: Semantic Themes                   │
+│  (Mutable - Changes per theme)              │
+│                                             │
+│  Light: --clr-text: var(--clr-neutral-900)  │
+│  Dark:  --clr-text: var(--clr-neutral-100)  │
+└─────────────────────────────────────────────┘
+```
+
+This separation allows you to:
+- Define colors once, use in multiple themes
+- Switch themes without changing component code
+- Maintain visual consistency across modes
+
+See [Architecture](architecture.md) for detailed explanation.
+
+---
+
+### 🔌 Integration methods
+
+The system supports three main usage patterns:
+
+#### Modern bundlers
+
+**Tools:** Vite, Next.js, Webpack, Create React App
+
+```jsx
+// main.jsx - Import once
+import './styles/main.scss';
+
+// Component.module.scss - Use variables
+.card {
+    padding: var(--sp-4);
+    background: var(--clr-primary-500);
+}
+```
+
+**Benefits:** Auto-compilation, hot reload, CSS Modules  
+**Setup:** → See [Getting Started - Option A](getting-started.md#option-a-react--vite)
+
+#### Manual compilation
+
+**Tools:** Sass CLI for static sites or legacy projects
+
+```bash
+sass src/styles/main.scss dist/styles.css
+```
+
+```html
+<link rel="stylesheet" href="/dist/styles.css">
+```
+
+**Benefits:** Simple, no bundler required  
+**Setup:** → See [Getting Started - Option C](getting-started.md#option-c-standalone-htmlcss)
+
+#### Direct token import
+
+**Use case:** When you don't need CSS variables or theming
+
+```scss
+// Component.module.scss
+@use '@/styles/tokens/colors' as colors;
+@use '@/styles/tokens/spacing' as spacing;
+
+.button {
+    padding: spacing.$sp-4;
+    background: map-get(colors.$primary, 500);
+}
+```
+
+**Benefits:** Compile-time values, no CSS variable overhead  
+**Trade-offs:** No theming, no runtime changes  
+**Documentation:** See [Direct Token Usage](../06-usage/direct-tokens.md)
+
+---
+
+### 🎯 Use cases
+
+#### ✅ Perfect for
+
+- **Component-based projects** - React, Vue, Svelte with CSS Modules
+- **Design systems** - Centralized tokens ensure consistency
+- **Multi-theme apps** - Built-in light/dark mode
+- **Rapid prototyping** - Change colors/spacing globally with one value
+
+#### ⚠️ Consider alternatives
+
+- **Need utility classes?** → Try [Tailwind CSS](https://tailwindcss.com/)
+- **No build step?** → Use plain CSS custom properties
+- **Simple project?** → Plain CSS might be simpler
+
+---
+
+### 💭 Project philosophy
 
 **Principles:**
 
@@ -263,19 +332,3 @@ See [Customizing](../06-usage/customizing.md) for complete guide.
 - ❌ Not a CSS framework (no pre-built components)
 - ❌ Not utility-first (no `.mt-4`, `.text-center` classes)
 - ❌ Not opinionated about styling approach (use however you want)
-
-<br>
-
-### Getting started
-
-Ready to dive in? Start with:
-
-1. [Getting started](getting-started.md) - Installation and setup
-2. [Folder structure](folder-structure.md) - Understand the organization
-3. [Customizing](../06-usage/customizing.md) - Make it your own
-
-Or jump straight to specific topics:
-
-- [Colors](../02-tokens/colors.md) - OKLCH color system
-- [Typography](../02-tokens/typography.md) - Font system
-- [Theming](../05-themes/basic-themes.md) - Light/dark mode setup
