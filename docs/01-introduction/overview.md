@@ -262,7 +262,7 @@ import './styles/main.scss';
 ```
 
 **Benefits:** Auto-compilation, hot reload, CSS Modules  
-**Setup:** → See [Getting Started - Option A](getting-started.md#option-a-react--vite)
+**Setup:** → See [Getting Started](getting-started.md)
 
 #### Manual compilation
 
@@ -277,7 +277,7 @@ sass src/styles/main.scss dist/styles.css
 ```
 
 **Benefits:** Simple, no bundler required  
-**Setup:** → See [Getting Started - Option C](getting-started.md#option-c-standalone-htmlcss)
+**Setup:** → See [Getting Started](getting-started.md)
 
 #### Direct token import
 
