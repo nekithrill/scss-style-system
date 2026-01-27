@@ -377,30 +377,3 @@ $base-spacing: 4px;
 // styles/tokens/_colors.scss
 $primary-hue: 200deg;  // Direct edit
 ```
-
----
-
-### 🎯 Common customization patterns
-
-**Brand makeover:**
-```scss
-$primary-hue: 200deg;
-$secondary-hue: 150deg;
-$font-families: (primary: 'Inter', accent: 'Playfair Display', system: (...));
-```
-
-**Compact UI:**
-```scss
-$base-spacing: 4px;
-$base-font-size: 14px;
-$border-radius: (xs: 2px, sm: 4px, md: 6px, ...);
-```
-
-**Bold design:**
-```scss
-$primary-chroma: 0.25;
-$font-weights: (regular: 500, medium: 600, bold: 800, extra-bold: 900);
-$base-shadow: rgb(0 0 0 / 20%);
-```
-
-See individual token documentation for complete customization options.

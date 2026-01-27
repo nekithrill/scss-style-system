@@ -255,98 +255,6 @@ Extend the system with your own CSS variables:
 
 ---
 
-### ✔️ Best practices
-
-- ✅ **Do:** Override in smaller scopes when possible
-- ✅ **Do:** Use semantic naming for custom variables
-- ✅ **Do:** Keep overrides organized by purpose
-- ✅ **Do:** Document why overrides exist
-- ❌ **Don't:** Override too many variables globally
-- ❌ **Don't:** Create circular references
-- ❌ **Don't:** Use arbitrary values (reference existing variables)
-
-```css
-/* ✅ Good: Scoped override */
-.card-special {
-    --clr-secondary-100: var(--clr-primary-200);
-    background: var(--clr-secondary-100);
-}
-
-/* ❌ Bad: Hardcoded value */
-.card-special {
-    background: #e0e7ff;  /* Doesn't adapt to themes */
-}
-
-/* ✅ Good: Semantic custom variable */
-:root {
-    --nav-height: 64px;
-    --nav-padding: var(--sp-4);
-}
-
-/* ❌ Bad: Non-semantic naming */
-:root {
-    --height-1: 64px;
-    --padding-x: 2rem;
-}
-```
-
----
-
-### 🚨 Common pitfalls
-
-**Circular references:**
-```css
-/* ❌ Bad: Circular reference */
-:root {
-    --color-a: var(--color-b);
-    --color-b: var(--color-a);  /* Breaks! */
-}
-
-/* ✅ Good: Clear hierarchy */
-:root {
-    --color-base: oklch(60% 0.2 270deg);
-    --color-variant: var(--color-base);
-}
-```
-
-**Specificity issues:**
-```css
-/* ❌ Bad: Override doesn't work due to specificity */
-.card {
-    background: var(--card-bg);
-}
-
-:root {
-    --card-bg: white;  /* Defined after component */
-}
-
-/* ✅ Good: Define variables before components */
-:root {
-    --card-bg: white;
-}
-
-.card {
-    background: var(--card-bg);
-}
-```
-
-**Type mismatches:**
-```css
-/* ❌ Bad: Wrong unit type */
-:root {
-    --sp-4: 32;  /* Missing unit */
-    --rd-md: 8;  /* Missing unit */
-}
-
-/* ✅ Good: Correct units */
-:root {
-    --sp-4: 2rem;
-    --rd-md: 0.5rem;
-}
-```
-
----
-
 ### 🎯 Real-world examples
 
 **Dashboard with custom sidebar:**
@@ -411,42 +319,92 @@ Extend the system with your own CSS variables:
 
 ---
 
-### 💡 Pro tips
+### ✔️ Best practices
 
-**Fallback values:**
+- ✅ **Do:** Override in smaller scopes when possible
+- ✅ **Do:** Use semantic naming for custom variables
+- ✅ **Do:** Keep overrides organized by purpose
+- ✅ **Do:** Document why overrides exist
+- ❌ **Don't:** Override too many variables globally
+- ❌ **Don't:** Create circular references
+- ❌ **Don't:** Use arbitrary values (reference existing variables)
+
 ```css
-.element {
-    /* Fallback if custom variable undefined */
-    padding: var(--custom-padding, var(--sp-4));
-    background: var(--custom-bg, var(--clr-secondary-100));
+/* ✅ Good: Scoped override */
+.card-special {
+    --clr-secondary-100: var(--clr-primary-200);
+    background: var(--clr-secondary-100);
+}
+
+/* ❌ Bad: Hardcoded value */
+.card-special {
+    background: #e0e7ff;  /* Doesn't adapt to themes */
+}
+
+/* ✅ Good: Semantic custom variable */
+:root {
+    --nav-height: 64px;
+    --nav-padding: var(--sp-4);
+}
+
+/* ❌ Bad: Non-semantic naming */
+:root {
+    --height-1: 64px;
+    --padding-x: 2rem;
 }
 ```
 
-**Computed values:**
+---
+
+### ❌ Common mistakes
+
+**Circular references:**
 ```css
+/* ❌ Bad: Circular reference */
 :root {
-    --base-size: 16px;
-    --large-size: calc(var(--base-size) * 1.5);  /* 24px */
-    --small-size: calc(var(--base-size) * 0.75); /* 12px */
+    --color-a: var(--color-b);
+    --color-b: var(--color-a);  /* Breaks! */
+}
+
+/* ✅ Good: Clear hierarchy */
+:root {
+    --color-base: oklch(60% 0.2 270deg);
+    --color-variant: var(--color-base);
 }
 ```
 
-**Variable chains:**
+**Specificity issues:**
 ```css
+/* ❌ Bad: Override doesn't work due to specificity */
+.card {
+    background: var(--card-bg);
+}
+
 :root {
-    /* Base value */
-    --primary: var(--clr-primary-500);
-    
-    /* Variants reference base */
-    --primary-light: var(--clr-primary-300);
-    --primary-dark: var(--clr-primary-700);
+    --card-bg: white;  /* Defined after component */
 }
 
-.button-primary {
-    background: var(--primary);
+/* ✅ Good: Define variables before components */
+:root {
+    --card-bg: white;
 }
 
-.button-primary:hover {
-    background: var(--primary-dark);
+.card {
+    background: var(--card-bg);
+}
+```
+
+**Type mismatches:**
+```css
+/* ❌ Bad: Wrong unit type */
+:root {
+    --sp-4: 32;  /* Missing unit */
+    --rd-md: 8;  /* Missing unit */
+}
+
+/* ✅ Good: Correct units */
+:root {
+    --sp-4: 2rem;
+    --rd-md: 0.5rem;
 }
 ```
