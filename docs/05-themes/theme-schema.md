@@ -3,22 +3,29 @@
 
 # 📋 Theme schema
 
-Defines the required structure and allowed variant keys for theme validation.
+Defines the required structure for theme validation. Only enforces structural requirements - does NOT restrict state names or variant names.
 
 ## 🧠 How it works
 
-The theme schema serves as a contract that all themes must follow, ensuring consistency across light, dark, and custom themes:
+The theme schema serves as a structural contract that all themes must follow:
 
-**Theme leaf keys** (`$theme-leaf-keys`): Defines allowed state variant suffixes like `hover`, `active`, `focus`, `disabled`. These can be used at any leaf level in the theme structure. The special `_` key represents the base/default value.
+- ✅ Ensures all themes have required sections
+- ✅ Catches missing keys at compile time
+- ✅ Maintains consistency across themes
+- ❌ Does NOT restrict state names (use any names you want)
+- ❌ Does NOT restrict variant names (use any names you want)
 
-**Required keys** (`$theme-required-keys`): Defines the minimum structure every theme must provide. This includes semantic sections like `text`, `selection`, `scrollbar`, `header`, `main`, and `footer`, each with their required properties.
+**Schema structure** (`$theme-schema`): Defines minimum structure using empty parentheses `()` to indicate "any value or nested structure allowed here".
 
-**Validation process:** When a theme is validated (using `validate-theme` mixin), it checks:
-1. All required keys are present (throws error if missing)
-2. No unexpected keys are used (warns if found)
-3. Leaf keys match the allowed list
+**Validation:** Only checks that required keys are present. State names (hover, active, etc.) and variant names (primary, danger, etc.) are NOT validated.
 
-**Why this matters:** Schema validation catches typos, missing sections, and structural errors at compile time, preventing runtime theme issues.
+**Flexibility:** This approach gives you:
+- Freedom to use custom state names (`spinning`, `pulsing`, `emphasized`)
+- Freedom to use custom variant names (`luxury`, `minimal`, `brand`)
+- Only structural requirements enforced
+- No need to update schema when adding new states/variants
+
+**Why this matters:** Schema validation catches missing sections and structural errors at compile time, while giving you complete flexibility in naming.
 
 ## 🚀 Usage
 
@@ -45,24 +52,7 @@ $custom: (
 ```scss
 // themes/_schema.scss
 
-// Allowed leaf keys (state variants)
-$theme-leaf-keys: (
-	'_',          // Base value (required)
-	'hover',      // Hover state
-	'active',     // Active/pressed state
-	'focus',      // Focus state
-	'disabled',   // Disabled state
-	'muted',      // Muted/subtle variant
-	'selected',   // Selected state
-	'hidden',     // Hidden state
-	'error',      // Error state
-	'success',    // Success state
-	'warning',    // Warning state
-	'info'        // Info state
-);
-
-// Required theme structure
-$theme-required-keys: (
+$theme-schema: (
 	text: (
 		_: (),
 		accent: ()
@@ -90,6 +80,35 @@ $theme-required-keys: (
 );
 ```
 
+**What empty `()` means:** "This key must exist, but can contain any structure"
+
+**Examples:**
+
+```scss
+// Schema says:
+button: (
+	bg: (),
+	text: ()
+)
+
+// Theme can have ANY states:
+button: (
+	bg: (
+		_: ...,
+		hover: ...,
+		active: ...,
+		custom_state: ...    // ✅ OK - any state name allowed
+	),
+	text: (_: ...),
+	
+	// And ANY variants:
+	variants: (
+		primary: (...),
+		custom_variant: (...)  // ✅ OK - any variant name allowed
+	)
+)
+```
+
 **What each section means:**
 
 - `text`: Base text colors (default + accent variant)
@@ -102,7 +121,7 @@ $theme-required-keys: (
 **Add new required section:**
 
 ```scss
-$theme-required-keys: (
+$theme-schema: (
 	// ... existing sections
 	sidebar: (
 		bg: (),
@@ -116,31 +135,32 @@ $theme-required-keys: (
 );
 ```
 
-**Add new state variants:**
+**Add nested requirements:**
 
 ```scss
-$theme-leaf-keys: (
-	'_',
-	'hover',
-	'active',
-	// ... existing states
-	'loading',    // New: loading state
-	'invalid',    // New: invalid state
-	'checked'     // New: checkbox checked state
+$theme-schema: (
+	card: (
+		bg: (),
+		text: (),
+		header: (
+			bg: (),
+			text: ()
+		),
+		footer: (
+			bg: ()
+		)
+	)
 );
 ```
 
-**Remove optional sections:**
+**Remove sections:**
 
 ```scss
-// If you don't need footer theming
-$theme-required-keys: (
+$theme-schema: (
 	text: (...),
-	selection: (...),
-	scrollbar: (...),
-	header: (...),
-	main: (...)
-	// Removed: footer
+	button: (...),
+	card: (...)
+	// Removed: sidebar, footer, etc. (if you don't need them)
 );
 ```
 
@@ -150,12 +170,12 @@ $theme-required-keys: (
 
 ```scss
 $custom: (
-	text: (_: ..., accent: ...),             // ✓ Required
-	selection: (bg: (...), text: (...)),     // ✓ Required
-	scrollbar: (track: (...), thumb: (...)), // ✓ Required
-	header: (bg: (...), text: (...)),        // ✓ Required
-	main: (bg: (...), text: (...)),          // ✓ Required
-	footer: (bg: (...), text: (...))         // ✓ Required
+	text: (_: ..., accent: ...),
+	selection: (bg: (...), text: (...)),
+	scrollbar: (track: (...), thumb: (...)),
+	header: (bg: (...), text: (...)),
+	main: (bg: (...), text: (...)),
+	footer: (bg: (...), text: (...))
 );
 // ✅ Validation passes
 ```
@@ -171,115 +191,180 @@ $custom: (
 	main: (bg: (...), text: (...))
 	// Missing: footer
 );
-// ❌ Error: Theme map is missing required key `footer`!
+// ❌ Error: Missing required key: footer
 ```
 
-**Theme with warning:**
+**Theme with custom states:**
 
 ```scss
 $custom: (
-	text: (_: ..., accent: ...),
 	// ... all required sections ...
-	footer: (
+	button: (
 		bg: (
 			_: ...,
-			hovered: ...  // Wrong key name
+			hovr: ...,           // ✅ Custom state name - OK!
+			pressed: ...,        // ✅ Custom state name - OK!
+			spinning: ...        // ✅ Custom state name - OK!
 		),
-		text: (...)
+		text: (_: ...)
 	)
 );
-// ⚠️ Warning: Theme map contains unexpected key `footer.bg.hovered`
-//            that is not in the schema or leaf keys whitelist!
+// ✅ Passes - all custom state names accepted
+```
+
+**Theme with custom variants:**
+
+```scss
+$custom: (
+	// ... all required sections ...
+	button: (
+		bg: (_: ...),
+		text: (_: ...),
+		variants: (
+			mega: (              // ✅ Custom variant
+				bg: (_: ...),
+				text: (_: ...)
+			),
+			luxury: (            // ✅ Custom variant
+				bg: (_: ...),
+				text: (_: ...)
+			)
+		)
+	)
+);
+// ✅ Passes - all custom variant names accepted
+```
+
+## 🎯 Complete example
+
+```scss
+// Schema - defines WHAT must exist
+$theme-schema: (
+	button: (
+		bg: (),
+		text: ()
+	),
+	card: ()
+);
+
+// Theme - defines HOW it looks
+$custom: (
+	button: (
+		bg: (
+			_: gray,
+			hover: lightgray,
+			pressed: darkgray,     // Custom state ✅
+			spinning: blue         // Custom state ✅
+		),
+		text: (_: black),
+		variants: (
+			primary: (...),
+			luxury: (...),         // Custom variant ✅
+			mega: (...)            // Custom variant ✅
+		)
+	),
+	card: (
+		bg: (_: white),
+		awesome_state: (...)       // Custom state ✅
+	)
+);
+
+@include validate-theme($custom, $theme-schema);
+// ✅ Passes - all required keys present
+// ✅ All custom state/variant names accepted
 ```
 
 ## ✔️ Best practices
 
-- ✅ **Do:** Keep required keys minimal (only truly required sections)
-- ✅ **Do:** Add custom sections for your specific needs
-- ✅ **Do:** Use semantic names (`header`, `card`, not `div1`, `section2`)
-- ✅ **Do:** Document custom sections for other developers
-- ❌ **Don't:** Remove core sections (text, selection) - they're used by base styles
-- ❌ **Don't:** Add too many required sections (makes themes harder to create)
-- ❌ **Don't:** Use technical names in schema (keep it semantic)
+- ✅ **Do:** Keep schema minimal (only truly required sections)
+- ✅ **Do:** Use semantic names (`button`, `card`, not `component1`)
+- ✅ **Do:** Use empty `()` for flexible structures
+- ✅ **Do:** Document what each section is for
+- ✅ **Do:** Use any state/variant names that fit your design system
+- ❌ **Don't:** Remove core UI sections if used in your app
+- ❌ **Don't:** Make schema too strict (hurts flexibility)
+- ❌ **Don't:** Try to validate state/variant names in schema
 
 ```scss
-// ✅ Good: Semantic structure
-$theme-required-keys: (
+// ✅ Good: Minimal, flexible schema
+$theme-schema: (
 	button: (
-		primary: (...),
-		secondary: (...)
-	)
+		bg: (),      // Any structure allowed inside
+		text: ()
+	),
+	card: ()         // Completely flexible
 );
 
-// ❌ Bad: Technical names
-$theme-required-keys: (
-	component1: (...),
-	element-a: (...)
+// ❌ Bad: Too strict, too detailed
+$theme-schema: (
+	button: (
+		bg: (
+			_: (),
+			hover: (),      // Don't require specific states
+			active: ()
+		)
+	)
 );
 ```
 
 ## ❌ Common mistakes
 
-**Forgetting to update schema when adding theme sections:**
+**Forgetting to update schema:**
 
 ```scss
-// ❌ Bad: Theme has sidebar, but schema doesn't require it
+// ❌ Bad: Theme has new section, schema doesn't
 $light: (
-	// ... required sections
-	sidebar: (...)  // Works but not validated!
+	button: (...),
+	sidebar: (...)  // Not in schema!
 );
 
-// ✅ Good: Add to schema first
-$theme-required-keys: (
-	// ... existing
-	sidebar: (
-		bg: (),
+// ✅ Good: Update schema first
+$theme-schema: (
+	button: (...),
+	sidebar: (...)  // Now required
+);
+```
+
+**Over-specifying structure:**
+
+```scss
+// ❌ Bad: Too many requirements
+$theme-schema: (
+	button: (
+		bg: (
+			_: (),
+			hover: (),
+			active: (),
+			disabled: ()
+		)
+	)
+);
+
+// ✅ Good: Minimal requirements
+$theme-schema: (
+	button: (
+		bg: (),    // Let themes decide what states to include
 		text: ()
 	)
 );
 ```
 
-**Using wrong leaf key names:**
+**Expecting validation of states:**
 
 ```scss
-// ❌ Bad: 'hovered' not in allowed list
-$light: (
-	header: (
+// ❌ Wrong expectation:
+// "Schema will catch typos in state names"
+
+$theme: (
+	button: (
 		bg: (
 			_: ...,
-			hovered: ...  // Should be 'hover'
+			hovr: ...  // Typo - but NOT caught by validation!
 		)
 	)
 );
 
-// ✅ Good: Use correct leaf key
-$light: (
-	header: (
-		bg: (
-			_: ...,
-			hover: ...  // Correct
-		)
-	)
-);
-```
-
-**Making everything required:**
-
-```scss
-// ❌ Bad: Too strict, hard to create themes
-$theme-required-keys: (
-	header: (
-		bg: (_: (), hover: (), active: ()),
-		text: (_: (), hover: (), active: ()),
-		border: (_: (), hover: (), active: ())
-	)
-);
-
-// ✅ Good: Only require base values
-$theme-required-keys: (
-	header: (
-		bg: (),   // Only base required
-		text: ()  // States are optional
-	)
-);
+// ✅ Correct understanding:
+// Only structure is validated, not state/variant names
+// You have complete freedom in naming
 ```
