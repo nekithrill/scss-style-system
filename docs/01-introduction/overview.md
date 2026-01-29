@@ -44,14 +44,14 @@ Built-in schema validation prevents theme errors:
 
 ```scss
 // Define required structure
-$theme-required-keys: (
+$theme-schema: (
     text: (...),
     header: (...),
     main: (...)
 );
 
 // System validates your themes automatically
-@include validate-theme($dark, $theme-required-keys);
+@include validate-theme($dark, $theme-schema);
 ```
 
 ### 🧩 Fully modular

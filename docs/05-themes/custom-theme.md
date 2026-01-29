@@ -180,7 +180,7 @@ $brand: (
 
 ```scss
 // First, update schema
-$theme-required-keys: (
+$theme-schema: (
 	// ... existing sections
 	sidebar: (
 		bg: (),
