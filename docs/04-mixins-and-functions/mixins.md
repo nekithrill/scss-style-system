@@ -481,6 +481,138 @@ $light: (
 // --clr-button-secondary-text: var(--clr-neutral-900);
 ```
 
+### 📝 Variants Handling
+
+The `generate-theme` mixin has special handling for the `variants` key to keep CSS variable names clean.
+
+**Special key handling:**
+
+- `_` key → base variable (`--clr-button-bg`)
+- `variants` key → **skipped in naming**, processes nested variants directly
+- Other maps → standard recursive processing with updated prefix
+- Other values → leaf variables
+
+**Example with variants:**
+
+```scss
+$theme: (
+	button: (
+		bg: (
+			_: gray,
+			hover: lightgray
+		),
+		text: (_: black),
+		variants: (
+			primary: (
+				bg: (_: blue, hover: darkblue),
+				text: (_: white)
+			),
+			danger: (
+				bg: (_: red),
+				text: (_: white)
+			)
+		)
+	)
+);
+
+@include generate-theme($theme);
+```
+
+**Generated CSS:**
+
+```css
+/* Base button */
+--clr-button-bg: gray;
+--clr-button-bg-hover: lightgray;
+--clr-button-text: black;
+
+/* Primary variant - NOTE: NO 'variants' in name! */
+--clr-button-primary-bg: blue;
+--clr-button-primary-bg-hover: darkblue;
+--clr-button-primary-text: white;
+
+/* Danger variant */
+--clr-button-danger-bg: red;
+--clr-button-danger-text: white;
+```
+
+**Why skip `variants` in naming?**
+
+Without special handling, you'd get:
+- `--clr-button-variants-primary-bg` ❌ Too long
+- `--clr-button-primary-bg` ✅ Clean and semantic
+
+**Usage in CSS:**
+
+```scss
+.button {
+	background: var(--clr-button-bg);
+	color: var(--clr-button-text);
+	
+	&:hover {
+		background: var(--clr-button-bg-hover);
+	}
+	
+	&--primary {
+		background: var(--clr-button-primary-bg);
+		color: var(--clr-button-primary-text);
+		
+		&:hover {
+			background: var(--clr-button-primary-bg-hover);
+		}
+	}
+	
+	&--danger {
+		background: var(--clr-button-danger-bg);
+		color: var(--clr-button-danger-text);
+	}
+}
+```
+
+**Best practices with variants:**
+
+✅ **Do:**
+- Use `variants` for alternative component styles
+- Keep variant names semantic (`primary`, `secondary`, `danger`)
+- Include states inside variants when needed
+
+❌ **Don't:**
+- Nest `variants` inside `variants` (too deep)
+- Use `variants` for simple states (use direct nesting)
+- Create too many variants (3-5 is usually enough)
+
+```scss
+// ✅ Good: Variants with states
+button: (
+	bg: (_: ..., hover: ...),
+	variants: (
+		primary: (
+			bg: (_: ..., hover: ...),
+			text: (_: ...)
+		)
+	)
+)
+
+// ❌ Bad: States as variants
+button: (
+	variants: (
+		hover: (bg: (...)),  // Wrong! Use direct nesting
+		active: (bg: (...))
+	)
+)
+
+// ❌ Bad: Nested variants
+button: (
+	variants: (
+		primary: (
+			variants: (  // Too deep!
+				outlined: (...)
+			)
+		)
+	)
+)
+```
+
 ### ✔️ Best practices
 
 - ✅ **Do:** Validate themes before generation in development
@@ -535,70 +667,36 @@ $theme: (
 
 ## validate-theme
 
-**Purpose:** Validate theme maps against schema structure, checking required keys and warning about unexpected keys.
+**Purpose:** Validate theme structure against schema, ensuring required keys are present.
 
 **Location:** `styles/core/mixins/_validate-theme.scss`
 
 ### ✍️ Signature
 
 ```scss
-@mixin validate-theme(
-	$theme-map,
-	$required-keys,
-	$allowed-leaf-keys,
-	$parent: null
-);
+@mixin validate-theme($theme, $schema, $path: null);
 ```
 
 ### 🧩 Parameters
 
-- `$theme-map` (Map) - Theme map to validate
-- `$required-keys` (Map) - Required structure from schema
-- `$allowed-leaf-keys` (List) - Whitelisted leaf keys (`_`, `hover`, `active`, etc.)
-- `$parent` (String | Null, optional) - Internal recursion path (don't pass manually)
+- `$theme` (Map) - Theme to validate
+- `$schema` (Map) - Required structure from schema
+- `$path` (String | Null, optional) - Internal recursion path (auto-generated, don't pass manually)
 
 ### 🧠 How it works
 
-1. **Type validation:** Checks if inputs are maps, throws error if not
-2. **Required key check:** Recursively verifies all required keys exist, throws error if missing
-3. **Unexpected key check:** Warns about keys not in schema or leaf whitelist
-4. **Path tracking:** Builds dot-notation path (`header.bg.hover`) for clear error messages
-5. **Recursive validation:** Validates nested structures by calling itself
+1. **Schema iteration:** Loops through required keys in schema
+2. **Existence check:** Verifies each required key exists in theme, throws error with full path if missing
+3. **Path tracking:** Builds dot-notation path (`button.bg.text`) for clear error messages
+4. **Recursive validation:** For nested maps, validates structure recursively
+5. **Type safety:** Ensures both schema value and theme value are maps before recursing
 
-**Validation checks:**
-
-**1. Missing required keys (error):**
-
-```scss
-$light: (
-	text: (
-		...
-	),
-	header: (
-		...
-	) // Missing 'main'!
-);
-
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
-// Error: ⚠️ Theme map is missing required key `main`!
-```
-
-**2. Unexpected keys (warning):**
-
-```scss
-$light: (
-	header: (
-		bg: (
-			_: #fff,
-			hovered: #eee // Typo: should be 'hover'
-		)
-	)
-);
-
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
-// Warning: ⚠️ Theme map contains unexpected key `header.bg.hovered`
-//          that is not in the schema or leaf keys whitelist!
-```
+**Key points:**
+- Only validates **structure** (presence of required keys)
+- Does NOT validate state names (hover, active, etc.) - any state names are allowed
+- Does NOT validate variant names - any variant names are allowed
+- Does NOT validate values or CSS correctness
+- Errors stop compilation, making structural issues impossible to miss
 
 ### 🚀 Usage
 
@@ -607,112 +705,197 @@ $light: (
 @use '@/styles/core/mixins/validate-theme' as *;
 
 // Validate before generating
-@include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
-
-// Then generate
-[data-theme='dark'] {
-	@include generate-theme($dark);
-}
-```
-
-**Advanced examples:**
-
-```scss
-// Complete validation setup
-// themes/_schema.scss
-$theme-leaf-keys: (
-	'_',
-	'hover',
-	'active',
-	'focus',
-	'disabled',
-	'selected',
-	'error'
-);
-
-$theme-required-keys: (
-	text: (
-		_: (),
-		accent: ()
-	),
-	header: (
-		bg: (),
-		text: ()
-	),
-	main: (
-		bg: (),
-		text: ()
-	)
-);
-
-// themes/_light.scss
-@use './schema' as *;
-@use '../core/mixins/validate-theme' as *;
-@use '../core/mixins/generate-theme' as *;
-
-$light: (
-	text: (
-		_: ...,
-		accent: ...
-	),
-	header: (
-		bg: (
-			_: ...
-		),
-		text: (
-			_: ...
-		)
-	),
-	main: (
-		bg: (
-			_: ...,
-			hover: ...
-		),
-		text: (
-			_: ...
-		)
-	)
-);
-
-// Validate in development
 @include validate-theme($light, $theme-schema);
 
-// Generate
+// Then generate
 :root {
 	@include generate-theme($light);
 }
 ```
 
-### ✔️ Best practices
+### 📋 Examples
 
-- ✅ **Do:** Run validation in development environment
-- ✅ **Do:** Fix errors (missing required keys) immediately
-- ✅ **Do:** Review warnings (unexpected keys) for typos
-- ✅ **Do:** Keep schema updated when adding theme sections
-- ❌ **Don't:** Skip validation (catches typos early)
-- ❌ **Don't:** Ignore warnings (usually indicates mistakes)
-- ❌ **Don't:** Run validation in production (use only in dev)
+**Valid theme (passes validation):**
 
 ```scss
-// ✅ Good: Validate in development
+// Schema
+$theme-schema: (
+	button: (
+		bg: (),
+		text: ()
+	),
+	card: (
+		bg: ()
+	)
+);
+
+// Theme
+$valid: (
+	button: (
+		bg: (_: ...),
+		text: (_: ...)
+	),
+	card: (
+		bg: (_: ...)
+	)
+);
+
+@include validate-theme($valid, $theme-schema);
+// ✅ Passes
+```
+
+**Invalid theme (validation error):**
+
+```scss
+// Schema
+$theme-schema: (
+	button: (
+		bg: (),
+		text: ()
+	)
+);
+
+// Theme
+$invalid: (
+	button: (
+		bg: (_: ...)
+		// Missing: text
+	)
+);
+
+@include validate-theme($invalid, $theme-schema);
+// ❌ Error: Missing required key: button.text
+```
+
+**Theme with custom states (valid):**
+
+```scss
+// Schema
+$theme-schema: (
+	button: (
+		bg: (),
+		text: ()
+	)
+);
+
+// Theme with custom state names
+$custom-states: (
+	button: (
+		bg: (
+			_: ...,
+			hovr: ...,           // Custom state name - OK!
+			pressed: ...,        // Custom state name - OK!
+			spinning: ...        // Custom state name - OK!
+		),
+		text: (_: ...)
+	)
+);
+
+@include validate-theme($custom-states, $theme-schema);
+// ✅ Passes - state names are not validated
+```
+
+**Theme with variants (valid):**
+
+```scss
+// Schema (same)
+$theme-schema: (
+	button: (
+		bg: (),
+		text: ()
+	)
+);
+
+// Theme with variants
+$with-variants: (
+	button: (
+		bg: (_: ...),
+		text: (_: ...),
+		variants: (
+			mega: (              // Custom variant - OK!
+				bg: (_: ...),
+				text: (_: ...)
+			)
+		)
+	)
+);
+
+@include validate-theme($with-variants, $theme-schema);
+// ✅ Passes - variant names are not validated
+```
+
+### ✔️ Best practices
+
+- ✅ **Do:** Run validation in development only
+- ✅ **Do:** Fix errors immediately (missing required keys)
+- ✅ **Do:** Keep schema minimal (only truly required sections)
+- ✅ **Do:** Use any state names that make sense for your project
+- ✅ **Do:** Use any variant names that match your design system
+- ❌ **Don't:** Skip validation (catches structural errors early)
+- ❌ **Don't:** Run validation in production builds
+- ❌ **Don't:** Add too many required keys to schema
+
+```scss
+// ✅ Good: Development-only validation
 @if $environment == 'development' {
-	@include validate-theme($theme, $required-keys, $leaf-keys);
+	@include validate-theme($theme, $theme-schema);
 }
 
-[data-theme='custom'] {
+:root {
 	@include generate-theme($theme);
 }
 
 // ❌ Bad: Always validating (slow in production)
-@include validate-theme($theme, $required-keys, $leaf-keys);
-[data-theme='custom'] {
+@include validate-theme($theme, $theme-schema);
+:root {
 	@include generate-theme($theme);
 }
 ```
 
-**What's NOT validated:**
+### 📌 What's validated
 
+✅ **Validated:**
+- Presence of required keys from schema
+- Nested structure matches schema
+
+❌ **NOT validated:**
+- State names (`hover`, `active`, custom names) - completely flexible
+- Variant names (`primary`, `danger`, custom names) - completely flexible
 - Presence of `_` base value (optional by design)
-- Value types (doesn't check if CSS is valid)
+- Property values (doesn't check if CSS is valid)
 - Value references (doesn't check if `var(--clr-invalid)` exists)
-- Circular references
+
+### ❌ Common mistakes
+
+**Not updating schema when adding sections:**
+
+```scss
+// ❌ Bad: Added sidebar to theme but not schema
+$theme: (
+	button: (...),
+	sidebar: (...)  // Not in schema - won't be validated!
+);
+
+// ✅ Good: Update schema first
+$theme-schema: (
+	button: (...),
+	sidebar: (...)  // Now validated
+);
+```
+
+**Expecting state validation:**
+
+```scss
+// ❌ Wrong expectation: "This will catch typos in state names"
+$theme: (
+	button: (
+		bg: (
+			_: ...,
+			hovr: ...  // Typo, but WON'T be caught - states not validated
+		)
+	)
+);
+
+// ✅ Correct: Only structure is validated
+// State names are your choice - use any names you want
+```
