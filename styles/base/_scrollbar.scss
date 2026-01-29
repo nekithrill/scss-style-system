@@ -1,6 +1,6 @@
 // Custom scrollbar styles
 
-html {
+* {
 	// Firefox
 	@supports (scrollbar-width: thin) and (not selector(::-webkit-scrollbar)) {
 		scrollbar-width: thin;
