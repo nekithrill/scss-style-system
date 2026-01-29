@@ -1,6 +1,6 @@
 ## 🛠️ Code quality & formatting
 
-All SCSS files in this system are linted and formatted before pushing. Some tests were also carried out.
+All SCSS files in this system are linted, formatted and tested before pushing.
 
 ### 🎨 Prettier
 
@@ -80,4 +80,4 @@ module.exports = {
 
 ### 🧪 Testing
 
-Comming soon...
+Coming soon...
