@@ -2,30 +2,28 @@
 > **🧭 Scope:** Stylesheet generation and system-level abstractions
 > **📦 Type:** Core
 
-## ⚙️ Mixins
+# ⚙️ Mixins
 
 Reusable style patterns for responsive design, token generation, and theme management.
 
-<br>
-
-### breakpoint
+## breakpoint
 
 **Purpose:** Generate responsive media queries from design tokens with mobile-first or desktop-first approach.
 
 **Location:** `styles/core/mixins/_breakpoint.scss`
 
-#### ✍️ Signature
+### ✍️ Signature
 
 ```scss
-@mixin breakpoint($size, $min-width: false)
+@mixin breakpoint($size, $min-width: false);
 ```
 
-#### 🧩 Parameters
+### 🧩 Parameters
 
 - `$size` (String) - Breakpoint key from `$breakpoints` map (`'xs'`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'2xl'`)
 - `$min-width` (Boolean, optional) - `true` for mobile-first (min-width), `false` for desktop-first (max-width). Default: `false`
 
-#### 🧠 How it works
+### 🧠 How it works
 
 1. **Lookup:** Retrieves breakpoint value from `$breakpoints` map using the `$size` key
 2. **Validation:** Throws error if breakpoint key doesn't exist, listing available options
@@ -33,24 +31,25 @@ Reusable style patterns for responsive design, token generation, and theme manag
 4. **Content injection:** Inserts provided styles inside the media query using `@content`
 
 **Error handling:** If invalid breakpoint provided:
+
 ```scss
 @include breakpoint('tablet');
 // Error: ⚠️ Breakpoint 'tablet' not found. Available: xs, sm, md, lg, xl, 2xl
 ```
 
-#### 🚀 Usage
+### 🚀 Usage
 
 ```scss
 @use '@/styles/core/mixins/breakpoint' as *;
 
 .component {
 	padding: var(--sp-4);
-	
+
 	// Desktop-first (default): applies when viewport ≤ 768px
 	@include breakpoint('md') {
 		padding: var(--sp-2);
 	}
-	
+
 	// Mobile-first: applies when viewport ≥ 1024px
 	@include breakpoint('lg', true) {
 		padding: var(--sp-6);
@@ -59,6 +58,7 @@ Reusable style patterns for responsive design, token generation, and theme manag
 ```
 
 **Generated CSS:**
+
 ```css
 .component {
 	padding: 2rem;
@@ -85,26 +85,26 @@ Reusable style patterns for responsive design, token generation, and theme manag
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: var(--sp-4);
-	
+
 	@include breakpoint('lg') {
-		grid-template-columns: repeat(3, 1fr);  // ≤ 1024px
+		grid-template-columns: repeat(3, 1fr); // ≤ 1024px
 	}
-	
+
 	@include breakpoint('md') {
-		grid-template-columns: repeat(2, 1fr);  // ≤ 768px
+		grid-template-columns: repeat(2, 1fr); // ≤ 768px
 	}
-	
+
 	@include breakpoint('sm') {
-		grid-template-columns: 1fr;  // ≤ 576px
+		grid-template-columns: 1fr; // ≤ 576px
 	}
 }
 
 // Mobile-first navigation
 .nav {
-	display: none;  // Hidden on mobile
-	
+	display: none; // Hidden on mobile
+
 	@include breakpoint('md', true) {
-		display: flex;  // Show on tablet and up
+		display: flex; // Show on tablet and up
 	}
 }
 
@@ -112,12 +112,12 @@ Reusable style patterns for responsive design, token generation, and theme manag
 .card {
 	padding: var(--sp-6);
 	font-size: var(--fs-h3);
-	
+
 	@include breakpoint('lg') {
 		padding: var(--sp-4);
 		font-size: var(--fs-h4);
 	}
-	
+
 	@include breakpoint('sm') {
 		padding: var(--sp-2);
 		font-size: var(--fs-h5);
@@ -125,7 +125,7 @@ Reusable style patterns for responsive design, token generation, and theme manag
 }
 ```
 
-#### ✔️ Best practices
+### ✔️ Best practices
 
 - ✅ **Do:** Use desktop-first (default) for progressive enhancement
 - ✅ **Do:** Use mobile-first when starting with mobile design
@@ -139,7 +139,7 @@ Reusable style patterns for responsive design, token generation, and theme manag
 // ✅ Good: Consistent desktop-first
 .element {
 	width: 100%;
-	
+
 	@include breakpoint('lg') { width: 75%; }
 	@include breakpoint('md') { width: 50%; }
 }
@@ -153,34 +153,32 @@ Reusable style patterns for responsive design, token generation, and theme manag
 // ✅ Good: Mobile-first throughout
 .element {
 	width: 100%;
-	
+
 	@include breakpoint('md', true) { width: 75%; }
 	@include breakpoint('lg', true) { width: 50%; }
 }
 ```
 
----
-
-### generate-tokens
+## generate-tokens
 
 **Purpose:** Generate CSS custom properties from design token maps with automatic structure detection and optional px → rem conversion.
 
 **Location:** `styles/core/mixins/_generate-tokens.scss`
 
-#### ✍️ Signature
+### ✍️ Signature
 
 ```scss
-@mixin generate-tokens($tokens)
+@mixin generate-tokens($tokens);
 ```
 
-#### 🧩 Parameters
+### 🧩 Parameters
 
 - `$tokens` (Map) - Token configuration where each group contains:
   - `map` (Map, required) - Token values
   - `prefix` (String, required) - CSS variable prefix
   - `transform` (String, optional) - Set to `'rem'` to convert px to rem
 
-#### 🧠 How it works
+### 🧠 How it works
 
 1. **Group iteration:** Loops through each token group in the configuration map
 2. **Validation:** Checks for required `map` and `prefix` keys, throws error if missing
@@ -191,24 +189,31 @@ Reusable style patterns for responsive design, token generation, and theme manag
 5. **Variable generation:** Creates CSS custom properties with proper naming
 
 **Structure detection examples:**
+
 ```scss
 // Nested map detected
 $colors: (
-	'primary': (100: #e0e7ff, 500: #6366f1)
+	'primary': (
+		100: #e0e7ff,
+		500: #6366f1
+	)
 );
 // → --clr-primary-100, --clr-primary-500
 
 // Flat map detected
-$spacing: (1: 8px, 2: 16px);
+$spacing: (
+	1: 8px,
+	2: 16px
+);
 // → --sp-1, --sp-2
 ```
 
 **Error handling:**
+
 ```scss
 $tokens: (
 	colors: (
-		map: $colors
-		// Missing 'prefix'!
+		map: $colors // Missing 'prefix'!
 	)
 );
 
@@ -216,7 +221,7 @@ $tokens: (
 // Error: generate-tokens: Group 'colors' missing 'prefix' key
 ```
 
-#### 🚀 Usage
+### 🚀 Usage
 
 ```scss
 @use '@/styles/core/mixins/generate-tokens' as *;
@@ -239,18 +244,19 @@ $base-tokens: (
 ```
 
 **Generated CSS:**
+
 ```css
 :root {
 	/* Colors (nested map) */
 	--clr-primary-100: oklch(95% 0.06 270deg);
 	--clr-primary-500: oklch(60% 0.2 270deg);
 	--clr-neutral-100: oklch(96% 0.01 220deg);
-	
+
 	/* Spacing (flat map with rem transform) */
 	--sp-0: 0;
-	--sp-1: 0.5rem;    /* 8px → rem */
-	--sp-2: 1rem;      /* 16px → rem */
-	--sp-4: 2rem;      /* 32px → rem */
+	--sp-1: 0.5rem; /* 8px → rem */
+	--sp-2: 1rem; /* 16px → rem */
+	--sp-4: 2rem; /* 32px → rem */
 }
 ```
 
@@ -295,7 +301,7 @@ $base-tokens: (
 }
 ```
 
-#### ✔️ Best practices
+### ✔️ Best practices
 
 - ✅ **Do:** Always include `prefix` for namespacing
 - ✅ **Do:** Use `transform: 'rem'` for spacing, sizing, typography
@@ -309,12 +315,13 @@ $base-tokens: (
 $base-tokens: (
 	spacing: (
 		map: $spacing,
-		prefix: 'sp',          // Short prefix
-		transform: 'rem'       // Convert to rem
+		prefix: 'sp',
+		// Short prefix
+		transform: 'rem' // Convert to rem
 	),
 	colors: (
 		map: $all-colors,
-		prefix: 'clr'          // No transform for colors
+		prefix: 'clr' // No transform for colors
 	)
 );
 
@@ -322,42 +329,42 @@ $base-tokens: (
 $base-tokens: (
 	spacing: (
 		map: $spacing,
-		prefix: 'spacing',     // Too long
+		prefix: 'spacing',
+		// Too long
 		transform: 'rem'
 	),
 	colors: (
 		map: $all-colors,
 		prefix: 'clr',
-		transform: 'rem'       // Don't transform colors!
+		transform: 'rem' // Don't transform colors!
 	)
 );
 ```
 
----
-
-### generate-theme
+## generate-theme
 
 **Purpose:** Generate CSS custom properties from theme maps with recursive structure support for semantic color variables.
 
 **Location:** `styles/core/mixins/_generate-theme.scss`
 
-#### ✍️ Signature
+### ✍️ Signature
 
 ```scss
-@mixin generate-theme($map, $prefix: 'clr')
+@mixin generate-theme($map, $prefix: 'clr');
 ```
 
-#### 🧩 Parameters
+### 🧩 Parameters
 
 - `$map` (Map) - Theme map with nested structure
 - `$prefix` (String, optional) - CSS variable prefix. Default: `'clr'`
 
 **Special key handling:**
+
 - `_` key → base variable (`--clr-main-bg`)
 - Other keys → variant variables (`--clr-main-bg-hover`)
 - Nested maps → recursive processing with updated prefix
 
-#### 🧠 How it works
+### 🧠 How it works
 
 1. **Map validation:** Checks if input is a map, throws error if not
 2. **Key iteration:** Loops through each key-value pair
@@ -368,19 +375,23 @@ $base-tokens: (
 4. **Prefix building:** Concatenates parts with hyphens for proper CSS variable names
 
 **Prefix evolution:**
+
 ```scss
 $theme: (
-	product: (           // prefix: 'clr'
-		card: (          // prefix: 'clr-product'
-			bg: (        // prefix: 'clr-product-card'
-				_: #fff  // → --clr-product-card-bg
+	product: (
+		// prefix: 'clr'
+		card: (
+				// prefix: 'clr-product'
+				bg: (
+						// prefix: 'clr-product-card'
+						_: #fff // → --clr-product-card-bg
+					)
 			)
-		)
 	)
 );
 ```
 
-#### 🚀 Usage
+### 🚀 Usage
 
 ```scss
 @use '@/styles/core/mixins/generate-theme' as *;
@@ -408,6 +419,7 @@ $dark: (
 ```
 
 **Generated CSS:**
+
 ```css
 [data-theme='dark'] {
 	--clr-header-bg: var(--clr-neutral-900);
@@ -451,7 +463,7 @@ $light: (
 	)
 );
 
-[data-theme='light'] {
+:root {
 	@include generate-theme($light);
 }
 
@@ -469,7 +481,7 @@ $light: (
 // --clr-button-secondary-text: var(--clr-neutral-900);
 ```
 
-#### ✔️ Best practices
+### ✔️ Best practices
 
 - ✅ **Do:** Validate themes before generation in development
 - ✅ **Do:** Use semantic component names (`header`, `button-primary`)
@@ -484,8 +496,14 @@ $light: (
 $theme: (
 	button: (
 		primary: (
-			bg: (_: ..., hover: ..., active: ...),
-			text: (_: ...)
+			bg: (
+				_: ...,
+				hover: ...,
+				active: ...
+			),
+			text: (
+				_: ...
+			)
 		)
 	)
 );
@@ -504,7 +522,9 @@ $theme: (
 			row: (
 				column: (
 					element: (
-						bg: (_: ...)  // Too deep!
+						bg: (
+							_: ...
+						) // Too deep!
 					)
 				)
 			)
@@ -513,28 +533,31 @@ $theme: (
 );
 ```
 
----
-
-### validate-theme
+## validate-theme
 
 **Purpose:** Validate theme maps against schema structure, checking required keys and warning about unexpected keys.
 
 **Location:** `styles/core/mixins/_validate-theme.scss`
 
-#### ✍️ Signature
+### ✍️ Signature
 
 ```scss
-@mixin validate-theme($theme-map, $required-keys, $allowed-leaf-keys, $parent: null)
+@mixin validate-theme(
+	$theme-map,
+	$required-keys,
+	$allowed-leaf-keys,
+	$parent: null
+);
 ```
 
-#### 🧩 Parameters
+### 🧩 Parameters
 
 - `$theme-map` (Map) - Theme map to validate
 - `$required-keys` (Map) - Required structure from schema
 - `$allowed-leaf-keys` (List) - Whitelisted leaf keys (`_`, `hover`, `active`, etc.)
 - `$parent` (String | Null, optional) - Internal recursion path (don't pass manually)
 
-#### 🧠 How it works
+### 🧠 How it works
 
 1. **Type validation:** Checks if inputs are maps, throws error if not
 2. **Required key check:** Recursively verifies all required keys exist, throws error if missing
@@ -545,11 +568,15 @@ $theme: (
 **Validation checks:**
 
 **1. Missing required keys (error):**
+
 ```scss
 $light: (
-	text: (...),
-	header: (...)
-	// Missing 'main'!
+	text: (
+		...
+	),
+	header: (
+		...
+	) // Missing 'main'!
 );
 
 @include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
@@ -557,12 +584,13 @@ $light: (
 ```
 
 **2. Unexpected keys (warning):**
+
 ```scss
 $light: (
 	header: (
 		bg: (
 			_: #fff,
-			hovered: #eee  // Typo: should be 'hover'
+			hovered: #eee // Typo: should be 'hover'
 		)
 	)
 );
@@ -572,7 +600,7 @@ $light: (
 //          that is not in the schema or leaf keys whitelist!
 ```
 
-#### 🚀 Usage
+### 🚀 Usage
 
 ```scss
 @use '@/styles/themes/schema' as *;
@@ -593,14 +621,28 @@ $light: (
 // Complete validation setup
 // themes/_schema.scss
 $theme-leaf-keys: (
-	'_', 'hover', 'active', 'focus',
-	'disabled', 'selected', 'error'
+	'_',
+	'hover',
+	'active',
+	'focus',
+	'disabled',
+	'selected',
+	'error'
 );
 
 $theme-required-keys: (
-	text: (_: (), accent: ()),
-	header: (bg: (), text: ()),
-	main: (bg: (), text: ())
+	text: (
+		_: (),
+		accent: ()
+	),
+	header: (
+		bg: (),
+		text: ()
+	),
+	main: (
+		bg: (),
+		text: ()
+	)
 );
 
 // themes/_light.scss
@@ -609,21 +651,39 @@ $theme-required-keys: (
 @use '../core/mixins/generate-theme' as *;
 
 $light: (
-	text: (_: ..., accent: ...),
-	header: (bg: (_: ...), text: (_: ...)),
-	main: (bg: (_: ..., hover: ...), text: (_: ...))
+	text: (
+		_: ...,
+		accent: ...
+	),
+	header: (
+		bg: (
+			_: ...
+		),
+		text: (
+			_: ...
+		)
+	),
+	main: (
+		bg: (
+			_: ...,
+			hover: ...
+		),
+		text: (
+			_: ...
+		)
+	)
 );
 
 // Validate in development
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($light, $theme-schema);
 
 // Generate
-[data-theme='light'] {
+:root {
 	@include generate-theme($light);
 }
 ```
 
-#### ✔️ Best practices
+### ✔️ Best practices
 
 - ✅ **Do:** Run validation in development environment
 - ✅ **Do:** Fix errors (missing required keys) immediately
@@ -651,6 +711,7 @@ $light: (
 ```
 
 **What's NOT validated:**
+
 - Presence of `_` base value (optional by design)
 - Value types (doesn't check if CSS is valid)
 - Value references (doesn't check if `var(--clr-invalid)` exists)

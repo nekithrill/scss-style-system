@@ -1,10 +1,8 @@
-## 📖 Overview
+# 📖 Overview
 
 A modular SCSS design token system that generates CSS variables with built-in theming support. Perfect for projects using CSS Modules or component-scoped styling.
 
-<br>
-
-### 🧩 What is this system?
+## 🧩 What is this system?
 
 This is a **token-first architecture** that separates design decisions from implementation. Instead of hardcoding values throughout your stylesheets, you define them once as tokens (colors, spacing, typography) and use them everywhere via CSS variables.
 
@@ -16,11 +14,8 @@ This is a **token-first architecture** that separates design decisions from impl
 - **Utility functions** - px→rem conversion, responsive breakpoints
 - **Modular structure** - Use only what you need
 
----
-
-### ✨ Key features
-
-#### 🎨 OKLCH color system with hue parameters
+## ✨ Key features
+### 🎨 OKLCH color system with hue parameters
 
 Change your entire color palette by adjusting a single hue value:
 
@@ -31,7 +26,7 @@ $primary-hue: 200deg !default;  // Was: 270deg
 
 All 9 shades (100-900) automatically update to the new color.
 
-#### 🔄 Automatic rem conversion
+### 🔄 Automatic rem conversion
 
 Define values in familiar pixels, get consistent rem units:
 
@@ -43,7 +38,7 @@ $base-spacing: 8px !default;
 --sp-4: 2rem;  /* 32px */
 ```
 
-#### 🌗 Theme validation
+### 🌗 Theme validation
 
 Built-in schema validation prevents theme errors:
 
@@ -59,7 +54,7 @@ $theme-required-keys: (
 @include validate-theme($dark, $theme-required-keys);
 ```
 
-#### 🧩 Fully modular
+### 🧩 Fully modular
 
 Only import what you need:
 
@@ -72,11 +67,9 @@ Only import what you need:
 @use './main' as *;
 ```
 
----
+## 📦 What's included
 
-### 📦 What's included
-
-#### Design tokens (`/tokens`)
+### Design tokens (`/tokens`)
 
 Raw design values defined as SCSS variables:
 
@@ -89,7 +82,7 @@ Raw design values defined as SCSS variables:
 - **Breakpoints** - Responsive design breakpoints (xs-2xl)
 - **Z-index** - Stacking order scale
 
-#### Core utilities (`/core`)
+### Core utilities (`/core`)
 
 SCSS functions and mixins:
 
@@ -99,7 +92,7 @@ SCSS functions and mixins:
 - **generate-theme** - Generate theme CSS variables
 - **validate-theme** - Validate theme structure against schema
 
-#### Base styles (`/base`)
+### Base styles (`/base`)
 
 Optional foundational styles:
 
@@ -111,7 +104,7 @@ Optional foundational styles:
 - **scrollbar** - Custom scrollbar styling
 - **selection** - Text selection highlight
 
-#### Theming (`/themes`)
+### Theming (`/themes`)
 
 Built-in light/dark mode support:
 
@@ -120,11 +113,9 @@ Built-in light/dark mode support:
 - **dark** - Dark mode theme
 - **apply** - Theme validation and application
 
----
+## ⚙️ How it works
 
-### ⚙️ How it works
-
-#### Step 1: Define tokens (SCSS variables)
+### Step 1: Define tokens (SCSS variables)
 
 ```scss
 // tokens/_colors.scss
@@ -137,7 +128,7 @@ $primary: (
 ) !default;
 ```
 
-#### Step 2: System generates CSS variables
+### Step 2: System generates CSS variables
 
 Modern bundlers (Vite, Next.js) automatically convert tokens to CSS variables:
 
@@ -149,9 +140,10 @@ Modern bundlers (Vite, Next.js) automatically convert tokens to CSS variables:
 }
 ```
 
-> 💡 **No manual compilation needed** with modern frameworks. For manual compilation setup, see [Getting Started - Option C](getting-started.md#option-c-standalone-htmlcss).
+> 💡 **Tip** 
+> No manual compilation needed with modern frameworks. For manual compilation setup, see [Getting Started - Integration](getting-started.md).
 
-#### Step 3: Use in your components
+### Step 3: Use in your components
 
 ```scss
 // Component.module.scss (with modern bundlers)
@@ -175,11 +167,8 @@ export function Button({ children }) {
 }
 ```
 
----
-
-### 🎨 Quick customization examples
-
-#### Change brand color
+## 🎨 Quick customization examples
+### Change brand color
 
 ```scss
 // tokens/_colors.scss
@@ -188,7 +177,7 @@ $primary-hue: 200deg !default;  // Blue instead of purple
 
 Result: All primary colors (100-900) become blue automatically.
 
-#### Smaller typography
+### Smaller typography
 
 ```scss
 // tokens/_typography.scss
@@ -197,7 +186,7 @@ $base-font-size: 14px !default;  // Was 16px
 
 Result: All heading sizes scale down proportionally.
 
-#### Tighter spacing
+### Tighter spacing
 
 ```scss
 // tokens/_spacing.scss
@@ -208,9 +197,7 @@ Result: Entire spacing scale becomes more compact (4px, 8px, 12px...).
 
 See [Customizing](../06-usage/customizing.md) for complete guide.
 
----
-
-### 🏗️ Architecture overview
+## 🏗️ Architecture overview
 
 The system uses a **two-layer architecture**:
 
@@ -240,13 +227,11 @@ This separation allows you to:
 
 See [Architecture](architecture.md) for detailed explanation.
 
----
-
-### 🔌 Integration methods
+## 🔌 Integration methods
 
 The system supports three main usage patterns:
 
-#### Modern bundlers
+### Modern bundlers
 
 **Tools:** Vite, Next.js, Webpack, Create React App
 
@@ -264,7 +249,7 @@ import './styles/main.scss';
 **Benefits:** Auto-compilation, hot reload, CSS Modules  
 **Setup:** → See [Getting Started](getting-started.md)
 
-#### Manual compilation
+### Manual compilation
 
 **Tools:** Sass CLI for static sites or legacy projects
 
@@ -279,7 +264,7 @@ sass src/styles/main.scss dist/styles.css
 **Benefits:** Simple, no bundler required  
 **Setup:** → See [Getting Started](getting-started.md)
 
-#### Direct token import
+### Direct token import
 
 **Use case:** When you don't need CSS variables or theming
 
@@ -298,26 +283,21 @@ sass src/styles/main.scss dist/styles.css
 **Trade-offs:** No theming, no runtime changes  
 **Documentation:** See [Direct Token Usage](../06-usage/direct-tokens.md)
 
----
-
-### 🎯 Use cases
-
-#### ✅ Perfect for
+## 🎯 Use cases
+### ✅ Perfect for
 
 - **Component-based projects** - React, Vue, Svelte with CSS Modules
 - **Design systems** - Centralized tokens ensure consistency
 - **Multi-theme apps** - Built-in light/dark mode
 - **Rapid prototyping** - Change colors/spacing globally with one value
 
-#### ⚠️ Consider alternatives
+### ⚠️ Consider alternatives
 
 - **Need utility classes?** → Try [Tailwind CSS](https://tailwindcss.com/)
 - **No build step?** → Use plain CSS custom properties
 - **Simple project?** → Plain CSS might be simpler
 
----
-
-### 💭 Project philosophy
+## 💭 Project philosophy
 
 **Principles:**
 

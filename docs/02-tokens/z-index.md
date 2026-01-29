@@ -2,17 +2,16 @@
 > **🧭 Scope:** Stacking context and layer ordering
 > **📦 Type:** Token
 
-## 🏔️ Z-index tokens
+# 🏔️ Z-index tokens
 
 Define stacking order values for consistent layering and depth control across your interface.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Z-index tokens establish a **stacking hierarchy** that prevents z-index conflicts and creates predictable layering. Instead of using arbitrary values like `999` or `9999`, the system provides semantic names for common stacking contexts.
 
 **The scale (`--z-*`)** uses a 100-based increment system:
+
 - `base` **(0)**: Default layer (most content)
 - `content` **(100)**: Elevated content (active cards)
 - `header/sidebar/footer` **(200)**: Fixed UI chrome
@@ -26,9 +25,7 @@ Z-index tokens establish a **stacking hierarchy** that prevents z-index conflict
 
 **Key concept:** Z-index only works on positioned elements (`position: relative`, `absolute`, `fixed`, or `sticky`). Non-positioned elements ignore z-index.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Header navigation
@@ -89,9 +86,7 @@ Z-index tokens establish a **stacking hierarchy** that prevents z-index conflict
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_z-index.scss
@@ -111,6 +106,7 @@ $z-index: (
 ```
 
 **Generated CSS variables:**
+
 ```css
 :root {
 	--z-base: 0;
@@ -126,11 +122,10 @@ $z-index: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Add custom layers:**
+
 ```scss
 $z-index: (
 	base: 0,
@@ -150,6 +145,7 @@ $z-index: (
 ```
 
 **Adjust hierarchy:**
+
 ```scss
 // Move tooltips above notifications
 $z-index: (
@@ -165,6 +161,7 @@ $z-index: (
 ```
 
 **Use smaller increments:**
+
 ```scss
 // For fine-grained control
 $z-index: (
@@ -182,6 +179,7 @@ $z-index: (
 ```
 
 **Semantic naming:**
+
 ```scss
 $z-index: (
 	'layer-default': 0,
@@ -193,11 +191,10 @@ $z-index: (
 ) !default;
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Z-index hierarchy:**
+
 - `base` (0): Default for most content, cards, images
 - `content` (100): Active/hover states that need slight elevation
 - `header/sidebar/footer` (200): Fixed navigation elements
@@ -208,6 +205,7 @@ $z-index: (
 - `notification` (700): Critical alerts that must be seen
 
 **Common patterns:**
+
 ```scss
 // Modal with overlay
 .modal {
@@ -263,6 +261,7 @@ $z-index: (
 ```
 
 **Stacking context awareness:**
+
 ```scss
 // ✅ Good: Positioned element with z-index
 .elevated-card {
@@ -283,6 +282,7 @@ $z-index: (
 ```
 
 **Nested stacking contexts:**
+
 ```scss
 // Parent creates stacking context
 .parent {
@@ -297,11 +297,10 @@ $z-index: (
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Don't use arbitrary z-index values:**
+
 ```scss
 // ❌ Bad: Random high numbers
 .modal {
@@ -323,6 +322,7 @@ $z-index: (
 ```
 
 **Don't forget position property:**
+
 ```scss
 // ❌ Bad: Z-index without position
 .element {
@@ -337,6 +337,7 @@ $z-index: (
 ```
 
 **Don't use negative z-index carelessly:**
+
 ```scss
 // ❌ Bad: Negative z-index can hide elements
 .background {
@@ -351,6 +352,7 @@ $z-index: (
 ```
 
 **Don't create too many stacking contexts:**
+
 ```scss
 // ❌ Bad: Every element creates context
 .card {
@@ -380,6 +382,7 @@ $z-index: (
 ```
 
 **Don't mix z-index with transforms carelessly:**
+
 ```scss
 // ⚠️ Warning: Transform creates new stacking context
 .parent {
@@ -405,6 +408,7 @@ $z-index: (
 ```
 
 **Don't hardcode intermediate values:**
+
 ```scss
 // ❌ Bad: Hardcoded in-between values
 .element {

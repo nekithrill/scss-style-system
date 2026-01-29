@@ -1,13 +1,11 @@
 > **📁 Location:** `styles/themes/_schema.scss`
 > **📦 Type:** Theme
 
-## 📋 Theme schema
+# 📋 Theme schema
 
 Defines the required structure and allowed variant keys for theme validation.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 The theme schema serves as a contract that all themes must follow, ensuring consistency across light, dark, and custom themes:
 
@@ -22,9 +20,7 @@ The theme schema serves as a contract that all themes must follow, ensuring cons
 
 **Why this matters:** Schema validation catches typos, missing sections, and structural errors at compile time, preventing runtime theme issues.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Schema is used automatically during theme validation
@@ -44,9 +40,7 @@ $custom: (
 );
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 ```scss
 // themes/_schema.scss
@@ -97,16 +91,16 @@ $theme-required-keys: (
 ```
 
 **What each section means:**
+
 - `text`: Base text colors (default + accent variant)
 - `selection`: Text selection highlight colors
 - `scrollbar`: Custom scrollbar styling
 - `header`, `main`, `footer`: Layout section colors
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Add new required section:**
+
 ```scss
 $theme-required-keys: (
 	// ... existing sections
@@ -123,6 +117,7 @@ $theme-required-keys: (
 ```
 
 **Add new state variants:**
+
 ```scss
 $theme-leaf-keys: (
 	'_',
@@ -136,6 +131,7 @@ $theme-leaf-keys: (
 ```
 
 **Remove optional sections:**
+
 ```scss
 // If you don't need footer theming
 $theme-required-keys: (
@@ -148,11 +144,10 @@ $theme-required-keys: (
 );
 ```
 
----
-
-### 🔍 Validation examples
+## 🔍 Validation examples
 
 **Valid theme (passes validation):**
+
 ```scss
 $custom: (
 	text: (_: ..., accent: ...),             // ✓ Required
@@ -166,6 +161,7 @@ $custom: (
 ```
 
 **Invalid theme (validation error):**
+
 ```scss
 $custom: (
 	text: (_: ..., accent: ...),
@@ -179,6 +175,7 @@ $custom: (
 ```
 
 **Theme with warning:**
+
 ```scss
 $custom: (
 	text: (_: ..., accent: ...),
@@ -195,9 +192,7 @@ $custom: (
 //            that is not in the schema or leaf keys whitelist!
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Keep required keys minimal (only truly required sections)
 - ✅ **Do:** Add custom sections for your specific needs
@@ -223,11 +218,10 @@ $theme-required-keys: (
 );
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Forgetting to update schema when adding theme sections:**
+
 ```scss
 // ❌ Bad: Theme has sidebar, but schema doesn't require it
 $light: (
@@ -246,6 +240,7 @@ $theme-required-keys: (
 ```
 
 **Using wrong leaf key names:**
+
 ```scss
 // ❌ Bad: 'hovered' not in allowed list
 $light: (
@@ -269,6 +264,7 @@ $light: (
 ```
 
 **Making everything required:**
+
 ```scss
 // ❌ Bad: Too strict, hard to create themes
 $theme-required-keys: (

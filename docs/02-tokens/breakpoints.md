@@ -2,25 +2,22 @@
 > **🧭 Scope:** Responsive layout breakpoints
 > **📦 Type:** Token
 
-## 📱 Breakpoint tokens
+# 📱 Breakpoint tokens
 
 Define responsive breakpoints for consistent media queries across the project. From mobile-first to large desktop screens.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Breakpoint tokens define screen width thresholds used with the `breakpoint` mixin to create responsive layouts. The system uses a mobile-first scale from `xs` (360px) to `2xl` (1536px).
 
 These tokens are consumed by the `breakpoint` mixin which generates `min-width` or `max-width` media queries depending on your approach:
+
 - **Desktop-first** (default): Styles apply when viewport is ≤ breakpoint
 - **Mobile-first**: Styles apply when viewport is ≥ breakpoint
 
 Breakpoints are defined in pixels and converted by the browser automatically - no rem conversion needed here.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 @use '@/styles/core/mixins/breakpoint' as *;
@@ -59,9 +56,7 @@ Breakpoints are defined in pixels and converted by the browser automatically - n
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_breakpoints.scss
@@ -76,11 +71,10 @@ $breakpoints: (
 ) !default;
 ```
 
-**Note:** These values are NOT converted to CSS variables. They're used directly by the `breakpoint` mixin at compile time.
+> ℹ️ **Note** 
+> These values are NOT converted to CSS variables. They're used directly by the `breakpoint` mixin at compile time.
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 ```scss
 // Adjust for your target devices
@@ -108,9 +102,7 @@ $breakpoints: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Choosing breakpoints:**
 
@@ -161,11 +153,10 @@ $breakpoints: (
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Don't hardcode pixel values:**
+
 ```scss
 // ❌ Bad: hardcoded breakpoint
 @media (max-width: 768px) {
@@ -179,6 +170,7 @@ $breakpoints: (
 ```
 
 **Don't mix approaches:**
+
 ```scss
 // ❌ Bad: mixing mobile-first and desktop-first
 .element {
@@ -194,6 +186,7 @@ $breakpoints: (
 ```
 
 **Don't create device-specific breakpoints:**
+
 ```scss
 // ❌ Bad: targeting specific devices
 $breakpoints: (

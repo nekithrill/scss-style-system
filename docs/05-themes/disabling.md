@@ -1,36 +1,32 @@
 > **📁 Location:** `styles/themes/_apply.scss`
 > **📦 Type:** Theme
 
-## 🚫 Disabling themes
+# 🚫 Disabling themes
 
 How to remove or disable the theme system when you don't need multiple themes.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 The theme system is optional. If you only need a single color scheme, you can:
 
-**Option 1: Keep one theme** - Remove theme switching but keep the structure for easy future expansion
+1. **Keep one theme** - Remove theme switching but keep the structure for easy future expansion
+2. **Inline colors** - Remove the entire theme system and use color tokens directly in components
+3. **Simplified variables** - Create static CSS variables without the theme structure
 
-**Option 2: Inline colors** - Remove the entire theme system and use color tokens directly in components
+**Why disable themes?**
 
-**Option 3: Simplified variables** - Create static CSS variables without the theme structure
-
-**Why disable themes?** 
 - Simpler codebase if multi-theme not needed
 - Slightly smaller CSS output
 - Fewer files to maintain
 - Direct color token usage
 
 **Trade-offs:**
+
 - Harder to add themes later (need to refactor components)
 - No system preference support
 - No user theme choice
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 **Option 1: Single theme (recommended)**
 
@@ -103,11 +99,10 @@ Create simple CSS variables without theme structure:
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 **Before (with themes):**
+
 ```
 styles/
 ├── themes/
@@ -122,6 +117,7 @@ styles/
 ```
 
 **After Option 1 (single theme):**
+
 ```
 styles/
 ├── themes/
@@ -134,6 +130,7 @@ styles/
 ```
 
 **After Option 2 (no themes):**
+
 ```
 styles/
 ├── base/
@@ -145,6 +142,7 @@ styles/
 ```
 
 **After Option 3 (static variables):**
+
 ```
 styles/
 ├── base/
@@ -155,9 +153,7 @@ styles/
 // Simple variable definitions
 ```
 
----
-
-### 🔧 Migration steps
+## 🔧 Migration steps
 
 **Option 1: Single theme**
 
@@ -234,34 +230,34 @@ grep -r "var(--clr-header-bg)" styles/
 3. Delete `styles/themes/` folder
 4. Import static colors in `main.scss`
 
----
-
-### 🔄 Re-enabling themes later
+## 🔄 Re-enabling themes later
 
 If you disabled themes and want to add them back:
 
 **From Option 1 (single theme):**
+
 1. Uncomment dark theme in `_apply.scss`
 2. Add theme switcher JavaScript
 3. Test both themes
 
 **From Option 2 (no themes):**
+
 1. Recreate `styles/themes/` folder
 2. Create theme files (`_light.scss`, `_dark.scss`, `_schema.scss`, `_apply.scss`)
 3. Replace direct token usage with semantic theme variables
 4. Add theme switcher
 
 **From Option 3 (static variables):**
+
 1. Convert static variables to theme structure
 2. Create theme files
 3. Update `_apply.scss` to generate themes
 4. Add theme switcher
 
-**Tip:** Option 1 is easiest to reverse - just uncomment code!
+> 💡 **Tip**
+> Option 1 is easiest to reverse - just uncomment code!
 
----
-
-### 📊 Comparison table
+## 📊 Comparison table
 
 | Feature | With Themes | Option 1 | Option 2 | Option 3 |
 |---------|-------------|----------|----------|----------|
@@ -273,14 +269,13 @@ If you disabled themes and want to add them back:
 | Maintenance | Medium | Low | Lowest | Low |
 
 **Recommendations:**
+
 - **Never need themes?** → Option 2 (simplest)
 - **Might need themes?** → Option 1 (easy to expand)
 - **Want structure?** → Option 3 (balanced)
 - **Need themes now?** → Keep current system
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Choose Option 1 if you might add themes later
 - ✅ **Do:** Choose Option 2 for simplest, most direct approach
@@ -310,11 +305,10 @@ If you disabled themes and want to add them back:
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Forgetting to update base styles:**
+
 ```scss
 // ❌ Bad: Scrollbar still references theme variables
 // base/_scrollbar.scss
@@ -329,6 +323,7 @@ html::-webkit-scrollbar-thumb {
 ```
 
 **Leaving unused imports:**
+
 ```scss
 // ❌ Bad: Importing disabled themes
 @use 'themes/apply';  // File still exists but not used
@@ -338,6 +333,7 @@ html::-webkit-scrollbar-thumb {
 ```
 
 **Incomplete migration:**
+
 ```scss
 // ❌ Bad: Some components still use theme variables
 .button {

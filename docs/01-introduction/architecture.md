@@ -1,4 +1,4 @@
-## 🏗️ Architecture
+# 🏗️ Architecture
 
 The system is built on a **two-layer token architecture** that separates design decisions from implementation:
 
@@ -11,9 +11,7 @@ This separation allows you to:
 - Switch themes without changing component styles
 - Maintain consistency across light/dark modes
 
-<br>
-
-### Layer 1: Design Tokens
+## Layer 1: Design Tokens
 
 **Purpose:** Store all raw design values in one place.
 **Location:** `/tokens/*.scss`
@@ -51,9 +49,7 @@ $neutral: (
 }
 ```
 
-<br>
-
-### Layer 2: Semantic Themes
+## Layer 2: Semantic Themes
 
 **Purpose:** Map design tokens to semantic, context-aware variables.
 
@@ -64,16 +60,18 @@ Themes define what each semantic variable means in different contexts (light/dar
 > 💡 **Note:** The underscore (`_`) represents the base/default value for a property. Modifiers like `hover`, `active` extend from this base.
 
 **Example:**
+
 ```scss
 // themes/_light.scss
 $light: (
 	main: (
 		bg: (
-			_: var(--clr-neutral-100),     // Base: Light background
-			hover: var(--clr-neutral-200)   // Modifier: Hover state
+			_: var(--clr-neutral-100),
+			// Base: Light background
+			hover: var(--clr-neutral-200) // Modifier: Hover state
 		),
 		text: (
-			_: var(--clr-neutral-900)      // Base: Dark text
+			_: var(--clr-neutral-900) // Base: Dark text
 		)
 	),
 	header: (
@@ -90,11 +88,12 @@ $light: (
 $dark: (
 	main: (
 		bg: (
-			_: var(--clr-neutral-900),     // Base: Dark background
-			hover: var(--clr-neutral-800)   // Modifier: Hover state
+			_: var(--clr-neutral-900),
+			// Base: Dark background
+			hover: var(--clr-neutral-800) // Modifier: Hover state
 		),
 		text: (
-			_: var(--clr-neutral-100)      // Base: Light text
+			_: var(--clr-neutral-100) // Base: Light text
 		)
 	),
 	header: (
@@ -108,15 +107,14 @@ $dark: (
 );
 ```
 
----
-
-### How components use the system
+## How components use the system
 
 The system is **flexible** - you can use it in different ways depending on your project needs.
 
-> 💡 **Note:** Design tokens (spacing, radius, typography, etc.) work the same everywhere and can be used directly in any approach. Semantic theme variables are optional and primarily used for colors and backgrounds that change between themes.
+> ℹ️ **Note**
+> Design tokens (spacing, radius, typography, etc.) work the same everywhere and can be used directly in any approach. Semantic theme variables are optional and primarily used for colors and backgrounds that change between themes.
 
-#### Option 1: Direct token usage (simple projects)
+### Option 1: Direct token usage (simple projects)
 
 For small projects or prototypes, you can use design tokens directly in components:
 
@@ -142,7 +140,7 @@ For small projects or prototypes, you can use design tokens directly in componen
 - Fewer files to manage
 - Direct control over values
 
-#### Option 2: Semantic theme variables (complex projects)
+### Option 2: Semantic theme variables (complex projects)
 
 For projects with multiple themes (light/dark mode, brand variations), use semantic theme variables **for colors** while keeping direct tokens for everything else:
 
@@ -179,8 +177,6 @@ For projects with multiple themes (light/dark mode, brand variations), use seman
 **What NOT to theme:**
 
 Avoid creating semantic variables for values that don't change between themes (spacing, radius, typography, shadows, z-index) - use direct tokens instead.
-
----
 
 **Why this works:**
 

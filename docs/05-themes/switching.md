@@ -1,13 +1,11 @@
 > **📁 Location:** JavaScript theme switcher
 > **📦 Type:** Theme
 
-## 🔄 Theme switching
+# 🔄 Theme switching
 
 JavaScript implementation for switching between themes at runtime.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Theme switching works by changing the `data-theme` attribute on the `<html>` element:
 
@@ -19,9 +17,7 @@ Theme switching works by changing the `data-theme` attribute on the `<html>` ele
 
 **No page reload required:** Theme changes happen instantly via CSS variable reassignment.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 **Basic theme switcher (HTML + JS):**
 
@@ -52,9 +48,7 @@ themeToggle.addEventListener('click', () => {
 </script>
 ```
 
----
-
-### ⚙️ Advanced examples
+## ⚙️ Advanced examples
 
 **With system preference detection:**
 
@@ -174,9 +168,7 @@ html.theme-transition *::after {
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Prevent flash of unstyled content (FOUC):**
 
@@ -236,85 +228,7 @@ function clearThemePreference() {
 </style>
 ```
 
----
-
-### ✔️ Best practices
-
-- ✅ **Do:** Apply theme before page renders (prevent flash)
-- ✅ **Do:** Store preference in localStorage
-- ✅ **Do:** Respect system preferences when no user preference exists
-- ✅ **Do:** Provide accessible toggle button (ARIA labels)
-- ✅ **Do:** Show current theme state visually
-- ❌ **Don't:** Force theme without user control
-- ❌ **Don't:** Use transitions on initial page load (slow)
-- ❌ **Don't:** Forget to sync toggle UI with current theme
-- ❌ **Don't:** Apply theme changes on every page load (use cached value)
-
-```javascript
-// ✅ Good: Cached, prevents flash
-const theme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', theme);
-
-// ❌ Bad: Checks system preference every time (slow)
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-```
-
----
-
-### ❌ Common mistakes
-
-**Flash of unstyled content:**
-```javascript
-// ❌ Bad: Theme applied after DOM loads (flash)
-window.addEventListener('DOMContentLoaded', () => {
-	const theme = localStorage.getItem('theme');
-	document.documentElement.setAttribute('data-theme', theme);
-});
-
-// ✅ Good: Inline script in <head> (runs before render)
-<script>
-	const theme = localStorage.getItem('theme') || 'light';
-	document.documentElement.setAttribute('data-theme', theme);
-</script>
-```
-
-**Not updating toggle UI:**
-```javascript
-// ❌ Bad: Toggle changes theme but icon stays same
-toggleBtn.addEventListener('click', () => {
-	const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-	document.documentElement.setAttribute('data-theme', newTheme);
-	// Forgot to update button icon!
-});
-
-// ✅ Good: Update UI state
-toggleBtn.addEventListener('click', () => {
-	const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-	document.documentElement.setAttribute('data-theme', newTheme);
-	localStorage.setItem('theme', newTheme);
-	updateToggleIcon(newTheme);  // Update UI
-});
-```
-
-**Ignoring system preference:**
-```javascript
-// ❌ Bad: Always defaults to light
-const theme = localStorage.getItem('theme') || 'light';
-
-// ✅ Good: Check system preference as fallback
-function getTheme() {
-	const stored = localStorage.getItem('theme');
-	if (stored) return stored;
-	
-	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	return prefersDark ? 'dark' : 'light';
-}
-```
-
----
-
-### 🎯 Complete example
+## 🎯 Complete example
 
 ```html
 <!DOCTYPE html>
@@ -389,4 +303,79 @@ function getTheme() {
 	</script>
 </body>
 </html>
+```
+
+## ✔️ Best practices
+
+- ✅ **Do:** Apply theme before page renders (prevent flash)
+- ✅ **Do:** Store preference in localStorage
+- ✅ **Do:** Respect system preferences when no user preference exists
+- ✅ **Do:** Provide accessible toggle button (ARIA labels)
+- ✅ **Do:** Show current theme state visually
+- ❌ **Don't:** Force theme without user control
+- ❌ **Don't:** Use transitions on initial page load (slow)
+- ❌ **Don't:** Forget to sync toggle UI with current theme
+- ❌ **Don't:** Apply theme changes on every page load (use cached value)
+
+```javascript
+// ✅ Good: Cached, prevents flash
+const theme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', theme);
+
+// ❌ Bad: Checks system preference every time (slow)
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+```
+
+## ❌ Common mistakes
+
+**Flash of unstyled content:**
+
+```javascript
+// ❌ Bad: Theme applied after DOM loads (flash)
+window.addEventListener('DOMContentLoaded', () => {
+	const theme = localStorage.getItem('theme');
+	document.documentElement.setAttribute('data-theme', theme);
+});
+
+// ✅ Good: Inline script in <head> (runs before render)
+<script>
+	const theme = localStorage.getItem('theme') || 'light';
+	document.documentElement.setAttribute('data-theme', theme);
+</script>
+```
+
+**Not updating toggle UI:**
+
+```javascript
+// ❌ Bad: Toggle changes theme but icon stays same
+toggleBtn.addEventListener('click', () => {
+	const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+	document.documentElement.setAttribute('data-theme', newTheme);
+	// Forgot to update button icon!
+});
+
+// ✅ Good: Update UI state
+toggleBtn.addEventListener('click', () => {
+	const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+	document.documentElement.setAttribute('data-theme', newTheme);
+	localStorage.setItem('theme', newTheme);
+	updateToggleIcon(newTheme);  // Update UI
+});
+```
+
+**Ignoring system preference:**
+
+```javascript
+// ❌ Bad: Always defaults to light
+const theme = localStorage.getItem('theme') || 'light';
+
+// ✅ Good: Check system preference as fallback
+function getTheme() {
+	const stored = localStorage.getItem('theme');
+	if (stored) return stored;
+	
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	return prefersDark ? 'dark' : 'light';
+}
 ```

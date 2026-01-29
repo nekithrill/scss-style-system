@@ -2,29 +2,25 @@
 > **🧭 Scope:** Global element defaults and base styles
 > **📦 Type:** Basic
 
-## 🌐 Global styles
+# 🌐 Global styles
 
 Foundation styles for html, body, and heading elements with design token integration.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Global styles establish baseline typography and colors that apply throughout the application:
 
-**:root declarations:** Sets default text colors (`--clr-text`, `--clr-text-accent`) that themes can override, plus `accent-color` for form controls.
+- **:root declarations:** Sets default text colors (`--clr-text`, `--clr-text-accent`) that themes can override, plus `accent-color` for form controls.
 
-**html element:** Sets base font size from tokens and enables smooth scrolling for anchor links.
+- **html element:** Sets base font size from tokens and enables smooth scrolling for anchor links.
 
-**body element:** Establishes minimum height, font family hierarchy, weight, and text color using tokens.
+- **body element:** Establishes minimum height, font family hierarchy, weight, and text color using tokens.
 
-**Headings (h1-h6):** Assigns bold weight and accent font family, with sizes defined individually using typography tokens.
+- **Headings (h1-h6):** Assigns bold weight and accent font family, with sizes defined individually using typography tokens.
 
 These styles serve as sensible defaults that can be overridden by themes or component-specific styles.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Global styles apply automatically
@@ -41,9 +37,7 @@ These styles serve as sensible defaults that can be overridden by themes or comp
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 ```scss
 // base/_globals.scss
@@ -81,9 +75,7 @@ h5 { font-size: var(--fs-h5); }
 h6 { font-size: var(--fs-h6); }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 ```scss
 // Add line-height to body
@@ -115,9 +107,7 @@ h1, h2, h3 {
 }
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Use design tokens for all values
 - ✅ **Do:** Let themes override default colors
@@ -141,11 +131,10 @@ body {
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Forgetting fallbacks:**
+
 ```scss
 // ❌ Bad: No fallback
 body {
@@ -159,6 +148,7 @@ body {
 ```
 
 **Conflicting with reset:**
+
 ```scss
 // ❌ Bad: Conflicts with reset.scss
 h1 {

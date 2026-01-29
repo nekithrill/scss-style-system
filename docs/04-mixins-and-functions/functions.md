@@ -2,34 +2,32 @@
 > **🧭 Scope:** Low-level utilities and value transformations
 > **📦 Type:** Core
 
-## ⚙️ Functions
+# ⚙️ Functions
 
 Utility functions for value transformations and calculations.
 
-<br>
-
-### px-to-rem
+## px-to-rem
 
 **Purpose:** Converts pixel values to rem units based on a configurable base font size.
 
 **Location:** `styles/core/functions/_px-to-rem.scss`
 
-#### ✍️ Signature
+### ✍️ Signature
 
 ```scss
 @function px-to-rem($value, $base: 16)
 ```
 
-#### 🧩 Parameters
+### 🧩 Parameters
 
 - `$value` (Number | List) - Value in px, list of px values, or unitless zero
 - `$base` (Number, optional) - Base font-size in pixels. Default: `16`
 
-#### 🔁 Returns
+### 🔁 Returns
 
 (Number | List) - Corresponding rem value(s), or original value if not in pixels
 
-#### 🧠 How it works
+### 🧠 How it works
 
 The function processes values through these steps:
 
@@ -41,7 +39,6 @@ The function processes values through these steps:
 6. **List processing:** Recursively converts each item in lists
 
 **Formula:** `(value / (base * 1px)) * 1rem`
-
 **Example:** `24px / (16 * 1px) * 1rem = 1.5rem`
 
 **Edge cases:**
@@ -52,7 +49,7 @@ The function processes values through these steps:
 - Colors and other non-numeric values in lists are preserved
 
 
-#### 🚀 Usage
+### 🚀 Usage
 
 ```scss
 @use '@/styles/core/functions/px-to-rem' as *;
@@ -74,7 +71,8 @@ The function processes values through these steps:
 	margin: px-to-rem(0);  // → 0 (no unit)
 }
 ```
-#### ✔️ Best practices
+
+### ✔️ Best practices
 
 - ✅ **Do:** Use for spacing, sizing, and layout values that should scale with user preferences
 - ✅ **Do:** Set `$base` to match your root font-size if different from 16px
@@ -84,6 +82,7 @@ The function processes values through these steps:
 - ❌ **Don't:** Forget that large values (≥5000px) won't be converted
 
 **Example patterns:**
+
 ```scss
 // ✅ Good: Convert layout spacing
 .container {

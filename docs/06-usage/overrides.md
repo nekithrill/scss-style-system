@@ -1,21 +1,17 @@
-## 🔄 Overriding system defaults
+# 🔄 Overriding system defaults
 
 How to override CSS variables and extend the system with your own values.
 
-<br>
-
-### 🧠 How overrides work
+## 🧠 How overrides work
 
 The system generates CSS variables in `:root` that can be overridden at any scope level:
 
-**Global override** → Override in `:root`  
-**Component override** → Override in component selector  
-**Theme override** → Override in `[data-theme='...']` selector  
-**State override** → Override in pseudo-class (`:hover`, `:focus`)
+- **Global override** → Override in `:root`  
+- **Component override** → Override in component selector  
+- **Theme override** → Override in `[data-theme='...']` selector  
+- **State override** → Override in pseudo-class (`:hover`, `:focus`)
 
----
-
-### 🌍 Global overrides
+## 🌍 Global overrides
 
 Override CSS variables globally by redefining them in `:root`:
 
@@ -34,13 +30,13 @@ Override CSS variables globally by redefining them in `:root`:
 ```
 
 **When to use:**
+
 - Adjusting token values without recompiling SCSS
 - Quick prototyping
 - Runtime customization
 
----
 
-### 🎨 Component-level overrides
+## 🎨 Component-level overrides
 
 Override variables within specific components:
 
@@ -72,13 +68,12 @@ Override variables within specific components:
 ```
 
 **Benefits:**
+
 - Scoped changes don't affect other components
 - Easy variant creation
 - No need to recompile SCSS
 
----
-
-### 🌗 Theme overrides
+## 🌗 Theme overrides
 
 Override variables per theme:
 
@@ -106,9 +101,7 @@ Override variables per theme:
 }
 ```
 
----
-
-### 🔁 State-based overrides
+## 🔁 State-based overrides
 
 Override variables for hover, focus, active states:
 
@@ -135,9 +128,7 @@ Override variables for hover, focus, active states:
 }
 ```
 
----
-
-### 🎯 Context-based overrides
+## 🎯 Context-based overrides
 
 Override variables based on parent context:
 
@@ -168,9 +159,7 @@ Override variables based on parent context:
 }
 ```
 
----
-
-### 📱 Responsive overrides
+## 📱 Responsive overrides
 
 Override variables at different breakpoints:
 
@@ -216,9 +205,7 @@ Override variables at different breakpoints:
 }
 ```
 
----
-
-### 🔧 Adding new variables
+## 🔧 Adding new variables
 
 Extend the system with your own CSS variables:
 
@@ -253,9 +240,7 @@ Extend the system with your own CSS variables:
 }
 ```
 
----
-
-### 🎯 Real-world examples
+## 🎯 Real-world examples
 
 **Dashboard with custom sidebar:**
 ```scss
@@ -289,6 +274,7 @@ Extend the system with your own CSS variables:
 ```
 
 **Theme-aware component:**
+
 ```scss
 .alert {
     padding: var(--sp-4);
@@ -317,9 +303,7 @@ Extend the system with your own CSS variables:
 }
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Override in smaller scopes when possible
 - ✅ **Do:** Use semantic naming for custom variables
@@ -354,11 +338,10 @@ Extend the system with your own CSS variables:
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Circular references:**
+
 ```css
 /* ❌ Bad: Circular reference */
 :root {
@@ -374,6 +357,7 @@ Extend the system with your own CSS variables:
 ```
 
 **Specificity issues:**
+
 ```css
 /* ❌ Bad: Override doesn't work due to specificity */
 .card {
@@ -395,6 +379,7 @@ Extend the system with your own CSS variables:
 ```
 
 **Type mismatches:**
+
 ```css
 /* ❌ Bad: Wrong unit type */
 :root {

@@ -1,21 +1,20 @@
 > **📁 Location:** `styles/themes/_light.scss`, `styles/themes/_dark.scss`, `styles/themes/_apply.scss`
 > **📦 Type:** Theme
 
-## 🎨 Basic themes (Light & Dark)
+# 🎨 Basic themes (Light & Dark)
 
 Pre-configured light and dark themes with semantic color mappings.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 The system provides two ready-to-use themes that demonstrate best practices:
 
-**Light theme** (`$light`): Uses light backgrounds (secondary-100/200) with dark text (neutral-800/900). Designed for daytime use and well-lit environments.
+- **Light theme** (`$light`): Uses light backgrounds (secondary-100/200) with dark text (neutral-800/900). Designed for daytime use and well-lit environments.
 
-**Dark theme** (`$dark`): Uses dark backgrounds (neutral-800/900) with light text (neutral-100/200). Designed for low-light environments and reduced eye strain.
+- **Dark theme** (`$dark`): Uses dark backgrounds (neutral-800/900) with light text (neutral-100/200). Designed for low-light environments and reduced eye strain.
 
 **Theme application** (`_apply.scss`): Orchestrates the theme system by:
+
 1. Importing both themes and the schema
 2. Validating themes against schema (catches errors at compile time)
 3. Generating CSS variables in `:root` (light theme as default)
@@ -24,6 +23,7 @@ The system provides two ready-to-use themes that demonstrate best practices:
 **Key concept:** Themes reference base color tokens (like `--clr-neutral-900`) and map them to semantic theme variables (like `--clr-text`). This indirection allows components to use semantic names while themes control actual colors.
 
 **Generated output:**
+
 ```css
 :root {
 	--clr-text: var(--clr-neutral-900);
@@ -40,9 +40,7 @@ The system provides two ready-to-use themes that demonstrate best practices:
 }
 ```
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Themes are applied automatically
@@ -71,9 +69,7 @@ The system provides two ready-to-use themes that demonstrate best practices:
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 **Light theme (_light.scss):**
 ```scss
@@ -112,6 +108,7 @@ $light: (
 ```
 
 **Dark theme (_dark.scss):**
+
 ```scss
 $dark: (
 	text: (
@@ -148,6 +145,7 @@ $dark: (
 ```
 
 **Theme application (_apply.scss):**
+
 ```scss
 @use 'light' as *;
 @use 'dark' as *;
@@ -170,11 +168,10 @@ $dark: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Adjust light theme colors:**
+
 ```scss
 $light: (
 	text: (
@@ -190,6 +187,7 @@ $light: (
 ```
 
 **Add new sections:**
+
 ```scss
 $light: (
 	// ... existing sections
@@ -207,6 +205,7 @@ $light: (
 ```
 
 **Change default theme:**
+
 ```scss
 // Make dark theme default
 :root {
@@ -218,9 +217,29 @@ $light: (
 }
 ```
 
----
+## 🎨 Color mapping guide
 
-### ✔️ Best practices
+**Light theme philosophy:**
+
+- Backgrounds: Secondary palette (100-300) - very light
+- Text: Neutral palette (700-900) - very dark
+- Accents: Primary palette (500-600) - vibrant
+
+**Dark theme philosophy:**
+
+- Backgrounds: Neutral palette (800-900) - very dark
+- Text: Neutral palette (100-300) - very light
+- Accents: Primary palette (400-500) - slightly muted
+
+**Contrast checklist:**
+```
+✓ Text on background: 4.5:1 minimum (WCAG AA)
+✓ Large text on background: 3:1 minimum
+✓ UI components: 3:1 minimum
+✓ Hover states: Visibly different from default
+```
+
+## ✔️ Best practices
 
 - ✅ **Do:** Use neutral colors for text (high contrast)
 - ✅ **Do:** Adjust primary/accent colors for dark mode (lighter shades)
@@ -250,11 +269,10 @@ $light: (
 );
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Forgetting validation:**
+
 ```scss
 // ❌ Bad: No validation, errors only show at runtime
 :root {
@@ -269,6 +287,7 @@ $light: (
 ```
 
 **Using absolute colors:**
+
 ```scss
 // ❌ Bad: Hardcoded colors
 $light: (
@@ -284,6 +303,7 @@ $light: (
 ```
 
 **Missing state variants:**
+
 ```scss
 // ❌ Bad: No hover state
 $light: (
@@ -303,26 +323,4 @@ $light: (
 		text: (_: var(--clr-neutral-800))
 	)
 );
-```
-
----
-
-### 🎨 Color mapping guide
-
-**Light theme philosophy:**
-- Backgrounds: Secondary palette (100-300) - very light
-- Text: Neutral palette (700-900) - very dark
-- Accents: Primary palette (500-600) - vibrant
-
-**Dark theme philosophy:**
-- Backgrounds: Neutral palette (800-900) - very dark
-- Text: Neutral palette (100-300) - very light
-- Accents: Primary palette (400-500) - slightly muted
-
-**Contrast checklist:**
-```
-✓ Text on background: 4.5:1 minimum (WCAG AA)
-✓ Large text on background: 3:1 minimum
-✓ UI components: 3:1 minimum
-✓ Hover states: Visibly different from default
 ```

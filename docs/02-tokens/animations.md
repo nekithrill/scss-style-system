@@ -2,28 +2,21 @@
 > **🧭 Scope:** Motion, transitions and interaction feedback
 > **📦 Type:** Token
 
-## 🎞️ Animation tokens
+# 🎞️ Animation tokens
 
 Define timing parameters for consistent motion design across the project. Includes `duration`, `easing` and `delay` tokens for orchestrating smooth, predictable animations.
 
-
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Animation tokens provide three types of timing values:
 
-**Duration tokens (`--dur-*`)** control how long animations and transitions take. The system uses a scale from `instant` (100ms) to `slower` (700ms), optimized for different interaction speeds.
-
-**Easing tokens (`--tf-*`)** define the timing function (acceleration curve) of animations. These cubic-bezier curves create natural motion by controlling how an animation progresses from start to finish. The prefix `tf` stands for "timing-function" (from CSS's `animation-timing-function`).
-
-**Delay tokens (`--delay-*`)** add time offsets before animations start, useful for creating staggered effects in lists or sequential reveals.
+- **Duration tokens (`--dur-*`)** control how long animations and transitions take. The system uses a scale from `instant` (100ms) to `slower` (700ms), optimized for different interaction speeds.
+- **Easing tokens (`--tf-*`)** define the timing function (acceleration curve) of animations. These cubic-bezier curves create natural motion by controlling how an animation progresses from start to finish. The prefix `tf` stands for "timing-function" (from CSS's `animation-timing-function`).
+- **Delay tokens (`--delay-*`)** add time offsets before animations start, useful for creating staggered effects in lists or sequential reveals.
 
 All tokens are generated as CSS custom properties in `:root` and can be used anywhere in your styles.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Simple transition
@@ -69,9 +62,7 @@ All tokens are generated as CSS custom properties in `:root` and can be used any
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_animations.scss
@@ -103,9 +94,7 @@ $delay: (
 );
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 ```scss
 // Adjust animation speeds (faster for snappier feel)
@@ -134,9 +123,7 @@ $delay: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Duration:**
 
@@ -158,6 +145,4 @@ $delay: (
 - Keep delays short to avoid perceived lag
 - Avoid delays on critical user interactions
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes

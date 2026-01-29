@@ -2,48 +2,41 @@
 > **🧭 Scope:** Custom scrollbar appearance
 > **📦 Type:** Basic
 
-## 📜 Custom scrollbar
+# 📜 Custom scrollbar
 
 Styled scrollbars for Firefox and Webkit browsers using theme colors.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Custom scrollbar styles that adapt to your theme:
 
-**Firefox:** Uses `scrollbar-width` and `scrollbar-color` (modern CSS scrollbar styling).
-
-**Webkit:** Uses `::-webkit-scrollbar` pseudo-elements for Chrome/Safari/Edge.
+- **Firefox:** Uses `scrollbar-width` and `scrollbar-color` (modern CSS scrollbar styling).
+- **Webkit:** Uses `::-webkit-scrollbar` pseudo-elements for Chrome/Safari/Edge.
 
 **Theme integration:** Uses semantic color variables (`--clr-scrollbar-thumb`, `--clr-scrollbar-track`) that themes define, ensuring scrollbars match light/dark mode.
 
 **Feature detection:** Uses `@supports` to apply Firefox styles only where supported, preventing conflicts.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Scrollbars are styled automatically
 // No additional code needed
 
 // Theme must provide these variables:
-[data-theme='light'] {
+[data-theme='dark'] {
 	--clr-scrollbar-thumb: var(--clr-neutral-400);
 	--clr-scrollbar-thumb-hover: var(--clr-neutral-500);
 	--clr-scrollbar-track: var(--clr-neutral-100);
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 ```scss
 // base/_scrollbar.scss
 
-html {
+* {
 	// Firefox
 	@supports (scrollbar-width: thin) and (not selector(::-webkit-scrollbar)) {
 		scrollbar-width: thin;
@@ -69,9 +62,7 @@ html {
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 ```scss
 // Wider scrollbar
@@ -97,9 +88,7 @@ html::-webkit-scrollbar-thumb {
 }
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Define scrollbar colors in themes
 - ✅ **Do:** Test in both Firefox and Chrome
@@ -108,11 +97,10 @@ html::-webkit-scrollbar-thumb {
 - ❌ **Don't:** Use bright colors (distracting)
 - ❌ **Don't:** Forget hover states
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Missing theme variables:**
+
 ```scss
 // ❌ Bad: Scrollbar breaks without theme variables
 html::-webkit-scrollbar-thumb {
@@ -120,7 +108,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 // ✅ Good: Theme provides variables
-[data-theme='light'] {
+[data-theme='dark'] {
 	--clr-scrollbar-thumb: var(--clr-neutral-400);
 	--clr-scrollbar-track: var(--clr-neutral-100);
 }

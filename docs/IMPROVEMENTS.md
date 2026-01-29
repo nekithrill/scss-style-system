@@ -1,15 +1,16 @@
-## ✨ Improvements
+# ✨ Improvements
 
-> 💡 This system is designed to be practical and straightforward. Before considering any improvements, it's recommended to use the current setup in real projects and identify actual pain points. The improvements listed below are potential enhancements that may be implemented if they prove necessary through real-world usage.
+> ℹ️ **Note** 
+> This system is designed to be practical and straightforward. Before considering any improvements, it's recommended to use the current setup in real projects and identify actual pain points. The improvements listed below are potential enhancements that may be implemented if they prove necessary through real-world usage.
 
-<br>
+## 📦 Template to dependency migration
 
-### 📦 Template to dependency migration
+**Current state:** 
 
-**Current state:**  
 The system is designed as a **starter template** - users copy files to their project and customize as needed. This approach prioritizes simplicity and full control over the codebase.
 
 **Potential improvement:**  
+
 If demand grows and the system proves stable across multiple projects, it may be packaged as an **npm dependency** for easier distribution and updates.
 
 **Planned features:**
@@ -21,6 +22,7 @@ If demand grows and the system proves stable across multiple projects, it may be
 - **Configuration API:** Override defaults without modifying source files
 
 **Example API (proposed):**
+
 ```scss
 // Install as dependency
 npm install @yourname/scss-system
@@ -68,18 +70,20 @@ Before transitioning from template to dependency, the following would need to be
 - ⚠️ Learning curve (users need to learn configuration API)
 
 **When to implement:**  
+
 Only after the template approach has been validated through real-world usage in multiple projects, and if user feedback indicates strong demand for a dependency-based distribution model. The template approach will remain available for users who prefer maximum flexibility.
 
-> 💡 **Current recommendation:** Use the template approach (copy files). It's simpler, more flexible, and you own the code. Consider the dependency approach only for large teams managing multiple projects with the same design system.
+> 👍 **Current recommendation** 
+> Use the template approach (copy files). It's simpler, more flexible, and you own the code. Consider the dependency approach only for large teams managing multiple projects with the same design system.
 
----
-
-### 🤖 Color system automation
+## 🤖 Color system automation
 
 **Current state:**  
+
 Color management is fully manual. Each color shade must be defined explicitly in the tokens file.
 
 **Potential improvement:**  
+
 If manual color management becomes difficult to maintain across multiple projects, implement automatic palette generation from base colors.
 
 **Planned features:**
@@ -90,6 +94,7 @@ If manual color management becomes difficult to maintain across multiple project
 - Automatic lightness and chroma calculations for perceptually uniform scales
 
 **Example API:**
+
 ```scss
 // Proposed future API
 @use 'core/functions/generate-palette' as *;
@@ -109,17 +114,18 @@ $primary: generate-palette(
 // )
 ```
 
-**When to implement:**  
+**When to implement:** 
+
 After testing the current system on multiple projects, if color maintenance becomes a pain point.
 
----
-
-### 🧬 Token system improvement
+## 🧬 Token system improvement
 
 **Current state:**  
+
 The token system works as designed but may have limitations that only become apparent through real-world usage.
 
 **Potential improvements:**  
+
 Based on feedback and testing across different projects, the token system may need:
 
 - **Automation:** Auto-generate related tokens (e.g., hover states from base colors)
@@ -127,17 +133,18 @@ Based on feedback and testing across different projects, the token system may ne
 - **Restructuring:** Reorganize token categories if the current structure proves inflexible
 - **Extension:** Add new token categories based on common project needs
 
-**When to implement:**  
+**When to implement:**
+
 After identifying specific pain points through practical use. Changes will be driven by actual needs, not speculation.
 
----
+## 🧱 Base styles improvement
 
-### 🧱 Base styles improvement
+**Current state:**
 
-**Current state:**  
 Base styles provide essential defaults for global elements (typography, links, etc.).
 
 **Potential improvements:**  
+
 If the current base styles have gaps, errors, or don't cover common use cases discovered during testing:
 
 - Fix any styling inconsistencies or bugs
@@ -146,17 +153,18 @@ If the current base styles have gaps, errors, or don't cover common use cases di
 - Better integration with design tokens
 - More comprehensive typography baseline
 
-**When to implement:**  
+**When to implement:** 
+
 After real-world testing reveals specific issues or missing features in base styles.
 
----
-
-### 🧹 Reset improvements
+## 🧹 Reset improvements
 
 **Current state:**  
+
 The reset provides a minimal foundation by removing browser inconsistencies.
 
-**Potential improvements:**  
+**Potential improvements:** 
+
 If the current reset doesn't cover important edge cases or resets too much:
 
 - **Optimize coverage:** Add resets for elements that show cross-browser inconsistencies
@@ -166,6 +174,7 @@ If the current reset doesn't cover important edge cases or resets too much:
 - **Form elements:** Better normalization of inputs, buttons, selects
 
 **Example additions:**
+
 ```scss
 // Potential improvements
 @media (prefers-reduced-motion: reduce) {
@@ -183,5 +192,6 @@ If the current reset doesn't cover important edge cases or resets too much:
 }
 ```
 
-**When to implement:**  
+**When to implement:**
+ 
 After identifying specific browser inconsistencies or accessibility issues through testing.

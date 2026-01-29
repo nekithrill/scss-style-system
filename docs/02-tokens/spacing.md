@@ -2,17 +2,16 @@
 > **🧭 Scope:** Layout spacing and component paddings
 > **📦 Type:** Token
 
-## 📏 Spacing tokens
+# 📏 Spacing tokens
 
 Define consistent spacing values based on an 8px grid system for padding, margin, and gaps.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Spacing tokens follow an **8px grid system** - a widely-used design standard where all spacing values are multiples of 8 pixels. This creates visual rhythm and consistency across your interface.
 
 **The scale (`--sp-*`)** ranges from `0` (no space) to `8` (64px), providing 9 spacing options. Each step is a multiple of the base spacing unit:
+
 - `sp-1` = 1 × 8px = 8px
 - `sp-2` = 2 × 8px = 16px
 - `sp-3` = 3ы × 8px = 24px
@@ -24,9 +23,7 @@ Spacing tokens follow an **8px grid system** - a widely-used design standard whe
 
 **Why 8px?** Most screen dimensions are divisible by 8, making layouts pixel-perfect across devices. It's also small enough for fine-tuning but large enough to create visible differences between spacing levels.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Padding and margin
@@ -72,9 +69,7 @@ Spacing tokens follow an **8px grid system** - a widely-used design standard whe
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_spacing.scss
@@ -95,6 +90,7 @@ $spacing: (
 ```
 
 **Generated CSS variables:**
+
 ```css
 :root {
 	--sp-0: 0;
@@ -109,11 +105,10 @@ $spacing: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Change base unit:**
+
 ```scss
 // Use 10px base instead of 8px
 $base-spacing: 10px;
@@ -125,6 +120,7 @@ $base-spacing: 10px;
 ```
 
 **Add more granular steps:**
+
 ```scss
 $base-spacing: 8px;
 
@@ -142,6 +138,7 @@ $spacing: (
 ```
 
 **Add extra large spacing:**
+
 ```scss
 $spacing: (
 	0: 0,
@@ -160,6 +157,7 @@ $spacing: (
 ```
 
 **Minimal spacing scale:**
+
 ```scss
 // If you need fewer options
 $spacing: (
@@ -171,11 +169,10 @@ $spacing: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Choosing spacing values:**
+
 - Use `sp-0` to remove spacing (flush layouts)
 - Use `sp-1` (8px) for tight spacing (list items, chip gaps)
 - Use `sp-2` (16px) for small spacing (button padding, small margins)
@@ -184,6 +181,7 @@ $spacing: (
 - Use `sp-5` to `sp-8` for extra-large spacing (section padding, hero areas)
 
 **Consistent spacing patterns:**
+
 ```scss
 // ✅ Good: Consistent vertical rhythm
 .section {
@@ -219,6 +217,7 @@ $spacing: (
 ```
 
 **Responsive spacing:**
+
 ```scss
 @use '@/styles/core/mixins/breakpoint' as *;
 
@@ -236,6 +235,7 @@ $spacing: (
 ```
 
 **Grid and flexbox gaps:**
+
 ```scss
 // ✅ Good: Use gap instead of margins
 .grid {
@@ -250,11 +250,10 @@ $spacing: (
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Don't mix spacing scales:**
+
 ```scss
 // ❌ Bad: Random values breaking the 8px grid
 .element {
@@ -270,6 +269,7 @@ $spacing: (
 ```
 
 **Don't hardcode spacing values:**
+
 ```scss
 // ❌ Bad: Hardcoded values
 .card {
@@ -285,6 +285,7 @@ $spacing: (
 ```
 
 **Don't create arbitrary spacing:**
+
 ```scss
 // ❌ Bad: Breaking the grid system
 $spacing: (
@@ -304,6 +305,7 @@ $spacing: (
 ```
 
 **Don't forget about 0:**
+
 ```scss
 // ❌ Bad: Hardcoding zero
 .flush-element {
@@ -319,6 +321,7 @@ $spacing: (
 ```
 
 **Don't use spacing for sizes:**
+
 ```scss
 // ❌ Bad: Using spacing tokens for component dimensions
 .button {

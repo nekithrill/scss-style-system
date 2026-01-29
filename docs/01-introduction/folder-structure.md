@@ -1,4 +1,4 @@
-## 📂 Folder structure
+# 📂 Folder structure
 
 - `/base` - fonts connection, global styles, basic styles reset, custom scrollbar, selection styling, utility classes, variables generation;
 - `/core` - mixins and functions;

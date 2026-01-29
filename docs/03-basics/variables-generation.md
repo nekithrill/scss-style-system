@@ -2,13 +2,11 @@
 > **🧭 Scope:** CSS custom properties generation
 > **📦 Type:** Basic
 
-## 🏭 CSS Variables generation
+# 🏭 CSS Variables generation
 
 Central configuration that generates all CSS custom properties from design tokens.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 This file orchestrates the entire token system by:
 
@@ -19,9 +17,7 @@ This file orchestrates the entire token system by:
 
 **Key concept:** This is the single source of truth for what CSS variables get generated. Add/remove token groups here to control output.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Variables are generated automatically
@@ -37,9 +33,7 @@ This file orchestrates the entire token system by:
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 ```scss
 // base/_variables.scss
@@ -73,9 +67,7 @@ $base-tokens: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 ```scss
 // Add new token group
@@ -106,9 +98,7 @@ $base-tokens: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Use short, consistent prefixes
 - ✅ **Do:** Apply 'rem' transform to spacing/sizing tokens
@@ -118,11 +108,10 @@ $base-tokens: (
 - ❌ **Don't:** Use long prefixes (increases CSS size)
 - ❌ **Don't:** Duplicate token generation
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Wrong transform usage:**
+
 ```scss
 // ❌ Bad: Transforming colors
 colors: (
@@ -140,6 +129,7 @@ spacing: (
 ```
 
 **Forgetting to import tokens:**
+
 ```scss
 // ❌ Bad: Using undefined variable
 $base-tokens: (

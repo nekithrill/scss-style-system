@@ -2,17 +2,16 @@
 > **🧭 Scope:** Text styles, font scales and typographic rhythm
 > **📦 Type:** Token
 
-## ✍️ Typography tokens
+# ✍️ Typography tokens
 
 Define font families, weights, and sizes for consistent typography across your interface.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Typography tokens are organized into three categories:
 
 **Font family tokens (`--ff-*`)** define typeface stacks for different purposes:
+
 - `primary`: Main brand font (used in examples: JetBrains)
 - `accent`: Decorative/heading font (used in examples: Tektur)
 - `system`: Fallback system font stack for reliability
@@ -20,6 +19,7 @@ Typography tokens are organized into three categories:
 **Font weight tokens (`--fw-*`)** provide standardized weight values from light (300) to extra-bold (900). These ensure consistent text emphasis across components.
 
 **Font size tokens (`--fs-*`)** define a typographic scale based on a configurable base size (default: 16px):
+
 - `default`: Base body text size
 - `h1` through `h6`: Heading sizes in descending order
 - All sizes are calculated as multiples of the base size
@@ -27,9 +27,7 @@ Typography tokens are organized into three categories:
 
 **Base font size** (`$base-font-size`) serves as the foundation - changing this one value scales the entire typography system proportionally.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Basic text styling
@@ -91,9 +89,7 @@ h2 {
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_typography.scss
@@ -136,6 +132,7 @@ $font-sizes: (
 ```
 
 **Generated CSS variables:**
+
 ```css
 :root {
 	/* Font families */
@@ -161,11 +158,10 @@ $font-sizes: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Change brand fonts:**
+
 ```scss
 $font-families: (
 	primary: 'Inter',           // Modern sans-serif
@@ -175,6 +171,7 @@ $font-families: (
 ```
 
 **Adjust base font size:**
+
 ```scss
 // Larger base size (18px)
 $base-font-size: 18px;
@@ -186,6 +183,7 @@ $base-font-size: 18px;
 ```
 
 **Modify type scale:**
+
 ```scss
 // More dramatic scale
 $font-sizes: (
@@ -211,6 +209,7 @@ $font-sizes: (
 ```
 
 **Add custom sizes:**
+
 ```scss
 $font-sizes: (
 	default: $base-font-size,
@@ -230,6 +229,7 @@ $font-sizes: (
 ```
 
 **Add more font weights:**
+
 ```scss
 $font-weights: (
 	thin: 100,
@@ -244,16 +244,16 @@ $font-weights: (
 ) !default;
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Font family usage:**
+
 - Use `primary` for body text, UI elements, most content
 - Use `accent` for headings, titles, brand elements
 - Use `system` as fallback or for performance-critical text
 
 **Font weight guidelines:**
+
 - `light` (300): Light text, de-emphasized content
 - `regular` (400): Default body text
 - `medium` (500): Buttons, labels, emphasized text
@@ -261,6 +261,7 @@ $font-weights: (
 - `extra-bold` (900): Maximum impact, hero text
 
 **Font size hierarchy:**
+
 ```scss
 // ✅ Good: Clear hierarchy
 .hero {
@@ -282,6 +283,7 @@ $font-weights: (
 ```
 
 **Responsive typography:**
+
 ```scss
 @use '@/styles/core/mixins/breakpoint' as *;
 
@@ -299,6 +301,7 @@ h1 {
 ```
 
 **Combining tokens:**
+
 ```scss
 // ✅ Good: Semantic component styling
 .button {
@@ -317,6 +320,7 @@ h1 {
 ```
 
 **Loading custom fonts:**
+
 ```scss
 // Remember to load fonts in _fonts.scss
 @font-face {
@@ -334,11 +338,10 @@ h1 {
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Don't hardcode typography values:**
+
 ```scss
 // ❌ Bad: Hardcoded values
 .heading {
@@ -356,6 +359,7 @@ h1 {
 ```
 
 **Don't skip the type scale:**
+
 ```scss
 // ❌ Bad: Arbitrary sizes breaking the scale
 .text-large {
@@ -377,6 +381,7 @@ h1 {
 ```
 
 **Don't use too many font families:**
+
 ```scss
 // ❌ Bad: Too many fonts
 $font-families: (
@@ -396,6 +401,7 @@ $font-families: (
 ```
 
 **Don't forget font weight availability:**
+
 ```scss
 // ❌ Bad: Using weights your font doesn't have
 .text {
@@ -417,6 +423,7 @@ $font-families: (
 ```
 
 **Don't ignore line-height:**
+
 ```scss
 // ❌ Bad: Font size without line-height
 h1 {

@@ -1,10 +1,9 @@
-## 📱 Responsive design
+# 📱 Responsive design
 
 Create adaptive layouts that work seamlessly across all screen sizes using breakpoint tokens and the responsive mixin system. Supports both desktop-first and mobile-first approaches.
 
-<br>
+## 📐 Breakpoints
 
-### 📐 Breakpoints
 ```scss
 // tokens/_breakpoints.scss
 $breakpoints: (
@@ -17,15 +16,14 @@ $breakpoints: (
 );
 ```
 
-<br>
-
-### 🛠️ Using the Breakpoint Mixin
+## 🛠️ Using the Breakpoint Mixin
 
 The `breakpoint` mixin simplifies responsive design with automatic media query generation. It supports both desktop-first (max-width) and mobile-first (min-width) strategies.
 
-> 💡 The mixin currently defaults to desktop-first approach (max-width). For mobile-first, you need to pass `true` as the second parameter. This API may be simplified in future versions to make mobile-first easier to use without the explicit flag.
+> ℹ️ **Note**
+> The mixin currently defaults to desktop-first approach (max-width). For mobile-first, you need to pass `true` as the second parameter. This API may be simplified in future versions to make mobile-first easier to use without the explicit flag.
 
-#### Desktop-first (max-width)
+### Desktop-first (max-width)
 
 ```scss
 @use '../core/mixins/breakpoint' as *;
@@ -43,7 +41,7 @@ The `breakpoint` mixin simplifies responsive design with automatic media query g
 }
 ```
 
-#### Mobile-first (min-width)
+### Mobile-first (min-width)
 
 ```scss
 .container {
@@ -59,7 +57,7 @@ The `breakpoint` mixin simplifies responsive design with automatic media query g
 }
 ```
 
-#### Responsive grid
+### Responsive grid
 
 ```scss
 .grid {
@@ -81,7 +79,7 @@ The `breakpoint` mixin simplifies responsive design with automatic media query g
 }
 ```
 
-#### Responsive typography
+### Responsive typography
 
 ```scss
 .heading {

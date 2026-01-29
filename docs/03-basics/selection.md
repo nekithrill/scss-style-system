@@ -2,13 +2,11 @@
 > **🧭 Scope:** Text selection styling
 > **📦 Type:** Basic
 
-## 🖱️ Text selection
+# 🖱️ Text selection
 
 Custom styling for text selection highlight using theme colors.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 The `::selection` pseudo-element styles the background and text color when users select (highlight) text with their mouse or keyboard.
 
@@ -16,9 +14,7 @@ The `::selection` pseudo-element styles the background and text color when users
 
 **Automatic application:** Applies to all selectable text automatically - no additional code needed.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Selection styles apply automatically
@@ -35,9 +31,7 @@ The `::selection` pseudo-element styles the background and text color when users
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 ```scss
 // base/_selection.scss
@@ -48,9 +42,7 @@ The `::selection` pseudo-element styles the background and text color when users
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 ```scss
 // Different selection per element
@@ -66,9 +58,7 @@ The `::selection` pseudo-element styles the background and text color when users
 }
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Ensure sufficient contrast (4.5:1 for text)
 - ✅ **Do:** Test selection in both themes
@@ -76,20 +66,19 @@ The `::selection` pseudo-element styles the background and text color when users
 - ❌ **Don't:** Use same color as background (invisible)
 - ❌ **Don't:** Use extremely bright colors (harsh)
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Low contrast:**
+
 ```scss
 // ❌ Bad: Can't read selected text
-[data-theme='light'] {
+[data-theme='dark'] {
 	--clr-selection-bg: var(--clr-neutral-200);
 	--clr-selection-text: var(--clr-neutral-300);  // Too similar!
 }
 
 // ✅ Good: High contrast
-[data-theme='light'] {
+[data-theme='dark'] {
 	--clr-selection-bg: var(--clr-primary-200);
 	--clr-selection-text: var(--clr-primary-900);
 }

@@ -1,12 +1,11 @@
-## ✨ Creating custom tokens
+# ✨ Creating custom tokens
 
 Follow these steps to add new design tokens to your project.
 
-<br>
-
-### 📄 Create token file
+## 📄 Create token file
 
 Define your token values in a new SCSS file inside the `tokens/` directory:
+
 ```scss
 // tokens/_borders.scss
 
@@ -20,9 +19,7 @@ $borders: (
 );
 ```
 
----
-
-### ⚙️ Import and configure
+## ⚙️ Import and configure
 
 Add your new token to the generation configuration (see [Variables generation](../01-basics/variables-generation.md)):
 
@@ -48,6 +45,7 @@ $base-tokens: (
 **Generated output**
 
 CSS variables are automatically created with your specified prefix:
+
 ```css
 :root {
 	/* Generated from $borders */
@@ -58,11 +56,10 @@ CSS variables are automatically created with your specified prefix:
 }
 ```
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 Use the generated CSS variables throughout your project:
+
 ```scss
 .card {
 	border: var(--border-normal) solid var(--clr-neutral-300);
@@ -81,11 +78,10 @@ Use the generated CSS variables throughout your project:
 }
 ```
 
----
-
-### Additional examples
+## Additional examples
 
 **Nested token structure (like colors):**
+
 ```scss
 // tokens/_elevations.scss
 
@@ -120,6 +116,7 @@ $base-tokens: (
 ```
 
 **Flat token structure without transformation:**
+
 ```scss
 // tokens/_icons.scss
 
@@ -145,9 +142,7 @@ $base-tokens: (
 // --icon-xl: 48px;
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Token organization:**
 
@@ -167,11 +162,10 @@ $base-tokens: (
 - ❌ Don't use for colors, shadows, z-index, timing values
 - ❌ Don't use if you need exact pixel values (icons, images)
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Don't use inconsistent prefixes:**
+
 ```scss
 // ❌ Bad: Mixed prefixes
 borders: (
@@ -187,6 +181,7 @@ borders: (
 ```
 
 **Don't forget to import:**
+
 ```scss
 // ❌ Bad: Token defined but not imported
 $custom-tokens: (...);

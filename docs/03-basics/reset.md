@@ -2,41 +2,27 @@
 > **🧭 Scope:** Browser style normalization
 > **📦 Type:** Basic
 
-## 🔄 CSS Reset
+# 🔄 CSS Reset
 
 Minimal CSS reset that removes browser inconsistencies and provides a clean foundation.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 This reset removes default browser styles that cause cross-browser inconsistencies:
 
-**Box-sizing:** Sets `border-box` on all elements so padding/border are included in width calculations.
+- **Box-sizing:** Sets `border-box` on all elements so padding/border are included in width calculations.
+- **Margins/padding:** Removes all default spacing for a predictable starting point.
+- **Body:** Improves text rendering and sets comfortable line-height (1.5).
+- **Media:** Makes images/videos responsive by default, preventing overflow.
+- **Form elements:** Inherit typography from parent for consistency.
+- **Lists:** Removes bullets/numbers (add back in content areas if needed).
+- **Headings:** Reset to inherit size/weight (defined in globals.scss instead).
+- **Links:** Removes underline and inherits color (style per component).
+- **Buttons:** Removes all default styles for custom button designs.
+- **Text overflow:** Prevents long words from breaking layouts.
+- **Root isolation:** Creates stacking context for React/Next.js roots.
 
-**Margins/padding:** Removes all default spacing for a predictable starting point.
-
-**Body:** Improves text rendering and sets comfortable line-height (1.5).
-
-**Media:** Makes images/videos responsive by default, preventing overflow.
-
-**Form elements:** Inherit typography from parent for consistency.
-
-**Lists:** Removes bullets/numbers (add back in content areas if needed).
-
-**Headings:** Reset to inherit size/weight (defined in globals.scss instead).
-
-**Links:** Removes underline and inherits color (style per component).
-
-**Buttons:** Removes all default styles for custom button designs.
-
-**Text overflow:** Prevents long words from breaking layouts.
-
-**Root isolation:** Creates stacking context for React/Next.js roots.
-
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Reset applies automatically - provides clean foundation
@@ -50,9 +36,7 @@ This reset removes default browser styles that cause cross-browser inconsistenci
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 Key features: box-sizing, margin/padding reset, responsive media, form inheritance, list reset, button reset, text overflow prevention.
 
@@ -169,9 +153,7 @@ h6 {
 }
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Apply reset before other styles
 - ✅ **Do:** Add back list styles in content areas
@@ -179,11 +161,11 @@ h6 {
 - ❌ **Don't:** Modify the reset (it's intentionally minimal)
 - ❌ **Don't:** Rely on default browser styles
 
----
 
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Expecting default list styles:**
+
 ```scss
 // ❌ Lists have no bullets after reset
 <ul>

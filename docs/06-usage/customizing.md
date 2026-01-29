@@ -1,10 +1,8 @@
-## 🎨 Customizing the system
+# 🎨 Customizing the system
 
 Learn how to adapt the design system to match your brand and design requirements.
 
-<br>
-
-### 🧠 How customization works
+## 🧠 How customization works
 
 All design values in the system are defined with SCSS `!default` flag, which means you can override them before they're set:
 
@@ -20,11 +18,9 @@ $base-spacing: 4px;
 
 **Key principle:** Customize tokens at the source → Changes propagate throughout the entire system automatically.
 
----
+## 🎨 Customizing colors
 
-### 🎨 Customizing colors
-
-#### Change brand color (easiest)
+### Change brand color (easiest)
 
 ```scss
 // tokens/_colors.scss
@@ -36,7 +32,7 @@ $secondary-hue: 150deg !default;   // Green (was 180deg cyan)
 
 **Result:** All 9 shades (100-900) update automatically to the new color!
 
-#### Adjust color intensity
+### Adjust color intensity
 
 ```scss
 // Increase chroma for more vibrant colors
@@ -50,7 +46,7 @@ $primary-lightness: (
 ) !default;
 ```
 
-#### Use custom color palette
+### Use custom color palette
 
 ```scss
 // Replace entire palette
@@ -67,7 +63,7 @@ $primary: (
 ) !default;
 ```
 
-#### Custom semantic colors
+### Custom semantic colors
 
 ```scss
 $semantic-colors: (
@@ -85,11 +81,9 @@ $semantic-colors: (
 ) !default;
 ```
 
----
+## ✍️ Customizing typography
 
-### ✍️ Customizing typography
-
-#### Change base font size
+### Change base font size
 
 ```scss
 // tokens/_typography.scss
@@ -102,7 +96,7 @@ $base-font-size: 14px !default;  // Was 16px
 // default: 14px (was 16px)
 ```
 
-#### Adjust type scale
+### Adjust type scale
 
 ```scss
 $font-sizes: (
@@ -116,7 +110,7 @@ $font-sizes: (
 ) !default;
 ```
 
-#### Use custom fonts
+### Use custom fonts
 
 ```scss
 $font-families: (
@@ -137,11 +131,9 @@ Don't forget to load fonts in `base/_fonts.scss`:
 }
 ```
 
----
+## 📏 Customizing spacing
 
-### 📏 Customizing spacing
-
-#### Change base unit
+### Change base unit
 
 ```scss
 // tokens/_spacing.scss
@@ -154,7 +146,7 @@ $base-spacing: 4px !default;  // Tighter (was 8px)
 // sp-4: 16px (was 32px)
 ```
 
-#### Add custom spacing values
+### Add custom spacing values
 
 ```scss
 $spacing: (
@@ -174,11 +166,9 @@ $spacing: (
 ) !default;
 ```
 
----
+## 🔲 Customizing borders
 
-### 🔲 Customizing borders
-
-#### Adjust border radius scale
+### Adjust border radius scale
 
 ```scss
 // tokens/_borders.scss
@@ -195,7 +185,7 @@ $border-radius: (
 ) !default;
 ```
 
-#### Custom stroke widths
+### Custom stroke widths
 
 ```scss
 $stroke-width: (
@@ -206,11 +196,9 @@ $stroke-width: (
 ) !default;
 ```
 
----
+## 🌫️ Customizing shadows
 
-### 🌫️ Customizing shadows
-
-#### Change shadow intensity
+### Change shadow intensity
 
 ```scss
 // tokens/_shadows.scss
@@ -218,7 +206,7 @@ $stroke-width: (
 $base-shadow: rgb(0 0 0 / 15%) !default;  // Darker (was 10%)
 ```
 
-#### Adjust shadow scale
+### Adjust shadow scale
 
 ```scss
 $shadows: (
@@ -231,11 +219,9 @@ $shadows: (
 ) !default;
 ```
 
----
+## ⏱️ Customizing animations
 
-### ⏱️ Customizing animations
-
-#### Adjust timing
+### Adjust timing
 
 ```scss
 // tokens/_animations.scss
@@ -249,7 +235,7 @@ $duration: (
 ) !default;
 ```
 
-#### Custom easing functions
+### Custom easing functions
 
 ```scss
 $easing: (
@@ -263,9 +249,7 @@ $easing: (
 ) !default;
 ```
 
----
-
-### 📱 Customizing breakpoints
+## 📱 Customizing breakpoints
 
 ```scss
 // tokens/_breakpoints.scss
@@ -280,9 +264,7 @@ $breakpoints: (
 ) !default;
 ```
 
----
-
-### 🏔️ Customizing z-index
+## 🏔️ Customizing z-index
 
 ```scss
 // tokens/_z-index.scss
@@ -303,11 +285,9 @@ $z-index: (
 ) !default;
 ```
 
----
+## 🔧 Advanced customization
 
-### 🔧 Advanced customization
-
-#### Override specific token groups
+### Override specific token groups
 
 ```scss
 // your-custom-tokens.scss
@@ -321,7 +301,7 @@ $base-font-size: 14px;
 @use 'styles/main' as *;
 ```
 
-#### Create custom token file
+### Create custom token file
 
 ```scss
 // tokens/_custom.scss
@@ -355,9 +335,7 @@ Usage:
 }
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Override tokens before importing
 - ✅ **Do:** Keep customizations in a separate file

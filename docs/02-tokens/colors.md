@@ -2,41 +2,41 @@
 > **🧭 Scope:** Color palette (semantic + brand)
 > **📦 Type:** Token
 
-## 🎨 Color tokens
+# 🎨 Color tokens
 
 Define the complete color palette using OKLCH color space for perceptual uniformity and consistent lightness across hues.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Color tokens are organized into two categories:
 
 **Palette colors** (`primary`, `secondary`, `neutral`) use a 100-900 scale where:
+
 - Lower numbers (100-300) are lighter shades
 - Middle range (400-600) are mid-tones  
 - Higher numbers (700-900) are darker shades
 - The scale provides 9 shades for maximum flexibility
 
 **Semantic colors** (`success`, `warning`, `danger`, `info`) use role-based keys:
+
 - `bg`: Background color for alerts/notifications
 - `border`: Border/outline color
 - `solid`: Solid fill color (buttons, badges)
 - `text`: Text color for high contrast
 
 All colors use **OKLCH format** (`oklch(lightness chroma hue)`) which provides:
+
 - Perceptually uniform lightness (50% looks 50% bright across all hues)
 - Wider color gamut than RGB/HSL
 - Better for programmatic color manipulation
 - Consistent chroma (saturation) control
 
 Colors are generated as CSS custom properties with the `--clr-` prefix:
+
 - `--clr-primary-500`, `--clr-neutral-100`, etc.
 - `--clr-success-bg`, `--clr-danger-text`, etc.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Using palette colors directly
@@ -80,9 +80,7 @@ Colors are generated as CSS custom properties with the `--clr-` prefix:
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_colors.scss
@@ -182,6 +180,7 @@ $all-colors: (
 ```
 
 **Generated CSS variables:**
+
 ```css
 :root {
 	/* Primary palette */
@@ -204,11 +203,10 @@ $all-colors: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Change brand hue:**
+
 ```scss
 // Make primary color blue instead of purple
 $primary-hue: 240deg;  // Blue hue
@@ -222,6 +220,7 @@ $primary: (
 ```
 
 **Adjust chroma (saturation):**
+
 ```scss
 // More vibrant primary colors
 $primary: (
@@ -237,6 +236,7 @@ $neutral: (
 ```
 
 **Add custom palette:**
+
 ```scss
 // Add accent color
 $accent-hue: 340deg;  // Pink/magenta
@@ -257,9 +257,7 @@ $all-colors: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Color usage:**
 
@@ -288,11 +286,10 @@ $all-colors: (
 - Third value (hue): 0-360deg color wheel position
 - Use same lightness for perceptually similar brightness
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Don't mix color spaces:**
+
 ```scss
 // ❌ Bad: mixing OKLCH and HEX
 $primary: (
@@ -308,6 +305,7 @@ $primary: (
 ```
 
 **Don't hardcode colors in components:**
+
 ```scss
 // ❌ Bad: hardcoded color
 .button {
@@ -321,6 +319,7 @@ $primary: (
 ```
 
 **Don't create arbitrary shades:**
+
 ```scss
 // ❌ Bad: non-standard scale
 $custom: (

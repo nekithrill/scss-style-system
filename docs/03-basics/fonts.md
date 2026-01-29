@@ -2,29 +2,26 @@
 > **🧭 Scope:** Global font-face definitions
 > **📦 Type:** Basic
 
-## 🔤 Font loading
+# 🔤 Font loading
 
 Font face declarations for loading custom web fonts with optimal performance.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 This file loads custom font files using `@font-face` declarations. The system supports:
 
-**Multiple font weights:** Separate font files for regular (400), medium (500), and bold (700) weights ensure precise typography control.
+- **Multiple font weights:** Separate font files for regular (400), medium (500), and bold (700) weights ensure precise typography control.
 
-**Variable fonts:** Optional variable font declaration (`font-weight: 300 700`) provides a range of weights from a single file, reducing HTTP requests.
+- **Variable fonts:** Optional variable font declaration (`font-weight: 300 700`) provides a range of weights from a single file, reducing HTTP requests.
 
-**Font-display strategy:** Uses `font-display: swap` to show fallback fonts immediately while custom fonts load, preventing invisible text (FOIT) and improving perceived performance.
+- **Font-display strategy:** Uses `font-display: swap` to show fallback fonts immediately while custom fonts load, preventing invisible text (FOIT) and improving perceived performance.
 
-**Format fallbacks:** Includes both WOFF2 (modern, best compression) and WOFF (older browser support) formats for maximum compatibility.
+- **Format fallbacks:** Includes both WOFF2 (modern, best compression) and WOFF (older browser support) formats for maximum compatibility.
 
-**Important:** Update the file paths (`path/to/...`) to match your actual font file locations before using in production.
+> ⚠️ **Important** 
+> Update the file paths (`path/to/...`) to match your actual font file locations before using in production.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Fonts are loaded automatically when imported in main.scss
@@ -41,9 +38,7 @@ This file loads custom font files using `@font-face` declarations. The system su
 }
 ```
 
----
-
-### ⚙️ Configuration
+## ⚙️ Configuration
 
 ```scss
 // base/_fonts.scss
@@ -93,11 +88,10 @@ This file loads custom font files using `@font-face` declarations. The system su
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Load different fonts:**
+
 ```scss
 // Replace with your font
 @font-face {
@@ -119,6 +113,7 @@ $font-families: (
 ```
 
 **Add italic variants:**
+
 ```scss
 @font-face {
 	font-family: JetBrains;
@@ -132,6 +127,7 @@ $font-families: (
 ```
 
 **Use only variable font:**
+
 ```scss
 // Single file for all weights
 @font-face {
@@ -144,14 +140,13 @@ $font-families: (
 ```
 
 **Preload critical fonts:**
+
 ```html
 <!-- In your HTML <head> -->
 <link rel="preload" href="/fonts/JetBrains-Regular.woff2" as="font" type="font/woff2" crossorigin>
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Use WOFF2 format (best compression)
 - ✅ **Do:** Use `font-display: swap` to avoid invisible text
@@ -183,11 +178,10 @@ $font-families: (
 // (unnecessary HTTP requests)
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Wrong paths:**
+
 ```scss
 // ❌ Bad: Generic placeholder
 src: url('path/to/font.woff2');
@@ -197,6 +191,8 @@ src: url('/fonts/JetBrains-Regular.woff2');
 ```
 
 **Missing font-display:**
+
+
 ```scss
 // ❌ Bad: No font-display (can cause FOIT)
 @font-face {
@@ -213,6 +209,7 @@ src: url('/fonts/JetBrains-Regular.woff2');
 ```
 
 **Mismatched weights:**
+
 ```scss
 // ❌ Bad: Using weight not loaded
 .text {

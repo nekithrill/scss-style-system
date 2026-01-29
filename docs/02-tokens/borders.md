@@ -2,27 +2,24 @@
 > **🧭 Scope:** Borders, outlines and radius system
 > **📦 Type:** Token
 
-## 🔲 Border tokens
+# 🔲 Border tokens
 
 Define border-radius values for consistent rounding across UI components. From subtle corners on buttons to fully circular avatars.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Border tokens provide two types of values:
 
-**Border-radius tokens (`--rd-*`)** define corner rounding from sharp edges (`none`) to fully circular (`full`). Values are converted to rem units for scalability, except `pill` (9999px for fully rounded ends) and `full` (50% for circles). The prefix `rd` is short for "radius".
+1. **Border-radius tokens (`--rd-*`)** define corner rounding from sharp edges (`none`) to fully circular (`full`). Values are converted to rem units for scalability, except `pill` (9999px for fully rounded ends) and `full` (50% for circles). The prefix `rd` is short for "radius".
 
-**Stroke-width tokens (`--stroke-*`)** define border thickness for consistent outlines across components. These stay in pixels as they represent physical device pixels.
+2. **Stroke-width tokens (`--stroke-*`)** define border thickness for consistent outlines across components. These stay in pixels as they represent physical device pixels.
 
 The system includes special values:
+
 - `pill` (9999px): Creates fully rounded ends on rectangular elements (badges, pills)
 - `full` (50%): Creates perfect circles on square elements (avatars, icon buttons)
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 // Buttons
@@ -74,9 +71,7 @@ The system includes special values:
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_borders.scss
@@ -102,6 +97,7 @@ $stroke-width: (
 ```
 
 **Generated CSS variables:**
+
 ```css
 :root {
 	/* Border radius (converted to rem) */
@@ -121,9 +117,7 @@ $stroke-width: (
 }
 ```
 
----
-
-### ❔ Understanding `pill` vs `full`
+## ❔ Understanding `pill` vs `full`
 
 ```scss
 // pill (9999px) - for rectangular elements
@@ -155,9 +149,7 @@ $stroke-width: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 ```scss
 // Increase overall roundness
@@ -207,9 +199,7 @@ $radius: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Choosing radius values:**
 
@@ -258,6 +248,4 @@ $radius: (
 - ❌ Random values like `7px`, `13px` - stick to the scale
 - ✅ Use 2-3 radius values consistently throughout your design
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes

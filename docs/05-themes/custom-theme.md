@@ -1,13 +1,11 @@
 > **📁 Location:** Custom theme file
 > **📦 Type:** Theme
 
-## 🆕 Creating custom themes
+# 🆕 Creating custom themes
 
 Step-by-step guide to creating your own theme that follows the system's structure.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Creating a custom theme involves four steps:
 
@@ -18,9 +16,7 @@ Creating a custom theme involves four steps:
 
 **Key principle:** Themes map base color tokens (`--clr-primary-500`, `--clr-neutral-100`) to semantic theme variables (`--clr-text`, `--clr-header-bg`). This keeps components decoupled from specific color values.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 **Step 1: Create theme file**
 
@@ -101,11 +97,10 @@ Update `styles/themes/_apply.scss`:
 </html>
 ```
 
----
-
-### ⚙️ Advanced examples
+## ⚙️ Advanced examples
 
 **High-contrast theme:**
+
 ```scss
 $high-contrast: (
 	text: (
@@ -142,6 +137,7 @@ $high-contrast: (
 ```
 
 **Brand-focused theme:**
+
 ```scss
 $brand: (
 	text: (
@@ -181,6 +177,7 @@ $brand: (
 ```
 
 **Adding custom sections:**
+
 ```scss
 // First, update schema
 $theme-required-keys: (
@@ -221,11 +218,10 @@ $extended: (
 );
 ```
 
----
-
-### 🔧 Customization workflow
+## 🔧 Customization workflow
 
 **1. Start with existing theme:**
+
 ```scss
 // Copy light.scss as starting point
 $my-theme: (
@@ -235,6 +231,7 @@ $my-theme: (
 ```
 
 **2. Adjust colors systematically:**
+
 ```scss
 // Header section
 header: (
@@ -253,6 +250,7 @@ main: (
 ```
 
 **3. Test contrast:**
+
 ```scss
 // Use browser DevTools or online tools to check:
 // - Text on background: 4.5:1 minimum
@@ -261,6 +259,7 @@ main: (
 ```
 
 **4. Validate and generate:**
+
 ```scss
 @include validate-theme($my-theme, $theme-required-keys, $theme-leaf-keys);
 
@@ -269,9 +268,7 @@ main: (
 }
 ```
 
----
-
-### 🎨 Theme creation checklist
+## 🎨 Theme creation checklist
 
 Before deploying your custom theme:
 
@@ -286,9 +283,7 @@ Before deploying your custom theme:
 - [ ] Selection colors have good contrast
 - [ ] Documentation updated
 
----
-
-### 💡 Quick start template
+## 💡 Quick start template
 
 ```scss
 // styles/themes/_my-theme.scss
@@ -327,9 +322,7 @@ $my-theme: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 - ✅ **Do:** Start with light or dark theme as template
 - ✅ **Do:** Validate theme before deployment
@@ -362,11 +355,10 @@ $my-theme: (
 // No validation - errors only at runtime
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Missing required sections:**
+
 ```scss
 // ❌ Bad: Missing footer
 $incomplete: (
@@ -391,6 +383,7 @@ $complete: (
 ```
 
 **Using wrong structure:**
+
 ```scss
 // ❌ Bad: Flat structure
 $wrong: (
@@ -410,6 +403,7 @@ $correct: (
 ```
 
 **Forgetting base `_` value:**
+
 ```scss
 // ❌ Bad: No base value
 $missing-base: (

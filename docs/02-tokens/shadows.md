@@ -2,13 +2,11 @@
 > **🧭 Scope:** Elevation & depth across UI components
 > **📦 Type:** Token
 
-## 🌫️ Shadow tokens
+# 🌫️ Shadow tokens
 
 Shadow tokens define elevation levels for consistent depth across your interface.
 
-<br>
-
-### 🧠 How it works
+## 🧠 How it works
 
 Shadow tokens create visual hierarchy by simulating depth and layering. The system provides 6 pre-defined elevation levels:
 
@@ -20,9 +18,7 @@ Shadows are generated as CSS custom properties and can be used directly in `box-
 
 **Key concept:** Higher shadow values = larger blur + more offset = appears further from surface.
 
----
-
-### 🚀 Usage
+## 🚀 Usage
 
 ```scss
 .card {
@@ -56,9 +52,7 @@ Shadows are generated as CSS custom properties and can be used directly in `box-
 }
 ```
 
----
-
-### ⚙️ Basic configuration
+## ⚙️ Basic configuration
 
 ```scss
 // tokens/_shadows.scss
@@ -77,6 +71,7 @@ $shadows: (
 ```
 
 **Generated CSS variables:**
+
 ```css
 :root {
 	--shadow-xs: 0 1px 2px rgb(0 0 0 / 10%);
@@ -88,11 +83,10 @@ $shadows: (
 }
 ```
 
----
-
-### 🔧 Customization
+## 🔧 Customization
 
 **Adjust shadow intensity:**
+
 ```scss
 // Darker shadows
 $base-shadow: rgb(0 0 0 / 15%);
@@ -111,6 +105,7 @@ $base-shadow: rgb(139 92 246 / 15%);
 ```
 
 **Add new shadow levels:**
+
 ```scss
 $shadows: (
 	xs: 0 1px 2px $base-shadow,
@@ -124,6 +119,7 @@ $shadows: (
 ```
 
 **Adjust specific shadow values:**
+
 ```scss
 $shadows: (
 	xs: 0 1px 2px $base-shadow,
@@ -135,11 +131,10 @@ $shadows: (
 );
 ```
 
----
-
-### ✔️ Best practices
+## ✔️ Best practices
 
 **Shadow hierarchy:**
+
 - Use `xs` for subtle separation (table rows, dividers)
 - Use `sm` for interactive elements (buttons, inputs)
 - Use `md` for elevated surfaces (cards, panels)
@@ -148,6 +143,7 @@ $shadows: (
 - Use `inset` for pressed/active states
 
 **Performance considerations:**
+
 ```scss
 // ✅ Good: Animate transform or opacity
 .card {
@@ -177,12 +173,14 @@ $shadows: (
 ```
 
 **Accessibility:**
+
 - Don't rely solely on shadows to convey information
 - Ensure sufficient contrast remains with shadow overlays
 - Test shadows in both light and dark themes
 - Consider users with reduced transparency preferences
 
 **Layering examples:**
+
 ```scss
 // Layered cards with progressive elevation
 .card-container {
@@ -228,11 +226,10 @@ $shadows: (
 }
 ```
 
----
-
-### ❌ Common mistakes
+## ❌ Common mistakes
 
 **Don't mix shadow scales randomly:**
+
 ```scss
 // ❌ Bad: inconsistent elevation
 .card {
@@ -254,6 +251,7 @@ $shadows: (
 ```
 
 **Don't hardcode shadow values:**
+
 ```scss
 // ❌ Bad: hardcoded shadow
 .card {
@@ -267,6 +265,7 @@ $shadows: (
 ```
 
 **Don't forget theme compatibility:**
+
 ```scss
 // ❌ Bad: black shadow in dark theme looks wrong
 $base-shadow: rgb(0 0 0 / 10%);
