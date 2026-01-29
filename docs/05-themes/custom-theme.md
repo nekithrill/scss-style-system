@@ -71,9 +71,9 @@ Update `styles/themes/_apply.scss`:
 @use '../core/mixins/validate-theme' as *;
 
 // Validate all themes
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
-@include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
-@include validate-theme($custom, $theme-required-keys, $theme-leaf-keys); // Add validation of custom theme 
+@include validate-theme($light, $theme-schema);
+@include validate-theme($dark, $theme-schema);
+@include validate-theme($custom, $theme-schema); // Add validation of custom theme 
 
 // Generate themes
 :root {
@@ -261,7 +261,7 @@ main: (
 **4. Validate and generate:**
 
 ```scss
-@include validate-theme($my-theme, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($my-theme, $theme-schema);
 
 [data-theme='my-theme'] {
 	@include generate-theme($my-theme);
@@ -345,7 +345,7 @@ $my-theme: (
 	// ... rest of theme
 );
 
-@include validate-theme($my-theme, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($my-theme, $theme-schema);
 
 // ❌ Bad: Absolute colors, no validation
 $my-theme: (

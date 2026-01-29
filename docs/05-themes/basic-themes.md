@@ -154,8 +154,8 @@ $dark: (
 @use '../core/mixins/validate-theme' as *;
 
 // Validate themes at compile time
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
-@include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($light, $theme-schema);
+@include validate-theme($dark, $theme-schema);
 
 // Generate default (light) theme
 :root {
@@ -280,7 +280,7 @@ $light: (
 }
 
 // ✅ Good: Validate first
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($light, $theme-schema);
 :root {
 	@include generate-theme($light);
 }

@@ -41,7 +41,7 @@ Keep theme structure but remove switching:
 @use '../core/mixins/validate-theme' as *;
 
 // Validate single theme
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($light, $theme-schema);
 
 // Generate only in :root (no data-theme selector)
 :root {
@@ -170,7 +170,7 @@ styles/
 // Remove dark theme validation
 // @include validate-theme($dark, ...);  ← Delete
 
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($light, $theme-schema);
 
 :root {
 	@include generate-theme($light);
