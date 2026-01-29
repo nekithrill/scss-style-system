@@ -1,4 +1,3 @@
-@use 'sass:map';
 @use 'sass:meta';
 
 /// Generate CSS variables from theme map
@@ -6,20 +5,18 @@
 /// @param {String} $prefix - CSS variable prefix (default: 'clr')
 
 @mixin generate-theme($map, $prefix: 'clr') {
-	@if meta.type-of($map) != 'map' {
-		@error "generate-theme: Expected map, got `#{meta.type-of($map)}`.";
-	}
-
 	@each $key, $value in $map {
 		@if $key == '_' {
-			// Base value: --prefix
 			--#{$prefix}: #{$value};
 		} @else if meta.type-of($value) == 'map' {
-			// Nested map: recurse with updated prefix
-			$new-prefix: '#{$prefix}-#{$key}';
-			@include generate-theme($value, $new-prefix);
+			@if $key == 'variants' {
+				@each $variant-name, $variant-map in $value {
+					@include generate-theme($variant-map, '#{$prefix}-#{$variant-name}');
+				}
+			} @else {
+				@include generate-theme($value, '#{$prefix}-#{$key}');
+			}
 		} @else {
-			// Leaf value: --prefix-key
 			--#{$prefix}-#{$key}: #{$value};
 		}
 	}
