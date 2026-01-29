@@ -7,8 +7,8 @@
 // Theme application
 // Validates and generates theme CSS variables
 
-@include validate-theme($light, $theme-required-keys, $theme-leaf-keys);
-@include validate-theme($dark, $theme-required-keys, $theme-leaf-keys);
+@include validate-theme($light, $theme-schema);
+@include validate-theme($dark, $theme-schema);
 
 :root {
 	@include generate-theme($light);
