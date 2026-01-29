@@ -1,24 +1,6 @@
 // Theme schema
-// Defines required structure and allowed leaf keys for theme validation
-
-// Allowed leaf keys (state variants)
-$theme-leaf-keys: (
-	'_',
-	'hover',
-	'active',
-	'focus',
-	'disabled',
-	'muted',
-	'selected',
-	'hidden',
-	'error',
-	'success',
-	'warning',
-	'info'
-);
-
 // Required theme structure
-$theme-required-keys: (
+$theme-schema: (
 	text: (
 		_: (),
 		accent: ()
