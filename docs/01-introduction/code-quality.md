@@ -2,17 +2,15 @@
 
 All SCSS files in this system are linted and formatted before pushing. Some tests were also carried out.
 
-<br>
-
 ### 🎨 Prettier
 
 This system follows the Prettier configuration below to maintain consistent formatting.
 
-> 💡 **Note:** Configuration files (`.prettierrc.cjs`) are available on the `sandbox` branch. These settings are provided for reference if you want to apply the same formatting rules.
-
-> 💡 **Dependencies required:** To use Prettier in your project, install `prettier`
+> ℹ️ **Note**
+> Configuration files (`.prettierrc.cjs` and `.prettierignore`) are available on the `sandbox` branch. These settings are provided for reference if you want to apply the same formatting rules.
 
 ```js
+// .prettierrc.cjs
 module.exports = {
 	trailingComma: 'none',
 	arrowParens: 'avoid',
@@ -25,20 +23,15 @@ module.exports = {
 }
 ```
 
----
-
 ### 🧼 Stylelint
 
 This system follows the Stylelint configuration below to enforce consistent SCSS/CSS best practices.
 
-> 💡 **Note:** Configuration files (`.stylelintrc.cjs`) are available on the `sandbox` branch. These settings are provided for reference to show how the system was formatted.
-
-> 💡 **Dependencies required:** To use Stylelint in your project, install:
-> - `stylelint`
-> - `stylelint-scss`
-> - `stylelint-config-standard-scss`
+> ℹ️ **Note**
+> Configuration file (`.stylelintrc.cjs`) available on the `sandbox` branch. These settings are provided for reference to show how the system was linted.
 
 ```js
+// .stylelintrc.cjs
 module.exports = {
 	extends: ['stylelint-config-standard-scss'],
 	plugins: ['stylelint-scss'],
@@ -84,8 +77,6 @@ module.exports = {
 	}
 }
 ```
-
----
 
 ### 🧪 Testing
 
