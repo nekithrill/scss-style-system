@@ -1,62 +1,28 @@
 @use 'sass:meta';
 @use 'sass:map';
-@use 'sass:list';
 
 /// Validate theme structure against schema
-/// Checks required keys and warns about unexpected keys
-/// @param {Map} $theme-map - Theme to validate
-/// @param {Map} $required-keys - Required structure from schema
-/// @param {List} $allowed-leaf-keys - Whitelisted leaf keys
-/// @param {String|Null} $parent - Internal recursion path
+/// @param {Map} $theme - Theme to validate
+/// @param {Map} $schema - Schema structure
+/// @param {String|Null} $path - Current path for error messages
 
-@mixin validate-theme(
-	$theme-map,
-	$required-keys,
-	$allowed-leaf-keys,
-	$parent: null
-) {
-	@if meta.type-of($theme-map) != 'map' {
-		@error "validate-theme: Expected $theme-map to be a map, got `#{meta.type-of($theme-map)}`.";
-	}
-
-	@if meta.type-of($required-keys) != 'map' {
-		@error "validate-theme: Expected $required-keys to be a map, got `#{meta.type-of($required-keys)}`.";
-	}
-
-	@each $key, $value in $required-keys {
-		$full-key: $key;
-
-		@if $parent != null {
-			$full-key: '#{$parent}.#{$key}';
+@mixin validate-theme($theme, $schema, $path: null) {
+	@each $key, $value in $schema {
+		$current-path: $key;
+		@if $path {
+			$current-path: '#{$path}.#{$key}';
 		}
 
-		@if not map.has-key($theme-map, $key) {
-			@error "⚠️ Theme map is missing required key `#{$full-key}`!";
-		} @else if meta.type-of($value) == 'map' {
-			@include validate-theme(
-				map.get($theme-map, $key),
-				$value,
-				$allowed-leaf-keys,
-				$full-key
-			);
-		}
-	}
-
-	@each $key, $value in $theme-map {
-		$full-key: $key;
-
-		@if $parent != null {
-			$full-key: '#{$parent}.#{$key}';
+		@if not map.has-key($theme, $key) {
+			@error "Missing required key: #{$current-path}";
 		}
 
-		$is-allowed-leaf: false;
-
-		@if list.index($allowed-leaf-keys, $key) != null {
-			$is-allowed-leaf: true;
-		}
-
-		@if not map.has-key($required-keys, $key) and not $is-allowed-leaf {
-			@warn "⚠️ Theme map contains unexpected key `#{$full-key}` that is not in the schema or leaf keys whitelist!";
+		@if meta.type-of($value) ==
+			'map' and
+			meta.type-of(map.get($theme, $key)) ==
+			'map'
+		{
+			@include validate-theme(map.get($theme, $key), $value, $current-path);
 		}
 	}
 }
