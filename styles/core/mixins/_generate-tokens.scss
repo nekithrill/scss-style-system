@@ -23,7 +23,6 @@
 		$is-nested: _is-nested-map($map);
 
 		@if $is-nested {
-			// NESTED: --prefix-palette-shade (e.g., --clr-primary-500)
 			@each $palette-name, $palette in $map {
 				@if meta.type-of($palette) == 'map' {
 					@each $shade, $value in $palette {
@@ -38,7 +37,6 @@
 				}
 			}
 		} @else {
-			// FLAT: --prefix-name (e.g., --sp-4, --fw-bold)
 			@each $key, $value in $map {
 				$final-value: $value;
 
