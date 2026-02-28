@@ -4,8 +4,7 @@
 @use '../core/mixins/generate-theme' as *;
 @use '../core/mixins/validate-theme' as *;
 
-// Theme application
-// Validates and generates theme CSS variables
+// 💡 Validates and generates theme CSS variables
 
 @include validate-theme($light, $theme-schema);
 @include validate-theme($dark, $theme-schema);

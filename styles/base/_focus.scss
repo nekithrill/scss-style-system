@@ -1,6 +1,4 @@
-// Custom focus styles for accessibility
-
-// Show outline ONLY for keyboard navigation
+// ℹ️ Show outline ONLY for keyboard navigation
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
@@ -11,7 +9,7 @@ a:focus-visible,
 	outline: var(--stroke-normal) solid var(--clr-text-accent);
 }
 
-// Hide outline for mouse/touch users (accessibility maintained for keyboard)
+// ℹ️ Hide outline for mouse/touch users (accessibility maintained for keyboard)
 input:focus:not(:focus-visible),
 textarea:focus:not(:focus-visible),
 select:focus:not(:focus-visible),

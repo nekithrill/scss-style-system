@@ -1,24 +1,24 @@
-// Box sizing - use border-box for predictable sizing
+// ℹ️ Box sizing - use border-box for predictable sizing
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
 }
 
-// Remove default margins/padding for consistent starting point
+// ℹ️ Remove default margins/padding for consistent starting point
 * {
 	margin: 0;
 	padding: 0;
 }
 
-// Body - better readability and text rendering
+// ℹ️ Body - better readability and text rendering
 body {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-// Media - responsive by default, maintain aspect ratio
+// ℹ️ Media - responsive by default, maintain aspect ratio
 img,
 picture,
 video,
@@ -29,7 +29,7 @@ svg {
 	height: auto;
 }
 
-// Form elements - inherit typography for consistency
+// ℹ️ Form elements - inherit typography for consistency
 input,
 button,
 textarea,
@@ -39,13 +39,13 @@ select {
 	background: transparent;
 }
 
-// Lists - remove default styles (add back in content areas if needed)
+// ℹ️ Lists - remove default styles (add back in content areas if needed)
 ol,
 ul {
 	list-style: none;
 }
 
-// Headings - reset to use design tokens instead
+// ℹ️ Headings - reset to use design tokens instead
 h1,
 h2,
 h3,
@@ -56,13 +56,13 @@ h6 {
 	font-weight: inherit;
 }
 
-// Links - remove underline, inherit color
+// ℹ️ Links - remove underline, inherit color
 a {
 	text-decoration: none;
 	color: inherit;
 }
 
-// Buttons - clean slate for custom styling
+// ℹ️ Buttons - clean slate for custom styling
 button {
 	background: none;
 	border: none;
@@ -72,13 +72,13 @@ button {
 	color: inherit;
 }
 
-// Tables - consistent rendering across browsers
+// ℹ️ Tables - consistent rendering across browsers
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-// Quotes - remove default quotation marks
+// ℹ️ Quotes - remove default quotation marks
 blockquote,
 q {
 	quotes: none;
@@ -92,7 +92,7 @@ q::after {
 	content: none;
 }
 
-// Text overflow - prevent long words from breaking layout
+// ℹ️ Text overflow - prevent long words from breaking layout
 p,
 h1,
 h2,
@@ -103,7 +103,7 @@ h6 {
 	overflow-wrap: break-word;
 }
 
-// Root stacking context - prevents z-index issues
+// ℹ️ Root stacking context - prevents z-index issues
 #root,
 #__next {
 	isolation: isolate;
