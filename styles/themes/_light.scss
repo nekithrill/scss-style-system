@@ -1,50 +1,27 @@
-// Light theme color map
+:root {
+	--clr-text: ;
+	--clr-text-accent: ;
+	--clr-text-active: ;
+	--clr-text-hover: ;
 
-$light: (
-	text: (
-		_: var(--clr-neutral-900),
-		accent: var(--clr-primary-500)
-	),
-	selection: (
-		bg: (
-			_: var(--clr-primary-200)
-		),
-		text: (
-			_: var(--clr-primary-900)
-		)
-	),
-	scrollbar: (
-		thumb: (
-			_: var(--clr-neutral-400),
-			hover: var(--clr-neutral-500)
-		),
-		track: (
-			_: var(--clr-neutral-100)
-		)
-	),
-	header: (
-		bg: (
-			_: var(--clr-secondary-100)
-		),
-		text: (
-			_: var(--clr-neutral-900)
-		)
-	),
-	main: (
-		bg: (
-			_: var(--clr-secondary-100),
-			hover: var(--clr-secondary-200)
-		),
-		text: (
-			_: var(--clr-neutral-800)
-		)
-	),
-	footer: (
-		bg: (
-			_: var(--clr-secondary-200)
-		),
-		text: (
-			_: var(--clr-neutral-700)
-		)
-	)
-);
+	--clr-bg: ;
+	--clr-bg-hover: ;
+	--clr-bg-active: ;
+
+	--clr-selection-bg: ;
+	--clr-selection-text: ;
+
+	--clr-scrollbar-thumb: ;
+	--clr-scrollbar-thumb-hover: ;
+	--clr-scrollbar-track: ;
+	--clr-scrollbar-track-hover: ;
+
+	--clr-header-bg: ;
+	--clr-header-text: ;
+
+	--clr-main-bg: ;
+	--clr-main-text: ;
+
+	--clr-footer-bg: ;
+	--clr-footer-text: ;
+}

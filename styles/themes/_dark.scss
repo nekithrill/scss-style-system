@@ -1,50 +1,27 @@
-// Dark theme color map
+[data-theme='dark'] {
+	--clr-text: ;
+	--clr-text-accent: ;
+	--clr-text-active: ;
+	--clr-text-hover: ;
 
-$dark: (
-	text: (
-		_: var(--clr-neutral-100),
-		accent: var(--clr-primary-400)
-	),
-	selection: (
-		bg: (
-			_: var(--clr-primary-700)
-		),
-		text: (
-			_: var(--clr-neutral-100)
-		)
-	),
-	scrollbar: (
-		thumb: (
-			_: var(--clr-neutral-600),
-			hover: var(--clr-neutral-500)
-		),
-		track: (
-			_: var(--clr-neutral-900)
-		)
-	),
-	header: (
-		bg: (
-			_: var(--clr-neutral-900)
-		),
-		text: (
-			_: var(--clr-neutral-100)
-		)
-	),
-	main: (
-		bg: (
-			_: var(--clr-neutral-800),
-			hover: var(--clr-neutral-700)
-		),
-		text: (
-			_: var(--clr-neutral-200)
-		)
-	),
-	footer: (
-		bg: (
-			_: var(--clr-neutral-900)
-		),
-		text: (
-			_: var(--clr-neutral-400)
-		)
-	)
-);
+	--clr-bg: ;
+	--clr-bg-hover: ;
+	--clr-bg-active: ;
+
+	--clr-selection-bg: ;
+	--clr-selection-text: ;
+
+	--clr-scrollbar-thumb: ;
+	--clr-scrollbar-thumb-hover: ;
+	--clr-scrollbar-track: ;
+	--clr-scrollbar-track-hover: ;
+
+	--clr-header-bg: ;
+	--clr-header-text: ;
+
+	--clr-main-bg: ;
+	--clr-main-text: ;
+
+	--clr-footer-bg: ;
+	--clr-footer-text: ;
+}
