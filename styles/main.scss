@@ -14,8 +14,6 @@
 @use './core/functions/px-to-rem' as *;
 @use './core/mixins/breakpoint' as *;
 @use './core/mixins/generate-tokens' as *;
-@use './core/mixins/generate-theme' as *;
-@use './core/mixins/validate-theme' as *;
 
 // 3. Base styles
 @use './base/fonts' as *;
@@ -27,4 +25,5 @@
 @use './base/selection' as *;
 
 // 4. Themes
-@use './themes/apply' as *;
+@use './themes/light' as *;
+@use './themes/dark' as *;
