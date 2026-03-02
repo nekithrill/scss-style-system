@@ -136,8 +136,12 @@ npx sass src/styles/main.scss dist/styles.css
 **Spacing:** (8px grid → rem)
 
 ```css
---sp-0: 0 --sp-1: 0.5rem /* 8px */ --sp-2: 1rem /* 16px */ --sp-4: 2rem
-	/* 32px */ --sp-6: 3rem /* 48px */ --sp-8: 4rem /* 64px */;
+--sp-0: 0
+--sp-1: 0.5rem  /* 8px */
+--sp-2: 1rem    /* 16px */
+--sp-4: 2rem    /* 32px */
+--sp-6: 3rem    /* 48px */
+--sp-8: 4rem    /* 64px */
 ```
 
 **Typography:**

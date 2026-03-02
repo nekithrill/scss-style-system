@@ -38,10 +38,9 @@
 ## 🌓 Theming
 
 - [Basic themes](05-themes/basic-themes.md)
-- [Schema](05-themes/theme-schema.md)
+- [Custom theme creation](05-themes/custom-theme.md)
 - [Switching](05-themes/switching.md)
 - [Disabling](05-themes/disabling.md)
-- [Custom theme creation](05-themes/custom-theme.md)
 
 ## 🛠️ Usage
 

@@ -10,33 +10,11 @@ A modular design token system for generating CSS variables with built-in theming
 ## ✨ Key Features
 
 - 🎯 **Token-first architecture** - centralized design values
-- 🎨 **Optional theming** - light/dark/custom modes with validation
+- 🎨 **Optional theming** - light/dark/custom modes
 - 🔧 **Utility mixins** - breakpoints, token generation, helpers
 - 📐 **Auto conversion** - px to rem with design tokens
 - 🎨 **OKLCH colors** - perceptually uniform color system
 - 🧩 **Fully modular** - remove unused features easily
-
-<br>
-
-## 🎯 Usage Patterns
-
-This system supports three workflows:
-
-### Modern Frameworks (Recommended)
-**Tools:** React + Vite, Next.js, Webpack  
-**How:** Auto-compilation, CSS Modules, hot reload  
-**Guide:** → [Quick Start](docs/01-introduction/getting-started.md)
-
-### Manual Compilation
-**Tools:** Sass CLI for static sites  
-**How:** Manual `sass` commands  
-**Guide:** → [Manual Setup](docs/01-introduction/getting-started.md#manual-compilation-static-sites)
-
-### Direct Token Import (Advanced)
-**Use case:** Import SCSS tokens without CSS variables  
-**Guide:** → [Direct Tokens](docs/01-introduction/getting-started.md)
-
-Most users should start with **Option 1**.
 
 <br>
 
@@ -80,33 +58,12 @@ Change your brand color with one line:
 
 ```scss
 // styles/tokens/_colors.scss
-$primary-hue: 200deg !default;  // Blue instead of purple
+$primary-hue: 200deg !default; // Blue instead of purple
 ```
 
 All 9 shades (100-900) update automatically! 🎉
 
 **More:** [Customization guide](docs/06-usage/customizing.md)
-
-<br>
-
-## 🎯 What's Included
-
-- **Design Tokens** - Colors, spacing, typography, borders, shadows, animations
-- **CSS Variables** - Auto-generated with px → rem conversion
-- **Themes** (optional) - Light/dark mode with validation
-- **Mixins** (optional) - Breakpoints, utilities, helpers
-- **Base Styles** (optional) - Reset, globals, scrollbar
-
-<br>
-
-## 💡 Best Used For
-
-- ✅ Component-based projects (React, Vue, Svelte)
-- ✅ Design systems with centralized tokens
-- ✅ Multi-theme applications (light/dark mode)
-- ✅ Projects needing modular, removable features
-
-**Not a good fit?** Consider [Tailwind CSS](https://tailwindcss.com/) for utility-first, or vanilla CSS variables for zero build step.
 
 <br>
 
@@ -122,18 +79,39 @@ All 9 shades (100-900) update automatically! 🎉
     border-radius: var(--rd-md);
     background: var(--clr-main-bg);
     color: var(--clr-main-text);
-    
+
     // Responsive
     @include breakpoint('md') {
         padding: var(--sp-6);
     }
-    
+
     // Theme-aware
     &:hover {
         background: var(--clr-main-bg-hover);
     }
 }
 ```
+
+<br>
+
+## 🎯 What's Included
+
+- **Design Tokens** - Colors, spacing, typography, borders, shadows, animations
+- **CSS Variables** - Auto-generated with px → rem conversion
+- **Themes** (optional) - Light/dark mode
+- **Mixins** (optional) - Breakpoints, utilities, helpers
+- **Base Styles** (optional) - Reset, globals, scrollbar
+
+<br>
+
+## 💡 Best Used For
+
+- ✅ Component-based projects (React, Vue, Svelte)
+- ✅ Design systems with centralized tokens
+- ✅ Multi-theme applications (light/dark mode)
+- ✅ Projects needing modular, removable features
+
+**Not a good fit?** Consider [Tailwind CSS](https://tailwindcss.com/) for utility-first, or vanilla CSS variables for zero build step.
 
 <br>
 

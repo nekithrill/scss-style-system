@@ -22,15 +22,11 @@
 │    │
 │    └── 📁 mixins
 │         ├── 📄 _breakpoint.scss
-│         ├── 📄 _generate-tokens.scss
-│         ├── 📄 _generate-theme.scss
-│         └── 📄 _validate-theme.scss
+│         └── 📄 _generate-tokens.scss
 │
 ├── 📁 themes
-│    ├── 📄 _apply.scss
 │    ├── 📄 _dark.scss
-│    ├── 📄 _light.scss
-│    └── 📄 _schema.scss
+│    └── 📄 _light.scss
 │
 ├── 📁 tokens
 │    ├── 📄 _animations.scss
