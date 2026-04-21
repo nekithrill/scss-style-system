@@ -1,17 +1,36 @@
 // Typography tokens
-// 💡 Change $base-font-size to scale entire system
+// Change $base-font-size to scale entire system
+
+// Font families
+// Prefix: --ff-
 
 $font-families: (
-	primary: 'JetBrains',
-	accent: 'Tektur',
+	primary: (
+		Arial,
+		Helvetica,
+		sans-serif
+	),
+	accent: (
+		Georgia,
+		'Times New Roman',
+		serif
+	),
+	mono: (
+		'Courier New',
+		Courier,
+		monospace
+	),
 	system: (
 		system-ui,
 		-apple-system,
 		'Segoe UI',
-		Roboto,
+		'Roboto',
 		sans-serif
 	)
 ) !default;
+
+// Font weights
+// Prefix: --fw-
 
 $font-weights: (
 	light: 300,
@@ -21,14 +40,18 @@ $font-weights: (
 	extra-bold: 900
 ) !default;
 
+// Font sizes
+// Prefix: --fs-
+
 $base-font-size: 16px !default;
 
 $font-sizes: (
-	default: $base-font-size,
-	h1: $base-font-size * 1.875,
+	h1: $base-font-size * 1.925,
 	h2: $base-font-size * 1.5,
 	h3: $base-font-size * 1.25,
 	h4: $base-font-size * 1.125,
 	h5: $base-font-size * 1,
-	h6: $base-font-size * 0.875
-);
+	h6: $base-font-size * 0.875,
+	default: $base-font-size,
+	text: $base-font-size
+) !default;
