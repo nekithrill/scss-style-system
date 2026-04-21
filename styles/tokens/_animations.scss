@@ -1,7 +1,7 @@
 // Duration, easing, and delay tokens
 
 $duration: (
-	instant: 100ms,
+	instant: 50ms,
 	fast: 200ms,
 	normal: 300ms,
 	slow: 500ms,
@@ -17,7 +17,6 @@ $easing: (
 ) !default;
 
 $delay: (
-	none: 0ms,
 	short: 50ms,
 	medium: 100ms,
 	long: 200ms
