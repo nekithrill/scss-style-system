@@ -11,6 +11,7 @@
 @use './tokens/z-index' as *;
 
 // 2. Core (mixins & functions)
+@use './core/variables' as *;
 @use './core/functions/px-to-rem' as *;
 @use './core/mixins/breakpoint' as *;
 @use './core/mixins/generate-tokens' as *;
@@ -18,7 +19,6 @@
 // 3. Base styles
 @use './base/fonts' as *;
 @use './base/reset' as *;
-@use './base/variables' as *;
 @use './base/globals' as *;
 @use './base/focus' as *;
 @use './base/scrollbar' as *;

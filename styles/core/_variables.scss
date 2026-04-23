@@ -5,7 +5,7 @@
 @use '../tokens/shadows' as *;
 @use '../tokens/animations' as *;
 @use '../tokens/z-index' as *;
-@use '../core/mixins/generate-tokens' as *;
+@use './mixins/generate-tokens' as *;
 
 // Token configuration for CSS variable generation
 // Each group requires 'map' and 'prefix'
