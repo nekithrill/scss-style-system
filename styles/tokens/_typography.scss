@@ -46,12 +46,28 @@ $font-weights: (
 $base-font-size: 16px !default;
 
 $font-sizes: (
-	h1: $base-font-size * 1.925,
-	h2: $base-font-size * 1.5,
-	h3: $base-font-size * 1.25,
-	h4: $base-font-size * 1.125,
-	h5: $base-font-size * 1,
-	h6: $base-font-size * 0.875,
 	default: $base-font-size,
-	text: $base-font-size
+	h1: $base-font-size * 2,
+	h2: $base-font-size * 1.75,
+	h3: $base-font-size * 1.5,
+	h4: $base-font-size * 1.25,
+	h5: $base-font-size * 1.125,
+	h6: $base-font-size * 0.875
+) !default;
+
+// Line heights
+// Prefix: --lh-
+$line-heights: (
+	none: 1,
+	tight: 1.25,
+	normal: 1.5
+) !default;
+
+// Letter spacings
+// Prefix: --ls-
+$letter-spacings: (
+	tighter: '-0.05em',
+	tight: '-0.02em',
+	normal: 0,
+	wide: '0.05em'
 ) !default;
