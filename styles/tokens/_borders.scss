@@ -1,4 +1,4 @@
-// Border-radius and stroke-width tokens
+// Border tokens
 
 $border-radius: (
 	xs: 2px,
@@ -10,7 +10,7 @@ $border-radius: (
 	full: 50%
 ) !default;
 
-$stroke-width: (
+$border-width: (
 	thin: 1px,
 	normal: 2px,
 	thick: 4px
