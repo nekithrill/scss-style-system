@@ -12,7 +12,6 @@ html {
 	height: 100%;
 	font-size: var(--fs-default);
 	line-height: var(--lh-normal, 1.5);
-	letter-spacing: var(--ls-normal);
 	scroll-behavior: smooth;
 }
 
@@ -21,6 +20,9 @@ body {
 	font-family: var(--ff-primary), var(--ff-system);
 	font-weight: var(--fw-regular);
 	color: var(--clr-text);
+	line-height: var(--lh-normal, 1.5);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -29,7 +31,6 @@ h3,
 h4,
 h5,
 h6 {
-	color: var(--clr-text-accent);
 	font-weight: var(--fw-bold);
 	font-family: var(--ff-accent), var(--ff-primary), var(--ff-system);
 }
