@@ -29,11 +29,11 @@ select {
 	font: inherit;
 	color: inherit;
 	background: transparent;
-	line-height: var(--lh-none, 1);
+	line-height: var(--lh-compact, 1);
 }
 
 textarea {
-	line-height: var(--lh-base, 1.5);
+	line-height: var(--lh-normal, 1.5);
 	resize: vertical;
 	overflow: auto;
 }
