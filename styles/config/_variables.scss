@@ -5,7 +5,7 @@
 @use '../tokens/shadows' as *;
 @use '../tokens/animations' as *;
 @use '../tokens/z-index' as *;
-@use './mixins/generate-tokens' as *;
+@use '../core/mixins/generate-tokens' as *;
 
 // Token configuration for CSS variable generation
 // Each group requires 'map' and 'prefix'
@@ -29,19 +29,27 @@ $base-tokens: (
 		prefix: 'fs',
 		transform: 'rem'
 	),
+	line-heigts: (
+		map: $line-heights,
+		prefix: 'lh'
+	),
+	letter-spacings: (
+		map: $letter-spacings,
+		prefix: 'ls'
+	),
 	spacing: (
 		map: $spacing,
 		prefix: 'sp',
 		transform: 'rem'
 	),
-	radius: (
+	border-radius: (
 		map: $border-radius,
-		prefix: 'rd',
+		prefix: 'br',
 		transform: 'rem'
 	),
-	stroke: (
-		map: $stroke-width,
-		prefix: 'stroke'
+	border-width: (
+		map: $border-width,
+		prefix: 'bw'
 	),
 	shadows: (
 		map: $shadows,
