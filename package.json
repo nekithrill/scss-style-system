@@ -1,0 +1,27 @@
+{
+	"name": "scss-style-system",
+	"version": "1.0.0",
+	"description": "",
+	"homepage": "https://github.com/nekithrill/scss-style-system#readme",
+	"bugs": {
+		"url": "https://github.com/nekithrill/scss-style-system/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nekithrill/scss-style-system.git"
+	},
+	"license": "MIT",
+	"author": "nekithrill <nekithrill@gmail.com>",
+	"scripts": {
+		"build": "sass demo/demo.scss demo/demo.css --no-source-map",
+		"watch": "sass --watch demo/demo.scss demo/demo.css",
+		"lint": "stylelint styles/**/*.scss"
+	},
+	"devDependencies": {
+		"sass": "^1.99.0",
+		"stylelint": "^17.9.0",
+		"stylelint-config-standard-scss": "^17.0.0",
+		"stylelint-order": "^8.1.1",
+		"stylelint-scss": "^7.0.0"
+	}
+}
