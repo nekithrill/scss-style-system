@@ -13,7 +13,7 @@
 
 // ℹ️ Body - better readability and text rendering
 body {
-	line-height: 1.5;
+	line-height: var(--lh-normal, 1.5);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -36,6 +36,12 @@ select {
 	font: inherit;
 	color: inherit;
 	background: transparent;
+	line-height: var(--lh-none, 1);
+}
+
+textarea {
+	line-height: var(--lh-base, 1.5);
+	resize: vertical;
 }
 
 // ℹ️ Lists - remove default styles (add back in content areas if needed)
