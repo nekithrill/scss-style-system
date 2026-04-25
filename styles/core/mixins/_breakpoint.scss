@@ -5,7 +5,7 @@
 /// @param {String} $size - Breakpoint key from $breakpoints
 /// @param {Boolean} $min-width - true for mobile-first, false for desktop-first
 
-@mixin breakpoint($size, $min-width: false) {
+@mixin breakpoint($size, $min-width: true) {
 	$query: map.get($breakpoints, $size);
 
 	@if not $query {
