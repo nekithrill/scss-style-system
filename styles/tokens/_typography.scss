@@ -6,8 +6,8 @@
 
 $font-families: (
 	primary: (
-		Arial,
-		Helvetica,
+		'Inter',
+		system-ui,
 		sans-serif
 	),
 	accent: (
@@ -52,22 +52,24 @@ $font-sizes: (
 	h3: $base-font-size * 1.5,
 	h4: $base-font-size * 1.25,
 	h5: $base-font-size * 1.125,
-	h6: $base-font-size * 0.875
+	h6: $base-font-size * 1
 ) !default;
 
 // Line heights
 // Prefix: --lh-
 $line-heights: (
-	none: 1,
+	compact: 1,
 	tight: 1.25,
-	normal: 1.5
+	normal: 1.5,
+	loose: 2
 ) !default;
 
 // Letter spacings
 // Prefix: --ls-
 $letter-spacings: (
-	tighter: '-0.05em',
-	tight: '-0.02em',
+	tighter: -0.05em,
+	tight: -0.02em,
 	normal: 0,
-	wide: '0.05em'
+	wide: 0.05em,
+	wider: 0.1em
 ) !default;
