@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SCSS Style System — Token Reference</title>
+		<link rel="stylesheet" href="demo.css" />
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+
+	<body>
+		<div class="page">
+			<!-- Sidebar -->
+			<nav class="sidebar">
+				<div class="sidebar__logo">Style System</div>
+				<div class="sidebar__version">v1.0.0</div>
+
+				<div class="sidebar__group">
+					<div class="sidebar__group-title">Tokens</div>
+					<a class="sidebar__link" href="#colors">Colors</a>
+					<a class="sidebar__link sidebar__link--sub" href="#colors-primary"
+						>Primary</a
+					>
+					<a class="sidebar__link sidebar__link--sub" href="#colors-secondary"
+						>Secondary</a
+					>
+					<a class="sidebar__link sidebar__link--sub" href="#colors-neutral"
+						>Neutral</a
+					>
+					<a class="sidebar__link sidebar__link--sub" href="#colors-semantic"
+						>Semantic</a
+					>
+					<a class="sidebar__link" href="#typography">Typography</a>
+					<a class="sidebar__link sidebar__link--sub" href="#typography-sizes"
+						>Sizes</a
+					>
+					<a class="sidebar__link sidebar__link--sub" href="#typography-weights"
+						>Weights</a
+					>
+					<a class="sidebar__link sidebar__link--sub" href="#typography-lh"
+						>Line heights</a
+					>
+					<a class="sidebar__link sidebar__link--sub" href="#typography-ls"
+						>Letter spacings</a
+					>
+					<a class="sidebar__link" href="#spacing">Spacing</a>
+					<a class="sidebar__link" href="#borders">Borders</a>
+					<a class="sidebar__link" href="#shadows">Shadows</a>
+					<a class="sidebar__link" href="#animations">Animations</a>
+					<a class="sidebar__link" href="#zindex">Z-index</a>
+					<a class="sidebar__link" href="#breakpoints">Breakpoints</a>
+				</div>
+			</nav>
+
+			<!-- Content -->
+			<main class="content">
+				<!-- Colors -->
+				<section class="section" id="colors">
+					<div class="section__header">
+						<div class="section__title">Colors</div>
+						<div class="section__desc">
+							OKLCH · perceptually uniform · prefix: --clr-
+						</div>
+					</div>
+
+					<div class="subsection" id="colors-primary">
+						<div class="subsection__title">Primary</div>
+						<div class="palette">
+							<div class="palette__row">
+								<span class="palette__label">--clr-primary</span>
+								<div class="palette__swatches">
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-primary-100)"
+									>
+										<span class="palette__shade">100</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-primary-300)"
+									>
+										<span class="palette__shade">300</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-primary-500)"
+									>
+										<span class="palette__shade">500</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-primary-700)"
+									>
+										<span class="palette__shade">700</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-primary-900)"
+									>
+										<span class="palette__shade">900</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="subsection" id="colors-secondary">
+						<div class="subsection__title">Secondary</div>
+						<div class="palette">
+							<div class="palette__row">
+								<span class="palette__label">--clr-secondary</span>
+								<div class="palette__swatches">
+									<div
+										class="palette__swatch"
+										style="
+											background: var(--clr-secondary-100);
+											border: 1px solid var(--clr-neutral-700);
+										"
+									>
+										<span class="palette__shade">100</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-secondary-300)"
+									>
+										<span class="palette__shade">300</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-secondary-500)"
+									>
+										<span class="palette__shade">500</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-secondary-700)"
+									>
+										<span class="palette__shade">700</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-secondary-900)"
+									>
+										<span class="palette__shade">900</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="subsection" id="colors-neutral">
+						<div class="subsection__title">Neutral</div>
+						<div class="palette">
+							<div class="palette__row">
+								<span class="palette__label">--clr-neutral</span>
+								<div class="palette__swatches">
+									<div
+										class="palette__swatch"
+										style="
+											background: var(--clr-neutral-100);
+											border: 1px solid var(--clr-neutral-700);
+										"
+									>
+										<span class="palette__shade">100</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-neutral-300)"
+									>
+										<span class="palette__shade">300</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-neutral-500)"
+									>
+										<span class="palette__shade">500</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-neutral-700)"
+									>
+										<span class="palette__shade">700</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-neutral-900)"
+									>
+										<span class="palette__shade">900</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="subsection" id="colors-semantic">
+						<div class="subsection__title">Semantic</div>
+						<div class="palette">
+							<div class="palette__row">
+								<span class="palette__label">--clr-success</span>
+								<div class="palette__swatches">
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-success-100)"
+									>
+										<span class="palette__shade">100</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-success-300)"
+									>
+										<span class="palette__shade">300</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-success-500)"
+									>
+										<span class="palette__shade">500</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-success-700)"
+									>
+										<span class="palette__shade">700</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-success-900)"
+									>
+										<span class="palette__shade">900</span>
+									</div>
+								</div>
+							</div>
+							<div class="palette__row">
+								<span class="palette__label">--clr-error</span>
+								<div class="palette__swatches">
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-error-100)"
+									>
+										<span class="palette__shade">100</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-error-300)"
+									>
+										<span class="palette__shade">300</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-error-500)"
+									>
+										<span class="palette__shade">500</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-error-700)"
+									>
+										<span class="palette__shade">700</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-error-900)"
+									>
+										<span class="palette__shade">900</span>
+									</div>
+								</div>
+							</div>
+							<div class="palette__row">
+								<span class="palette__label">--clr-warning</span>
+								<div class="palette__swatches">
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-warning-100)"
+									>
+										<span class="palette__shade">100</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-warning-300)"
+									>
+										<span class="palette__shade">300</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-warning-500)"
+									>
+										<span class="palette__shade">500</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-warning-700)"
+									>
+										<span class="palette__shade">700</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-warning-900)"
+									>
+										<span class="palette__shade">900</span>
+									</div>
+								</div>
+							</div>
+							<div class="palette__row">
+								<span class="palette__label">--clr-info</span>
+								<div class="palette__swatches">
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-info-100)"
+									>
+										<span class="palette__shade">100</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-info-300)"
+									>
+										<span class="palette__shade">300</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-info-500)"
+									>
+										<span class="palette__shade">500</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-info-700)"
+									>
+										<span class="palette__shade">700</span>
+									</div>
+									<div
+										class="palette__swatch"
+										style="background: var(--clr-info-900)"
+									>
+										<span class="palette__shade">900</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Typography -->
+				<section class="section" id="typography">
+					<div class="section__header">
+						<div class="section__title">Typography</div>
+						<div class="section__desc">
+							Font families · sizes · weights · line heights · letter spacings
+						</div>
+					</div>
+
+					<div class="subsection" id="typography-sizes">
+						<div class="subsection__title">Font sizes · prefix: --fs-</div>
+						<div class="type-scale">
+							<div class="type-scale__row">
+								<span class="type-scale__meta">--fs-h1 · 32px</span>
+								<span
+									style="
+										font-size: var(--fs-h1);
+										line-height: 1.2;
+										font-weight: var(--fw-bold);
+										font-family: var(--ff-accent), var(--ff-primary);
+									"
+									>Heading 1</span
+								>
+							</div>
+							<div class="type-scale__row">
+								<span class="type-scale__meta">--fs-h2 · 28px</span>
+								<span
+									style="
+										font-size: var(--fs-h2);
+										line-height: 1.2;
+										font-weight: var(--fw-bold);
+										font-family: var(--ff-accent), var(--ff-primary);
+									"
+									>Heading 2</span
+								>
+							</div>
+							<div class="type-scale__row">
+								<span class="type-scale__meta">--fs-h3 · 24px</span>
+								<span
+									style="
+										font-size: var(--fs-h3);
+										line-height: 1.2;
+										font-weight: var(--fw-bold);
+										font-family: var(--ff-accent), var(--ff-primary);
+									"
+									>Heading 3</span
+								>
+							</div>
+							<div class="type-scale__row">
+								<span class="type-scale__meta">--fs-h4 · 20px</span>
+								<span
+									style="
+										font-size: var(--fs-h4);
+										line-height: 1.2;
+										font-weight: var(--fw-medium);
+									"
+									>Heading 4</span
+								>
+							</div>
+							<div class="type-scale__row">
+								<span class="type-scale__meta">--fs-h5 · 18px</span>
+								<span
+									style="
+										font-size: var(--fs-h5);
+										line-height: 1.2;
+										font-weight: var(--fw-medium);
+									"
+									>Heading 5</span
+								>
+							</div>
+							<div class="type-scale__row">
+								<span class="type-scale__meta">--fs-h6 · 16px</span>
+								<span
+									style="
+										font-size: var(--fs-h6);
+										line-height: 1.2;
+										font-weight: var(--fw-medium);
+									"
+									>Heading 6</span
+								>
+							</div>
+							<div class="type-scale__row">
+								<span class="type-scale__meta">--fs-default · 16px</span>
+								<span style="font-size: var(--fs-default)"
+									>Body text — The quick brown fox jumps over the lazy dog</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<div class="subsection" id="typography-weights">
+						<div class="subsection__title">Font weights · prefix: --fw-</div>
+						<div class="token-row">
+							<span class="token-name">--fw-light</span
+							><span style="font-weight: 300; font-size: 18px">Light 300</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--fw-regular</span
+							><span style="font-weight: 400; font-size: 18px"
+								>Regular 400</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--fw-medium</span
+							><span style="font-weight: 500; font-size: 18px">Medium 500</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--fw-bold</span
+							><span style="font-weight: 700; font-size: 18px">Bold 700</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--fw-extra-bold</span
+							><span style="font-weight: 900; font-size: 18px"
+								>Extra Bold 900</span
+							>
+						</div>
+					</div>
+
+					<div class="subsection" id="typography-lh">
+						<div class="subsection__title">Line heights · prefix: --lh-</div>
+						<div class="token-row">
+							<span class="token-name">--lh-compact · 1</span
+							><span style="line-height: 1; max-width: 300px; font-size: 13px"
+								>Compact line height. Text sits close together with minimal
+								breathing room.</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--lh-tight · 1.25</span
+							><span
+								style="line-height: 1.25; max-width: 300px; font-size: 13px"
+								>Tight line height. Good for headings and short blocks of
+								text.</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--lh-normal · 1.5</span
+							><span style="line-height: 1.5; max-width: 300px; font-size: 13px"
+								>Normal line height. Standard for body text, comfortable
+								reading.</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--lh-loose · 2</span
+							><span style="line-height: 2; max-width: 300px; font-size: 13px"
+								>Loose line height. Airy and spacious, good for code or
+								editorial.</span
+							>
+						</div>
+					</div>
+
+					<div class="subsection" id="typography-ls">
+						<div class="subsection__title">Letter spacings · prefix: --ls-</div>
+						<div class="token-row">
+							<span class="token-name">--ls-tighter</span
+							><span style="letter-spacing: -0.05em; font-size: 16px"
+								>Tighter tracking sample</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--ls-tight</span
+							><span style="letter-spacing: -0.02em; font-size: 16px"
+								>Tight tracking sample</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--ls-normal</span
+							><span style="letter-spacing: 0; font-size: 16px"
+								>Normal tracking sample</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--ls-wide</span
+							><span style="letter-spacing: 0.05em; font-size: 16px"
+								>Wide tracking sample</span
+							>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--ls-wider</span
+							><span style="letter-spacing: 0.1em; font-size: 16px"
+								>Wider tracking sample</span
+							>
+						</div>
+					</div>
+				</section>
+
+				<!-- Spacing -->
+				<section class="section" id="spacing">
+					<div class="section__header">
+						<div class="section__title">Spacing</div>
+						<div class="section__desc">
+							8px base grid · 10 steps · prefix: --sp-
+						</div>
+					</div>
+					<div class="spacing-scale">
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-1 · 8px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-1)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-2 · 16px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-2)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-3 · 24px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-3)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-4 · 32px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-4)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-5 · 40px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-5)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-6 · 48px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-6)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-7 · 56px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-7)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-8 · 64px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-8)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-9 · 72px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-9)"></div>
+						</div>
+						<div class="spacing-scale__row">
+							<span class="spacing-scale__meta">--sp-10 · 80px</span>
+							<div class="spacing-scale__bar" style="width: var(--sp-10)"></div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Borders -->
+				<section class="section" id="borders">
+					<div class="section__header">
+						<div class="section__title">Borders</div>
+						<div class="section__desc">
+							Radius: prefix --br- · Width: prefix --bw-
+						</div>
+					</div>
+
+					<div class="subsection">
+						<div class="subsection__title">Border radius</div>
+						<div class="radius-grid">
+							<div>
+								<div class="radius-item__label">--br-xs · 2px</div>
+								<div
+									class="radius-item__box"
+									style="border-radius: var(--br-xs)"
+								></div>
+							</div>
+							<div>
+								<div class="radius-item__label">--br-sm · 4px</div>
+								<div
+									class="radius-item__box"
+									style="border-radius: var(--br-sm)"
+								></div>
+							</div>
+							<div>
+								<div class="radius-item__label">--br-md · 6px</div>
+								<div
+									class="radius-item__box"
+									style="border-radius: var(--br-md)"
+								></div>
+							</div>
+							<div>
+								<div class="radius-item__label">--br-lg · 10px</div>
+								<div
+									class="radius-item__box"
+									style="border-radius: var(--br-lg)"
+								></div>
+							</div>
+							<div>
+								<div class="radius-item__label">--br-xl · 14px</div>
+								<div
+									class="radius-item__box"
+									style="border-radius: var(--br-xl)"
+								></div>
+							</div>
+							<div>
+								<div class="radius-item__label">--br-pill</div>
+								<div
+									class="radius-item__box"
+									style="border-radius: 9999px"
+								></div>
+							</div>
+							<div>
+								<div class="radius-item__label">--br-full · 50%</div>
+								<div
+									class="radius-item__box"
+									style="border-radius: 50%; width: 48px"
+								></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="subsection">
+						<div class="subsection__title">Border width</div>
+						<div class="token-row">
+							<span class="token-name">--bw-thin · 1px</span>
+							<div
+								style="
+									width: 120px;
+									border-top: 1px solid var(--clr-neutral-400);
+								"
+							></div>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--bw-normal · 2px</span>
+							<div
+								style="
+									width: 120px;
+									border-top: 2px solid var(--clr-neutral-400);
+								"
+							></div>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--bw-thick · 4px</span>
+							<div
+								style="
+									width: 120px;
+									border-top: 4px solid var(--clr-neutral-400);
+								"
+							></div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Shadows -->
+				<section class="section" id="shadows">
+					<div class="section__header">
+						<div class="section__title">Shadows</div>
+						<div class="section__desc">
+							Progressive elevation scale · prefix: --shadow-
+						</div>
+					</div>
+					<div class="shadow-grid">
+						<div class="shadow-item">
+							<div
+								class="shadow-item__box"
+								style="box-shadow: var(--shadow-xs)"
+							></div>
+							<div class="shadow-item__label">--shadow-xs</div>
+						</div>
+						<div class="shadow-item">
+							<div
+								class="shadow-item__box"
+								style="box-shadow: var(--shadow-sm)"
+							></div>
+							<div class="shadow-item__label">--shadow-sm</div>
+						</div>
+						<div class="shadow-item">
+							<div
+								class="shadow-item__box"
+								style="box-shadow: var(--shadow-md)"
+							></div>
+							<div class="shadow-item__label">--shadow-md</div>
+						</div>
+						<div class="shadow-item">
+							<div
+								class="shadow-item__box"
+								style="box-shadow: var(--shadow-lg)"
+							></div>
+							<div class="shadow-item__label">--shadow-lg</div>
+						</div>
+						<div class="shadow-item">
+							<div
+								class="shadow-item__box"
+								style="box-shadow: var(--shadow-xl)"
+							></div>
+							<div class="shadow-item__label">--shadow-xl</div>
+						</div>
+						<div class="shadow-item">
+							<div
+								class="shadow-item__box"
+								style="box-shadow: var(--shadow-inset)"
+							></div>
+							<div class="shadow-item__label">--shadow-inset</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Animations -->
+				<section class="section" id="animations">
+					<div class="section__header">
+						<div class="section__title">Animations</div>
+						<div class="section__desc">Duration · easing · delay</div>
+					</div>
+
+					<div class="subsection">
+						<div class="subsection__title">Duration · prefix: --dur-</div>
+						<div id="anim-list">
+							<div class="anim-row" data-ms="100">
+								<span class="anim-meta">--dur-faster · 100ms</span>
+								<div class="anim-track">
+									<div class="anim-dot" style="--anim-duration: 100ms"></div>
+								</div>
+								<button class="anim-btn" onclick="playAnim(this)">▶</button>
+							</div>
+							<div class="anim-row" data-ms="200">
+								<span class="anim-meta">--dur-fast · 200ms</span>
+								<div class="anim-track">
+									<div class="anim-dot" style="--anim-duration: 200ms"></div>
+								</div>
+								<button class="anim-btn" onclick="playAnim(this)">▶</button>
+							</div>
+							<div class="anim-row" data-ms="300">
+								<span class="anim-meta">--dur-normal · 300ms</span>
+								<div class="anim-track">
+									<div class="anim-dot" style="--anim-duration: 300ms"></div>
+								</div>
+								<button class="anim-btn" onclick="playAnim(this)">▶</button>
+							</div>
+							<div class="anim-row" data-ms="500">
+								<span class="anim-meta">--dur-slow · 500ms</span>
+								<div class="anim-track">
+									<div class="anim-dot" style="--anim-duration: 500ms"></div>
+								</div>
+								<button class="anim-btn" onclick="playAnim(this)">▶</button>
+							</div>
+							<div class="anim-row" data-ms="700">
+								<span class="anim-meta">--dur-slower · 700ms</span>
+								<div class="anim-track">
+									<div class="anim-dot" style="--anim-duration: 700ms"></div>
+								</div>
+								<button class="anim-btn" onclick="playAnim(this)">▶</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="subsection">
+						<div class="subsection__title">Easing · prefix: --tf-</div>
+						<div class="token-row">
+							<span class="token-name">--tf-linear</span
+							><span class="token-value">linear</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--tf-ease-in</span
+							><span class="token-value">cubic-bezier(0.4, 0, 1, 1)</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--tf-ease-out</span
+							><span class="token-value">cubic-bezier(0, 0, 0.2, 1)</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--tf-ease-in-out</span
+							><span class="token-value">cubic-bezier(0.4, 0, 0.2, 1)</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--tf-bounce</span
+							><span class="token-value"
+								>cubic-bezier(0.68, -0.55, 0.265, 1.55)</span
+							>
+						</div>
+					</div>
+
+					<div class="subsection">
+						<div class="subsection__title">Delay · prefix: --delay-</div>
+						<div class="token-row">
+							<span class="token-name">--delay-short</span
+							><span class="token-value">50ms</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--delay-medium</span
+							><span class="token-value">100ms</span>
+						</div>
+						<div class="token-row">
+							<span class="token-name">--delay-long</span
+							><span class="token-value">200ms</span>
+						</div>
+					</div>
+				</section>
+
+				<!-- Z-index -->
+				<section class="section" id="zindex">
+					<div class="section__header">
+						<div class="section__title">Z-index</div>
+						<div class="section__desc">
+							Stacking context scale · prefix: --z-
+						</div>
+					</div>
+					<div class="zindex-grid">
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-min</div>
+							<div class="zindex-item__value">-1</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-base</div>
+							<div class="zindex-item__value">0</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-content</div>
+							<div class="zindex-item__value">50</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-header</div>
+							<div class="zindex-item__value">100</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-footer</div>
+							<div class="zindex-item__value">150</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-sidebar</div>
+							<div class="zindex-item__value">200</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-dropdown</div>
+							<div class="zindex-item__value">250</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-sticky</div>
+							<div class="zindex-item__value">300</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-overlay</div>
+							<div class="zindex-item__value">350</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-modal</div>
+							<div class="zindex-item__value">400</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-tooltip</div>
+							<div class="zindex-item__value">450</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-notification</div>
+							<div class="zindex-item__value">500</div>
+						</div>
+						<div class="zindex-item">
+							<div class="zindex-item__name">--z-max</div>
+							<div class="zindex-item__value">9999</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Breakpoints -->
+				<section class="section" id="breakpoints">
+					<div class="section__header">
+						<div class="section__title">Breakpoints</div>
+						<div class="section__desc">Mobile-first responsive breakpoints</div>
+					</div>
+					<div>
+						<div class="bp-row">
+							<span class="bp-meta">xs · 360px</span>
+							<div class="bp-bar-wrap">
+								<div
+									class="bp-bar"
+									style="width: calc(360 / 1536 * 100%)"
+								></div>
+							</div>
+							<span class="token-value" style="min-width: 60px">360px</span>
+						</div>
+						<div class="bp-row">
+							<span class="bp-meta">sm · 576px</span>
+							<div class="bp-bar-wrap">
+								<div
+									class="bp-bar"
+									style="width: calc(576 / 1536 * 100%)"
+								></div>
+							</div>
+							<span class="token-value" style="min-width: 60px">576px</span>
+						</div>
+						<div class="bp-row">
+							<span class="bp-meta">md · 768px</span>
+							<div class="bp-bar-wrap">
+								<div
+									class="bp-bar"
+									style="width: calc(768 / 1536 * 100%)"
+								></div>
+							</div>
+							<span class="token-value" style="min-width: 60px">768px</span>
+						</div>
+						<div class="bp-row">
+							<span class="bp-meta">lg · 1024px</span>
+							<div class="bp-bar-wrap">
+								<div
+									class="bp-bar"
+									style="width: calc(1024 / 1536 * 100%)"
+								></div>
+							</div>
+							<span class="token-value" style="min-width: 60px">1024px</span>
+						</div>
+						<div class="bp-row">
+							<span class="bp-meta">xl · 1280px</span>
+							<div class="bp-bar-wrap">
+								<div
+									class="bp-bar"
+									style="width: calc(1280 / 1536 * 100%)"
+								></div>
+							</div>
+							<span class="token-value" style="min-width: 60px">1280px</span>
+						</div>
+						<div class="bp-row">
+							<span class="bp-meta">2xl · 1536px</span>
+							<div class="bp-bar-wrap">
+								<div class="bp-bar" style="width: 100%"></div>
+							</div>
+							<span class="token-value" style="min-width: 60px">1536px</span>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+
+		<script>
+			function playAnim(btn) {
+				const row = btn.closest('.anim-row')
+				const dot = row.querySelector('.anim-dot')
+				const ms = parseInt(row.dataset.ms)
+				btn.disabled = true
+				dot.classList.remove('playing')
+				void dot.offsetWidth
+				dot.classList.add('playing')
+				setTimeout(() => {
+					dot.classList.remove('playing')
+					btn.disabled = false
+				}, ms)
+			}
+		</script>
+	</body>
+</html>
