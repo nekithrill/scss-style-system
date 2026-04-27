@@ -1,158 +1,102 @@
 # 🏗️ Architecture
 
-The system is built on a **two-layer token architecture** that separates design decisions from implementation:
+The system uses a two-layer architecture that separates raw values from context-aware usage.
 
-**Layer 1: Design Tokens** - Raw design values (colors, spacing, typography)  
-**Layer 2: Semantic Themes** - Context-aware CSS variable mappings for different themes
+## 📚 Layers
 
-This separation allows you to:
-
-- Define colors once, use them in multiple themes
-- Switch themes without changing component styles
-- Maintain consistency across light/dark modes
-
-## Layer 1: Design Tokens
-
-**Location:** `/tokens/*.scss`
-
-Design tokens are the foundation - they contain actual values like colors, spacing, and typography settings. These never change between themes.
-
-**Example:**
+**Layer 1: Design tokens** — concrete values, same in every theme.
 
 ```scss
 // tokens/_colors.scss
-$primary: (
-	100: oklch(95% 0.06 270deg),
-	500: oklch(60% 0.2 270deg),
-	900: oklch(12% 0.11 270deg)
-);
-
 $neutral: (
-	100: oklch(96% 0.01 220deg),
-	500: oklch(56% 0.04 220deg),
-	900: oklch(20% 0.01 220deg)
-);
+	100: oklch(96% 0.008 220deg),
+	900: oklch(18% 0.01 220deg)
+) !default;
 ```
 
-**Generated CSS variables:**
+Generated as CSS custom properties in `:root`:
 
 ```css
-:root {
-	--clr-primary-100: oklch(95% 0.06 270deg);
-	--clr-primary-500: oklch(60% 0.2 270deg);
-	--clr-primary-900: oklch(12% 0.11 270deg);
-	--clr-neutral-100: oklch(96% 0.01 220deg);
-	--clr-neutral-500: oklch(56% 0.04 220deg);
-	--clr-neutral-900: oklch(20% 0.01 220deg);
-}
+--clr-neutral-100: oklch(96% 0.008 220deg);
+--clr-neutral-900: oklch(18% 0.01 220deg);
 ```
 
-## Layer 2: Semantic Themes
-
-**Location:** `/themes/*.scss`
-
-Themes directly declare CSS custom properties that reference design tokens. Light theme is defined in `:root`, dark theme in `[data-theme='dark']`.
-
-**Example:**
+**Layer 2: Semantic theme variables** — context-aware, change per theme.
 
 ```scss
 // themes/_light.scss
-:root {
-	--clr-main-bg: var(--clr-neutral-100);
-	--clr-main-bg-hover: var(--clr-neutral-200);
-	--clr-main-text: var(--clr-neutral-900);
-
-	--clr-header-bg: var(--clr-primary-500);
-	--clr-header-text: var(--clr-neutral-100);
-}
+:root { --clr-text: var(--clr-neutral-900); }
 
 // themes/_dark.scss
-[data-theme='dark'] {
-	--clr-main-bg: var(--clr-neutral-900);
-	--clr-main-bg-hover: var(--clr-neutral-800);
-	--clr-main-text: var(--clr-neutral-100);
-
-	--clr-header-bg: var(--clr-primary-700);
-	--clr-header-text: var(--clr-neutral-100);
-}
+[data-theme='dark'] { --clr-text: var(--clr-neutral-100); }
 ```
 
-## How components use the system
-
-> ℹ️ **Note**
-> Design tokens (spacing, radius, typography, etc.) work the same everywhere and can be used directly. Semantic theme variables are used for colors and backgrounds that change between themes.
-
-### Option 1: Direct token usage (simple projects)
+Components reference semantic variables, not raw tokens:
 
 ```scss
-.card {
-	background: var(--clr-neutral-100);
-	color: var(--clr-neutral-900);
-	border-radius: var(--rd-md);
-	padding: var(--sp-4);
-}
+body { color: var(--clr-text); } // ← adapts to any theme automatically
 ```
 
-### Option 2: Semantic theme variables (multi-theme projects)
+## 🌊 Flow
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ Design tokens  (tokens/*.scss)                          │
+│                                                         │
+│ $primary: (500: oklch(60% 0.2 270deg))                  │
+│ $spacing: (4: 32px)                                     │
+└──────────────────────────┬──────────────────────────────┘
+                           ↓ generate-tokens mixin
+┌─────────────────────────────────────────────────────────┐
+│ CSS custom properties  (:root)                          │
+│                                                         │
+│ --clr-primary-500: oklch(60% 0.2 270deg)                │
+│ --sp-4: 2rem                                            │
+└──────────┬───────────────────────────────┬──────────────┘
+           │                               │
+           ↓ optional                      ↓ direct
+┌─────────────────────┐       ┌────────────────────────────┐
+│ Semantic themes     │       │ Component styles           │
+│                     │       │                            │
+│ --clr-bg            │       │ .card {                    │
+│ --clr-text          │       │   padding: var(--sp-4);    │
+│ --clr-focus         │       │   color: var(--clr-text);  │
+└─────────────────────┘       │ }                          │
+                              └────────────────────────────┘
+```
+
+## 🚦 Imports order
 
 ```scss
-.card {
-	background: var(--clr-main-bg);
-	color: var(--clr-main-text);
-	border-radius: var(--rd-md);
-	padding: var(--sp-4);
+// 1. Tokens
+@use './tokens/animations' as *;
+@use './tokens/breakpoints' as *;
+@use './tokens/colors' as *;
+@use './tokens/borders' as *;
+@use './tokens/shadows' as *;
+@use './tokens/spacing' as *;
+@use './tokens/typography' as *;
+@use './tokens/z-index' as *;
 
-	&:hover {
-		background: var(--clr-main-bg-hover);
-	}
-}
+// 2. Core (mixins & functions)
+@use './core/functions/px-to-rem' as *;
+@use './core/mixins/breakpoint' as *;
+@use './core/mixins/generate-tokens' as *;
+
+// 3. Config
+@use './config/variables' as *;
+
+// 4. Base styles
+@use './base/reset' as *;
+@use './base/fonts' as *;
+@use './base/globals' as *;
+@use './base/focus' as *;
+@use './base/scrollbar' as *;
+@use './base/selection' as *;
+
+// 5. Themes
+@use './themes/light' as *;
+@use './themes/dark' as *;
 ```
 
----
-
-### Architecture Flow
-
-```
-┌─────────────────────────────────────────────────────────┐
-│ 1. Design Tokens (tokens/*.scss)                        │
-│    Define raw values                                    │
-│    ↓                                                    │
-│    $primary: (500: oklch(...))                          │
-│    $spacing: (1: 8px, 2: 16px, ...)                     │
-└─────────────────────────────────────────────────────────┘
-                        ↓
-┌─────────────────────────────────────────────────────────┐
-│ 2. Generated CSS Variables (in :root)                   │
-│    ↓                                                    │
-│    --clr-primary-500: oklch(...)                        │
-│    --sp-1: 0.5rem                                       │
-│    --rd-md: 0.375rem                                    │
-└─────────────────────────────────────────────────────────┘
-                        ↓
-        ┌───────────────┴───────────────┐
-        │                               │
-        │    ┌──────────────────┐       │
-        │    │ OPTIONAL LAYER   │       │
-        │    │ Theme mapping    │       │
-        │    └────────┬─────────┘       │
-        │             ↓                 │
-        │    --clr-main-bg              │
-        │    --clr-main-text            │
-        └───────────────┬───────────────┘
-                        ↓
-┌─────────────────────────────────────────────────────────┐
-│ 3. Component Styles                                     │
-│                                                         │
-│    // Option 1: Direct tokens (simple projects)         │
-│    .card {                                              │
-│      background: var(--clr-neutral-100);                │
-│      padding: var(--sp-4);                              │
-│    }                                                    │
-│                                                         │
-│    // Option 2: Semantic themes (multi-theme projects)  │
-│    .card {                                              │
-│      background: var(--clr-main-bg);     ← Theme        │
-│      padding: var(--sp-4);               ← Token        │
-│    }                                                    │
-└─────────────────────────────────────────────────────────┘
-```
+Order matters — `variables` must come before `themes` and `globals`, as those files reference the generated CSS custom properties.

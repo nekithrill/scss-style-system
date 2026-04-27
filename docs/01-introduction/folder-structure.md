@@ -1,10 +1,5 @@
 # 📂 Folder structure
 
-- `/base` - fonts connection, global styles, basic styles reset, custom scrollbar, selection styling, utility classes, variables generation;
-- `/core` - mixins and functions;
-- `/themes` - theme schema, theme modules and theme application;
-- `/tokens` - core values: animation (duration, easing, etc.), breakpoints (media queries sizes), spacing, radius, shadows, typography, z-indexes.
-
 ```md
 📁 styles
 ├── 📁 base
@@ -13,8 +8,7 @@
 │    ├── 📄 _globals.scss
 │    ├── 📄 _reset.scss
 │    ├── 📄 _scrollbar.scss
-│    ├── 📄 _selection.scss
-│    └── 📄 _variables.scss
+│    └── 📄 _selection.scss
 │
 ├── 📁 core
 │    ├── 📁 functions
@@ -23,6 +17,9 @@
 │    └── 📁 mixins
 │         ├── 📄 _breakpoint.scss
 │         └── 📄 _generate-tokens.scss
+│
+├── 📁 config
+│    └── 📄 _variables.scss
 │
 ├── 📁 themes
 │    ├── 📄 _dark.scss

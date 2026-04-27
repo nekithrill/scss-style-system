@@ -1,85 +1,44 @@
-> **📁 Location:** `styles/base/_selection.scss`
-> **🧭 Scope:** Text selection styling
-> **📦 Type:** Basic
+> 📁 **Location:** `styles/base/_selection.scss`
+> 🎯 **Scope:** Text selection highlight
+> 🏷️ **Type:** Basic
 
 # 🖱️ Text selection
 
-Custom styling for text selection highlight using theme colors.
-
-## 🧠 How it works
-
-The `::selection` pseudo-element styles the background and text color when users select (highlight) text with their mouse or keyboard.
-
-**Theme integration:** Uses semantic variables (`--clr-selection-bg`, `--clr-selection-text`) that themes define, ensuring selection highlight matches your theme.
-
-**Automatic application:** Applies to all selectable text automatically - no additional code needed.
-
-## 🚀 Usage
-
-```scss
-// Selection styles apply automatically
-// Theme must provide these variables:
-
-:root {
-	--clr-selection-bg: var(--clr-primary-200);
-	--clr-selection-text: var(--clr-primary-900);
-}
-
-[data-theme='dark'] {
-	--clr-selection-bg: var(--clr-primary-700);
-	--clr-selection-text: var(--clr-neutral-100);
-}
-```
+Custom highlight color for selected text. Uses semantic variables defined in themes.
 
 ## ⚙️ Configuration
 
 ```scss
-// base/_selection.scss
+// styles/base/_selection.scss
 
 ::selection {
-	background-color: var(--clr-selection-bg);
-	color: var(--clr-selection-text);
+	background-color: var(--clr-selection-bg, maroon);
+	color: var(--clr-selection-text, red);
 }
 ```
+
+Fallback colors (`maroon`, `red`) are intentionally obvious — replace them in your theme.
 
 ## 🔧 Customization
 
+**Define in theme:**
+
 ```scss
-// Different selection per element
-.code-block::selection {
-	background-color: var(--clr-success-bg);
-	color: var(--clr-success-text);
+:root {
+	--clr-selection-bg:   var(--clr-primary-300);
+	--clr-selection-text: var(--clr-neutral-900);
 }
 
-// Transparent selection
-::selection {
-	background-color: rgba(99, 102, 241, 0.3);
-	color: inherit;
+[data-theme='dark'] {
+	--clr-selection-bg:   var(--clr-primary-700);
+	--clr-selection-text: var(--clr-neutral-100);
 }
 ```
 
-## ✔️ Best practices
-
-- ✅ **Do:** Ensure sufficient contrast (4.5:1 for text)
-- ✅ **Do:** Test selection in both themes
-- ✅ **Do:** Keep selection colors subtle but visible
-- ❌ **Don't:** Use same color as background (invisible)
-- ❌ **Don't:** Use extremely bright colors (harsh)
-
-## ❌ Common mistakes
-
-**Low contrast:**
+**Per-element selection:**
 
 ```scss
-// ❌ Bad: Can't read selected text
-[data-theme='dark'] {
-	--clr-selection-bg: var(--clr-neutral-200);
-	--clr-selection-text: var(--clr-neutral-300);  // Too similar!
-}
-
-// ✅ Good: High contrast
-[data-theme='dark'] {
-	--clr-selection-bg: var(--clr-primary-200);
-	--clr-selection-text: var(--clr-primary-900);
+.code-block::selection {
+	background-color: var(--clr-success-300);
 }
 ```

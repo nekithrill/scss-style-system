@@ -1,53 +1,23 @@
-> **📁 Location:** `styles/base/_focus.scss`
-> **🧭 Scope:** Focus visibility and accessibility states
-> **📦 Type:** Basic
+> 📁 **Location:** `styles/base/_focus.scss`
+> 🎯 **Scope:** Focus visibility and keyboard navigation
+> 🏷️ **Type:** Basic
 
 # ⌨️ Focus styles
 
-Custom focus indicators for accessibility that show only during keyboard navigation.
+Focus rings visible only during keyboard navigation. Uses `:focus-visible` to hide outlines for mouse and touch users while keeping them for keyboard users.
 
 ## 🧠 How it works
 
-This system uses the `:focus-visible` pseudo-class to intelligently show focus indicators only when needed:
+- **Keyboard navigation** — browser adds `:focus-visible`, outline appears.
+- **Mouse / touch** — browser adds only `:focus`, outline is hidden.
 
-- **Keyboard navigation:** When users navigate with Tab, arrow keys, or other keyboard input, the browser adds the `:focus-visible` state and focus rings appear.
-
-- **Mouse/touch navigation:** When users click or tap, the browser only adds `:focus`, not `:focus-visible`, so focus rings are hidden. This prevents distracting outlines when clicking buttons or links.
-
-**Why this matters:** Traditional `:focus` styles show outlines for both keyboard and mouse users. The `:focus-visible` approach improves UX by only showing outlines when they're actually helpful (keyboard navigation) while maintaining full accessibility.
-
-The focus ring uses theme variables (`--clr-text-accent`) so it automatically adapts to light/dark themes, and uses `--stroke-normal` for consistent width with other UI elements.
-
-## 🚀 Usage
-
-```scss
-// Focus styles are applied automatically to interactive elements
-// No additional code needed in your components
-
-.button {
-	// Button styles...
-	// Focus ring appears automatically on keyboard navigation
-}
-
-.link {
-	// Link styles...
-	// Focus ring appears automatically on keyboard navigation
-}
-```
-
-**What gets focus rings:**
-
-- Form elements: `input`, `textarea`, `select`
-- Interactive elements: `button`, `a` (links)
-- ARIA elements: `[role='button']`
-- Custom interactive elements: `[tabindex]`
+This keeps the interface clean for pointer users while maintaining full accessibility for keyboard users.
 
 ## ⚙️ Configuration
 
 ```scss
-// base/_focus.scss
+// styles/base/_focus.scss
 
-// Show outline ONLY for keyboard navigation
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
@@ -55,10 +25,9 @@ button:focus-visible,
 a:focus-visible,
 [role='button']:focus-visible,
 [tabindex]:focus-visible {
-	outline: var(--stroke-normal) solid var(--clr-text-accent);
+	outline: var(--bw-normal, 2px) solid var(--clr-focus, red);
 }
 
-// Hide outline for mouse/touch users
 input:focus:not(:focus-visible),
 textarea:focus:not(:focus-visible),
 select:focus:not(:focus-visible),
@@ -70,63 +39,38 @@ a:focus:not(:focus-visible),
 }
 ```
 
+`--clr-focus` is defined in themes. Fallback `red` is intentionally obvious — replace it in your theme.
+
 ## 🔧 Customization
 
-```scss
-// Different color
-input:focus-visible,
-button:focus-visible {
-	outline: var(--stroke-normal) solid var(--clr-primary-500);
-}
+**Box-shadow instead of outline:**
 
-// Box-shadow instead of outline
+```scss
 button:focus-visible {
 	outline: none;
-	box-shadow: 0 0 0 var(--stroke-normal) var(--clr-text-accent);
+	box-shadow: 0 0 0 var(--bw-normal, 2px) var(--clr-focus, red);
 }
+```
 
-// Per-element customization
+**Per-element styles:**
+
+```scss
 input:focus-visible {
-	outline: var(--stroke-normal) solid var(--clr-primary-500);
-}
-
-button:focus-visible {
-	outline: var(--stroke-thick) solid var(--clr-primary-600);
-	outline-offset: 4px;
+	outline: var(--bw-normal) solid var(--clr-primary-500);
+	outline-offset: 2px;
 }
 ```
 
-## ✔️ Best practices
-
-- ✅ **Do:** Keep focus indicators visible for keyboard users
-- ✅ **Do:** Use theme colors so focus adapts to light/dark mode
-- ✅ **Do:** Ensure sufficient contrast (WCAG AA: 3:1 minimum)
-- ✅ **Do:** Test with keyboard navigation (Tab key)
-- ❌ **Don't:** Remove focus indicators entirely
-- ❌ **Don't:** Use low-contrast colors
-- ❌ **Don't:** Use `:focus` alone without `:focus-visible`
+**Define focus color in theme:**
 
 ```scss
-// ✅ Good: Handled automatically
-.button {
-	background: var(--clr-primary-500);
-	padding: var(--sp-2) var(--sp-4);
-	// Focus handled by global styles
+// themes/_light.scss
+:root {
+	--clr-focus: var(--clr-primary-500);
 }
 
-// ❌ Bad: Removes all focus
-* {
-	outline: none !important;
+// themes/_dark.scss
+[data-theme='dark'] {
+	--clr-focus: var(--clr-primary-300);
 }
-```
-
-## ❌ Common mistakes
-
-**Don't kill all focus styles:**
-
-```scss
-// ❌ Bad
-* { outline: none !important; }
-
-// ✅ Good: Use :focus-visible
 ```

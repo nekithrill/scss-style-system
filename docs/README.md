@@ -2,8 +2,8 @@
 
 ## 🚀 Introduction
 
-- [Overview](01-introduction/overview.md)
 - [Getting started](01-introduction/getting-started.md)
+- [Overview](01-introduction/overview.md)
 - [Architecture](01-introduction/architecture.md)
 - [Folder structure](01-introduction/folder-structure.md)
 - [Code quality](01-introduction/code-quality.md)
@@ -23,7 +23,7 @@
 ## 🧱 Basics
 
 - [Reset](03-basics/reset.md)
-- [Globals](03-basics/global-styles.md)
+- [Globals](03-basics/globals.md)
 - [Fonts](03-basics/fonts.md)
 - [Focus](03-basics/focus.md)
 - [Scrollbar](03-basics/scrollbar.md)
@@ -37,17 +37,6 @@
 
 ## 🌓 Theming
 
+- [Themes management](05-themes/theme-management.md)
 - [Basic themes](05-themes/basic-themes.md)
-- [Custom theme creation](05-themes/custom-theme.md)
-- [Switching](05-themes/switching.md)
-- [Disabling](05-themes/disabling.md)
-
-## 🛠️ Usage
-
-- [Customizing](06-usage/customizing.md)
-- [Overrides](06-usage/overrides.md)
-- [Responsive design](06-usage/responsive-design.md)
-
-## ✨ Future improvements
-
-- [Improvements](IMPROVEMENTS.md)
+- [Custom themes](05-themes/custom-themes.md)

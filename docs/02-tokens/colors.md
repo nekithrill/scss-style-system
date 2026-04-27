@@ -1,337 +1,193 @@
-> **📁 Location:** `styles/tokens/_colors.scss`
-> **🧭 Scope:** Color palette (semantic + brand)
-> **📦 Type:** Token
+> 📂 **Location:** `styles/tokens/_colors.scss`
+> 🎯 **Scope:** Color palette — brand and semantic
+> 🏷️ **Type:** Token
 
 # 🎨 Color tokens
 
-Define the complete color palette using OKLCH color space for perceptual uniformity and consistent lightness across hues.
+OKLCH color system for perceptually uniform palettes. Change a single hue variable — all five shades update automatically.
 
-## 🧠 How it works
-
-Color tokens are organized into two categories:
-
-**Palette colors** (`primary`, `secondary`, `neutral`) use a 100-900 scale where:
-
-- Lower numbers (100-300) are lighter shades
-- Middle range (400-600) are mid-tones  
-- Higher numbers (700-900) are darker shades
-- The scale provides 9 shades for maximum flexibility
-
-**Semantic colors** (`success`, `warning`, `danger`, `info`) use role-based keys:
-
-- `bg`: Background color for alerts/notifications
-- `border`: Border/outline color
-- `solid`: Solid fill color (buttons, badges)
-- `text`: Text color for high contrast
-
-All colors use **OKLCH format** (`oklch(lightness chroma hue)`) which provides:
-
-- Perceptually uniform lightness (50% looks 50% bright across all hues)
-- Wider color gamut than RGB/HSL
-- Better for programmatic color manipulation
-- Consistent chroma (saturation) control
-
-Colors are generated as CSS custom properties with the `--clr-` prefix:
-
-- `--clr-primary-500`, `--clr-neutral-100`, etc.
-- `--clr-success-bg`, `--clr-danger-text`, etc.
-
-## 🚀 Usage
+## ⚡️ Usage
 
 ```scss
-// Using palette colors directly
 .button {
 	background: var(--clr-primary-500);
 	color: var(--clr-neutral-100);
-	border: 1px solid var(--clr-primary-600);
-	
+
 	&:hover {
-		background: var(--clr-primary-600);
+		background: var(--clr-primary-700);
 	}
 }
 
-// Using semantic colors
-.alert-success {
-	background: var(--clr-success-bg);
-	border: 2px solid var(--clr-success-border);
-	color: var(--clr-success-text);
-}
-
-.alert-danger {
-	background: var(--clr-danger-bg);
-	border: 2px solid var(--clr-danger-border);
-	color: var(--clr-danger-text);
-}
-
-// Text with accent
-.heading {
-	color: var(--clr-neutral-900);
-	
-	.accent {
-		color: var(--clr-primary-500);
-	}
-}
-
-// Card with neutral colors
-.card {
-	background: var(--clr-secondary-100);
-	border: 1px solid var(--clr-neutral-200);
-	color: var(--clr-neutral-800);
+.alert-error {
+	background: var(--clr-error-100);
+	border: 1px solid var(--clr-error-300);
+	color: var(--clr-error-700);
 }
 ```
 
-## ⚙️ Basic configuration
+## ⚙️ Configuration
 
 ```scss
-// tokens/_colors.scss
+// Hues for brand colors
+$primary-hue: 270deg !default;
+$secondary-hue: 248deg !default;
+$neutral-hue: 220deg !default;
 
-// Hues for general colors
-$primary-hue: 270deg !default;      // Purple/violet
-$secondary-hue: 248deg !default;    // Blue-ish neutrals
-$neutral-hue: 220deg !default;      // Cool gray
-
-// Hues for semantic colors  
-$success-hue: 160deg !default;      // Green
-$warning-hue: 80deg !default;       // Yellow/amber
-$danger-hue: 25deg !default;        // Red/orange
-$info-hue: 260deg !default;         // Blue/purple
+// Hues for semantic colors
+$success-hue: 160deg !default;
+$error-hue: 25deg !default;
+$warning-hue: 80deg !default;
+$info-hue: 260deg !default;
 
 // PRIMARY - Brand colors, accents, interactive elements
 $primary: (
 	100: oklch(95% 0.06 $primary-hue),
-	200: oklch(85% 0.1 $primary-hue),
-	300: oklch(75% 0.14 $primary-hue),
-	400: oklch(65% 0.17 $primary-hue),
-	500: oklch(60% 0.2 $primary-hue),   // Main brand color
-	600: oklch(48% 0.2 $primary-hue),
-	700: oklch(36% 0.17 $primary-hue),
-	800: oklch(24% 0.14 $primary-hue),
-	900: oklch(12% 0.11 $primary-hue)
+	300: oklch(78% 0.14 $primary-hue),
+	500: oklch(60% 0.2 $primary-hue),
+	700: oklch(38% 0.16 $primary-hue),
+	900: oklch(20% 0.1 $primary-hue)
 ) !default;
 
 // SECONDARY - Backgrounds, surfaces, cards
 $secondary: (
-	100: oklch(99% 0 $secondary-hue),
-	200: oklch(97% 0 $secondary-hue),
-	300: oklch(95% 0 $secondary-hue),
-	400: oklch(92% 0 $secondary-hue),
-	500: oklch(88% 0 $secondary-hue),
-	600: oklch(82% 0.01 $secondary-hue),
-	700: oklch(74% 0.02 $secondary-hue),
-	800: oklch(64% 0.03 $secondary-hue),
-	900: oklch(52% 0.04 $secondary-hue)
+	100: oklch(99% 0.005 $secondary-hue),
+	300: oklch(92% 0.008 $secondary-hue),
+	500: oklch(82% 0.012 $secondary-hue),
+	700: oklch(68% 0.02 $secondary-hue),
+	900: oklch(48% 0.032 $secondary-hue)
 ) !default;
 
 // NEUTRAL - Text, borders, icons, dividers
 $neutral: (
-	100: oklch(96% 0.01 $neutral-hue),
-	200: oklch(85% 0.02 $neutral-hue),
-	300: oklch(75% 0.02 $neutral-hue),
-	400: oklch(65% 0.03 $neutral-hue),
-	500: oklch(56% 0.04 $neutral-hue),
-	600: oklch(48% 0.03 $neutral-hue),
-	700: oklch(39% 0.03 $neutral-hue),
-	800: oklch(30% 0.02 $neutral-hue),
-	900: oklch(20% 0.01 $neutral-hue)
+	100: oklch(96% 0.008 $neutral-hue),
+	300: oklch(78% 0.014 $neutral-hue),
+	500: oklch(56% 0.02 $neutral-hue),
+	700: oklch(36% 0.016 $neutral-hue),
+	900: oklch(18% 0.01 $neutral-hue)
 ) !default;
 
 // SUCCESS - Positive feedback, confirmations
 $success: (
-	bg: oklch(95% 0.05 $success-hue),
-	border: oklch(70% 0.12 $success-hue),
-	solid: oklch(50% 0.15 $success-hue),
-	text: oklch(30% 0.15 $success-hue)
+	100: oklch(95% 0.05 $success-hue),
+	300: oklch(75% 0.13 $success-hue),
+	500: oklch(52% 0.17 $success-hue),
+	700: oklch(35% 0.13 $success-hue),
+	900: oklch(20% 0.08 $success-hue)
+) !default;
+
+// ERROR - Errors, destructive actions
+$error: (
+	100: oklch(95% 0.04 $error-hue),
+	300: oklch(75% 0.14 $error-hue),
+	500: oklch(56% 0.22 $error-hue),
+	700: oklch(36% 0.16 $error-hue),
+	900: oklch(20% 0.1 $error-hue)
 ) !default;
 
 // WARNING - Alerts, cautionary messages
 $warning: (
-	bg: oklch(95% 0.04 $warning-hue),
-	border: oklch(75% 0.12 $warning-hue),
-	solid: oklch(77% 0.16 $warning-hue),
-	text: oklch(30% 0.12 $warning-hue)
-) !default;
-
-// DANGER - Errors, destructive actions
-$danger: (
-	bg: oklch(95% 0.04 $danger-hue),
-	border: oklch(70% 0.12 $danger-hue),
-	solid: oklch(64% 0.21 $danger-hue),
-	text: oklch(30% 0.15 $danger-hue)
+	100: oklch(96% 0.04 $warning-hue),
+	300: oklch(84% 0.12 $warning-hue),
+	500: oklch(70% 0.17 $warning-hue),
+	700: oklch(44% 0.13 $warning-hue),
+	900: oklch(24% 0.08 $warning-hue)
 ) !default;
 
 // INFO - Information, tips, neutral notifications
 $info: (
-	bg: oklch(95% 0.04 $info-hue),
-	border: oklch(70% 0.11 $info-hue),
-	solid: oklch(62% 0.19 $info-hue),
-	text: oklch(30% 0.15 $info-hue)
+	100: oklch(95% 0.04 $info-hue),
+	300: oklch(74% 0.12 $info-hue),
+	500: oklch(56% 0.2 $info-hue),
+	700: oklch(36% 0.15 $info-hue),
+	900: oklch(20% 0.09 $info-hue)
 ) !default;
 
-// All colors map for CSS variable generation
 $all-colors: (
 	'primary': $primary,
 	'secondary': $secondary,
 	'neutral': $neutral,
 	'success': $success,
+	'error': $error,
 	'warning': $warning,
-	'danger': $danger,
 	'info': $info
 ) !default;
 ```
 
-**Generated CSS variables:**
+**Generated variables**
+
+Prefix: `--clr-`
 
 ```css
 :root {
-	/* Primary palette */
 	--clr-primary-100: oklch(95% 0.06 270deg);
+	--clr-primary-300: oklch(78% 0.14 270deg);
 	--clr-primary-500: oklch(60% 0.2 270deg);
-	--clr-primary-900: oklch(12% 0.11 270deg);
-	
-	/* Neutral palette */
-	--clr-neutral-100: oklch(96% 0.01 220deg);
-	--clr-neutral-500: oklch(56% 0.04 220deg);
-	--clr-neutral-900: oklch(20% 0.01 220deg);
-	
-	/* Semantic colors */
-	--clr-success-bg: oklch(95% 0.05 160deg);
-	--clr-success-border: oklch(70% 0.12 160deg);
-	--clr-success-solid: oklch(50% 0.15 160deg);
-	--clr-success-text: oklch(30% 0.15 160deg);
-	
-	/* ... and so on for all colors */
+	--clr-primary-700: oklch(38% 0.16 270deg);
+	--clr-primary-900: oklch(20% 0.1 270deg);
+
+	/* secondary, neutral — same pattern */
+
+	--clr-success-100: oklch(95% 0.05 160deg);
+	--clr-success-300: oklch(75% 0.13 160deg);
+	--clr-success-500: oklch(52% 0.17 160deg);
+	--clr-success-700: oklch(35% 0.13 160deg);
+	--clr-success-900: oklch(20% 0.08 160deg);
+
+	/* error, warning, info — same pattern */
 }
 ```
+
+**Shade guide:**
+
+| Shade | Typical use |
+|-------|-------------|
+| 100 | Light backgrounds, subtle surfaces |
+| 300 | Borders, icons, secondary elements |
+| 500 | Main color — buttons, links, indicators |
+| 700 | Hover and active states |
+| 900 | Text on light backgrounds |
 
 ## 🔧 Customization
 
 **Change brand hue:**
 
 ```scss
-// Make primary color blue instead of purple
-$primary-hue: 240deg;  // Blue hue
-
-// Colors automatically update across all shades
-$primary: (
-	100: oklch(95% 0.06 $primary-hue),  // Light blue
-	500: oklch(60% 0.2 $primary-hue),   // Mid blue
-	900: oklch(12% 0.11 $primary-hue)   // Dark blue
-);
+$primary-hue: 200deg !default; // Blue instead of purple
 ```
 
-**Adjust chroma (saturation):**
+**Replace entire palette:**
 
 ```scss
-// More vibrant primary colors
 $primary: (
-	500: oklch(60% 0.25 $primary-hue),  // Higher chroma = more saturated
-	// ... other shades
-);
-
-// More muted neutral colors
-$neutral: (
-	500: oklch(56% 0.01 $neutral-hue),  // Lower chroma = less saturated
-	// ... other shades
-);
+	100: oklch(97% 0.04 210deg),
+	300: oklch(85% 0.10 210deg),
+	500: oklch(62% 0.18 210deg),
+	700: oklch(40% 0.14 210deg),
+	900: oklch(22% 0.09 210deg)
+) !default;
 ```
 
 **Add custom palette:**
 
 ```scss
-// Add accent color
-$accent-hue: 340deg;  // Pink/magenta
+$accent-hue: 340deg;
 
 $accent: (
-	100: oklch(95% 0.06 $accent-hue),
-	500: oklch(60% 0.2 $accent-hue),
-	900: oklch(12% 0.11 $accent-hue)
+	100: oklch(95% 0.05 $accent-hue),
+	300: oklch(78% 0.13 $accent-hue),
+	500: oklch(60% 0.20 $accent-hue),
+	700: oklch(38% 0.15 $accent-hue),
+	900: oklch(20% 0.10 $accent-hue)
 ) !default;
 
-// Include in generation
 $all-colors: (
 	'primary': $primary,
 	'secondary': $secondary,
 	'neutral': $neutral,
-	'accent': $accent,  // Add custom palette
-	// ... semantic colors
-);
-```
-
-## ✔️ Best practices
-
-**Color usage:**
-
-- Use `primary` for brand elements, CTAs, interactive components
-- Use `secondary` for backgrounds, surfaces, subtle elements
-- Use `neutral` for text, borders, icons, dividers
-- Use semantic colors (`success`, `warning`, `danger`, `info`) for feedback
-
-**Contrast guidelines:**
-
-- `100-300`: Light backgrounds, subtle surfaces
-- `400-600`: Mid-tones, borders, disabled states
-- `700-900`: Text, icons, high contrast elements
-
-**Accessibility:**
-
-- Ensure 4.5:1 contrast ratio for body text (WCAG AA)
-- Ensure 3:1 contrast ratio for large text and UI components
-- Test color combinations in both light and dark themes
-- Don't rely on color alone to convey information
-
-**OKLCH tips:**
-
-- First value (lightness): 0% = black, 100% = white
-- Second value (chroma): 0 = gray, higher = more saturated
-- Third value (hue): 0-360deg color wheel position
-- Use same lightness for perceptually similar brightness
-
-## ❌ Common mistakes
-
-**Don't mix color spaces:**
-
-```scss
-// ❌ Bad: mixing OKLCH and HEX
-$primary: (
-	100: oklch(95% 0.06 270deg),
-	500: #6366f1,  // HEX doesn't match OKLCH scale
-);
-
-// ✅ Good: consistent OKLCH
-$primary: (
-	100: oklch(95% 0.06 270deg),
-	500: oklch(60% 0.2 270deg),
-);
-```
-
-**Don't hardcode colors in components:**
-
-```scss
-// ❌ Bad: hardcoded color
-.button {
-	background: oklch(60% 0.2 270deg);
-}
-
-// ✅ Good: use token
-.button {
-	background: var(--clr-primary-500);
-}
-```
-
-**Don't create arbitrary shades:**
-
-```scss
-// ❌ Bad: non-standard scale
-$custom: (
-	150: oklch(...),  // Breaks 100-900 convention
-	350: oklch(...),
-	550: oklch(...)
-);
-
-// ✅ Good: use standard scale
-$custom: (
-	100: oklch(...),
-	500: oklch(...),
-	900: oklch(...)
-);
+	'accent': $accent,
+	'success': $success,
+	'error': $error,
+	'warning': $warning,
+	'info': $info
+) !default;
 ```

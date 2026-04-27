@@ -3,128 +3,95 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=ffffff)](https://www.w3.org/TR/CSS/)
 [![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=ffffff)](https://sass-lang.com/)
 
-A modular design token system for generating CSS variables with built-in theming support. Built to work seamlessly with component-scoped styling (SCSS modules, CSS-in-JS).
+A modular SCSS design token system that generates CSS custom properties with built-in theming support. Designed for component-based projects using CSS Modules or scoped styles.
 
-<br>
+## ✨ Key features
 
-## ✨ Key Features
+- **Token-first architecture** — centralized design values, single source of truth
+- **OKLCH color system** — perceptually uniform palettes, hue-based generation
+- **Automatic rem conversion** — define in px, output in rem
+- **Light / dark theming** — plain CSS custom properties, no mixins or schema required
+- **Responsive mixins** — mobile-first breakpoints out of the box
+- **Fully modular** — every file is optional, use only what you need
 
-- 🎯 **Token-first architecture** - centralized design values
-- 🎨 **Optional theming** - light/dark/custom modes
-- 🔧 **Utility mixins** - breakpoints, token generation, helpers
-- 📐 **Auto conversion** - px to rem with design tokens
-- 🎨 **OKLCH colors** - perceptually uniform color system
-- 🧩 **Fully modular** - remove unused features easily
+## 🚀 Quick start
 
-<br>
+**1. Install Sass**
 
-## 🚀 Quick Start
-
-### Step 1: Install Sass
 ```bash
 npm install --save-dev sass
 ```
 
-### Step 2: Copy `styles/` folder to your project
+**2. Copy `styles/` to your project**
+
 ```
 your-project/
-├── src/
-│   └── styles/         ← Copy here
+└── src/
+    └── styles/
+        ├── base/
+        ├── config/
+        ├── core/
+        ├── themes/
+        ├── tokens/
+        └── main.scss
 ```
 
-### Step 3: Import in your app
+**3. Import once in your app entry**
+
 ```jsx
-// main.jsx or _app.jsx
-import './styles/main.scss';
+// main.jsx or app.jsx
+import './styles/main.scss'
 ```
 
-### Step 4: Use variables in your styles
+**4. Use in components**
+
 ```scss
-// Component.module.scss
 .card {
-    padding: var(--sp-4);
-    background: var(--clr-primary-500);
-    border-radius: var(--rd-md);
+	padding: var(--sp-4);
+	background: var(--clr-primary-500);
+	border-radius: var(--br-md);
+	box-shadow: var(--shadow-md);
 }
 ```
 
-**Full guide:** [Getting Started](docs/01-introduction/getting-started.md)
+Full setup guide: [Getting started](docs/01-introduction/getting-started.md)
 
-<br>
+## 🎨 Customization
 
-## 🎨 Quick Customization
-
-Change your brand color with one line:
+Change brand color — all five shades update automatically:
 
 ```scss
-// styles/tokens/_colors.scss
+// tokens/_colors.scss
 $primary-hue: 200deg !default; // Blue instead of purple
 ```
 
-All 9 shades (100-900) update automatically! 🎉
-
-**More:** [Customization guide](docs/06-usage/customizing.md)
-
-<br>
-
-## 🛠️ Example Usage
+Change base font size — all headings scale proportionally:
 
 ```scss
-// Component.module.scss
-@use '@/styles/core/mixins/breakpoint' as *;
-
-.card {
-    // Design tokens
-    padding: var(--sp-4);
-    border-radius: var(--rd-md);
-    background: var(--clr-main-bg);
-    color: var(--clr-main-text);
-
-    // Responsive
-    @include breakpoint('md') {
-        padding: var(--sp-6);
-    }
-
-    // Theme-aware
-    &:hover {
-        background: var(--clr-main-bg-hover);
-    }
-}
+// tokens/_typography.scss
+$base-font-size: 14px !default;
 ```
 
-<br>
+Change spacing grid — all ten steps update:
 
-## 🎯 What's Included
+```scss
+// tokens/_spacing.scss
+$base-spacing: 4px !default;
+```
 
-- **Design Tokens** - Colors, spacing, typography, borders, shadows, animations
-- **CSS Variables** - Auto-generated with px → rem conversion
-- **Themes** (optional) - Light/dark mode
-- **Mixins** (optional) - Breakpoints, utilities, helpers
-- **Base Styles** (optional) - Reset, globals, scrollbar
+## 📦 What's included
 
-<br>
+| Group | Description |
+|-------|-------------|
+| **Tokens** | Colors, typography, spacing, borders, shadows, animations, z-index, breakpoints |
+| **Core** | `px-to-rem` function, `breakpoint` mixin, `generate-tokens` mixin |
+| **Base** | Reset, globals, fonts, focus, scrollbar, selection |
+| **Themes** | Light and dark mode templates |
 
-## 💡 Best Used For
+## 🌐 Browser support
 
-- ✅ Component-based projects (React, Vue, Svelte)
-- ✅ Design systems with centralized tokens
-- ✅ Multi-theme applications (light/dark mode)
-- ✅ Projects needing modular, removable features
-
-**Not a good fit?** Consider [Tailwind CSS](https://tailwindcss.com/) for utility-first, or vanilla CSS variables for zero build step.
-
-<br>
-
-## 🌐 Browser Support
-
-- ✅ Chrome 49+ (2016)
-- ✅ Firefox 31+ (2014)
-- ✅ Safari 9.1+ (2016)
-- ✅ Edge 15+ (2017)
-- ❌ IE11 not supported (requires CSS custom properties)
-
-<br>
+Requires CSS custom properties support — all modern browsers. IE11 is not supported.
 
 ## 📖 Documentation
 
-**[📚 View full documentation](docs/README.md)**
+**[View full documentation](docs/README.md)**

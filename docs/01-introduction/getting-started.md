@@ -1,16 +1,11 @@
 # 🚀 Getting started
 
-Get up and running with the SCSS Style System in minutes.
-
 ## 📋 Prerequisites
 
-- **Node.js** and **npm** installed
-- **A project** with React + Vite, Next.js, or any SCSS-compatible bundler
+- Node.js and npm
+- A project with a SCSS-compatible bundler (Vite, webpack, Next.js, etc.)
 
-> 💡 **Tip**
-> No manual compilation needed! Modern bundlers handle SCSS automatically.
-
-## ⚡ Quick setup
+## 📥 Installation
 
 ### Step 1: Install Sass
 
@@ -22,188 +17,145 @@ npm install --save-dev sass
 
 ```
 your-project/
-├── src/
-│   └── styles/         ← Copy here
-│       ├── tokens/
-│       ├── core/
-│       ├── base/
-│       ├── themes/
-│       └── main.scss
+└── src/
+    └── styles/
+        ├── base/
+        ├── config/
+        ├── core/
+        ├── themes/
+        ├── tokens/
+        └── main.scss
 ```
 
-Done! 🎉
-
-## 🔌 Integration
-
-### Modern bundlers (React, Next.js, Vite)
-
-**1. Import once in your app entry:**
+### Step 3: Import in your app entry point
 
 ```jsx
-// main.jsx or _app.jsx
+// main.jsx or app.jsx
 import './styles/main.scss'
 ```
 
-**2. Use variables in component styles:**
+CSS custom properties are now available globally.
+
+## ⚡️ Usage
+
+### Component styles
 
 ```scss
-// Button.module.scss
 .button {
-	padding: var(--sp-4);
+	padding: var(--sp-2) var(--sp-4);
 	background: var(--clr-primary-500);
-	border-radius: var(--rd-md);
+	border-radius: var(--br-md);
+	font-weight: var(--fw-medium);
+	transition: background var(--dur-fast) var(--tf-ease-out);
 
 	&:hover {
-		background: var(--clr-primary-600);
+		background: var(--clr-primary-700);
 	}
 }
 ```
 
-**3. Import mixins when needed:**
+### Responsive styles
 
 ```scss
-@use '@/styles/core/mixins/breakpoint' as *;
-
 .container {
-	padding: var(--sp-6);
+	padding: var(--sp-4);
 
-	@include breakpoint('md') {
-		padding: var(--sp-4);
-	}
+	@include breakpoint('md') { padding: var(--sp-6); }
+	@include breakpoint('lg') { padding: var(--sp-8); }
 }
 ```
 
-### Manual compilation (static sites)
+Available breakpoints: `xs` (360px), `sm` (576px), `md` (768px), `lg` (1024px), `xl` (1280px), `2xl` (1536px).
+
+### Theming
+
+Toggle themes by setting `data-theme` on `<html>`:
+
+```js
+document.documentElement.setAttribute('data-theme', 'dark')
+document.documentElement.removeAttribute('data-theme') // back to light
+```
+
+Define semantic variables in theme files:
+
+```scss
+// themes/_light.scss
+:root {
+	--clr-bg:   var(--clr-secondary-100);
+	--clr-text: var(--clr-neutral-900);
+}
+
+// themes/_dark.scss
+[data-theme='dark'] {
+	--clr-bg:   var(--clr-secondary-900);
+	--clr-text: var(--clr-neutral-100);
+}
+```
+
+## 🔧 Customization
+
+```scss
+// Change brand color — all 5 shades update automatically
+$primary-hue: 200deg !default;
+
+// Change base font size — all heading sizes scale proportionally
+$base-font-size: 14px !default;
+
+// Change spacing grid — all 10 steps update automatically
+$base-spacing: 4px !default;
+```
+
+For a complete reference see the [token docs](../02-tokens/).
+
+## 🔨 Manual compilation
+
+For static sites or projects without a bundler:
 
 ```bash
-npm install --save-dev sass
 npx sass src/styles/main.scss dist/styles.css
+npx sass --watch src/styles/main.scss dist/styles.css
 ```
 
 ```html
 <link rel="stylesheet" href="/dist/styles.css" />
 ```
 
-## 💡 Usage examples
+## 🪲 Troubleshooting
+ 
+**CSS variables showing as literal strings**
+- Verify `sass` is installed: `npm list sass`
+- Check that `main.scss` is imported in the app entry point
+- Restart the dev server
 
-### Component styling
-
-```scss
-.card {
-	padding: var(--sp-4); /* Spacing */
-	background: var(--clr-primary-500); /* Color */
-	border-radius: var(--rd-lg); /* Border */
-	box-shadow: var(--shadow-md); /* Shadow */
-	font-size: var(--fs-h3); /* Typography */
-}
-```
-
-### Responsive design
-
-```scss
-@use '@/styles/core/mixins/breakpoint' as *;
-
-.container {
-	padding: var(--sp-6);
-
-	@include breakpoint('md') {
-		padding: var(--sp-4);
+**Mixin import not resolving**
+ 
+With Vite, you can auto-import mixins globally via `additionalData` — no manual `@use` needed in every file:
+ 
+```ts
+// vite.config.ts
+import path from 'path'
+ 
+export default {
+	css: {
+		preprocessorOptions: {
+			scss: {
+				loadPaths: [path.resolve(__dirname, './src')],
+				additionalData: `
+					@use "styles/core/functions" as *;
+					@use "styles/core/mixins" as *;
+				`
+			}
+		}
 	}
 }
 ```
-
-### Theme-aware
-
+ 
+Without a bundler, import mixins manually at the top of each file that uses them:
+ 
 ```scss
-.card {
-	background: var(--clr-main-bg); /* Auto light/dark */
-	color: var(--clr-main-text);
-}
+@use '../core/mixins/breakpoint' as *;
 ```
-
-<details>
-<summary><b>Available variables</b></summary>
-
-**Colors:**
-
-```css
---clr-primary-100 ... --clr-primary-900
---clr-secondary-100 ... --clr-secondary-900
---clr-neutral-100 ... --clr-neutral-900
---clr-success-bg, --clr-warning-bg, --clr-danger-bg
-```
-
-**Spacing:** (8px grid → rem)
-
-```css
---sp-0: 0
---sp-1: 0.5rem  /* 8px */
---sp-2: 1rem    /* 16px */
---sp-4: 2rem    /* 32px */
---sp-6: 3rem    /* 48px */
---sp-8: 4rem    /* 64px */
-```
-
-**Typography:**
-
-```css
---ff-primary, --ff-accent, --ff-system
---fw-light, --fw-regular, --fw-medium, --fw-bold
---fs-default, --fs-h1, --fs-h2, --fs-h3, --fs-h4
-```
-
-**Borders & Shadows:**
-
-```css
---rd-none, --rd-xs, --rd-sm, --rd-md, --rd-lg, --rd-xl, --rd-pill, --rd-full
---stroke-thin, --stroke-normal, --stroke-thick
---shadow-xs, --shadow-sm, --shadow-md, --shadow-lg, --shadow-xl
-```
-
-**Animations:**
-
-```css
---dur-instant, --dur-fast, --dur-normal, --dur-slow
---tf-linear, --tf-ease-in, --tf-ease-out, --tf-ease-in-out
-```
-
-See token docs for complete reference: [Colors](../02-tokens/colors.md), [Spacing](../02-tokens/spacing.md), [Typography](../02-tokens/typography.md), [Borders](../02-tokens/borders.md), [Shadows](../02-tokens/shadows.md), [Animations](../02-tokens/animations.md)
-
-</details>
-
-## 🎨 Customization
-
-Change your brand color:
-
-```scss
-// styles/tokens/_colors.scss
-$primary-hue: 200deg !default; // Blue instead of purple
-```
-
-All 9 shades update automatically! 🎉
-
-**More options:**
-
-- **Spacing:** `$base-spacing: 4px` (tighter layout)
-- **Typography:** `$base-font-size: 14px` (smaller text)
-- **Borders:** Adjust radius in `_borders.scss`
-
-See [Customizing guide](../06-usage/customizing.md) for details.
-
-## 🐛 Troubleshooting
-
-**Variables showing as literal strings?**
-
-- Check `sass` installed: `npm list sass`
-- Verify `main.scss` imported in app entry
-- Restart dev server
-
-**Mixins not working?**
-
-- Check path: `@use '@/styles/core/mixins/breakpoint'`
-- Configure path alias in `vite.config.js`
-
-**Styles not updating?**
-
-- Hard refresh: `Ctrl/Cmd + Shift + R`
-- Clear cache: `rm -rf node_modules/.vite`
+ 
+**Styles not updating after changes**
+- Hard refresh: `Ctrl + Shift + R` / `Cmd + Shift + R`
+- Clear Vite cache: `rm -rf node_modules/.vite`
